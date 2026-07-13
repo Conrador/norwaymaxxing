@@ -1,0 +1,553 @@
+{
+  "tabs": {
+    "today": "hoy",
+    "practices": "Prácticas",
+    "nature": "naturaleza",
+    "you": "tu"
+  },
+  "common": {
+    "start": "Empezar",
+    "done": "hecho",
+    "skip": "Saltar",
+    "pause": "Pausa",
+    "resume": "Currículum",
+    "cancel": "Cancelar",
+    "back": "Atrás",
+    "close": "Cerrar",
+    "xp": "+{{count}} XP",
+    "day": "Día {{count}}",
+    "premium": "Premium",
+    "soon": "Próximamente",
+    "previousMonth": "Mes anterior",
+    "previousWeek": "Semana anterior",
+    "nextWeek": "La próxima semana",
+    "nextMonth": "El próximo mes",
+    "openStreakDetails": "Detalles de la racha abierta"
+  },
+  "meta": {
+    "seconds": "{{count}} s",
+    "minutes": "{{count}} mín."
+  },
+  "home": {
+    "greeting": "God morgen, vikingo",
+    "todayProtocol": "El protocolo de hoy.",
+    "score": "Norway Score",
+    "today": "hoy",
+    "streak": "Racha de días {{count}}",
+    "streak_few": "Racha de días {{count}}",
+    "streak_many": "Racha de días {{count}}",
+    "streak_other": "Racha de días {{count}}",
+    "streakSheetTitle": "racha",
+    "streakSheetSubtitle": "Un día cuenta cuando Norway Score llega a {{count}} o más.",
+    "currentStreak": "Racha actual",
+    "scoreNeeded": "Puntuación necesaria",
+    "streakRules": {
+      "score": "Complete suficientes tareas de protocolo diarias para llegar a {{count}} Norway Score.",
+      "calendar": "La racha sigue los días calendario en su zona horaria local.",
+      "reset": "Si no se alcanza el umbral de un día, el siguiente día completado comenzará una nueva racha."
+    },
+    "allDone": "Protocolo completo. ¡Skål! 🍻",
+    "dayLetters": [
+      "L",
+      "M",
+      "X",
+      "J",
+      "V",
+      "S",
+      "D"
+    ]
+  },
+  "protocol": {
+    "cold": "ducha fría",
+    "natureForest": "tiempo en el bosque",
+    "naturePark": "tiempo en la naturaleza",
+    "natureWalk": "caminar afuera",
+    "grounding": "Paseo sensorial descalzo",
+    "diet": "Elija hoy alimentos mínimamente procesados",
+    "dietMaintain": "Prepare comidas en torno a alimentos integrales",
+    "sauna": "Sesión de sauna",
+    "breath": "Respiración",
+    "natureTime": "tiempo en la naturaleza",
+    "natureLong": "Larga salida a la naturaleza",
+    "daylightWalk": "Caminata diurna",
+    "phoneFreeNature": "Paseo por la naturaleza sin teléfono",
+    "sitSpot": "Lugar tranquilo para sentarse al aire libre",
+    "sensoryWalk": "Paseo sensorial lento",
+    "weatherWalk": "Caminata al aire libre para todo clima",
+    "breathSlow": "Práctica de respiración lenta",
+    "breathReset": "Pausa de respiración de exhalación larga",
+    "breathRecovery": "Respiración tranquila en lugar de sauna.",
+    "wholeGrain": "Elige avena, centeno u otro grano integral.",
+    "berriesVeg": "Agregue bayas y vegetales coloridos.",
+    "legumes": "Prepare una comida con frijoles, guisantes o lentejas.",
+    "fishOrLegumes": "Elige pescado o legumbres en lugar de carne procesada",
+    "vegetableHalfPlate": "Haga que las verduras sean la mayor parte de una comida",
+    "nutsSeeds": "Añade un pequeño puñado de nueces o semillas sin sal.",
+    "wholeFoodMeal": "Haga una comida mínimamente procesada",
+    "processedSwap": "Cambie una opción de baja calidad por un alimento más rico en nutrientes",
+    "mealPrep": "Prepara una comida nórdica integral para mañana",
+    "ro": "Viking Row",
+    "kygoJo": "Escuche Kygo Jo (Kygo Remix)"
+  },
+  "cold": {
+    "title": "frio",
+    "planTitle": "Plan de ducha fría de 30 días",
+    "planSubtitle": "Etapas de ducha cortas. Las aguas abiertas son una decisión de seguridad independiente.",
+    "startToday": "Día de inicio {{count}}",
+    "dayDone": "hecho",
+    "dayLocked": "Premium",
+    "returnTomorrow": "El siguiente nivel mañana",
+    "guideTitle": "Línea base de seguridad en frío",
+    "guide": {
+      "shower": "Este es un desafío del hábito de ducharse, no una dosis médica. Deténgase temprano cuando pierda el control.",
+      "breathe": "Respira normalmente. Sin apneas, hiperventilación ni práctica bajo el agua.",
+      "solo": "Nunca entre solo en aguas abiertas y frías. Utilice puntos de entrada y salida conocidos.",
+      "exit": "Salir ante pánico, entumecimiento o mareos. Calienta con calma después."
+    },
+    "daysCompleted": "días completados"
+  },
+  "session": {
+    "breatheTitle": "Calma tu respiración",
+    "inhale": "Inhala por la nariz",
+    "holdIn": "Espera",
+    "exhale": "Exhala lentamente",
+    "holdOut": "Mantener vacío",
+    "round": "Redondo {{current}}/{{total}}",
+    "skipBreathing": "Saltar la respiración",
+    "coldTitle": "Frío, tranquilo, en control.",
+    "coldSafetyHint": "Sigue respirando normalmente. Deténgase ante entumecimiento, mareos o pánico.",
+    "abort": "Abortar",
+    "finishedTitle": "Día {{count}} completo",
+    "finishedSubtitle": "Séquese, vístase abrigado si es necesario y deje que su respiración se calme.",
+    "claim": "¡Skål!"
+  },
+  "practices": {
+    "title": "Prácticas",
+    "library": "Biblioteca de protocolos",
+    "libraryMeta": "4 módulos",
+    "cold": "frio",
+    "coldSubtitle": "Día {{count}} de 30",
+    "sauna": "Sauna",
+    "saunaSubtitle": "Ciclo de calor controlado",
+    "breath": "Aliento",
+    "breathSubtitle": "Respiración lenta guiada",
+    "diet": "Dieta nórdica",
+    "dietSubtitle": "Comer del norte",
+    "roSubtitle": "Fila con Noruega",
+    "roNew": "Nuevo",
+    "musicSubtitle": "Remezcla noruega de Kygo",
+    "musicNew": "Nuevo"
+  },
+  "nature": {
+    "title": "Friluftsliv",
+    "subtitle": "Desafíos de la naturaleza",
+    "completed": "Completado",
+    "minutes": "Minutos afuera",
+    "today": "hoy",
+    "todayDone": "hoy",
+    "todayMinutes": "Hoy min",
+    "todaySet": "El conjunto de la naturaleza actual",
+    "todaySetMeta": "3 tareas, XP solo aquí",
+    "library": "Biblioteca de desafíos",
+    "libraryMeta": "Vista previa y rotación",
+    "libraryOnly": "Biblioteca",
+    "seen": "Visto",
+    "outdoorSignal": "señal",
+    "challenges": "Desafíos",
+    "challengeMeta": "Toca para abrir",
+    "filters": {
+      "all": "Todos",
+      "forest": "bosque",
+      "water": "agua",
+      "fire": "fuego",
+      "winter": "invierno"
+    },
+    "minutesToday": "{{count}} min afuera hoy"
+  },
+  "you": {
+    "title": "tu",
+    "statusMeta": "Clasificación, racha y consistencia semanal",
+    "rank": "Rango",
+    "currentRank": "Rango actual",
+    "nextRank": "{{earned}}/{{required}} XP a {{rank}}",
+    "xpRemaining": "{{count}} XP izquierda",
+    "maxRank": "Rango más alto alcanzado",
+    "totalXpValue": "{{count}} XP total",
+    "totalXp": "Total XP",
+    "weekHits": "Golpes de la semana",
+    "activeMinutes": "Min activo",
+    "coldMinutes": "Frío mínimo",
+    "natureMinutes": "Naturaleza mín.",
+    "saunaMinutes": "Sauna mín.",
+    "weekMatrix": "Protocolo semanal",
+    "weekSignal": "señal de 7 días",
+    "weekSignalMeta": "Protocolos completados por hábito.",
+    "last7Days": "últimos 7 días",
+    "recentActivity": "Actividad reciente",
+    "noActivity": "Termine un protocolo para construir su registro.",
+    "settings": "Configuración",
+    "language": "Idioma",
+    "theme": "Apariencia",
+    "themeSystem": "Sistema",
+    "themeLight": "Día Polar",
+    "themeDark": "Noche polar",
+    "reminder": "Recordatorio diario",
+    "restorePurchases": "Restaurar compras",
+    "statStreak": "racha de dias"
+  },
+  "sauna": {
+    "title": "Sauna",
+    "subtitle": "Calor controlado, enfriamiento gradual, descanso total.",
+    "chooseProtocol": "Elige protocolo",
+    "sessionMap": "Mapa de sesiones",
+    "rounds": "Rondas {{count}}",
+    "roundsRange": "Rondas {{range}}",
+    "phaseHeat": "Calor",
+    "phaseCold": "frio",
+    "phaseCool": "genial",
+    "phaseRest": "Descanso",
+    "guideTitle": "Reglas de la sauna",
+    "logSession": "Registrar sesión de sauna",
+    "sessionLogged": "Sesión registrada",
+    "logExplanation": "Agrega +30 XP y lo mantiene en este protocolo.",
+    "loggedMeta": "+30 XP agregado. Sigue descansando antes de partir.",
+    "guide": {
+      "heat": "El alcance es un techo, no un objetivo. Salga más temprano en caso de mareos, náuseas, dolor en el pecho, confusión o angustia.",
+      "cool": "Refréscate al aire libre o con una cómoda ducha. El agua fría es opcional; nunca fuerces una zambullida.",
+      "rest": "Siéntese hasta que la respiración, el pulso y el equilibrio se calmen. Igualar el tiempo de calor es sólo una guía de planificación.",
+      "repeat": "Repita sólo cuando esté completamente asentado. Beba cuando tenga sed, evite el alcohol y suspenda cuando reaparezcan los síntomas."
+    },
+    "ranges": {
+      "beginnerHeat": "5-8 minutos",
+      "traditionalHeat": "8-15 minutos",
+      "optionalContrastHeat": "8-12 minutos",
+      "comfortCool": "Cómodo",
+      "optionalCoolShower": "Ducha opcional",
+      "fullRecovery": "Hasta que se resuelva"
+    },
+    "protocols": {
+      "beginner": {
+        "title": "principiante",
+        "subtitle": "Una o dos rondas cortas, salir temprano."
+      },
+      "classic": {
+        "title": "Nórdico clásico",
+        "subtitle": "Calor flexible y recuperación completa."
+      },
+      "contrast": {
+        "title": "Contraste del fiordo",
+        "subtitle": "Ducha fría opcional, nunca obligatoria"
+      }
+    }
+  },
+  "breath": {
+    "practiceTitle": "respiración lenta",
+    "practiceSubtitle": "Siga una inhalación tranquila de 4 segundos y una exhalación de 6 segundos.",
+    "slowSubtitle": "Respire de manera uniforme y cómoda. No fuerces la profundidad.",
+    "resetSubtitle": "Deje que la exhalación dure un poco más que la inhalación. No se contiene la respiración.",
+    "recoverySubtitle": "Utilice una exhalación suave y prolongada y deténgase si se siente mareado.",
+    "cycle": "Ciclo {{current}}/{{total}}",
+    "timeRemaining": "{{time}} restante",
+    "completeTitle": "Respiración completa",
+    "completeSubtitle": "Su sesión guiada completa está completa.",
+    "leaveTitle": "¿Dejar el aliento?",
+    "leaveMessage": "Esta sesión guiada no se completará.",
+    "stay": "quedarse",
+    "leave": "Salir de la sesión"
+  },
+  "diet": {
+    "title": "Dieta nórdica",
+    "subtitle": "Ideas de comidas nórdicas basadas en plantas",
+    "planMeta": "14 dias",
+    "disclaimer": "Ideas de comidas flexibles, no una receta personal. Ajusta porciones, alérgenos e ingredientes a tus necesidades; utilizar orientación clínica para dietas médicas.",
+    "eatTitle": "comer",
+    "avoidTitle": "evitar",
+    "principles": "Principios nórdicos",
+    "principlesMeta": "Qué favorecer y qué limitar",
+    "mealPlan": "14 días de ideas de comidas nórdicas",
+    "mealPlanMeta": "Seis harinas de pescado, más plantas, porciones flexibles",
+    "meals": {
+      "breakfast": "Desayuno",
+      "lunch": "Almuerzo",
+      "dinner": "cena"
+    },
+    "eat": {
+      "fish": "Pescados y mariscos varias veces por semana.",
+      "wholeGrains": "Avena, centeno, cebada y pan integral",
+      "legumes": "Frijoles, guisantes, lentejas y garbanzos",
+      "berries": "Bayas y frutas de temporada.",
+      "roots": "Hortalizas de raíz, repollo, patatas y verduras.",
+      "dairy": "Lácteos naturales bajos en grasa o una alternativa fortificada adecuada",
+      "nuts": "Frutos secos y semillas en pequeñas porciones diarias.",
+      "oil": "Aceite de colza o de oliva como grasa predeterminada"
+    },
+    "avoid": {
+      "highSaltSugar": "Platos preparados con alto contenido de sal, azúcar añadido o grasas saturadas.",
+      "processedMeat": "La carne procesada como proteína diaria",
+      "redMeatDaily": "Carne roja todos los días",
+      "sugar": "Azúcar líquida y snacks dulces",
+      "saltySnacks": "Bocadillos ricos en sal",
+      "alcoholDaily": "alcohol diario",
+      "refinedGrains": "Pan blanco y cereales refinados como base."
+    },
+    "days": {
+      "day1": {
+        "title": "Línea de base costera",
+        "breakfast": "Avena con skyr, arándanos, nueces y canela.",
+        "lunch": "Cuenco de cebada y lentejas con remolacha, col rizada y zanahoria.",
+        "dinner": "Bacalao al horno, patatas, col, guisantes y aderezo de hierbas y aceite de colza."
+      },
+      "day2": {
+        "title": "Fibra y legumbres",
+        "breakfast": "Pan crujiente de centeno con huevo, tomate y kéfir.",
+        "lunch": "Sopa de guisantes con repollo y pan integral de centeno.",
+        "dinner": "Frijoles blancos, cebada, champiñones, raíces y verduras asadas."
+      },
+      "day3": {
+        "title": "Legumbres y arenque",
+        "breakfast": "Gachas de cebada templadas con manzana, arándanos rojos y pipas de calabaza.",
+        "lunch": "Sopa de garbanzos, patatas y col con pan integral.",
+        "dinner": "Arenque o sardinas, patatas cocidas, cebolla encurtida y ensalada de pepino."
+      },
+      "day4": {
+        "title": "jornada laboral nórdica",
+        "breakfast": "Skyr con avena, frambuesas, lino y avellanas.",
+        "lunch": "Sándwich de centeno con huevo o judías blancas, pepino, lechuga y eneldo.",
+        "dinner": "Pavo o frijoles, cebada, champiñones, zanahorias y verduras."
+      },
+      "day5": {
+        "title": "Planta avanzada",
+        "breakfast": "Tortitas de avena con frutos rojos y yogur natural.",
+        "lunch": "Sopa de guisantes con pan de centeno y una ración pequeña de queso duro.",
+        "dinner": "Garbanzos asados, chirivía, remolacha y col con yogur natural o tahini."
+      },
+      "day6": {
+        "title": "dia activo",
+        "breakfast": "Avena, kéfir, plátano, arándanos y mantequilla de maní o almendras.",
+        "lunch": "Wrap integral con lentejas, espinacas, zanahorias y salsa de yogur y eneldo.",
+        "dinner": "Salmón, patatas, champiñones y una gran ensalada de col."
+      },
+      "day7": {
+        "title": "Día de despensa sencillo",
+        "breakfast": "Pan de centeno con requesón, frutos rojos y semillas.",
+        "lunch": "Ensalada de judías con patatas, verduras, manzana y aceite de colza.",
+        "dinner": "Sopa de champiñones y cebada con zanahoria, puerro y pan integral."
+      },
+      "day8": {
+        "title": "Tazón de mercado",
+        "breakfast": "Gachas de cebada con pera, skyr y nueces.",
+        "lunch": "Tostada de centeno con crema de judías blancas, ensalada de remolacha y pepino.",
+        "dinner": "Guiso de lentejas con tubérculos, col rizada y una cucharada de yogur."
+      },
+      "day9": {
+        "title": "dia de la caballa",
+        "breakfast": "Skyr, avena, arándanos, chía y almendras.",
+        "lunch": "Garbanzos sobre centeno con tomate, hierbas y ensalada de repollo.",
+        "dinner": "Caballa, patatas cocidas, judías verdes y verduras fermentadas."
+      },
+      "day10": {
+        "title": "Presupuesto nórdico",
+        "breakfast": "Avena con frutos rojos congelados, leche o kéfir y semillas.",
+        "lunch": "Sopa de frijoles y cebada con zanahoria, cebolla y pan integral.",
+        "dinner": "Bacalao o abadejo congelado, patatas, guisantes y col."
+      },
+      "day11": {
+        "title": "Bajo esfuerzo",
+        "breakfast": "Pan crujiente de centeno con huevo, skyr y manzana.",
+        "lunch": "Frijoles sobrantes sobre verduras, patatas y pepinos encurtidos.",
+        "dinner": "Pollo en sartén o garbanzos con raíces, repollo y salsa de yogurt."
+      },
+      "day12": {
+        "title": "Alimentos cultivados, opcionales.",
+        "breakfast": "Cuenco de kéfir con avena, frutos rojos y lino.",
+        "lunch": "Sándwich de centeno con frijoles blancos, pepino y repollo fermentado opcional.",
+        "dinner": "Cebada, champiñones, guisantes, remolacha y verduras con aderezo de yogur natural opcional."
+      },
+      "day13": {
+        "title": "Temporada de frio",
+        "breakfast": "Avena tibia con manzana, canela, nueces y skyr.",
+        "lunch": "Guiso de lentejas y tubérculos con pan de centeno.",
+        "dinner": "Trucha, repollo, patatas, zanahoria y caldo."
+      },
+      "day14": {
+        "title": "Domingo repetible",
+        "breakfast": "Skyr, frutos rojos, avena y semillas.",
+        "lunch": "Tostada de centeno con judías blancas, pepino y eneldo.",
+        "dinner": "Guiso de tubérculos y frijoles con col rizada y pan integral."
+      }
+    }
+  },
+  "challenge": {
+    "protocol": "Protocolo",
+    "minutes": "Minutos",
+    "reward": "Recompensa XP",
+    "complete": "Desafío completo",
+    "libraryTitle": "No en el set de hoy",
+    "libraryMeta": "Este desafío es parte de la biblioteca. Puede regresar en la rotación diaria, pero no se puede cultivar para XP hoy.",
+    "notFound": "Reto no encontrado"
+  },
+  "challenges": {
+    "forestHour": {
+      "title": "Hora del bosque",
+      "subtitle": "Una hora afuera, sin prisas",
+      "detail": "Camine a un ritmo suave durante hasta sesenta minutos. Mantenga el audio apagado y observe cómo se siente su estado de ánimo y su energía antes y después."
+    },
+    "sunriseWalk": {
+      "title": "Paseo matutino a la luz del día",
+      "subtitle": "Luz exterior temprano en el día",
+      "detail": "Salga cuando sea práctico durante las primeras dos horas después de despertarse. Utilice protección ocular normal cuando sea necesario y nunca mire fijamente al sol."
+    },
+    "barefootSensoryWalk": {
+      "title": "Paseo sensorial",
+      "subtitle": "Diez minutos cuidadosos notando el suelo.",
+      "detail": "Camine lentamente y observe la textura, la temperatura y el equilibrio. Los pies descalzos son opcionales; Mantenga los zapatos puestos con diabetes, sensación o circulación reducida, superficies inseguras o temperaturas incómodas."
+    },
+    "coldWaterFace": {
+      "title": "Salpicaduras de agua fría en la cara",
+      "subtitle": "Breve, opcional y cómoda.",
+      "detail": "Salpica agua cómodamente fría en tu cara una o dos veces. Siga respirando normalmente; Esta es una práctica sensorial, no un reinicio médico."
+    },
+    "lakeDip": {
+      "title": "Control de seguridad en aguas abiertas",
+      "subtitle": "Planifique primero; no es necesario entrar",
+      "detail": "Consulta temperatura del agua, clima, corrientes, calidad del agua, entrada y salida, ropa de abrigo y quién te acompañaría. Completa la prueba sin entrar al agua."
+    },
+    "fireEvening": {
+      "title": "Luz nocturna sin pantallas",
+      "subtitle": "LED a la luz de las velas y sin desplazamiento",
+      "detail": "Utilice una vela LED o una lámpara tenue durante treinta minutos sin pantalla. Una llama real debe permanecer supervisada y seguir las normas locales vigentes contra incendios."
+    },
+    "snowWalk": {
+      "title": "Caminata en clima frío",
+      "subtitle": "Veinte minutos conscientes del clima",
+      "detail": "Camine afuera sólo cuando sus pies y el clima sean seguros. Vístase según las condiciones y respire de la forma cómoda que admita el ritmo."
+    },
+    "phoneFreeTrail": {
+      "title": "Ruta sin teléfono",
+      "subtitle": "Una hora sin conexión",
+      "detail": "Mantenga el teléfono en silencio en un bolso y observe el terreno, el clima y la respiración. Conserve el acceso de emergencia cuando camine solo o en áreas remotas."
+    },
+    "sitSpot": {
+      "title": "lugar para sentarse",
+      "subtitle": "Veinte minutos en un solo lugar",
+      "detail": "Elija un lugar legal y duradero y quédese quieto. Observa la luz, el viento, los pájaros, las personas y tu respiración sin forzar la meditación."
+    },
+    "rainWalk": {
+      "title": "Caminata bajo la lluvia",
+      "subtitle": "Vístete apropiadamente, ve de todos modos.",
+      "detail": "Camine durante veinte minutos bajo la lluvia o en condiciones climáticas adversas con ropa adecuada. Evite tormentas, peligros de hielo y vientos peligrosos."
+    },
+    "shorelineObservation": {
+      "title": "Observación de la costa",
+      "subtitle": "Treinta minutos por el agua",
+      "detail": "Siéntate o camina cerca de un lago, río, fiordo o mar. La natación es opcional y pertenece a las normas de seguridad en aguas frías."
+    },
+    "leaveNoTrace": {
+      "title": "No dejar rastro",
+      "subtitle": "Acceso combinado con responsabilidad",
+      "detail": "Con guantes, recoja la basura común y segura, manténgase alejado del suelo frágil y cierre las puertas. Nunca manipule desechos punzantes, químicos, médicos o desconocidos."
+    }
+  },
+  "settings": {
+    "device": "Dispositivo",
+    "followDevice": "Siga el idioma de su teléfono",
+    "languageOpen": "Elige el idioma de la aplicación",
+    "languageClosed": "Toca para cambiar el idioma",
+    "themeMeta": "Utilice el sistema o configúrelo manualmente",
+    "themeDescriptions": {
+      "system": "Coincide con la apariencia de iOS automáticamente.",
+      "light": "Superficie polar brillante para uso diurno.",
+      "dark": "Superficie nocturna con poca luz."
+    },
+    "morningProtocol": "Protocolo matutino",
+    "morningProtocolMeta": "Un recordatorio local para abrir el protocolo de hoy."
+  },
+  "ranks": {
+    "thrall": "Esclavo",
+    "bonde": "Bonde",
+    "kriger": "kriger",
+    "viking": "vikingo",
+    "jarl": "Jarl",
+    "konge": "Konge"
+  },
+  "protocolPlan": {
+    "focus": {
+      "baseline": "Línea de base",
+      "daylight": "luz del día",
+      "heat": "Calor controlado",
+      "coldSkill": "Habilidad fría",
+      "natureVolume": "Volumen de la naturaleza",
+      "heatRepeat": "Repetición de calor",
+      "recovery": "Recuperación",
+      "foodFiber": "Fibra alimentaria",
+      "longOutdoor": "largo al aire libre",
+      "calmBreath": "aliento tranquilo",
+      "calm": "Calma al aire libre",
+      "unplug": "Desenchufe",
+      "weather": "Naturaleza para todo clima",
+      "sensory": "Atención sensorial",
+      "consolidate": "consolidar",
+      "reset": "Reiniciar"
+    }
+  },
+  "ro": {
+    "taskTitle": "Viking Row",
+    "readyKicker": "Viking Row",
+    "soundOn": "¡Sonido activado!",
+    "intro": "Tú llevas el tambor",
+    "introHint": "Dos golpes de tambor. Dum dum. Luego el público grita \"ROO!\". Espera la cuenta atrás y acelera poco a poco.",
+    "beat": "Supera {{current}}/{{total}}",
+    "faster": "¡Más rápido! ¡Mantén el ritmo!",
+    "slower": "Suavizar. Construye la ola",
+    "energy": "energía de la multitud",
+    "success": "¡SKÅL!",
+    "successMeta": "Tú lideraste la fila. {{accuracy}}% en el tiempo. El estadio ruge.",
+    "successMetaPartial": "{{accuracy}}% en el tiempo. Vuelve mañana, remero.",
+    "claim": "RO!",
+    "tapCue": "Dos toques rápidos",
+    "again": "¡Otra vez! ×2",
+    "repsLeft": "{{count}} filas restantes",
+    "rowsLeft": "Filas restantes",
+    "rows": "Filas",
+    "rhythm": "ritmo",
+    "you": "tu",
+    "crowd": "multitud",
+    "resultKicker": "Fila completa",
+    "nextHit": "Siguiente golpe",
+    "secondHit": "Segundo golpe",
+    "hitAgain": "GOLPE DE NUEVO",
+    "now": "AHORA",
+    "tempo": "Objetivo {{count}} BPM",
+    "accuracy": "{{count}}% en el tiempo",
+    "coach": {
+      "double": "GOLPE DE NUEVO",
+      "onBeat": "AL RITMO. SEGUIR CONSTRUYENDO",
+      "faster": "MÁS RÁPIDO. SIGUE EL PULSO",
+      "slower": "DEMASIADO RÁPIDO. SIGUE EL PULSO",
+      "losing": "PIERDES EL RITMO. EL PÚBLICO SE APAGA",
+      "sprint": "EMPUJE FINAL. ACELERAR"
+    }
+  },
+  "music": {
+    "taskTitle": "Kygo Jo",
+    "kicker": "Noruega on repeat",
+    "title": "Escucha el single noruego de hoy",
+    "story": "Un single noruego en el protocolo actual, abierto a través del servicio de música del propio usuario.",
+    "subtitle": "Kygo, Flow Kingz & JMK feat. Lyng",
+    "duration": "2:33",
+    "metadataSource": "Metadatos de {{provider}}",
+    "instructions": "Abre la canción en tu app de música, pulsa play si hace falta y vuelve aquí.",
+    "spotify": "Abrir en Spotify",
+    "appleMusic": "Abrir en Apple Music",
+    "listening": "Canción en curso",
+    "ready": "Canción escuchada completa",
+    "remaining": "{{time}} restante",
+    "returnHint": "La música puede seguir sonando mientras estás aquí.",
+    "leaveFirst": "Abre una app de música para empezar",
+    "done": "Listo",
+    "completedToday": "Completado hoy",
+    "openErrorTitle": "No se pudo abrir la aplicación de música.",
+    "openErrorMessage": "Comprueba tu conexión y prueba el otro servicio.",
+    "manualNote": "Abre la canción en tu app de música, escúchala y vuelve aquí cuando termines."
+  }
+}

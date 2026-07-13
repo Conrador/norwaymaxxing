@@ -1,0 +1,553 @@
+{
+  "tabs": {
+    "today": "Idag",
+    "practices": "Övningar",
+    "nature": "Naturen",
+    "you": "Du"
+  },
+  "common": {
+    "start": "Starta",
+    "done": "Klart",
+    "skip": "Hoppa över",
+    "pause": "Pausa",
+    "resume": "Återuppta",
+    "cancel": "Avbryt",
+    "back": "Tillbaka",
+    "close": "Stäng",
+    "xp": "+{{count}} XP",
+    "day": "Dag {{count}}",
+    "premium": "Premium",
+    "soon": "Kommer snart",
+    "previousMonth": "Föregående månad",
+    "previousWeek": "Föregående vecka",
+    "nextWeek": "Nästa vecka",
+    "nextMonth": "Nästa månad",
+    "openStreakDetails": "Öppna streakdetaljer"
+  },
+  "meta": {
+    "seconds": "{{count}} s",
+    "minutes": "{{count}} min"
+  },
+  "home": {
+    "greeting": "God morgen, viking",
+    "todayProtocol": "Dagens protokoll",
+    "score": "Norway Score",
+    "today": "Idag",
+    "streak": "{{count}} dagars rad",
+    "streak_few": "{{count}} dagars rad",
+    "streak_many": "{{count}} dagars rad",
+    "streak_other": "{{count}} dagars rad",
+    "streakSheetTitle": "Streak",
+    "streakSheetSubtitle": "En dag räknas när Norway Score når {{count}} eller mer.",
+    "currentStreak": "Nuvarande rad",
+    "scoreNeeded": "Betyg behövs",
+    "streakRules": {
+      "score": "Avsluta tillräckligt många dagliga protokolluppgifter för att nå {{count}} Norway Score.",
+      "calendar": "Strömmen följer kalenderdagar i din lokala tidszon.",
+      "reset": "Missa tröskeln för en dag och nästa avslutade dag börjar en ny rad."
+    },
+    "allDone": "Protokoll färdigt. Skål! 🍻",
+    "dayLetters": [
+      "M",
+      "T",
+      "O",
+      "T",
+      "F",
+      "L",
+      "S"
+    ]
+  },
+  "protocol": {
+    "cold": "Kalldusch",
+    "natureForest": "Tid i skogen",
+    "naturePark": "Tid i naturen",
+    "natureWalk": "Gå utanför",
+    "grounding": "Barfota sensorisk promenad",
+    "diet": "Välj minimalt processad mat idag",
+    "dietMaintain": "Bygg måltider runt hela livsmedel",
+    "sauna": "Bastupass",
+    "breath": "Andningsarbete",
+    "natureTime": "Tid i naturen",
+    "natureLong": "Lång naturutflykt",
+    "daylightWalk": "Dagsljuspromenad",
+    "phoneFreeNature": "Telefonfri naturvandring",
+    "sitSpot": "Lugn sittplats utomhus",
+    "sensoryWalk": "Långsam sensorisk promenad",
+    "weatherWalk": "Utomhuspromenad i alla väder",
+    "breathSlow": "Långsam andningsövning",
+    "breathReset": "Lång andningspaus",
+    "breathRecovery": "Tyst andning istället för bastu",
+    "wholeGrain": "Välj havre, råg eller annat fullkorn",
+    "berriesVeg": "Tillsätt bär och färgglada grönsaker",
+    "legumes": "Bygg en måltid runt bönor, ärtor eller linser",
+    "fishOrLegumes": "Välj fisk eller baljväxter istället för processat kött",
+    "vegetableHalfPlate": "Gör grönsaker till den största delen av en måltid",
+    "nutsSeeds": "Tillsätt en liten näve osaltade nötter eller frön",
+    "wholeFoodMeal": "Gör en minimalt bearbetad måltid",
+    "processedSwap": "Byt ut ett val av låg kvalitet mot en mer näringsrik mat",
+    "mealPrep": "Förbered en nordisk helmatsmåltid för morgondagen",
+    "ro": "Viking Row",
+    "kygoJo": "Lyssna på Kygo Jo (Kygo Remix)"
+  },
+  "cold": {
+    "title": "Kallt",
+    "planTitle": "30-dagars kallduschplan",
+    "planSubtitle": "Korta duschsteg. Öppet vatten är ett separat säkerhetsbeslut.",
+    "startToday": "Startdag {{count}}",
+    "dayDone": "Klart",
+    "dayLocked": "Premium",
+    "returnTomorrow": "Nästa nivå imorgon",
+    "guideTitle": "Baslinje för kall säkerhet",
+    "guide": {
+      "shower": "Detta är en utmaning för duschvanor, inte en medicinsk dos. Stanna tidigt när kontrollen slirar.",
+      "breathe": "Andas normalt. Inget andetag, hyperventilering eller undervattensträning.",
+      "solo": "Gå aldrig in i öppet kallt vatten ensam. Använd kända in- och utgångspunkter.",
+      "exit": "Gå ut före panik, domningar eller yrsel. Värm upp lugnt efter."
+    },
+    "daysCompleted": "dagar avklarade"
+  },
+  "session": {
+    "breatheTitle": "Ordna din andning",
+    "inhale": "Andas in genom näsan",
+    "holdIn": "Vänta",
+    "exhale": "Andas ut långsamt",
+    "holdOut": "Håll tomt",
+    "round": "Rund {{current}}/{{total}}",
+    "skipBreathing": "Hoppa över andningen",
+    "coldTitle": "Kallt, lugnt, i kontroll",
+    "coldSafetyHint": "Fortsätt att andas normalt. Sluta före domningar, yrsel eller panik.",
+    "abort": "Avbryt",
+    "finishedTitle": "Dag {{count}} avslutad",
+    "finishedSubtitle": "Torka av, klä dig varmt om det behövs och låt andningen lugna sig",
+    "claim": "Skål!"
+  },
+  "practices": {
+    "title": "Övningar",
+    "library": "Protokollbibliotek",
+    "libraryMeta": "4 moduler",
+    "cold": "Kallt",
+    "coldSubtitle": "Dag {{count}} av 30",
+    "sauna": "Bastu",
+    "saunaSubtitle": "Kontrollerad värmecykel",
+    "breath": "Andning",
+    "breathSubtitle": "Guidad långsam andning",
+    "diet": "Nordisk kost",
+    "dietSubtitle": "Ät från norr",
+    "roSubtitle": "Ro med Norge",
+    "roNew": "Nytt",
+    "musicSubtitle": "Norska Kygo remix",
+    "musicNew": "Nytt"
+  },
+  "nature": {
+    "title": "Friluftsliv",
+    "subtitle": "Naturens utmaningar",
+    "completed": "Avslutad",
+    "minutes": "Minuter utanför",
+    "today": "Idag",
+    "todayDone": "Idag",
+    "todayMinutes": "Idag min",
+    "todaySet": "Dagens naturuppsättning",
+    "todaySetMeta": "3 uppgifter, XP endast här",
+    "library": "Utmaningsbibliotek",
+    "libraryMeta": "Förhandsgranska och rotera",
+    "libraryOnly": "Bibliotek",
+    "seen": "Sett",
+    "outdoorSignal": "Signal",
+    "challenges": "Utmaningar",
+    "challengeMeta": "Tryck för att öppna",
+    "filters": {
+      "all": "Alla",
+      "forest": "Skog",
+      "water": "Vatten",
+      "fire": "Eld",
+      "winter": "Vinter"
+    },
+    "minutesToday": "{{count}} min ute idag"
+  },
+  "you": {
+    "title": "Du",
+    "statusMeta": "Rank, streak och veckokonsistens",
+    "rank": "Rank",
+    "currentRank": "Nuvarande rang",
+    "nextRank": "{{earned}}/{{required}} XP till {{rank}}",
+    "xpRemaining": "{{count}} XP vänster",
+    "maxRank": "Högsta rangen nådde",
+    "totalXpValue": "{{count}} XP totalt",
+    "totalXp": "Totalt XP",
+    "weekHits": "Veckans träffar",
+    "activeMinutes": "Aktiv min",
+    "coldMinutes": "Kall min",
+    "natureMinutes": "Natur min",
+    "saunaMinutes": "Bastu min",
+    "weekMatrix": "Veckoprotokoll",
+    "weekSignal": "7-dagars signal",
+    "weekSignalMeta": "Ifyllda protokoll av vana",
+    "last7Days": "Senaste 7 dagarna",
+    "recentActivity": "Senaste aktiviteten",
+    "noActivity": "Slutför ett protokoll för att bygga din logg.",
+    "settings": "Inställningar",
+    "language": "Språk",
+    "theme": "Utseende",
+    "themeSystem": "System",
+    "themeLight": "Polardagen",
+    "themeDark": "Polarnatt",
+    "reminder": "Daglig påminnelse",
+    "restorePurchases": "Återställ inköp",
+    "statStreak": "Dagsserie"
+  },
+  "sauna": {
+    "title": "Bastu",
+    "subtitle": "Kontrollerad värme, gradvis kylning, full vila.",
+    "chooseProtocol": "Välj protokoll",
+    "sessionMap": "Sessionskarta",
+    "rounds": "{{count}} rundor",
+    "roundsRange": "{{range}} rundor",
+    "phaseHeat": "Värme",
+    "phaseCold": "Kallt",
+    "phaseCool": "Coolt",
+    "phaseRest": "Vila",
+    "guideTitle": "Bastu regler",
+    "logSession": "Logga bastupass",
+    "sessionLogged": "Session loggas",
+    "logExplanation": "Lägger till +30 XP och håller dig på detta protokoll.",
+    "loggedMeta": "+30 XP tillagd. Fortsätt vila innan du går.",
+    "guide": {
+      "heat": "Räckvidden är ett tak, inte ett mål. Lämna tidigare för yrsel, illamående, bröstsmärtor, förvirring eller ångest.",
+      "cool": "Svalka i luften eller med en bekväm dusch. Kallt vatten är valfritt; tvinga aldrig ett dopp.",
+      "rest": "Sitt tills andning, puls och balans känns stabila. Matchande värmetid är bara en planeringsguide.",
+      "repeat": "Upprepa endast när den är helt stabil. Drick för att törsta, undvik alkohol och sluta när symptomen återkommer."
+    },
+    "ranges": {
+      "beginnerHeat": "5-8 min",
+      "traditionalHeat": "8-15 min",
+      "optionalContrastHeat": "8-12 min",
+      "comfortCool": "Bekväm",
+      "optionalCoolShower": "Tillval dusch",
+      "fullRecovery": "Tills avgjort"
+    },
+    "protocols": {
+      "beginner": {
+        "title": "Nybörjare",
+        "subtitle": "En eller två korta rundor, gå tidigt"
+      },
+      "classic": {
+        "title": "Klassisk nordisk",
+        "subtitle": "Flexibel värme och fullständig återhämtning"
+      },
+      "contrast": {
+        "title": "Fjord kontrast",
+        "subtitle": "Valfri kall dusch, aldrig obligatoriskt"
+      }
+    }
+  },
+  "breath": {
+    "practiceTitle": "Långsam andning",
+    "practiceSubtitle": "Följ en lugn 4 sekunders inandning och 6 sekunders utandning.",
+    "slowSubtitle": "Andas jämnt och bekvämt. Tvinga inte djupet.",
+    "resetSubtitle": "Låt utandningen gå lite längre än inandningen. Inget andetag håller.",
+    "recoverySubtitle": "Använd en försiktig längre utandning och sluta om du känner dig yr.",
+    "cycle": "Cykla {{current}}/{{total}}",
+    "timeRemaining": "{{time}} kvar",
+    "completeTitle": "Andningen komplett",
+    "completeSubtitle": "Din fullständiga guidade session är klar.",
+    "leaveTitle": "Lämna breathwork?",
+    "leaveMessage": "Denna guidade session kommer inte att slutföras.",
+    "stay": "Stanna",
+    "leave": "Lämna sessionen"
+  },
+  "diet": {
+    "title": "Nordisk kost",
+    "subtitle": "Plant-forward nordiska måltidsidéer",
+    "planMeta": "14 dagar",
+    "disclaimer": "Flexibla måltidsidéer, inte ett personligt recept. Anpassa portioner, allergener och ingredienser efter dina behov; använda klinisk vägledning för medicinska dieter.",
+    "eatTitle": "Ät",
+    "avoidTitle": "Undvik",
+    "principles": "Nordiska principer",
+    "principlesMeta": "Vad man ska gynna och vad man ska begränsa",
+    "mealPlan": "14 dagar med nordiska måltidsidéer",
+    "mealPlanMeta": "Sex fiskmåltider, fler växter, flexibla portioner",
+    "meals": {
+      "breakfast": "Frukost",
+      "lunch": "Lunch",
+      "dinner": "Middag"
+    },
+    "eat": {
+      "fish": "Fisk och skaldjur flera gånger i veckan",
+      "wholeGrains": "Havre, råg, korn och fullkornsbröd",
+      "legumes": "Bönor, ärtor, linser och kikärter",
+      "berries": "Bär och säsongens frukt",
+      "roots": "Rotfrukter, kål, potatis och grönt",
+      "dairy": "Vanligt mejeri med låg fetthalt eller ett lämpligt berikat alternativ",
+      "nuts": "Nötter och frön i små dagliga portioner",
+      "oil": "Raps eller olivolja som standardfett"
+    },
+    "avoid": {
+      "highSaltSugar": "Färdigrätter med mycket salt, tillsatt socker eller mättat fett",
+      "processedMeat": "Processat kött som vardagsprotein",
+      "redMeatDaily": "Rött kött varje dag",
+      "sugar": "Flytande socker och söta snacks",
+      "saltySnacks": "Snackmat med hög salthalt",
+      "alcoholDaily": "Daglig alkohol",
+      "refinedGrains": "Vitt bröd och raffinerad flingor som bas"
+    },
+    "days": {
+      "day1": {
+        "title": "Kustbaslinje",
+        "breakfast": "Havre med skyr, blåbär, valnötter och kanel.",
+        "lunch": "Korn- och linsskål med rödbetor, grönkål och morötter.",
+        "dinner": "Ugnsbakad torsk, potatis, kål, ärtor och rapsolja örtdressing."
+      },
+      "day2": {
+        "title": "Fiber och pulser",
+        "breakfast": "Rågknäckebröd med ägg, tomat och kefir.",
+        "lunch": "Ärtsoppa med kål och fullkornsrågbröd.",
+        "dinner": "Vita bönor, korn, svamp, rostade rötter och grönt."
+      },
+      "day3": {
+        "title": "Baljväxter och sill",
+        "breakfast": "Varm korngröt med äpple, lingon och pumpafrön.",
+        "lunch": "Kikärts-, potatis- och kålsoppa med fullkornsbröd.",
+        "dinner": "Sill eller sardiner, kokt potatis, picklad lök och gurksallad."
+      },
+      "day4": {
+        "title": "Nordisk arbetsdag",
+        "breakfast": "Skyr med havre, hallon, lin och hasselnötter.",
+        "lunch": "Rågmacka med ägg eller vita bönor, gurka, sallad och dill.",
+        "dinner": "Kalkon eller bönor, korn, svamp, morötter och grönt."
+      },
+      "day5": {
+        "title": "Plant-forward",
+        "breakfast": "Havrepannkakor med bär och vanlig yoghurt.",
+        "lunch": "Ärtsoppa med rågbröd och en liten hårdostportion.",
+        "dinner": "Rostade kikärtor, palsternacka, rödbetor och vitkål med vanlig yoghurt eller tahini."
+      },
+      "day6": {
+        "title": "Aktiv dag",
+        "breakfast": "Havre, kefir, banan, blåbär och jordnöts- eller mandelsmör.",
+        "lunch": "Fullkornswrap med linser, spenat, morötter och yoghurt-dillsås.",
+        "dinner": "Lax, potatis, svamp och en stor kålsallad."
+      },
+      "day7": {
+        "title": "Enkel skafferidag",
+        "breakfast": "Rågbröd med keso, bär och frön.",
+        "lunch": "Bönsallad med potatis, grönt, äpple och rapsolja.",
+        "dinner": "Svamp- och kornsoppa med morötter, purjolök och fullkornsbröd."
+      },
+      "day8": {
+        "title": "Marknadsskål",
+        "breakfast": "Korngröt med päron, skyr och valnötter.",
+        "lunch": "Rågtoast med vitbönspålägg, rödbetssallad och gurka.",
+        "dinner": "Linsgryta med rotfrukter, grönkål och en sked yoghurt."
+      },
+      "day9": {
+        "title": "Makrillens dag",
+        "breakfast": "Skyr, havre, blåbär, chia och mandel.",
+        "lunch": "Kikärter på råg med tomat, örter och kålslaw.",
+        "dinner": "Makrill, kokt potatis, gröna bönor och fermenterade grönsaker."
+      },
+      "day10": {
+        "title": "Budget Nordic",
+        "breakfast": "Havregrynsgröt med frysta bär, mjölk eller kefir och frön.",
+        "lunch": "Bön- och kornsoppa med morötter, lök och fullkornsbröd.",
+        "dinner": "Fryst torsk eller sej, potatis, ärtor och kål."
+      },
+      "day11": {
+        "title": "Låg ansträngning",
+        "breakfast": "Rågknäckebröd med ägg, skyr och ett äpple.",
+        "lunch": "Överblivna bönor över grönt, potatis och inlagd gurka.",
+        "dinner": "Plåtkyckling eller kikärter med rötter, kål och yoghurtsås."
+      },
+      "day12": {
+        "title": "Odlade livsmedel, valfritt",
+        "breakfast": "Kefirskål med havre, bär och lin.",
+        "lunch": "Rågmacka med vita bönor, gurka och valfri fermenterad vitkål.",
+        "dinner": "Korn, svamp, ärtor, rödbetor och gröna med en valfri vanlig yoghurtdressing."
+      },
+      "day13": {
+        "title": "Kall säsong",
+        "breakfast": "Varm havre med äpple, kanel, valnötter och skyr.",
+        "lunch": "Lins- och rotfruktsgryta med rågbröd.",
+        "dinner": "Öring, kål, potatis, morötter och buljong."
+      },
+      "day14": {
+        "title": "Upprepningsbar söndag",
+        "breakfast": "Skyr, bär, havre och frön.",
+        "lunch": "Vitbönor rågtoast med gurka och dill.",
+        "dinner": "Rotfrukts- och böngryta med grönkål och fullkornsbröd."
+      }
+    }
+  },
+  "challenge": {
+    "protocol": "Protokoll",
+    "minutes": "Protokoll",
+    "reward": "XP belöning",
+    "complete": "Komplett utmaning",
+    "libraryTitle": "Inte i dagens set",
+    "libraryMeta": "Denna utmaning är en del av biblioteket. Den kan återvända i den dagliga rotationen, men den kan inte odlas för XP idag.",
+    "notFound": "Utmaningen hittades inte"
+  },
+  "challenges": {
+    "forestHour": {
+      "title": "Skogstimme",
+      "subtitle": "En timme utanför, ingen brådska",
+      "detail": "Gå i lätt takt i upp till sextio minuter. Håll ljudet avstängt och lägg märke till hur ditt humör och din energi känns före och efter."
+    },
+    "sunriseWalk": {
+      "title": "Morgon dagsljus promenad",
+      "subtitle": "Utomhusljus tidigt på dagen",
+      "detail": "Gå ut när det är praktiskt möjligt under de första två timmarna efter uppvaknandet. Använd normalt ögonskydd när det behövs och stirra aldrig i solen."
+    },
+    "barefootSensoryWalk": {
+      "title": "Sensorisk promenad",
+      "subtitle": "Tio försiktiga minuter att lägga märke till marken",
+      "detail": "Gå långsamt och lägg märke till struktur, temperatur och balans. Bara fötter är valfritt; ha skor på med diabetes, nedsatt känsel eller cirkulation, osäkra ytor eller obekväma temperaturer."
+    },
+    "coldWaterFace": {
+      "title": "Ansiktsstänk i kallt vatten",
+      "subtitle": "Kort, valfritt och bekvämt",
+      "detail": "Stänk bekvämt kallt vatten i ansiktet en eller två gånger. Fortsätt andas normalt; detta är en sensorisk praxis, inte en medicinsk återställning."
+    },
+    "lakeDip": {
+      "title": "Säkerhetskontroll i öppet vatten",
+      "subtitle": "Planera först; inträde krävs inte",
+      "detail": "Kontrollera vattentemperatur, väder, strömmar, vattenkvalitet, in- och utfart, varma kläder och vem som skulle följa med dig. Slutför kontrollen utan att gå i vattnet."
+    },
+    "fireEvening": {
+      "title": "Skärmfritt kvällsljus",
+      "subtitle": "LED levande ljus och ingen rullning",
+      "detail": "Använd ett LED-ljus eller svag lampa i trettio skärmfria minuter. En riktig låga måste hållas under uppsikt och följa gällande lokala brandregler."
+    },
+    "snowWalk": {
+      "title": "Kallväderspromenad",
+      "subtitle": "Tjugo vädermedvetna minuter",
+      "detail": "Gå endast utomhus när foten och vädret är säkert. Klä dig efter förhållandena och andas på det bekväma sätt som stödjer tempot."
+    },
+    "phoneFreeTrail": {
+      "title": "Telefonfritt spår",
+      "subtitle": "En timme offline",
+      "detail": "Håll telefonen tyst i en väska och lägg märke till terräng, väder och andetag. Behåll nödåtkomst när du går ensam eller i avlägsna områden."
+    },
+    "sitSpot": {
+      "title": "Sittplats",
+      "subtitle": "Tjugo minuter på ett ställe",
+      "detail": "Välj en laglig, hållbar plats och sitt still. Titta på ljus, vind, fåglar, människor och din andning utan att tvinga meditation."
+    },
+    "rainWalk": {
+      "title": "Regn promenad",
+      "subtitle": "Klä dig ordentligt, gå ändå",
+      "detail": "Gå i tjugo minuter i regn eller ruskigt väder med ordentliga kläder. Hoppa över stormar, isrisker och osäker vind."
+    },
+    "shorelineObservation": {
+      "title": "Strandlinjeobservation",
+      "subtitle": "Trettio minuter vid vatten",
+      "detail": "Sitt eller gå nära en sjö, flod, fjord eller hav. Simning är valfritt och hör till kallvattensäkerhetsreglerna."
+    },
+    "leaveNoTrace": {
+      "title": "Lämna inga spår",
+      "subtitle": "Tillgång parat med ansvar",
+      "detail": "Med handskar, samla in vanlig säker skräp, håll dig borta från ömtålig mark och stäng grindar. Hantera aldrig vasst, kemiskt, medicinskt eller okänt avfall."
+    }
+  },
+  "settings": {
+    "device": "Enhet",
+    "followDevice": "Följ ditt telefonspråk",
+    "languageOpen": "Välj appspråk",
+    "languageClosed": "Tryck för att ändra språk",
+    "themeMeta": "Använd systemet eller ställ in det manuellt",
+    "themeDescriptions": {
+      "system": "Matcha iOS utseende automatiskt.",
+      "light": "Ljus polär yta för dagtid.",
+      "dark": "Nattyta med svagt ljus."
+    },
+    "morningProtocol": "Morgonprotokoll",
+    "morningProtocolMeta": "En lokal påminnelse om att öppna dagens protokoll."
+  },
+  "ranks": {
+    "thrall": "Träl",
+    "bonde": "Bonde",
+    "kriger": "Kriger",
+    "viking": "Viking",
+    "jarl": "Jarl",
+    "konge": "Konge"
+  },
+  "protocolPlan": {
+    "focus": {
+      "baseline": "Baslinje",
+      "daylight": "Dagsljus",
+      "heat": "Kontrollerad värme",
+      "coldSkill": "Kall skicklighet",
+      "natureVolume": "Naturvolym",
+      "heatRepeat": "Upprepning av värme",
+      "recovery": "Återhämtning",
+      "foodFiber": "Matfiber",
+      "longOutdoor": "Lång utomhus",
+      "calmBreath": "Lugna andetag",
+      "calm": "Utomhus lugn",
+      "unplug": "Koppla ur",
+      "weather": "Natur i alla väder",
+      "sensory": "Sensorisk uppmärksamhet",
+      "consolidate": "Konsolidera",
+      "reset": "Återställ"
+    }
+  },
+  "ro": {
+    "taskTitle": "Viking Row",
+    "readyKicker": "Viking Row",
+    "soundOn": "Ljud på!",
+    "intro": "Du är trummisen",
+    "introHint": "Två trumslag. Dum dum. Sedan ropar publiken \"ROO!\". Vänta på nedräkningen och öka tempot gradvis.",
+    "beat": "Slå {{current}}/{{total}}",
+    "faster": "Snabbare! Håll tempot!",
+    "slower": "Slappna av. Bygg vågen",
+    "energy": "Publik energi",
+    "success": "SKÅL!",
+    "successMeta": "Du ledde raden. {{accuracy}} % i tid. Stadion ryter.",
+    "successMetaPartial": "{{accuracy}} % i tid. Kom tillbaka imorgon, roddare.",
+    "claim": "RO!",
+    "tapCue": "Två snabba tryck",
+    "again": "Återigen! ×2",
+    "repsLeft": "{{count}} rader kvar",
+    "rowsLeft": "Rader kvar",
+    "rows": "Rader",
+    "rhythm": "Rytm",
+    "you": "Du",
+    "crowd": "Folkmassa",
+    "resultKicker": "Rad klar",
+    "nextHit": "Nästa träff",
+    "secondHit": "Andra träffen",
+    "hitAgain": "TRYCK IGEN",
+    "now": "NU",
+    "tempo": "Mål {{count}} BPM",
+    "accuracy": "{{count}} % i tid",
+    "coach": {
+      "double": "TRYCK IGEN",
+      "onBeat": "PÅ BEAT. FORTSÄTT BYGGA",
+      "faster": "SNABBARE. FÖLJ PULSEN",
+      "slower": "FÖR SNABBT. FÖLJ PULSEN",
+      "losing": "DU TAPPAR RYTMEN. PUBLIKEN TYSTNAR",
+      "sprint": "SLUTSKRIVNING. SNABB UPP"
+    }
+  },
+  "music": {
+    "taskTitle": "Kygo Jo",
+    "kicker": "Norge på repeat",
+    "title": "Lyssna på dagens norska singel",
+    "story": "En norsk singel i dagens protokoll, öppnad genom användarens egen musiktjänst.",
+    "subtitle": "Kygo, Flow Kingz & JMK feat. Lyng",
+    "duration": "2:33",
+    "metadataSource": "Metadata från {{provider}}",
+    "instructions": "Öppna låten i din musikapp, tryck på play om det behövs och kom sedan tillbaka hit.",
+    "spotify": "Öppna i Spotify",
+    "appleMusic": "Öppna i Apple Music",
+    "listening": "Låten spelas",
+    "ready": "Hela låten är klar",
+    "remaining": "{{time}} kvar",
+    "returnHint": "Musik kan fortsätta spela medan du är här.",
+    "leaveFirst": "Öppna en musikapp för att börja",
+    "done": "Klar",
+    "completedToday": "Klar i dag",
+    "openErrorTitle": "Det gick inte att öppna musikappen",
+    "openErrorMessage": "Kontrollera anslutningen och prova den andra tjänsten.",
+    "manualNote": "Öppna låten i din musikapp, lyssna klart och kom tillbaka hit när du är färdig."
+  }
+}

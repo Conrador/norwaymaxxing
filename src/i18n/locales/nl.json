@@ -1,0 +1,553 @@
+{
+  "tabs": {
+    "today": "Vandaag",
+    "practices": "Praktijken",
+    "nature": "Natuur",
+    "you": "Jij"
+  },
+  "common": {
+    "start": "Begin",
+    "done": "Klaar",
+    "skip": "Overslaan",
+    "pause": "Pauze",
+    "resume": "Hervatten",
+    "cancel": "Annuleer",
+    "back": "Terug",
+    "close": "Sluiten",
+    "xp": "+{{count}} XP",
+    "day": "Dag {{count}}",
+    "premium": "Premium",
+    "soon": "Binnenkort beschikbaar",
+    "previousMonth": "Vorige maand",
+    "previousWeek": "Vorige week",
+    "nextWeek": "Volgende week",
+    "nextMonth": "Volgende maand",
+    "openStreakDetails": "Open streak-details"
+  },
+  "meta": {
+    "seconds": "{{count}}-s",
+    "minutes": "{{count}} min"
+  },
+  "home": {
+    "greeting": "God morgen, Viking",
+    "todayProtocol": "Het protocol van vandaag",
+    "score": "Norway Score",
+    "today": "Vandaag",
+    "streak": "{{count}} dagreeks",
+    "streak_few": "{{count}} dagreeks",
+    "streak_many": "{{count}} dagreeks",
+    "streak_other": "{{count}} dagreeks",
+    "streakSheetTitle": "Streep",
+    "streakSheetSubtitle": "Er telt een dag wanneer de Norway Score de {{count}} of meer bereikt.",
+    "currentStreak": "Huidige reeks",
+    "scoreNeeded": "Score nodig",
+    "streakRules": {
+      "score": "Voltooi voldoende dagelijkse protocoltaken om de {{count}} Norway Score te bereiken.",
+      "calendar": "De streak volgt kalenderdagen in uw lokale tijdzone.",
+      "reset": "Mis je de drempel voor een dag en de volgende voltooide dag begint aan een nieuwe reeks."
+    },
+    "allDone": "Protocol voltooid. Skål! 🍻",
+    "dayLetters": [
+      "M",
+      "D",
+      "W",
+      "D",
+      "V",
+      "Z",
+      "Z"
+    ]
+  },
+  "protocol": {
+    "cold": "Koude douche",
+    "natureForest": "Tijd in het bos",
+    "naturePark": "Tijd in de natuur",
+    "natureWalk": "Loop naar buiten",
+    "grounding": "Zintuiglijke wandeling op blote voeten",
+    "diet": "Kies vandaag voor minimaal bewerkt voedsel",
+    "dietMaintain": "Bouw maaltijden rond volwaardig voedsel",
+    "sauna": "Saunasessie",
+    "breath": "Ademwerk",
+    "natureTime": "Tijd in de natuur",
+    "natureLong": "Lang natuuruitje",
+    "daylightWalk": "Daglicht wandeling",
+    "phoneFreeNature": "Telefoonvrije natuurwandeling",
+    "sitSpot": "Rustige zitplek buiten",
+    "sensoryWalk": "Langzame zintuiglijke wandeling",
+    "weatherWalk": "Buitenwandeling onder alle weersomstandigheden",
+    "breathSlow": "Oefening voor langzame ademhaling",
+    "breathReset": "Lange uitademingspauze",
+    "breathRecovery": "Rustig ademhalen in plaats van sauna",
+    "wholeGrain": "Kies voor haver, rogge of een ander volkoren graan",
+    "berriesVeg": "Voeg bessen en kleurrijke groenten toe",
+    "legumes": "Bouw een maaltijd rond bonen, erwten of linzen",
+    "fishOrLegumes": "Kies voor vis of peulvruchten in plaats van bewerkt vlees",
+    "vegetableHalfPlate": "Maak groenten het grootste deel van één maaltijd",
+    "nutsSeeds": "Voeg een klein handje ongezouten noten of zaden toe",
+    "wholeFoodMeal": "Maak één minimaal bewerkte maaltijd",
+    "processedSwap": "Verruil een keuze van lage kwaliteit voor voedsel dat meer voedingsstoffen bevat",
+    "mealPrep": "Bereid een Scandinavische volwaardige maaltijd voor morgen",
+    "ro": "Viking Row",
+    "kygoJo": "Luister naar Kygo Jo (Kygo Remix)"
+  },
+  "cold": {
+    "title": "Koud",
+    "planTitle": "30 dagen koud doucheplan",
+    "planSubtitle": "Korte douchefasen. Open water is een aparte veiligheidsbeslissing.",
+    "startToday": "Startdag {{count}}",
+    "dayDone": "Klaar",
+    "dayLocked": "Premium",
+    "returnTomorrow": "Morgen het volgende niveau",
+    "guideTitle": "Koude veiligheidsbasislijn",
+    "guide": {
+      "shower": "Dit is een uitdaging voor de douchegewoonte, geen medische dosis. Stop vroeg wanneer de controle wegvalt.",
+      "breathe": "Adem normaal. Geen adem inhouden, hyperventilatie of onderwateroefeningen.",
+      "solo": "Ga nooit alleen in open koud water. Gebruik bekende entry- en exitpunten.",
+      "exit": "Ga weg voordat er paniek, gevoelloosheid of duizeligheid ontstaat. Daarna rustig opwarmen."
+    },
+    "daysCompleted": "dagen afgerond"
+  },
+  "session": {
+    "breatheTitle": "Breng je ademhaling tot rust",
+    "inhale": "Adem in door je neus",
+    "holdIn": "Houd vast",
+    "exhale": "Adem langzaam uit",
+    "holdOut": "Houd leeg",
+    "round": "Rond {{current}}/{{total}}",
+    "skipBreathing": "Sla de ademhaling over",
+    "coldTitle": "Koud, kalm, onder controle",
+    "coldSafetyHint": "Blijf normaal ademen. Stop vóór gevoelloosheid, duizeligheid of paniek.",
+    "abort": "Afbreken",
+    "finishedTitle": "Dag {{count}} voltooid",
+    "finishedSubtitle": "Droog je af, kleed je indien nodig warm aan en laat je ademhaling tot rust komen",
+    "claim": "Skål!"
+  },
+  "practices": {
+    "title": "Praktijken",
+    "library": "Protocolbibliotheek",
+    "libraryMeta": "4 modulen",
+    "cold": "Koud",
+    "coldSubtitle": "Dag {{count}} van 30",
+    "sauna": "Sauna",
+    "saunaSubtitle": "Gecontroleerde verwarmingscyclus",
+    "breath": "Adem",
+    "breathSubtitle": "Begeleide langzame ademhaling",
+    "diet": "Noords dieet",
+    "dietSubtitle": "Eet vanuit het noorden",
+    "roSubtitle": "Roeien met Noorwegen",
+    "roNew": "Nieuw",
+    "musicSubtitle": "Noorse Kygo-remix",
+    "musicNew": "Nieuw"
+  },
+  "nature": {
+    "title": "Friluftsliv",
+    "subtitle": "Uitdagingen in de natuur",
+    "completed": "Voltooid",
+    "minutes": "Minuten buiten",
+    "today": "Vandaag",
+    "todayDone": "Vandaag",
+    "todayMinutes": "Vandaag min",
+    "todaySet": "De natuurset van vandaag",
+    "todaySetMeta": "3 taken, alleen XP hier",
+    "library": "Uitdaging bibliotheek",
+    "libraryMeta": "Bekijk een voorbeeld en roteer",
+    "libraryOnly": "Bibliotheek",
+    "seen": "Gezien",
+    "outdoorSignal": "Signaal",
+    "challenges": "Uitdagingen",
+    "challengeMeta": "Tik om te openen",
+    "filters": {
+      "all": "Allemaal",
+      "forest": "Bos",
+      "water": "Water",
+      "fire": "Vuur",
+      "winter": "Winter"
+    },
+    "minutesToday": "{{count}} min buiten vandaag"
+  },
+  "you": {
+    "title": "Jij",
+    "statusMeta": "Rang, streak en wekelijkse consistentie",
+    "rank": "Rang",
+    "currentRank": "Huidige rang",
+    "nextRank": "{{earned}}/{{required}} XP tot {{rank}}",
+    "xpRemaining": "{{count}} XP links",
+    "maxRank": "Hoogste rang bereikt",
+    "totalXpValue": "{{count}} XP totaal",
+    "totalXp": "Totaal XP",
+    "weekHits": "Weekhits",
+    "activeMinutes": "Actief min",
+    "coldMinutes": "Koude min",
+    "natureMinutes": "Natuur min",
+    "saunaMinutes": "Sauna min",
+    "weekMatrix": "Wekelijks protocol",
+    "weekSignal": "7-dagen signaal",
+    "weekSignalMeta": "Uit gewoonte voltooide protocollen",
+    "last7Days": "Laatste 7 dagen",
+    "recentActivity": "Recente activiteit",
+    "noActivity": "Voltooi een protocol om uw logboek samen te stellen.",
+    "settings": "Instellingen",
+    "language": "Taal",
+    "theme": "Uiterlijk",
+    "themeSystem": "Systeem",
+    "themeLight": "Polaire dag",
+    "themeDark": "Poolnacht",
+    "reminder": "Dagelijkse herinnering",
+    "restorePurchases": "Aankopen herstellen",
+    "statStreak": "Dagreeks"
+  },
+  "sauna": {
+    "title": "Sauna",
+    "subtitle": "Gecontroleerde warmte, geleidelijke afkoeling, volledige rust.",
+    "chooseProtocol": "Kies protocol",
+    "sessionMap": "Sessiekaart",
+    "rounds": "{{count}}-rondes",
+    "roundsRange": "{{range}}-rondes",
+    "phaseHeat": "Warmte",
+    "phaseCold": "Koud",
+    "phaseCool": "Koel",
+    "phaseRest": "Rust",
+    "guideTitle": "Saunaregels",
+    "logSession": "Log saunasessie",
+    "sessionLogged": "Sessie geregistreerd",
+    "logExplanation": "Voegt +30 XP toe en houdt u aan dit protocol.",
+    "loggedMeta": "+30 XP toegevoegd. Blijf rusten voordat je vertrekt.",
+    "guide": {
+      "heat": "Het bereik is een plafond, geen doel. Ga eerder weg bij duizeligheid, misselijkheid, pijn op de borst, verwarring of angst.",
+      "cool": "Koel in de lucht of met een comfortabele douche. Koud water is optioneel; forceer nooit een duik.",
+      "rest": "Ga zitten totdat ademhaling, hartslag en evenwicht tot rust komen. De bijpassende verwarmingstijd is slechts een planningsgids.",
+      "repeat": "Herhaal dit alleen als het volledig is geregeld. Drink om dorst te krijgen, vermijd alcohol en stop zodra de symptomen terugkeren."
+    },
+    "ranges": {
+      "beginnerHeat": "5-8 minuten",
+      "traditionalHeat": "8-15 minuten",
+      "optionalContrastHeat": "8-12 minuten",
+      "comfortCool": "Comfortabel",
+      "optionalCoolShower": "Optionele douche",
+      "fullRecovery": "Tot het geregeld was"
+    },
+    "protocols": {
+      "beginner": {
+        "title": "Beginner",
+        "subtitle": "Een of twee korte rondes, vertrek vroeg"
+      },
+      "classic": {
+        "title": "Klassiek Noords",
+        "subtitle": "Flexibele warmte en volledig herstel"
+      },
+      "contrast": {
+        "title": "Fjordcontrast",
+        "subtitle": "Optioneel koele douche, nooit verplicht"
+      }
+    }
+  },
+  "breath": {
+    "practiceTitle": "Langzaam ademen",
+    "practiceSubtitle": "Volg een rustige inademing van 4 seconden en een uitademing van 6 seconden.",
+    "slowSubtitle": "Adem gelijkmatig en comfortabel. Forceer de diepte niet.",
+    "resetSubtitle": "Laat de uitademing iets langer duren dan de inademing. Geen adem inhouden.",
+    "recoverySubtitle": "Gebruik een zachte, langere uitademing en stop als u zich licht in het hoofd voelt.",
+    "cycle": "Cyclus {{current}}/{{total}}",
+    "timeRemaining": "{{time}} resterend",
+    "completeTitle": "Ademhaling voltooid",
+    "completeSubtitle": "Uw volledige begeleide sessie is voltooid.",
+    "leaveTitle": "Ademwerk laten staan?",
+    "leaveMessage": "Deze begeleide sessie wordt niet voltooid.",
+    "stay": "Blijf",
+    "leave": "Verlaat de sessie"
+  },
+  "diet": {
+    "title": "Noords dieet",
+    "subtitle": "Plant-forward Scandinavische maaltijdideeën",
+    "planMeta": "14 dagen",
+    "disclaimer": "Flexibele maaltijdideeën, geen persoonlijk recept. Pas porties, allergenen en ingrediënten aan uw wensen aan; gebruik klinische richtlijnen voor medische diëten.",
+    "eatTitle": "Eet",
+    "avoidTitle": "Vermijd",
+    "principles": "Noordse principes",
+    "principlesMeta": "Wat te bevoordelen en wat te beperken",
+    "mealPlan": "14 dagen Noordse maaltijdideeën",
+    "mealPlanMeta": "Zes vismaaltijden, meer planten, flexibele porties",
+    "meals": {
+      "breakfast": "Ontbijt",
+      "lunch": "Lunchen",
+      "dinner": "Diner"
+    },
+    "eat": {
+      "fish": "Vis en zeevruchten meerdere keren per week",
+      "wholeGrains": "Haver, rogge, gerst en volkorenbrood",
+      "legumes": "Bonen, erwten, linzen en kikkererwten",
+      "berries": "Bessen en seizoensfruit",
+      "roots": "Wortelgroenten, kool, aardappelen en groenten",
+      "dairy": "Gewone magere zuivelproducten of een geschikt verrijkt alternatief",
+      "nuts": "Noten en zaden in kleine dagelijkse porties",
+      "oil": "Koolzaad- of olijfolie als standaardvet"
+    },
+    "avoid": {
+      "highSaltSugar": "Kant-en-klaarmaaltijden met veel zout, toegevoegde suiker of verzadigd vet",
+      "processedMeat": "Verwerkt vlees als alledaags eiwit",
+      "redMeatDaily": "Elke dag rood vlees",
+      "sugar": "Vloeibare suiker en zoete snacks",
+      "saltySnacks": "Zoute snacks",
+      "alcoholDaily": "Dagelijkse alcohol",
+      "refinedGrains": "Wit brood en verfijnde granen als basis"
+    },
+    "days": {
+      "day1": {
+        "title": "Kustbasislijn",
+        "breakfast": "Haver met skyr, bosbessen, walnoten en kaneel.",
+        "lunch": "Gerst- en linzenkom met rode biet, boerenkool en wortelen.",
+        "dinner": "Gebakken kabeljauw, aardappelen, kool, erwten en koolzaadolie-kruidendressing."
+      },
+      "day2": {
+        "title": "Vezels en peulvruchten",
+        "breakfast": "Rogge knäckebröd met ei, tomaat en kefir.",
+        "lunch": "Erwtensoep met kool en volkoren roggebrood.",
+        "dinner": "Witte bonen, gerst, champignons, geroosterde wortels en groenten."
+      },
+      "day3": {
+        "title": "Peulvruchten en haring",
+        "breakfast": "Warme gerstepap met appel, rode bosbessen en pompoenpitten.",
+        "lunch": "Kikkererwten-, aardappel- en koolsoep met volkorenbrood.",
+        "dinner": "Haring of sardines, gekookte aardappelen, ingelegde ui en komkommersalade."
+      },
+      "day4": {
+        "title": "Noordse werkdag",
+        "breakfast": "Skyr met haver, frambozen, vlas en hazelnoten.",
+        "lunch": "Roggebroodje met ei of witte bonen, komkommer, sla en dille.",
+        "dinner": "Kalkoen of bonen, gerst, champignons, wortelen en groenten."
+      },
+      "day5": {
+        "title": "Plant-vooruit",
+        "breakfast": "Haverpannenkoekjes met bessen en yoghurt.",
+        "lunch": "Erwtensoep met roggebrood en een klein portie harde kaas.",
+        "dinner": "Geroosterde kikkererwten, pastinaak, rode biet en kool met yoghurt of tahini."
+      },
+      "day6": {
+        "title": "Actieve dag",
+        "breakfast": "Haver, kefir, banaan, bosbessen en pinda- of amandelboter.",
+        "lunch": "Volkoren wrap met linzen, spinazie, wortels en yoghurt-dillesaus.",
+        "dinner": "Zalm, aardappelen, champignons en een grote koolsalade."
+      },
+      "day7": {
+        "title": "Eenvoudige bijkeukendag",
+        "breakfast": "Roggebrood met kwark, bessen en zaden.",
+        "lunch": "Bonensalade met aardappelen, groenten, appel en koolzaadolie.",
+        "dinner": "Champignon-gerstsoep met wortel, prei en volkorenbrood."
+      },
+      "day8": {
+        "title": "Markt kom",
+        "breakfast": "Gerstepap met peer, skyr en walnoten.",
+        "lunch": "Roggetoast met witte bonenpasta, bietensalade en komkommer.",
+        "dinner": "Linzenstoofpot met wortelgroenten, boerenkool en een lepel yoghurt."
+      },
+      "day9": {
+        "title": "Makreel dag",
+        "breakfast": "Skyr, haver, bosbessen, chia en amandelen.",
+        "lunch": "Kikkererwten op rogge met tomaat, kruiden en koolsla.",
+        "dinner": "Makreel, gekookte aardappelen, sperziebonen en gefermenteerde groenten."
+      },
+      "day10": {
+        "title": "Budget Noords",
+        "breakfast": "Havermout met bevroren bessen, melk of kefir en zaden.",
+        "lunch": "Bonen- en gerstsoep met wortelen, uien en volkorenbrood.",
+        "dinner": "Bevroren kabeljauw of koolvis, aardappelen, erwten en kool."
+      },
+      "day11": {
+        "title": "Lage inspanning",
+        "breakfast": "Rogge knäckebröd met ei, skyr en een appel.",
+        "lunch": "Overgebleven bonen over groen, aardappelen en ingelegde komkommer.",
+        "dinner": "Kip uit de pan of kikkererwten met wortels, kool en yoghurtsaus."
+      },
+      "day12": {
+        "title": "Gekweekt voedsel, optioneel",
+        "breakfast": "Kefirkom met haver, bessen en vlas.",
+        "lunch": "Roggebroodje met witte bonen, komkommer en eventueel gefermenteerde kool.",
+        "dinner": "Gerst, champignons, erwten, rode biet en bladgroenten met een optionele yoghurtdressing."
+      },
+      "day13": {
+        "title": "Koud seizoen",
+        "breakfast": "Warme haver met appel, kaneel, walnoten en skyr.",
+        "lunch": "Linzen- en knolgewasstoofpot met roggebrood.",
+        "dinner": "Forel, kool, aardappelen, wortelen en bouillon."
+      },
+      "day14": {
+        "title": "Herhaalbare zondag",
+        "breakfast": "Skyr, bessen, haver en zaden.",
+        "lunch": "Roggetoast van witte bonen met komkommer en dille.",
+        "dinner": "Wortel- en bonenstoofpot met boerenkool en volkorenbrood."
+      }
+    }
+  },
+  "challenge": {
+    "protocol": "Protocol",
+    "minutes": "Minuten",
+    "reward": "XP-beloning",
+    "complete": "Volledige uitdaging",
+    "libraryTitle": "Niet in de set van vandaag",
+    "libraryMeta": "Deze challenge is onderdeel van de bibliotheek. Hij kan terugkeren in de dagelijkse rotatie, maar kan vandaag niet worden gekweekt voor XP.",
+    "notFound": "Uitdaging niet gevonden"
+  },
+  "challenges": {
+    "forestHour": {
+      "title": "Bos uur",
+      "subtitle": "Een uur buiten, geen haast",
+      "detail": "Loop maximaal zestig minuten in een rustig tempo. Zet de audio uit en merk op hoe je humeur en energie voor en na voelen."
+    },
+    "sunriseWalk": {
+      "title": "Ochtendwandeling bij daglicht",
+      "subtitle": "Buitenlicht vroeg op de dag",
+      "detail": "Ga de eerste twee uur na het ontwaken naar buiten als dat praktisch mogelijk is. Gebruik indien nodig normale oogbescherming en kijk nooit naar de zon."
+    },
+    "barefootSensoryWalk": {
+      "title": "Zintuiglijke wandeling",
+      "subtitle": "Tien zorgvuldige minuten waarin ik de grond opmerkte",
+      "detail": "Loop langzaam en merk textuur, temperatuur en balans op. Blote voeten zijn optioneel; schoenen aanhouden bij diabetes, verminderd gevoel of bloedsomloop, onveilige oppervlakken of oncomfortabele temperaturen."
+    },
+    "coldWaterFace": {
+      "title": "Koelwatergezichtspatten",
+      "subtitle": "Kort, optioneel en comfortabel",
+      "detail": "Spat een of twee keer comfortabel koud water op uw gezicht. Blijf normaal ademen; dit is een zintuiglijke praktijk, geen medische reset."
+    },
+    "lakeDip": {
+      "title": "Veiligheidscontrole in open water",
+      "subtitle": "Plan eerst; invoeren is niet vereist",
+      "detail": "Controleer de watertemperatuur, het weer, de stroming, de waterkwaliteit, het in- en uitstappen, warme kleding en wie er met u meegaat. Voltooi de controle zonder het water in te gaan."
+    },
+    "fireEvening": {
+      "title": "Schermvrij avondlicht",
+      "subtitle": "LED kaarslicht en niet scrollen",
+      "detail": "Gebruik een LED kaars of dimlamp gedurende dertig minuten schermvrij. Een echte vlam moet onder toezicht blijven en de huidige lokale brandregels volgen."
+    },
+    "snowWalk": {
+      "title": "Wandeling bij koud weer",
+      "subtitle": "Twintig weersbewuste minuten",
+      "detail": "Loop alleen naar buiten als de ondergrond en het weer veilig zijn. Kleed u aan de omstandigheden en adem op een comfortabele manier die het tempo ondersteunt."
+    },
+    "phoneFreeTrail": {
+      "title": "Telefoonvrij traject",
+      "subtitle": "Een uur offline",
+      "detail": "Houd de telefoon stil in een tas en let op terrein, weer en adem. Behoud toegang voor noodgevallen wanneer u alleen of in afgelegen gebieden loopt."
+    },
+    "sitSpot": {
+      "title": "Zit plek",
+      "subtitle": "Twintig minuten op één plek",
+      "detail": "Kies een legale, duurzame plek en blijf stil zitten. Kijk naar licht, wind, vogels, mensen en je ademhaling zonder meditatie te forceren."
+    },
+    "rainWalk": {
+      "title": "Regen lopen",
+      "subtitle": "Kleed je goed, ga toch",
+      "detail": "Loop twintig minuten in regen of ruw weer met de juiste kleding. Vermijd stormen, ijsgevaren en onveilige wind."
+    },
+    "shorelineObservation": {
+      "title": "Observatie van de kustlijn",
+      "subtitle": "Dertig minuten over het water",
+      "detail": "Ga zitten of lopen in de buurt van een meer, rivier, fjord of zee. Zwemmen is optioneel en valt onder de veiligheidsregels voor koud water."
+    },
+    "leaveNoTrace": {
+      "title": "Laat geen spoor achter",
+      "subtitle": "Toegang gecombineerd met verantwoordelijkheid",
+      "detail": "Verzamel met handschoenen het gewone, veilige afval, blijf uit de buurt van kwetsbare grond en sluit de hekken. Hanteer nooit scherp, chemisch, medisch of onbekend afval."
+    }
+  },
+  "settings": {
+    "device": "Apparaat",
+    "followDevice": "Volg uw telefoontaal",
+    "languageOpen": "Kies app-taal",
+    "languageClosed": "Tik om de taal te wijzigen",
+    "themeMeta": "Gebruik het systeem of stel het handmatig in",
+    "themeDescriptions": {
+      "system": "Match het iOS-uiterlijk automatisch.",
+      "light": "Helder polair oppervlak voor gebruik overdag.",
+      "dark": "Nachtoppervlak met weinig licht."
+    },
+    "morningProtocol": "Ochtendprotocol",
+    "morningProtocolMeta": "Een lokale herinnering om het protocol van vandaag te openen."
+  },
+  "ranks": {
+    "thrall": "Thrall",
+    "bonde": "Bond",
+    "kriger": "Kriger",
+    "viking": "Viking",
+    "jarl": "Jarl",
+    "konge": "Konge"
+  },
+  "protocolPlan": {
+    "focus": {
+      "baseline": "Basislijn",
+      "daylight": "Daglicht",
+      "heat": "Gecontroleerde warmte",
+      "coldSkill": "Koude vaardigheid",
+      "natureVolume": "Natuurvolume",
+      "heatRepeat": "Warmte herhalen",
+      "recovery": "Herstel",
+      "foodFiber": "Voedselvezels",
+      "longOutdoor": "Lang buiten",
+      "calmBreath": "Rustige adem",
+      "calm": "Buiten kalm",
+      "unplug": "Haal de stekker uit het stopcontact",
+      "weather": "Natuur voor alle weersomstandigheden",
+      "sensory": "Zintuiglijke aandacht",
+      "consolidate": "Consolideren",
+      "reset": "Opnieuw instellen"
+    }
+  },
+  "ro": {
+    "taskTitle": "Viking Row",
+    "readyKicker": "Viking Row",
+    "soundOn": "Geluid aan!",
+    "intro": "Jij zit achter de drum",
+    "introHint": "Twee drumslagen. Dum dum. Daarna roept het publiek \"ROO!\". Wacht op de aftelling en voer het tempo stap voor stap op.",
+    "beat": "Versla {{current}}/{{total}}",
+    "faster": "Sneller! Houd het tempo vast!",
+    "slower": "Doe rustig aan. Bouw de golf",
+    "energy": "Energie van de menigte",
+    "success": "SKÅL!",
+    "successMeta": "Jij leidde de rij. {{accuracy}}% op tijd. Het stadion brult.",
+    "successMetaPartial": "{{accuracy}}% op tijd. Kom morgen terug, roeier.",
+    "claim": "RO!",
+    "tapCue": "Twee snelle tikken",
+    "again": "Nogmaals! ×2",
+    "repsLeft": "{{count}} rijen over",
+    "rowsLeft": "Rijen links",
+    "rows": "Rijen",
+    "rhythm": "Ritme",
+    "you": "Jij",
+    "crowd": "Menigte",
+    "resultKicker": "Rij compleet",
+    "nextHit": "Volgende treffer",
+    "secondHit": "Tweede treffer",
+    "hitAgain": "OPNIEUW RAKEN",
+    "now": "NU",
+    "tempo": "Doel {{count}} BPM",
+    "accuracy": "{{count}}% op tijd",
+    "coach": {
+      "double": "OPNIEUW RAKEN",
+      "onBeat": "OP SLAG. BLIJF BOUWEN",
+      "faster": "SNELLER. VOLG DE PULS",
+      "slower": "TE SNEL. VOLG DE PULS",
+      "losing": "JE VERLIEST HET RITME. HET PUBLIEK WORDT STIL",
+      "sprint": "LAATSTE DRUK. VERSNELLEN"
+    }
+  },
+  "music": {
+    "taskTitle": "Kygo Jo",
+    "kicker": "Noorwegen on repeat",
+    "title": "Luister naar de Noorse single van vandaag",
+    "story": "Een Noorse single in het huidige protocol, geopend via de eigen muziekdienst van de gebruiker.",
+    "subtitle": "Kygo, Flow Kingz & JMK feat. Lyng",
+    "duration": "2:33",
+    "metadataSource": "Metagegevens van {{provider}}",
+    "instructions": "Open het nummer in je muziekapp, druk op play als dat nodig is en kom dan hier terug.",
+    "spotify": "Openen in Spotify",
+    "appleMusic": "Openen in Apple Music",
+    "listening": "Nummer bezig",
+    "ready": "Nummer volledig geluisterd",
+    "remaining": "{{time}} resterend",
+    "returnHint": "Muziek kan blijven spelen terwijl je hier bent.",
+    "leaveFirst": "Open een muziekapp om te beginnen",
+    "done": "Klaar",
+    "completedToday": "Vandaag voltooid",
+    "openErrorTitle": "Kan de muziek-app niet openen",
+    "openErrorMessage": "Controleer je verbinding en probeer de andere dienst.",
+    "manualNote": "Open het nummer in je muziekapp, luister het af en kom daarna hier terug."
+  }
+}

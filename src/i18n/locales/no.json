@@ -1,0 +1,553 @@
+{
+  "tabs": {
+    "today": "I dag",
+    "practices": "Praksiser",
+    "nature": "Natur",
+    "you": "Du"
+  },
+  "common": {
+    "start": "Start",
+    "done": "Ferdig",
+    "skip": "Hopp over",
+    "pause": "Pause",
+    "resume": "Fortsett",
+    "cancel": "Avbryt",
+    "back": "Tilbake",
+    "close": "Lukk",
+    "xp": "+{{count}} XP",
+    "day": "Dag {{count}}",
+    "premium": "Premium",
+    "soon": "Kommer snart",
+    "previousMonth": "Forrige måned",
+    "previousWeek": "Forrige uke",
+    "nextWeek": "Neste uke",
+    "nextMonth": "Neste måned",
+    "openStreakDetails": "Åpne streak-detaljer"
+  },
+  "meta": {
+    "seconds": "{{count}} s",
+    "minutes": "{{count}} min"
+  },
+  "home": {
+    "greeting": "God morgen, viking",
+    "todayProtocol": "Dagens protokoll",
+    "score": "Norway Score",
+    "today": "I dag",
+    "streak": "{{count}} dag på rad",
+    "streak_few": "{{count}} dager på rad",
+    "streak_many": "{{count}} dager på rad",
+    "streak_other": "{{count}} dager på rad",
+    "streakSheetTitle": "Streak",
+    "streakSheetSubtitle": "En dag teller når Norway Score når {{count}} eller mer.",
+    "currentStreak": "Nåværende streak",
+    "scoreNeeded": "Nødvendig score",
+    "streakRules": {
+      "score": "Fullfør nok oppgaver i dagens protokoll til å nå {{count}} Norway Score.",
+      "calendar": "Streaken følger kalenderdager i lokal tidssone.",
+      "reset": "Hvis en dag ikke når terskelen, starter neste fullførte dag en ny streak."
+    },
+    "allDone": "Protokollen er fullført. Skål!",
+    "dayLetters": [
+      "M",
+      "T",
+      "O",
+      "T",
+      "F",
+      "L",
+      "S"
+    ]
+  },
+  "protocol": {
+    "cold": "Kald dusj",
+    "natureForest": "Tid i skogen",
+    "naturePark": "Tid i naturen",
+    "natureWalk": "Gå en tur ute",
+    "grounding": "Barbeint sansegang",
+    "diet": "Velg minst mulig bearbeidet mat i dag",
+    "dietMaintain": "Bygg måltider rundt råvarer",
+    "sauna": "Badstueøkt",
+    "breath": "Pustearbeid",
+    "natureTime": "Tid i naturen",
+    "natureLong": "Lengre tur i naturen",
+    "daylightWalk": "Tur i dagslys",
+    "phoneFreeNature": "Mobilfri tur i naturen",
+    "sitSpot": "Rolig observasjon ute",
+    "sensoryWalk": "Rolig sansetur",
+    "weatherWalk": "Utetur i all slags vær",
+    "breathSlow": "Rolig pusteøvelse",
+    "breathReset": "Pustepause med lengre utpust",
+    "breathRecovery": "Rolig pust i stedet for badstue",
+    "wholeGrain": "Velg havre, rug eller annet fullkorn",
+    "berriesVeg": "Legg til bær og fargerike grønnsaker",
+    "legumes": "Lag ett måltid med bønner, erter eller linser",
+    "fishOrLegumes": "Velg fisk eller belgfrukter fremfor bearbeidet kjøtt",
+    "vegetableHalfPlate": "La grønnsaker være den største delen av ett måltid",
+    "nutsSeeds": "Legg til en liten håndfull usaltede nøtter eller frø",
+    "wholeFoodMeal": "Lag ett minst mulig bearbeidet måltid",
+    "processedSwap": "Bytt ett svakt valg med mer næringsrik mat",
+    "mealPrep": "Forbered et nordisk måltid til i morgen",
+    "ro": "Viking Row",
+    "kygoJo": "Lytt til Kygo Jo (Kygo Remix)"
+  },
+  "cold": {
+    "title": "Kulde",
+    "planTitle": "30-dagers plan for kald dusj",
+    "planSubtitle": "Korte dusjetapper. Åpent vann krever en egen sikkerhetsvurdering.",
+    "startToday": "Start dag {{count}}",
+    "dayDone": "Fullført",
+    "dayLocked": "Premium",
+    "returnTomorrow": "Neste nivå i morgen",
+    "guideTitle": "Grunnregler for kulde",
+    "guide": {
+      "shower": "Dette er en dusjvane, ikke en medisinsk dose. Stopp tidlig når kontrollen glipper.",
+      "breathe": "Pust normalt. Ikke hold pusten, ikke hyperventiler og ikke gjør øvelser under vann.",
+      "solo": "Gå aldri ut i åpent kaldt vann alene. Bruk kjente steder for inn- og utgang.",
+      "exit": "Gå ut før panikk, nummenhet eller svimmelhet. Varm deg rolig opp etterpå."
+    },
+    "daysCompleted": "dager fullført"
+  },
+  "session": {
+    "breatheTitle": "Ro ned pusten",
+    "inhale": "Pust inn gjennom nesen",
+    "holdIn": "Hold",
+    "exhale": "Pust sakte ut",
+    "holdOut": "Hold tomt",
+    "round": "Runde {{current}}/{{total}}",
+    "skipBreathing": "Hopp over pusting",
+    "coldTitle": "Kaldt, rolig, kontrollert",
+    "coldSafetyHint": "Pust normalt. Stopp før nummenhet, svimmelhet eller panikk.",
+    "abort": "Avbryt",
+    "finishedTitle": "Dag {{count}} fullført",
+    "finishedSubtitle": "Tørk deg, kle deg varmt ved behov og la pusten roe seg",
+    "claim": "Skål!"
+  },
+  "practices": {
+    "title": "Praksiser",
+    "library": "Protokollbibliotek",
+    "libraryMeta": "4 moduler",
+    "cold": "Kulde",
+    "coldSubtitle": "Dag {{count}} av 30",
+    "sauna": "Badstue",
+    "saunaSubtitle": "Kontrollert varmesyklus",
+    "breath": "Pust",
+    "breathSubtitle": "Veiledet rolig pust",
+    "diet": "Nordisk kosthold",
+    "dietSubtitle": "Spis fra nord",
+    "roSubtitle": "Ro med Norge",
+    "roNew": "Ny",
+    "musicSubtitle": "Norsk Kygo-remiks",
+    "musicNew": "Ny"
+  },
+  "nature": {
+    "title": "Friluftsliv",
+    "subtitle": "Naturutfordringer",
+    "completed": "Fullført",
+    "minutes": "Minutter ute",
+    "today": "I dag",
+    "todayDone": "I dag",
+    "todayMinutes": "Min i dag",
+    "todaySet": "Dagens natursett",
+    "todaySetMeta": "3 oppgaver, XP bare her",
+    "library": "Utfordringsbibliotek",
+    "libraryMeta": "Se gjennom og roter",
+    "libraryOnly": "Bibliotek",
+    "seen": "Sett",
+    "outdoorSignal": "Signal",
+    "challenges": "Utfordringer",
+    "challengeMeta": "Trykk for å åpne",
+    "filters": {
+      "all": "Alle",
+      "forest": "Skog",
+      "water": "Vann",
+      "fire": "Ild",
+      "winter": "Vinter"
+    },
+    "minutesToday": "{{count}} min ute i dag"
+  },
+  "you": {
+    "title": "Du",
+    "statusMeta": "Rang, streak og ukentlig kontinuitet",
+    "rank": "Rang",
+    "currentRank": "Nåværende rang",
+    "nextRank": "{{earned}}/{{required}} XP til {{rank}}",
+    "xpRemaining": "{{count}} XP igjen",
+    "maxRank": "Høyeste rang nådd",
+    "totalXpValue": "{{count}} XP totalt",
+    "totalXp": "Total XP",
+    "weekHits": "Treff denne uken",
+    "activeMinutes": "Aktive min",
+    "coldMinutes": "Kulde-min",
+    "natureMinutes": "Natur-min",
+    "saunaMinutes": "Badstue-min",
+    "weekMatrix": "Ukentlig protokoll",
+    "weekSignal": "7-dagers signal",
+    "weekSignalMeta": "Fullførte protokoller etter vane",
+    "last7Days": "Siste 7 dager",
+    "recentActivity": "Nylig aktivitet",
+    "noActivity": "Fullfør en protokoll for å bygge loggen.",
+    "settings": "Innstillinger",
+    "language": "Språk",
+    "theme": "Utseende",
+    "themeSystem": "System",
+    "themeLight": "Polar dag",
+    "themeDark": "Polar natt",
+    "reminder": "Daglig påminnelse",
+    "restorePurchases": "Gjenopprett kjøp",
+    "statStreak": "Dager på rad"
+  },
+  "sauna": {
+    "title": "Badstue",
+    "subtitle": "Kontrollert varme, gradvis nedkjøling og full hvile.",
+    "chooseProtocol": "Velg protokoll",
+    "sessionMap": "Øktkart",
+    "rounds": "{{count}} runder",
+    "roundsRange": "{{range}} runder",
+    "phaseHeat": "Varme",
+    "phaseCold": "Kulde",
+    "phaseCool": "Nedkjøling",
+    "phaseRest": "Hvile",
+    "guideTitle": "Badstueregler",
+    "logSession": "Logg badstueøkt",
+    "sessionLogged": "Økten er logget",
+    "logExplanation": "Legger til +30 XP og holder deg i protokollen.",
+    "loggedMeta": "+30 XP lagt til. Hvil videre før du går.",
+    "guide": {
+      "heat": "Tidsrommet er en øvre grense, ikke et mål. Gå ut tidligere ved svimmelhet, kvalme, brystsmerter, forvirring eller sterkt ubehag.",
+      "cool": "Kjøl deg ned i luft eller med en behagelig dusj. Kaldt vann er valgfritt; ikke tving frem et bad.",
+      "rest": "Sitt til pust, puls og balanse føles rolige. Tid i varmen er bare en veiledning for hvile.",
+      "repeat": "Gjenta først når du er helt rolig. Drikk etter tørste, unngå alkohol og stopp hvis symptomer kommer tilbake."
+    },
+    "ranges": {
+      "beginnerHeat": "5-8 min",
+      "traditionalHeat": "8-15 min",
+      "optionalContrastHeat": "8-12 min",
+      "comfortCool": "Behagelig",
+      "optionalCoolShower": "Valgfri dusj",
+      "fullRecovery": "Til du er rolig"
+    },
+    "protocols": {
+      "beginner": {
+        "title": "Nybegynner",
+        "subtitle": "En eller to korte runder, gå ut tidlig"
+      },
+      "classic": {
+        "title": "Klassisk nordisk",
+        "subtitle": "Fleksibel varme og full restitusjon"
+      },
+      "contrast": {
+        "title": "Fjordkontrast",
+        "subtitle": "Valgfri kjølig dusj, aldri obligatorisk"
+      }
+    }
+  },
+  "breath": {
+    "practiceTitle": "Rolig pust",
+    "practiceSubtitle": "Følg en rolig innpust på 4 sekunder og utpust på 6 sekunder.",
+    "slowSubtitle": "Pust jevnt og behagelig. Ikke press pusten dypere.",
+    "resetSubtitle": "La utpusten vare litt lenger enn innpusten. Ikke hold pusten.",
+    "recoverySubtitle": "Bruk en rolig lengre utpust. Stopp hvis du blir svimmel.",
+    "cycle": "Syklus {{current}}/{{total}}",
+    "timeRemaining": "{{time}} igjen",
+    "completeTitle": "Pusteøvelsen er fullført",
+    "completeSubtitle": "Hele den veiledede økten er fullført.",
+    "leaveTitle": "Forlate pusteøvelsen?",
+    "leaveMessage": "Denne veiledede økten blir ikke fullført.",
+    "stay": "Bli",
+    "leave": "Forlat økten"
+  },
+  "diet": {
+    "title": "Nordisk kosthold",
+    "subtitle": "Nordiske måltidsideer med mer planter",
+    "planMeta": "14 dager",
+    "disclaimer": "Fleksible måltidsideer, ikke en personlig diett. Tilpass porsjoner, allergener og ingredienser; bruk faglige råd ved medisinske dietter.",
+    "eatTitle": "Spis",
+    "avoidTitle": "Begrens",
+    "principles": "Nordiske prinsipper",
+    "principlesMeta": "Hva du bør styrke og hva du bør begrense",
+    "mealPlan": "14 dager med nordiske måltidsideer",
+    "mealPlanMeta": "Seks fiskemåltider, mer planter, fleksible porsjoner",
+    "meals": {
+      "breakfast": "Frokost",
+      "lunch": "Lunsj",
+      "dinner": "Middag"
+    },
+    "eat": {
+      "fish": "Fisk og sjømat flere ganger i uken",
+      "wholeGrains": "Havre, rug, bygg og grovt brød",
+      "legumes": "Bønner, erter, linser og kikerter",
+      "berries": "Bær og sesongfrukt",
+      "roots": "Rotgrønnsaker, kål, poteter og grønne bladgrønnsaker",
+      "dairy": "Naturell meieri med lavere fettinnhold eller egnet beriket alternativ",
+      "nuts": "Nøtter og frø i små daglige porsjoner",
+      "oil": "Rapsolje eller olivenolje som standard fett"
+    },
+    "avoid": {
+      "highSaltSugar": "Ferdigmat med mye salt, tilsatt sukker eller mettet fett",
+      "processedMeat": "Bearbeidet kjøtt som hverdagsprotein",
+      "redMeatDaily": "Rødt kjøtt hver dag",
+      "sugar": "Flytende sukker og søte snacks",
+      "saltySnacks": "Salte snacks med mye salt",
+      "alcoholDaily": "Daglig alkohol",
+      "refinedGrains": "Lyst brød og raffinerte kornprodukter som base"
+    },
+    "days": {
+      "day1": {
+        "title": "Kystbase",
+        "breakfast": "Havregrøt med skyr, blåbær, valnøtter og kanel.",
+        "lunch": "Bygg- og linsebolle med rødbete, grønnkål og gulrot.",
+        "dinner": "Bakt torsk, poteter, kål, erter og urtedressing med rapsolje."
+      },
+      "day2": {
+        "title": "Fiber og belgfrukter",
+        "breakfast": "Rugknekkebrød med egg, tomat og kefir.",
+        "lunch": "Ertesuppe med kål og grovt rugbrød.",
+        "dinner": "Hvite bønner, bygg, sopp, ovnsbakte rotgrønnsaker og grønt."
+      },
+      "day3": {
+        "title": "Belgfrukter og sild",
+        "breakfast": "Varm bygggrøt med eple, tyttebær og gresskarkjerner.",
+        "lunch": "Suppe med kikerter, poteter og kål, pluss grovt brød.",
+        "dinner": "Sild eller sardiner, kokte poteter, syltet løk og agurksalat."
+      },
+      "day4": {
+        "title": "Nordisk arbeidsdag",
+        "breakfast": "Skyr med havre, bringebær, linfrø og hasselnøtter.",
+        "lunch": "Rugsmørbrød med egg eller hvite bønner, agurk, salat og dill.",
+        "dinner": "Kalkun eller bønner, bygg, sopp, gulrøtter og grønt."
+      },
+      "day5": {
+        "title": "Mer planter",
+        "breakfast": "Havrepannekaker med bær og naturell yoghurt.",
+        "lunch": "Ertesuppe med rugbrød og en liten porsjon hard ost.",
+        "dinner": "Ovnsbakte kikerter, pastinakk, rødbete og kål med naturell yoghurt eller tahini."
+      },
+      "day6": {
+        "title": "Aktiv dag",
+        "breakfast": "Havre, kefir, banan, blåbær og peanøtt- eller mandelsmør.",
+        "lunch": "Fullkornswrap med linser, spinat, gulrot og yoghurt-dillsaus.",
+        "dinner": "Laks, poteter, sopp og en stor kålsalat."
+      },
+      "day7": {
+        "title": "Enkel dag fra skapet",
+        "breakfast": "Rugbrød med cottage cheese, bær og frø.",
+        "lunch": "Bønnesalat med poteter, grønt, eple og rapsolje.",
+        "dinner": "Sopp- og byggsuppe med gulrot, purre og grovt brød."
+      },
+      "day8": {
+        "title": "Markedsskål",
+        "breakfast": "Bygggrøt med pære, skyr og valnøtter.",
+        "lunch": "Rugtoast med hvit bønnepålegg, rødbetsalat og agurk.",
+        "dinner": "Linsegryte med rotgrønnsaker, grønnkål og en skje yoghurt."
+      },
+      "day9": {
+        "title": "Makrelldag",
+        "breakfast": "Skyr, havre, blåbær, chia og mandler.",
+        "lunch": "Kikerter på rugbrød med tomat, urter og kålsalat.",
+        "dinner": "Makrell, kokte poteter, grønne bønner og fermenterte grønnsaker."
+      },
+      "day10": {
+        "title": "Budsjett-nordisk",
+        "breakfast": "Havregrøt med frosne bær, melk eller kefir og frø.",
+        "lunch": "Bønne- og byggsuppe med gulrot, løk og grovt brød.",
+        "dinner": "Frossen torsk eller sei, poteter, erter og kål."
+      },
+      "day11": {
+        "title": "Lite arbeid",
+        "breakfast": "Rugknekkebrød med egg, skyr og eple.",
+        "lunch": "Rester av bønner over grønt, poteter og syltet agurk.",
+        "dinner": "Langpanne med kylling eller kikerter, rotgrønnsaker, kål og yoghurtsaus."
+      },
+      "day12": {
+        "title": "Fermentert mat valgfritt",
+        "breakfast": "Kefirbolle med havre, bær og linfrø.",
+        "lunch": "Rugsmørbrød med hvite bønner, agurk og valgfri fermentert kål.",
+        "dinner": "Bygg, sopp, erter, rødbete og grønt med valgfri naturell yoghurtdressing."
+      },
+      "day13": {
+        "title": "Kald sesong",
+        "breakfast": "Varm havre med eple, kanel, valnøtter og skyr.",
+        "lunch": "Gryte med linser og rotgrønnsaker, servert med rugbrød.",
+        "dinner": "Ørret, kål, poteter, gulrøtter og kraft."
+      },
+      "day14": {
+        "title": "Repeterbar søndag",
+        "breakfast": "Skyr, bær, havre og frø.",
+        "lunch": "Rugtoast med hvite bønner, agurk og dill.",
+        "dinner": "Gryte med rotgrønnsaker, bønner, grønnkål og grovt brød."
+      }
+    }
+  },
+  "challenge": {
+    "protocol": "Protokoll",
+    "minutes": "Minutter",
+    "reward": "XP-belønning",
+    "complete": "Fullfør utfordringen",
+    "libraryTitle": "Ikke i dagens sett",
+    "libraryMeta": "Denne utfordringen er en del av biblioteket. Den kan komme tilbake i daglig rotasjon, men gir ikke XP i dag.",
+    "notFound": "Fant ikke utfordringen"
+  },
+  "challenges": {
+    "forestHour": {
+      "title": "En time i skogen",
+      "subtitle": "En time ute, uten hastverk",
+      "detail": "Gå i rolig tempo i opptil seksti minutter. La lyd være av og legg merke til humør og energi før og etter turen."
+    },
+    "sunriseWalk": {
+      "title": "Tur i morgenlys",
+      "subtitle": "Dagslys tidlig på dagen",
+      "detail": "Gå ut når det passer i løpet av de første to timene etter at du våkner. Bruk vanlig øyebeskyttelse ved behov og se aldri rett på solen."
+    },
+    "barefootSensoryWalk": {
+      "title": "Sansetur",
+      "subtitle": "Ti rolige minutter med oppmerksomhet på underlaget",
+      "detail": "Gå sakte og legg merke til tekstur, temperatur og balanse. Bare føtter er valgfritt; behold sko ved diabetes, redusert følelse eller sirkulasjon, utrygt underlag eller ubehagelig temperatur."
+    },
+    "coldWaterFace": {
+      "title": "Kjølig vann i ansiktet",
+      "subtitle": "Kort, valgfritt og behagelig",
+      "detail": "Skyll ansiktet med behagelig kjølig vann en eller to ganger. Pust normalt; dette er en sansepraksis, ikke en medisinsk reset."
+    },
+    "lakeDip": {
+      "title": "Sikkerhetssjekk for åpent vann",
+      "subtitle": "Plan først; du trenger ikke gå i vannet",
+      "detail": "Sjekk vanntemperatur, vær, strømmer, vannkvalitet, inn- og utgang, varme klær og hvem som kan være med. Sjekken er fullført uten at du må gå i vannet."
+    },
+    "fireEvening": {
+      "title": "Kveldslys uten skjerm",
+      "subtitle": "LED-lys og ingen scrolling",
+      "detail": "Bruk et LED-lys eller en dempet lampe i tretti skjermfrie minutter. Ekte flamme må alltid være under tilsyn og følge gjeldende lokale regler."
+    },
+    "snowWalk": {
+      "title": "Tur i kaldt vær",
+      "subtitle": "Tjue minutter med vurdering av forholdene",
+      "detail": "Gå bare når vær og underlag er trygge. Kle deg etter forholdene og pust på en måte som føles komfortabel for tempoet."
+    },
+    "phoneFreeTrail": {
+      "title": "Sti uten telefon",
+      "subtitle": "En time offline",
+      "detail": "Sett telefonen på lydløs og legg den i sekken. Behold nødtilgang når du går alene eller i avsidesliggende områder."
+    },
+    "sitSpot": {
+      "title": "Sitteplass",
+      "subtitle": "Tjue minutter på ett sted",
+      "detail": "Velg et lovlig og slitesterkt sted og sitt rolig. Observer lys, vind, fugler, mennesker og pust uten å presse frem meditasjon."
+    },
+    "rainWalk": {
+      "title": "Regntur",
+      "subtitle": "Kle deg riktig og gå",
+      "detail": "Gå i tjue minutter i regn eller røffere vær med riktig bekledning. Dropp turen ved torden, is eller farlig vind."
+    },
+    "shorelineObservation": {
+      "title": "Observasjon ved vann",
+      "subtitle": "Tretti minutter ved vannet",
+      "detail": "Sitt eller gå ved innsjø, elv, fjord eller hav. Svømming er valgfritt og hører under reglene for kaldt vann."
+    },
+    "leaveNoTrace": {
+      "title": "Ikke sett spor",
+      "subtitle": "Tilgang med ansvar",
+      "detail": "Bruk hansker og plukk vanlig trygt søppel, hold deg unna sårbart underlag og lukk grinder. Ikke håndter skarpt, kjemisk, medisinsk eller ukjent avfall."
+    }
+  },
+  "settings": {
+    "device": "Enhet",
+    "followDevice": "Følg telefonens språk",
+    "languageOpen": "Velg appspråk",
+    "languageClosed": "Trykk for å endre språk",
+    "themeMeta": "Bruk systemet eller velg manuelt",
+    "themeDescriptions": {
+      "system": "Tilpass automatisk til iOS.",
+      "light": "Lys polar flate for dagtid.",
+      "dark": "Mørk flate for kveld."
+    },
+    "morningProtocol": "Morgenprotokoll",
+    "morningProtocolMeta": "Lokal påminnelse om dagens protokoll."
+  },
+  "ranks": {
+    "thrall": "Trell",
+    "bonde": "Bonde",
+    "kriger": "Kriger",
+    "viking": "Viking",
+    "jarl": "Jarl",
+    "konge": "Konge"
+  },
+  "protocolPlan": {
+    "focus": {
+      "baseline": "Grunnlag",
+      "daylight": "Dagslys",
+      "heat": "Kontrollert varme",
+      "coldSkill": "Kuldeteknikk",
+      "natureVolume": "Mer natur",
+      "heatRepeat": "Varmegjentakelse",
+      "recovery": "Restitusjon",
+      "foodFiber": "Fiber og enkel mat",
+      "longOutdoor": "Lengre ute",
+      "calmBreath": "Rolig pust",
+      "calm": "Ro ute",
+      "unplug": "Offline",
+      "weather": "Natur i all slags vær",
+      "sensory": "Sanselig oppmerksomhet",
+      "consolidate": "Konsolidering",
+      "reset": "Reset"
+    }
+  },
+  "ro": {
+    "taskTitle": "Viking Row",
+    "readyKicker": "Viking Row",
+    "soundOn": "Lyd på!",
+    "intro": "Du er trommeslageren",
+    "introHint": "To trommeslag. Dun dun. Så brøler publikum «ROO!». Vent på nedtellingen og øk tempoet gradvis.",
+    "beat": "Slag {{current}}/{{total}}",
+    "faster": "Raskere! Hold takten!",
+    "slower": "Rolig. Bygg bølgen",
+    "energy": "Publikumsenergi",
+    "success": "SKÅL!",
+    "successMeta": "Du ledet roingen. {{accuracy}}% i takt. Stadion brøler.",
+    "successMetaPartial": "{{accuracy}}% i takt. Kom tilbake i morgen, roer.",
+    "claim": "RO!",
+    "tapCue": "To raske slag",
+    "again": "En gang til! ×2",
+    "repsLeft": "{{count}} åretak igjen",
+    "rowsLeft": "Åretak igjen",
+    "rows": "Åretak",
+    "rhythm": "Rytme",
+    "you": "Du",
+    "crowd": "Publikum",
+    "resultKicker": "Roing fullført",
+    "nextHit": "Neste slag",
+    "secondHit": "Andre slag",
+    "hitAgain": "SLÅ EN GANG TIL",
+    "now": "NÅ",
+    "tempo": "Mål {{count}} BPM",
+    "accuracy": "{{count}}% i takt",
+    "coach": {
+      "double": "SLÅ EN GANG TIL",
+      "onBeat": "I TAKT. BYGG TEMPO",
+      "faster": "RASKERE. FØLG PULSEN",
+      "slower": "FOR RASKT. FØLG PULSEN",
+      "losing": "DU MISTER RYTMEN. PUBLIKUM STILNER",
+      "sprint": "SLUTTSPURT. ØK FARTEN"
+    }
+  },
+  "music": {
+    "taskTitle": "Kygo Jo",
+    "kicker": "Norge på repeat",
+    "title": "Lytt til dagens norske singel",
+    "story": "En norsk singel i dagens protokoll, åpnet gjennom brukerens egen musikkapp.",
+    "subtitle": "Kygo, Flow Kingz og JMK feat. Lyng",
+    "duration": "2:33",
+    "metadataSource": "Metadata fra {{provider}}",
+    "instructions": "Åpne singelen i musikkappen din, trykk play hvis det trengs, og kom tilbake hit.",
+    "spotify": "Åpne i Spotify",
+    "appleMusic": "Åpne i Apple Music",
+    "listening": "Låten spiller",
+    "ready": "Hele låten er ferdig",
+    "remaining": "{{time}} igjen",
+    "returnHint": "Musikken kan fortsette å spille mens du er her.",
+    "leaveFirst": "Åpne en musikkapp for å begynne",
+    "done": "Ferdig",
+    "completedToday": "Fullført i dag",
+    "openErrorTitle": "Kunne ikke åpne musikkappen",
+    "openErrorMessage": "Sjekk tilkoblingen og prøv den andre tjenesten.",
+    "manualNote": "Åpne låten i musikkappen, lytt ferdig og kom tilbake hit når du er klar."
+  }
+}

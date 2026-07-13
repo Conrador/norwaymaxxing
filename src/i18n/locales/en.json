@@ -1,0 +1,553 @@
+{
+  "tabs": {
+    "today": "Today",
+    "practices": "Practices",
+    "nature": "Nature",
+    "you": "You"
+  },
+  "common": {
+    "start": "Start",
+    "done": "Done",
+    "skip": "Skip",
+    "pause": "Pause",
+    "resume": "Resume",
+    "cancel": "Cancel",
+    "back": "Back",
+    "close": "Close",
+    "xp": "+{{count}} XP",
+    "day": "Day {{count}}",
+    "premium": "Premium",
+    "soon": "Coming soon",
+    "previousMonth": "Previous month",
+    "previousWeek": "Previous week",
+    "nextWeek": "Next week",
+    "nextMonth": "Next month",
+    "openStreakDetails": "Open streak details"
+  },
+  "meta": {
+    "seconds": "{{count}} s",
+    "minutes": "{{count}} min"
+  },
+  "home": {
+    "greeting": "God morgen, Viking",
+    "todayProtocol": "Today's protocol",
+    "score": "Norway Score",
+    "today": "Today",
+    "streak": "{{count}} day streak",
+    "streak_few": "{{count}} day streak",
+    "streak_many": "{{count}} day streak",
+    "streak_other": "{{count}} day streak",
+    "streakSheetTitle": "Streak",
+    "streakSheetSubtitle": "A day counts when Norway Score reaches {{count}} or more.",
+    "currentStreak": "Current streak",
+    "scoreNeeded": "Score needed",
+    "streakRules": {
+      "score": "Finish enough daily protocol tasks to reach {{count}} Norway Score.",
+      "calendar": "The streak follows calendar days in your local timezone.",
+      "reset": "Miss the threshold for a day and the next completed day starts a new streak."
+    },
+    "allDone": "Protocol complete. Skål! 🍻",
+    "dayLetters": [
+      "M",
+      "T",
+      "W",
+      "T",
+      "F",
+      "S",
+      "S"
+    ]
+  },
+  "protocol": {
+    "cold": "Cold shower",
+    "natureForest": "Time in the forest",
+    "naturePark": "Time in nature",
+    "natureWalk": "Walk outside",
+    "grounding": "Barefoot sensory walk",
+    "diet": "Choose minimally processed food today",
+    "dietMaintain": "Build meals around whole foods",
+    "sauna": "Sauna session",
+    "breath": "Breathwork",
+    "natureTime": "Time in nature",
+    "natureLong": "Long nature outing",
+    "daylightWalk": "Daylight walk",
+    "phoneFreeNature": "Phone-free nature walk",
+    "sitSpot": "Quiet sit spot outdoors",
+    "sensoryWalk": "Slow sensory walk",
+    "weatherWalk": "All-weather outdoor walk",
+    "breathSlow": "Slow breathing practice",
+    "breathReset": "Long-exhale breathing pause",
+    "breathRecovery": "Quiet breathing instead of sauna",
+    "wholeGrain": "Choose oats, rye or another whole grain",
+    "berriesVeg": "Add berries and colourful vegetables",
+    "legumes": "Build one meal around beans, peas or lentils",
+    "fishOrLegumes": "Choose fish or legumes instead of processed meat",
+    "vegetableHalfPlate": "Make vegetables the largest part of one meal",
+    "nutsSeeds": "Add a small handful of unsalted nuts or seeds",
+    "wholeFoodMeal": "Make one minimally processed meal",
+    "processedSwap": "Swap one low-quality choice for a more nutrient-dense food",
+    "mealPrep": "Prep a Nordic whole-food meal for tomorrow",
+    "ro": "Viking Row",
+    "kygoJo": "Listen to Kygo Jo (Kygo Remix)"
+  },
+  "cold": {
+    "title": "Cold",
+    "planTitle": "30-day cold shower plan",
+    "planSubtitle": "Short shower stages. Open water is a separate safety decision.",
+    "startToday": "Start day {{count}}",
+    "dayDone": "Done",
+    "dayLocked": "Premium",
+    "returnTomorrow": "Next level tomorrow",
+    "guideTitle": "Cold safety baseline",
+    "guide": {
+      "shower": "This is a shower habit challenge, not a medical dose. Stop early whenever control slips.",
+      "breathe": "Breathe normally. No breath holds, hyperventilation or underwater practice.",
+      "solo": "Never enter open cold water alone. Use known entry and exit points.",
+      "exit": "Exit before panic, numbness or dizziness. Warm up calmly after."
+    },
+    "daysCompleted": "days completed"
+  },
+  "session": {
+    "breatheTitle": "Settle your breathing",
+    "inhale": "Inhale through your nose",
+    "holdIn": "Hold",
+    "exhale": "Exhale slowly",
+    "holdOut": "Hold empty",
+    "round": "Round {{current}}/{{total}}",
+    "skipBreathing": "Skip breathing",
+    "coldTitle": "Cold, calm, in control",
+    "coldSafetyHint": "Keep breathing normal. Stop before numbness, dizziness or panic.",
+    "abort": "Abort",
+    "finishedTitle": "Day {{count}} complete",
+    "finishedSubtitle": "Dry off, dress warmly if needed and let your breathing settle",
+    "claim": "Skål!"
+  },
+  "practices": {
+    "title": "Practices",
+    "library": "Protocol library",
+    "libraryMeta": "4 modules",
+    "cold": "Cold",
+    "coldSubtitle": "Day {{count}} of 30",
+    "sauna": "Sauna",
+    "saunaSubtitle": "Controlled heat cycle",
+    "breath": "Breath",
+    "breathSubtitle": "Guided slow breathing",
+    "diet": "Nordic Diet",
+    "dietSubtitle": "Eat from the north",
+    "roSubtitle": "Row with Norway",
+    "roNew": "New",
+    "musicSubtitle": "Norwegian Kygo remix",
+    "musicNew": "New"
+  },
+  "nature": {
+    "title": "Friluftsliv",
+    "subtitle": "Nature challenges",
+    "completed": "Completed",
+    "minutes": "Minutes outside",
+    "today": "Today",
+    "todayDone": "Today",
+    "todayMinutes": "Today min",
+    "todaySet": "Today's nature set",
+    "todaySetMeta": "3 tasks, XP only here",
+    "library": "Challenge library",
+    "libraryMeta": "Preview and rotate",
+    "libraryOnly": "Library",
+    "seen": "Seen",
+    "outdoorSignal": "Signal",
+    "challenges": "Challenges",
+    "challengeMeta": "Tap to open",
+    "filters": {
+      "all": "All",
+      "forest": "Forest",
+      "water": "Water",
+      "fire": "Fire",
+      "winter": "Winter"
+    },
+    "minutesToday": "{{count}} min outside today"
+  },
+  "you": {
+    "title": "You",
+    "statusMeta": "Rank, streak and weekly consistency",
+    "rank": "Rank",
+    "currentRank": "Current rank",
+    "nextRank": "{{earned}}/{{required}} XP to {{rank}}",
+    "xpRemaining": "{{count}} XP left",
+    "maxRank": "Highest rank reached",
+    "totalXpValue": "{{count}} XP total",
+    "totalXp": "Total XP",
+    "weekHits": "Week hits",
+    "activeMinutes": "Active min",
+    "coldMinutes": "Cold min",
+    "natureMinutes": "Nature min",
+    "saunaMinutes": "Sauna min",
+    "weekMatrix": "Weekly protocol",
+    "weekSignal": "7-day signal",
+    "weekSignalMeta": "Completed protocols by habit",
+    "last7Days": "Last 7 days",
+    "recentActivity": "Recent activity",
+    "noActivity": "Finish a protocol to build your log.",
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Appearance",
+    "themeSystem": "System",
+    "themeLight": "Polar Day",
+    "themeDark": "Polar Night",
+    "reminder": "Daily reminder",
+    "restorePurchases": "Restore purchases",
+    "statStreak": "Day streak"
+  },
+  "sauna": {
+    "title": "Sauna",
+    "subtitle": "Controlled heat, gradual cooling, full rest.",
+    "chooseProtocol": "Choose protocol",
+    "sessionMap": "Session map",
+    "rounds": "{{count}} rounds",
+    "roundsRange": "{{range}} rounds",
+    "phaseHeat": "Heat",
+    "phaseCold": "Cold",
+    "phaseCool": "Cool",
+    "phaseRest": "Rest",
+    "guideTitle": "Sauna rules",
+    "logSession": "Log sauna session",
+    "sessionLogged": "Session logged",
+    "logExplanation": "Adds +30 XP and keeps you on this protocol.",
+    "loggedMeta": "+30 XP added. Keep resting before you leave.",
+    "guide": {
+      "heat": "The range is a ceiling, not a target. Leave earlier for dizziness, nausea, chest pain, confusion or distress.",
+      "cool": "Cool in air or with a comfortable shower. Cold water is optional; never force a plunge.",
+      "rest": "Sit until breathing, pulse and balance feel settled. Matching heat time is only a planning guide.",
+      "repeat": "Repeat only when fully settled. Drink to thirst, avoid alcohol and stop whenever symptoms return."
+    },
+    "ranges": {
+      "beginnerHeat": "5-8 min",
+      "traditionalHeat": "8-15 min",
+      "optionalContrastHeat": "8-12 min",
+      "comfortCool": "Comfortable",
+      "optionalCoolShower": "Optional shower",
+      "fullRecovery": "Until settled"
+    },
+    "protocols": {
+      "beginner": {
+        "title": "Beginner",
+        "subtitle": "One or two short rounds, leave early"
+      },
+      "classic": {
+        "title": "Classic Nordic",
+        "subtitle": "Flexible heat and complete recovery"
+      },
+      "contrast": {
+        "title": "Fjord Contrast",
+        "subtitle": "Optional cool shower, never mandatory"
+      }
+    }
+  },
+  "breath": {
+    "practiceTitle": "Slow breathing",
+    "practiceSubtitle": "Follow a calm 4 second inhale and 6 second exhale.",
+    "slowSubtitle": "Breathe evenly and comfortably. Do not force the depth.",
+    "resetSubtitle": "Let the exhale run a little longer than the inhale. No breath holds.",
+    "recoverySubtitle": "Use a gentle longer exhale and stop if you feel lightheaded.",
+    "cycle": "Cycle {{current}}/{{total}}",
+    "timeRemaining": "{{time}} remaining",
+    "completeTitle": "Breathing complete",
+    "completeSubtitle": "Your full guided session is complete.",
+    "leaveTitle": "Leave breathwork?",
+    "leaveMessage": "This guided session will not be completed.",
+    "stay": "Stay",
+    "leave": "Leave session"
+  },
+  "diet": {
+    "title": "Nordic Diet",
+    "subtitle": "Plant-forward Nordic meal ideas",
+    "planMeta": "14 days",
+    "disclaimer": "Flexible meal ideas, not a personal prescription. Adjust portions, allergens and ingredients to your needs; use clinical guidance for medical diets.",
+    "eatTitle": "Eat",
+    "avoidTitle": "Avoid",
+    "principles": "Nordic principles",
+    "principlesMeta": "What to favor and what to limit",
+    "mealPlan": "14 days of Nordic meal ideas",
+    "mealPlanMeta": "Six fish meals, more plants, flexible portions",
+    "meals": {
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner"
+    },
+    "eat": {
+      "fish": "Fish and seafood several times weekly",
+      "wholeGrains": "Oats, rye, barley and whole-grain bread",
+      "legumes": "Beans, peas, lentils and chickpeas",
+      "berries": "Berries and seasonal fruit",
+      "roots": "Root vegetables, cabbage, potatoes and greens",
+      "dairy": "Plain lower-fat dairy or a suitable fortified alternative",
+      "nuts": "Nuts and seeds in small daily portions",
+      "oil": "Rapeseed or olive oil as default fat"
+    },
+    "avoid": {
+      "highSaltSugar": "Ready meals high in salt, added sugar or saturated fat",
+      "processedMeat": "Processed meat as an everyday protein",
+      "redMeatDaily": "Red meat every day",
+      "sugar": "Liquid sugar and sweet snacks",
+      "saltySnacks": "High-salt snack foods",
+      "alcoholDaily": "Daily alcohol",
+      "refinedGrains": "White bread and refined cereal as the base"
+    },
+    "days": {
+      "day1": {
+        "title": "Coastal baseline",
+        "breakfast": "Oats with skyr, blueberries, walnuts and cinnamon.",
+        "lunch": "Barley and lentil bowl with beetroot, kale and carrots.",
+        "dinner": "Baked cod, potatoes, cabbage, peas and rapeseed-oil herb dressing."
+      },
+      "day2": {
+        "title": "Fibre and pulses",
+        "breakfast": "Rye crispbread with egg, tomato and kefir.",
+        "lunch": "Pea soup with cabbage and whole-grain rye bread.",
+        "dinner": "White beans, barley, mushrooms, roasted roots and greens."
+      },
+      "day3": {
+        "title": "Pulses and herring",
+        "breakfast": "Warm barley porridge with apple, lingonberries and pumpkin seeds.",
+        "lunch": "Chickpea, potato and cabbage soup with whole-grain bread.",
+        "dinner": "Herring or sardines, boiled potatoes, pickled onion and cucumber salad."
+      },
+      "day4": {
+        "title": "Nordic workday",
+        "breakfast": "Skyr with oats, raspberries, flax and hazelnuts.",
+        "lunch": "Rye sandwich with egg or white beans, cucumber, lettuce and dill.",
+        "dinner": "Turkey or beans, barley, mushrooms, carrots and greens."
+      },
+      "day5": {
+        "title": "Plant-forward",
+        "breakfast": "Oat pancakes with berries and plain yogurt.",
+        "lunch": "Pea soup with rye bread and a small hard-cheese serving.",
+        "dinner": "Roasted chickpeas, parsnip, beetroot and cabbage with plain yogurt or tahini."
+      },
+      "day6": {
+        "title": "Active day",
+        "breakfast": "Oats, kefir, banana, blueberries and peanut or almond butter.",
+        "lunch": "Whole-grain wrap with lentils, spinach, carrots and yogurt-dill sauce.",
+        "dinner": "Salmon, potatoes, mushrooms and a large cabbage salad."
+      },
+      "day7": {
+        "title": "Simple pantry day",
+        "breakfast": "Rye bread with cottage cheese, berries and seeds.",
+        "lunch": "Bean salad with potatoes, greens, apple and rapeseed oil.",
+        "dinner": "Mushroom and barley soup with carrots, leek and whole-grain bread."
+      },
+      "day8": {
+        "title": "Market bowl",
+        "breakfast": "Barley porridge with pear, skyr and walnuts.",
+        "lunch": "Rye toast with white-bean spread, beet salad and cucumber.",
+        "dinner": "Lentil stew with root vegetables, kale and a spoon of yogurt."
+      },
+      "day9": {
+        "title": "Mackerel day",
+        "breakfast": "Skyr, oats, blueberries, chia and almonds.",
+        "lunch": "Chickpeas on rye with tomato, herbs and cabbage slaw.",
+        "dinner": "Mackerel, boiled potatoes, green beans and fermented vegetables."
+      },
+      "day10": {
+        "title": "Budget Nordic",
+        "breakfast": "Oatmeal with frozen berries, milk or kefir and seeds.",
+        "lunch": "Bean and barley soup with carrots, onion and whole-grain bread.",
+        "dinner": "Frozen cod or pollock, potatoes, peas and cabbage."
+      },
+      "day11": {
+        "title": "Low effort",
+        "breakfast": "Rye crispbread with egg, skyr and an apple.",
+        "lunch": "Leftover beans over greens, potatoes and pickled cucumber.",
+        "dinner": "Sheet-pan chicken or chickpeas with roots, cabbage and yogurt sauce."
+      },
+      "day12": {
+        "title": "Cultured foods, optional",
+        "breakfast": "Kefir bowl with oats, berries and flax.",
+        "lunch": "Rye sandwich with white beans, cucumber and optional fermented cabbage.",
+        "dinner": "Barley, mushrooms, peas, beetroot and greens with an optional plain-yogurt dressing."
+      },
+      "day13": {
+        "title": "Cold season",
+        "breakfast": "Warm oats with apple, cinnamon, walnuts and skyr.",
+        "lunch": "Lentil and root vegetable stew with rye bread.",
+        "dinner": "Trout, cabbage, potatoes, carrots and broth."
+      },
+      "day14": {
+        "title": "Repeatable Sunday",
+        "breakfast": "Skyr, berries, oats and seeds.",
+        "lunch": "White-bean rye toast with cucumber and dill.",
+        "dinner": "Root vegetable and bean stew with kale and whole-grain bread."
+      }
+    }
+  },
+  "challenge": {
+    "protocol": "Protocol",
+    "minutes": "Minutes",
+    "reward": "XP reward",
+    "complete": "Complete challenge",
+    "libraryTitle": "Not in today's set",
+    "libraryMeta": "This challenge is part of the library. It can return in the daily rotation, but it cannot be farmed for XP today.",
+    "notFound": "Challenge not found"
+  },
+  "challenges": {
+    "forestHour": {
+      "title": "Forest hour",
+      "subtitle": "One hour outside, no rush",
+      "detail": "Walk at an easy pace for up to sixty minutes. Keep audio off and notice how your mood and energy feel before and after."
+    },
+    "sunriseWalk": {
+      "title": "Morning daylight walk",
+      "subtitle": "Outdoor light early in your day",
+      "detail": "Go outside when practical during the first two hours after waking. Use normal eye protection when needed and never stare at the sun."
+    },
+    "barefootSensoryWalk": {
+      "title": "Sensory walk",
+      "subtitle": "Ten careful minutes noticing the ground",
+      "detail": "Walk slowly and notice texture, temperature and balance. Bare feet are optional; keep shoes on with diabetes, reduced sensation or circulation, unsafe surfaces or uncomfortable temperatures."
+    },
+    "coldWaterFace": {
+      "title": "Cool-water face splash",
+      "subtitle": "Brief, optional and comfortable",
+      "detail": "Splash comfortably cool water on your face once or twice. Keep breathing normally; this is a sensory practice, not a medical reset."
+    },
+    "lakeDip": {
+      "title": "Open-water safety check",
+      "subtitle": "Plan first; entering is not required",
+      "detail": "Check water temperature, weather, currents, water quality, entry and exit, warm clothing and who would accompany you. Complete the check without entering the water."
+    },
+    "fireEvening": {
+      "title": "Screen-free evening light",
+      "subtitle": "LED candlelight and no scrolling",
+      "detail": "Use an LED candle or dim lamp for thirty screen-free minutes. A real flame must stay supervised and follow current local fire rules."
+    },
+    "snowWalk": {
+      "title": "Cold-weather walk",
+      "subtitle": "Twenty weather-aware minutes",
+      "detail": "Walk outside only when footing and weather are safe. Dress for the conditions and breathe in whatever comfortable way supports the pace."
+    },
+    "phoneFreeTrail": {
+      "title": "Phone-free trail",
+      "subtitle": "One hour offline",
+      "detail": "Keep the phone silent in a bag and notice terrain, weather and breath. Retain emergency access when walking alone or in remote areas."
+    },
+    "sitSpot": {
+      "title": "Sit spot",
+      "subtitle": "Twenty minutes in one place",
+      "detail": "Choose a legal, durable spot and sit still. Watch light, wind, birds, people and your breathing without forcing meditation."
+    },
+    "rainWalk": {
+      "title": "Rain walk",
+      "subtitle": "Dress properly, go anyway",
+      "detail": "Walk for twenty minutes in rain or rough weather with proper clothing. Skip storms, ice hazards and unsafe wind."
+    },
+    "shorelineObservation": {
+      "title": "Shoreline observation",
+      "subtitle": "Thirty minutes by water",
+      "detail": "Sit or walk near a lake, river, fjord or sea. Swimming is optional and belongs under cold-water safety rules."
+    },
+    "leaveNoTrace": {
+      "title": "Leave no trace",
+      "subtitle": "Access paired with responsibility",
+      "detail": "With gloves, collect ordinary safe litter, stay off fragile ground and close gates. Never handle sharp, chemical, medical or unknown waste."
+    }
+  },
+  "settings": {
+    "device": "Device",
+    "followDevice": "Follow your phone language",
+    "languageOpen": "Choose app language",
+    "languageClosed": "Tap to change language",
+    "themeMeta": "Use system or set it manually",
+    "themeDescriptions": {
+      "system": "Match iOS appearance automatically.",
+      "light": "Bright polar surface for daytime use.",
+      "dark": "Low-light night surface."
+    },
+    "morningProtocol": "Morning protocol",
+    "morningProtocolMeta": "A local reminder to open today's protocol."
+  },
+  "ranks": {
+    "thrall": "Thrall",
+    "bonde": "Bonde",
+    "kriger": "Kriger",
+    "viking": "Viking",
+    "jarl": "Jarl",
+    "konge": "Konge"
+  },
+  "protocolPlan": {
+    "focus": {
+      "baseline": "Baseline",
+      "daylight": "Daylight",
+      "heat": "Controlled heat",
+      "coldSkill": "Cold skill",
+      "natureVolume": "Nature volume",
+      "heatRepeat": "Heat repeat",
+      "recovery": "Recovery",
+      "foodFiber": "Food fiber",
+      "longOutdoor": "Long outdoor",
+      "calmBreath": "Calm breath",
+      "calm": "Outdoor calm",
+      "unplug": "Unplug",
+      "weather": "All-weather nature",
+      "sensory": "Sensory attention",
+      "consolidate": "Consolidate",
+      "reset": "Reset"
+    }
+  },
+  "ro": {
+    "taskTitle": "Viking Row",
+    "readyKicker": "Viking Row",
+    "soundOn": "Sound on!",
+    "intro": "You're the drummer",
+    "introHint": "Two drum hits. Dun dun. Then the crowd roars \"ROO!\". Wait for the countdown and keep speeding up.",
+    "beat": "Beat {{current}}/{{total}}",
+    "faster": "Faster! Hold the tempo!",
+    "slower": "Ease up. Build the wave",
+    "energy": "Crowd energy",
+    "success": "SKÅL!",
+    "successMeta": "You led the row. {{accuracy}}% in time. The stadium roars.",
+    "successMetaPartial": "{{accuracy}}% in time. Come back tomorrow, oarsman.",
+    "claim": "RO!",
+    "tapCue": "Two quick taps",
+    "again": "Again! ×2",
+    "repsLeft": "{{count}} rows left",
+    "rowsLeft": "Rows left",
+    "rows": "Rows",
+    "rhythm": "Rhythm",
+    "you": "You",
+    "crowd": "Crowd",
+    "resultKicker": "Row complete",
+    "nextHit": "Next hit",
+    "secondHit": "Second hit",
+    "hitAgain": "HIT AGAIN",
+    "now": "NOW",
+    "tempo": "Target {{count}} BPM",
+    "accuracy": "{{count}}% in time",
+    "coach": {
+      "double": "HIT AGAIN",
+      "onBeat": "ON BEAT. KEEP BUILDING",
+      "faster": "FASTER. FOLLOW THE PULSE",
+      "slower": "TOO FAST. FOLLOW THE PULSE",
+      "losing": "OFF RHYTHM. THE CROWD IS FADING",
+      "sprint": "FINAL PUSH. SPEED UP"
+    }
+  },
+  "music": {
+    "taskTitle": "Kygo Jo",
+    "kicker": "Norway on repeat",
+    "title": "Listen to today's Norwegian single",
+    "story": "A Norwegian single in today's protocol, opened through the user's own music service.",
+    "subtitle": "Kygo, Flow Kingz & JMK feat. Lyng",
+    "duration": "2:33",
+    "metadataSource": "Metadata from {{provider}}",
+    "instructions": "Open the single in your music app, press play if needed, then come back here.",
+    "spotify": "Open in Spotify",
+    "appleMusic": "Open in Apple Music",
+    "listening": "Track in progress",
+    "ready": "Full track complete",
+    "remaining": "{{time}} remaining",
+    "returnHint": "Music can keep playing while you are here.",
+    "leaveFirst": "Open a music app to begin",
+    "done": "Done",
+    "completedToday": "Completed today",
+    "openErrorTitle": "Could not open the music app",
+    "openErrorMessage": "Check your connection and try the other service.",
+    "manualNote": "Open the track in your music app, let it play, then return here when you are done."
+  }
+}
