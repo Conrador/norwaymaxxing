@@ -22,10 +22,12 @@ const MODULE_EMOJI: Record<ProtocolTask['module'], string> = {
 type Props = {
   task: ProtocolTask;
   done: boolean;
+  /** zadanie premium dla usera na free — pokazuje kłódkę, tap otwiera paywall */
+  locked?: boolean;
   onPress: () => void;
 };
 
-export function TaskCard({ task, done, onPress }: Props) {
+export function TaskCard({ task, done, locked = false, onPress }: Props) {
   const theme = useTheme();
   const themeName = useThemeName();
   const { t } = useTranslation();
@@ -33,9 +35,9 @@ export function TaskCard({ task, done, onPress }: Props) {
 
   return (
     <Pressable
-      disabled={done}
+      disabled={done && !locked}
       onPress={() => {
-        if (task.session || task.module === 'breath') {
+        if (locked || task.session || task.module === 'breath') {
           Haptics.selectionAsync();
         } else {
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -74,19 +76,29 @@ export function TaskCard({ task, done, onPress }: Props) {
         </ThemedText>
       </View>
 
-      <View
-        style={[
-          styles.check,
-          done
-            ? { backgroundColor: theme.aurora, borderColor: theme.aurora }
-            : {
-                borderColor:
-                  themeName === 'dark' ? `${theme.textSecondary}55` : `${theme.textPrimary}22`,
-                backgroundColor: themeName === 'dark' ? 'transparent' : '#FFFFFF66',
-              },
-        ]}>
-        {done && <Text style={styles.checkMark}>✓</Text>}
-      </View>
+      {locked ? (
+        <View style={[styles.lockBadge, { backgroundColor: `${theme.gold}22` }]}>
+          {Platform.OS === 'ios' ? (
+            <SymbolView name="lock.fill" size={13} tintColor={theme.gold} />
+          ) : (
+            <Text style={{ fontSize: 12 }}>🔒</Text>
+          )}
+        </View>
+      ) : (
+        <View
+          style={[
+            styles.check,
+            done
+              ? { backgroundColor: theme.aurora, borderColor: theme.aurora }
+              : {
+                  borderColor:
+                    themeName === 'dark' ? `${theme.textSecondary}55` : `${theme.textPrimary}22`,
+                  backgroundColor: themeName === 'dark' ? 'transparent' : '#FFFFFF66',
+                },
+          ]}>
+          {done && <Text style={styles.checkMark}>✓</Text>}
+        </View>
+      )}
     </Pressable>
   );
 }
@@ -133,5 +145,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 14,
     fontWeight: '700',
+  },
+  lockBadge: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

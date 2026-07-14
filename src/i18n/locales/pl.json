@@ -22,7 +22,8 @@
     "previousWeek": "Poprzedni tydzień",
     "nextWeek": "Następny tydzień",
     "nextMonth": "Następny miesiąc",
-    "openStreakDetails": "Otwórz szczegóły streaku"
+    "openStreakDetails": "Otwórz szczegóły streaku",
+    "continue": "Dalej"
   },
   "meta": {
     "seconds": "{{count}} s",
@@ -213,7 +214,7 @@
     "loggedMeta": "+30 XP dodane. Odpocznij zanim wyjdziesz.",
     "guide": {
       "heat": "Zakres to sufit, nie cel. Wyjdź wcześniej przy zawrocie głowy, mdłościach, bólu w klatce, dezorientacji lub silnym dyskomforcie.",
-    "cool": "Schładzaj się powietrzem albo komfortowym prysznicem. Zimna woda jest opcjonalna; nie wymuszaj zanurzenia.",
+      "cool": "Schładzaj się powietrzem albo komfortowym prysznicem. Zimna woda jest opcjonalna; nie wymuszaj zanurzenia.",
       "rest": "Usiądź, aż oddech, puls i równowaga się uspokoją. Czas grzania to tylko orientacyjny czas odpoczynku.",
       "repeat": "Powtarzaj dopiero po pełnym uspokojeniu. Pij zgodnie z pragnieniem, bez alkoholu, przerwij przy powrocie objawów."
     },
@@ -460,7 +461,10 @@
       "dark": "Ciemna powierzchnia na wieczór."
     },
     "morningProtocol": "Poranny protokół",
-    "morningProtocolMeta": "Lokalne przypomnienie o dzisiejszym protokole."
+    "morningProtocolMeta": "Lokalne przypomnienie o dzisiejszym protokole.",
+    "developer": "Deweloper",
+    "resetOnboarding": "Zresetuj onboarding",
+    "resetOnboardingMeta": "Czyści profil i pokazuje welcome ponownie"
   },
   "ranks": {
     "thrall": "Thrall",
@@ -524,7 +528,7 @@
       "onBeat": "W RYTMIE. BUDUJ TEMPO",
       "faster": "SZYBCIEJ. TRAFIAJ W PULS",
       "slower": "ZA SZYBKO. TRAFIAJ W PULS",
-    "losing": "GUBISZ RYTM. TŁUM CICHNIE",
+      "losing": "GUBISZ RYTM. TŁUM CICHNIE",
       "sprint": "FINAŁ. PRZYSPIESZ"
     }
   },
@@ -535,12 +539,11 @@
     "story": "Norweski singiel w dzisiejszym protokole, otwierany przez własną aplikację muzyczną użytkownika.",
     "subtitle": "Kygo, Flow Kingz i JMK feat. Lyng",
     "duration": "2:33",
-    "metadataSource": "Metadane z {{provider}}",
     "instructions": "Otwórz singiel w aplikacji muzycznej, włącz odtwarzanie jeśli trzeba i wróć tutaj.",
     "spotify": "Otwórz w Spotify",
     "appleMusic": "Otwórz w Apple Music",
     "listening": "Utwór trwa",
-    "ready": "Pełny utwór ukończony",
+    "ready": "Możesz oznaczyć jako ukończone",
     "remaining": "Pozostało {{time}}",
     "returnHint": "Muzyka może grać dalej, gdy jesteś tutaj.",
     "leaveFirst": "Otwórz aplikację muzyczną, aby zacząć",
@@ -549,5 +552,84 @@
     "openErrorTitle": "Nie udało się otworzyć aplikacji muzycznej",
     "openErrorMessage": "Sprawdź połączenie i spróbuj drugiego serwisu.",
     "manualNote": "Otwórz utwór w aplikacji muzycznej, posłuchaj go i wróć tutaj po zakończeniu."
+  },
+  "onboarding": {
+    "welcome1": "Mundial się kończy,",
+    "welcome2": "ale twój nordycki styl życia…",
+    "welcome3a": "…",
+    "welcome3b": "nigdy",
+    "welcome3c": " się nie kończy.",
+    "begin": "Zaczynamy",
+    "stepOf": "Krok {{current}} z {{total}}",
+    "multiHint": "Wybierz maks. {{count}}",
+    "q": {
+      "goals": "O co walczysz?",
+      "cold": "Jak dobrze znasz zimno?",
+      "sauna": "Masz dostęp do sauny?",
+      "nature": "Jaki masz dostęp do natury?",
+      "diet": "Jak teraz jesz?"
+    },
+    "goal": {
+      "energy": "Energia",
+      "resilience": "Odporność",
+      "calm": "Spokój",
+      "sleep": "Sen",
+      "physique": "Sylwetka"
+    },
+    "cold": {
+      "never": "Nigdy nie próbowałem",
+      "sometimes": "Czasem zimny prysznic",
+      "regular": "Morsuję regularnie"
+    },
+    "sauna": {
+      "yes": "Mam dostęp",
+      "occasional": "Od czasu do czasu",
+      "no": "Nie mam"
+    },
+    "nature": {
+      "forest": "Las za rogiem",
+      "park": "Park w mieście",
+      "city": "Beton wszędzie"
+    },
+    "diet": {
+      "processed": "Dużo przetworzonego",
+      "mixed": "Pół na pół",
+      "clean": "Już jem czysto"
+    },
+    "roTitle": "Poczuj to. Ty jesteś bębniarzem.",
+    "roHint": "Dwa szybkie uderzenia. Tłum odpowiada.",
+    "roDone": "O to chodzi. Teraz reszta.",
+    "buildingTitle": "Kuję twój protokół…",
+    "build": {
+      "cold": "Analizuję dostęp do zimna",
+      "nature": "Dobieram wyzwania natury",
+      "sauna": "Ustawiam rytm sauny",
+      "breath": "Dobieram alternatywy oddechowe",
+      "score": "Kalibruję Norway Score"
+    }
+  },
+  "paywall": {
+    "social": "4,9 · 2000+ Wikingów",
+    "titleA": "Żyj jak ",
+    "titleB": "Norweg",
+    "titleC": ". Codziennie.",
+    "benefit": {
+      "cold": "Pełny 30-dniowy plan zimna",
+      "sauna": "Wszystkie protokoły sauny",
+      "nature": "Wszystkie wyzwania natury i pełna aktywność RO!",
+      "diet": "14-dniowe plany jedzenia",
+      "stats": "Tygodniowe statystyki i historia nawyków"
+    },
+    "yearly": "Rocznie",
+    "monthly": "Miesięcznie",
+    "bestValue": "NAJLEPSZA CENA",
+    "perWeek": "{{price}} / tydz.",
+    "perYear": "rocznie",
+    "perMonth": "miesięcznie",
+    "cta": "Odblokuj protokół",
+    "cancelAnytime": "Anuluj kiedy chcesz w App Store",
+    "restore": "Przywróć",
+    "terms": "Regulamin",
+    "privacy": "Prywatność"
   }
 }

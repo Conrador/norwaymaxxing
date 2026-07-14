@@ -22,7 +22,8 @@
     "previousWeek": "Forrige uke",
     "nextWeek": "Neste uke",
     "nextMonth": "Neste måned",
-    "openStreakDetails": "Åpne streak-detaljer"
+    "openStreakDetails": "Åpne streak-detaljer",
+    "continue": "Fortsett"
   },
   "meta": {
     "seconds": "{{count}} s",
@@ -460,7 +461,10 @@
       "dark": "Mørk flate for kveld."
     },
     "morningProtocol": "Morgenprotokoll",
-    "morningProtocolMeta": "Lokal påminnelse om dagens protokoll."
+    "morningProtocolMeta": "Lokal påminnelse om dagens protokoll.",
+    "developer": "Utvikler",
+    "resetOnboarding": "Nullstill onboarding",
+    "resetOnboardingMeta": "Tømmer profil og viser velkomst igjen"
   },
   "ranks": {
     "thrall": "Trell",
@@ -535,12 +539,11 @@
     "story": "En norsk singel i dagens protokoll, åpnet gjennom brukerens egen musikkapp.",
     "subtitle": "Kygo, Flow Kingz og JMK feat. Lyng",
     "duration": "2:33",
-    "metadataSource": "Metadata fra {{provider}}",
     "instructions": "Åpne singelen i musikkappen din, trykk play hvis det trengs, og kom tilbake hit.",
     "spotify": "Åpne i Spotify",
     "appleMusic": "Åpne i Apple Music",
     "listening": "Låten spiller",
-    "ready": "Hele låten er ferdig",
+    "ready": "Klar til å markeres som fullført",
     "remaining": "{{time}} igjen",
     "returnHint": "Musikken kan fortsette å spille mens du er her.",
     "leaveFirst": "Åpne en musikkapp for å begynne",
@@ -549,5 +552,84 @@
     "openErrorTitle": "Kunne ikke åpne musikkappen",
     "openErrorMessage": "Sjekk tilkoblingen og prøv den andre tjenesten.",
     "manualNote": "Åpne låten i musikkappen, lytt ferdig og kom tilbake hit når du er klar."
+  },
+  "onboarding": {
+    "welcome1": "VM tar slutt,",
+    "welcome2": "men din norske livsstil…",
+    "welcome3a": "…",
+    "welcome3b": "aldri",
+    "welcome3c": " gjør det.",
+    "begin": "Start",
+    "stepOf": "Steg {{current}} av {{total}}",
+    "multiHint": "Velg opptil {{count}}",
+    "q": {
+      "goals": "Hva jakter du på?",
+      "cold": "Hvor godt kjenner du kulden?",
+      "sauna": "Har du tilgang til badstue?",
+      "nature": "Hvilken naturtilgang har du?",
+      "diet": "Hvordan spiser du nå?"
+    },
+    "goal": {
+      "energy": "Energi",
+      "resilience": "Motstandskraft",
+      "calm": "Ro",
+      "sleep": "Søvn",
+      "physique": "Form"
+    },
+    "cold": {
+      "never": "Aldri prøvd",
+      "sometimes": "Kald dusj iblant",
+      "regular": "Jeg bader regelmessig"
+    },
+    "sauna": {
+      "yes": "Jeg har tilgang",
+      "occasional": "Av og til",
+      "no": "Nei"
+    },
+    "nature": {
+      "forest": "Skog rundt hjørnet",
+      "park": "Bypark",
+      "city": "Betong overalt"
+    },
+    "diet": {
+      "processed": "Mye bearbeidet",
+      "mixed": "Halvt om halvt",
+      "clean": "Spiser allerede rent"
+    },
+    "roTitle": "Føl det. Du er trommeslageren.",
+    "roHint": "To raske slag. Folkemengden svarer.",
+    "roDone": "Det er følelsen. Nå resten.",
+    "buildingTitle": "Smir protokollen din…",
+    "build": {
+      "cold": "Leser kuldetilgangen din",
+      "nature": "Velger naturutfordringer",
+      "sauna": "Setter badstue-rytmen",
+      "breath": "Velger pustealternativer",
+      "score": "Kalibrerer Norway Score"
+    }
+  },
+  "paywall": {
+    "social": "4,9 · 2000+ vikinger",
+    "titleA": "Lev som en ",
+    "titleB": "nordmann",
+    "titleC": ". Hver dag.",
+    "benefit": {
+      "cold": "Full 30-dagers kuldeplan",
+      "sauna": "Alle badstue-protokoller",
+      "nature": "Alle naturutfordringer og hele RO!-aktiviteten",
+      "diet": "14-dagers nordiske måltidsplaner",
+      "stats": "Ukentlig statistikk og vanehistorikk"
+    },
+    "yearly": "Årlig",
+    "monthly": "Månedlig",
+    "bestValue": "BESTE VERDI",
+    "perWeek": "{{price}} / uke",
+    "perYear": "per år",
+    "perMonth": "per måned",
+    "cta": "Lås opp protokollen",
+    "cancelAnytime": "Avbryt når som helst i App Store",
+    "restore": "Gjenopprett",
+    "terms": "Vilkår",
+    "privacy": "Personvern"
   }
 }

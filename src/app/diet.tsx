@@ -13,6 +13,8 @@ import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
 import { Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { AVOID_KEYS, EAT_KEYS, MEAL_PLAN_IDS } from '@/features/content/diet';
+import { isDietDayPremium } from '@/features/premium/access';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
 
 export default function DietScreen() {
@@ -20,6 +22,7 @@ export default function DietScreen() {
   const router = useRouter();
   const theme = useTheme();
   const themeName = useThemeName();
+  const { isPremium, loading } = usePremium();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selectedId = MEAL_PLAN_IDS[selectedIndex];
 
@@ -41,12 +44,22 @@ export default function DietScreen() {
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.daySelector}>
             {MEAL_PLAN_IDS.map((id, index) => {
               const active = selectedIndex === index;
+              const locked = !loading && !isPremium && isDietDayPremium(index);
               return (
                 <Pressable
                   key={id}
-                  onPress={() => setSelectedIndex(index)}
+                  accessibilityRole="button"
+                  accessibilityLabel={locked ? `${t('common.day', { count: index + 1 })}. ${t('common.premium')}` : undefined}
+                  onPress={() => {
+                    if (locked) {
+                      router.push('/paywall');
+                      return;
+                    }
+                    setSelectedIndex(index);
+                  }}
                   style={[
                     styles.dayPill,
+                    locked && styles.lockedDayPill,
                     {
                       backgroundColor: active ? theme.gold : theme.surface,
                       borderColor: active ? theme.gold : theme.border,
@@ -55,6 +68,11 @@ export default function DietScreen() {
                   <ThemedText style={[Type.caption, { color: active ? '#FFFFFF' : theme.textSecondary }]}>
                     {t('common.day', { count: index + 1 })}
                   </ThemedText>
+                  {locked ? (
+                    <View style={styles.dayLock}>
+                      <SymbolView name="lock.fill" size={11} tintColor={theme.gold} />
+                    </View>
+                  ) : null}
                   <ThemedText
                     numberOfLines={1}
                     style={[Type.caption, styles.dayPillTitle, { color: active ? '#FFFFFF' : theme.textPrimary }]}>
@@ -210,6 +228,19 @@ const styles = StyleSheet.create({
   },
   dayPillTitle: {
     fontSize: 12,
+  },
+  lockedDayPill: {
+    opacity: 0.58,
+  },
+  dayLock: {
+    position: 'absolute',
+    top: Spacing.two,
+    right: Spacing.two,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   planCard: {
     borderRadius: Radius.card,

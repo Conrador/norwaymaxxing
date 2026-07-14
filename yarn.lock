@@ -1182,6 +1182,21 @@
   resolved "https://registry.yarnpkg.com/@nolyfill/is-core-module/-/is-core-module-1.0.39.tgz#3dc35ba0f1e66b403c00b39344f870298ebb1c8e"
   integrity sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==
 
+"@onborn/analytics@0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@onborn/analytics/-/analytics-0.1.0-beta.1.tgz#c3949def09265bb12495eb97bd6bc659b99e0788"
+  integrity sha512-ztflZGKXVm3tVbVavXAUV4/qvVkcIuxYvZ4BCUbwPW5SQIMLaLdPoSqjyzeCZzUcawYNVWi8TMwPdVYYMhIR1Q==
+  dependencies:
+    "@onborn/sdk-contracts" "0.1.0-beta.1"
+    zod "^3.25.76"
+
+"@onborn/sdk-contracts@0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@onborn/sdk-contracts/-/sdk-contracts-0.1.0-beta.1.tgz#286951606e342d0e9f7b05a11c4f3c90c5448ed7"
+  integrity sha512-RkkxF899SHRUydwmOVnK7M5Nvc2so/8ie+bKa/LnHiH+RRZ9aM3K3/YOMIqoLF6SpKJpIOZpkynKr4RzD/smsQ==
+  dependencies:
+    zod "^3.25.76"
+
 "@radix-ui/primitive@1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@radix-ui/primitive/-/primitive-1.1.5.tgz#cfeb31acbf332c72eb0b13831963c21ad6ca3e32"

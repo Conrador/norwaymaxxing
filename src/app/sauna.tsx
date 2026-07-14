@@ -1,4 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { SymbolView } from 'expo-symbols';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
@@ -11,6 +12,8 @@ import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
 import { UiButton } from '@/components/ui-button';
 import { Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
+import { isSaunaProtocolPremium } from '@/features/premium/access';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
 import { useProgress } from '@/stores/progress';
 
@@ -53,6 +56,7 @@ export default function SaunaScreen() {
   const params = useLocalSearchParams<{ date?: string; taskIds?: string }>();
   const theme = useTheme();
   const themeName = useThemeName();
+  const { isPremium, loading } = usePremium();
   const addXp = useProgress((s) => s.addXp);
   const completeTask = useProgress((s) => s.completeTask);
   const [selected, setSelected] = useState<(typeof PROTOCOLS)[number]['id']>('beginner');
@@ -77,12 +81,22 @@ export default function SaunaScreen() {
           <View style={styles.protocols}>
             {PROTOCOLS.map((item) => {
               const active = selected === item.id;
+              const locked = !loading && !isPremium && isSaunaProtocolPremium(item.id);
               return (
                 <Pressable
                   key={item.id}
-                  onPress={() => setSelected(item.id)}
+                  accessibilityRole="button"
+                  accessibilityLabel={locked ? `${t(item.titleKey)}. ${t('common.premium')}` : t(item.titleKey)}
+                  onPress={() => {
+                    if (locked) {
+                      router.push('/paywall');
+                      return;
+                    }
+                    setSelected(item.id);
+                  }}
                   style={[
                     styles.protocol,
+                    locked && styles.lockedProtocol,
                     {
                       backgroundColor: themeName === 'dark' ? `${theme.surface}E6` : theme.surface,
                       borderColor: active ? theme.ember : theme.border,
@@ -94,9 +108,15 @@ export default function SaunaScreen() {
                       {t(item.subtitleKey)}
                     </ThemedText>
                   </View>
-                  <ThemedText style={[Type.h2, { color: active ? theme.ember : theme.textSecondary }]}>
-                    {item.rounds}x
-                  </ThemedText>
+                  {locked ? (
+                    <View style={[styles.lockBadge, { backgroundColor: `${theme.gold}18` }]}>
+                      <SymbolView name="lock.fill" size={13} tintColor={theme.gold} />
+                    </View>
+                  ) : (
+                    <ThemedText style={[Type.h2, { color: active ? theme.ember : theme.textSecondary }]}>
+                      {item.rounds}x
+                    </ThemedText>
+                  )}
                 </Pressable>
               );
             })}
@@ -201,6 +221,16 @@ const styles = StyleSheet.create({
   protocolText: {
     flex: 1,
     gap: 2,
+  },
+  lockedProtocol: {
+    opacity: 0.58,
+  },
+  lockBadge: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   phaseRow: {
     gap: Spacing.two,

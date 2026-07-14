@@ -10,14 +10,23 @@ import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import { AppState } from 'react-native';
 
+import { ONBOARDING_ENABLED } from '@/config/app';
 import { Colors, Fonts } from '@/constants/theme';
+import { OnboardingFlow } from '@/features/onboarding/onboarding-flow';
+import { usePremium } from '@/hooks/use-premium';
 import { useThemeName } from '@/hooks/use-theme';
+import { flushOnbornAnalytics, stopOnbornAnalytics } from '@/lib/onborn-analytics';
+import { useProfile } from '@/stores/profile';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const themeName = useThemeName();
+  const onboardingCompleted = useProfile((s) => s.onboardingCompleted);
+  const showOnboarding = ONBOARDING_ENABLED && !onboardingCompleted;
+  const { loading: premiumLoading } = usePremium();
   const [fontsLoaded] = useFonts({
     SchibstedGrotesk_400Regular,
     SchibstedGrotesk_500Medium,
@@ -26,10 +35,21 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (fontsLoaded) SplashScreen.hideAsync();
-  }, [fontsLoaded]);
+    if (fontsLoaded && !premiumLoading) SplashScreen.hideAsync();
+  }, [fontsLoaded, premiumLoading]);
 
-  if (!fontsLoaded) return null;
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (state) => {
+      if (state !== 'active') void flushOnbornAnalytics();
+    });
+
+    return () => {
+      subscription.remove();
+      void stopOnbornAnalytics();
+    };
+  }, []);
+
+  if (!fontsLoaded || premiumLoading) return null;
 
   const palette = Colors[themeName];
   const base = themeName === 'dark' ? DarkTheme : DefaultTheme;
@@ -53,6 +73,14 @@ export default function RootLayout() {
     },
   };
 
+  if (showOnboarding) {
+    return (
+      <ThemeProvider value={navTheme}>
+        <OnboardingFlow />
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider value={navTheme}>
       <Stack screenOptions={{ headerShown: false }}>
@@ -62,6 +90,7 @@ export default function RootLayout() {
         <Stack.Screen name="breath" />
         <Stack.Screen name="diet" />
         <Stack.Screen name="settings" />
+        <Stack.Screen name="paywall" options={{ presentation: 'fullScreenModal', gestureEnabled: true }} />
         <Stack.Screen name="challenge/[id]" />
         <Stack.Screen name="cold-session" />
         <Stack.Screen

@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CompactTodayHeader } from '@/components/compact-today-header';
 import { DashboardHero } from '@/components/dashboard-hero';
+import { PremiumGate } from '@/components/premium-gate';
 import { ProgressRing } from '@/components/progress-ring';
 import { ScreenBackground } from '@/components/screen-background';
 import { StreakPill } from '@/components/streak-pill';
@@ -23,7 +24,9 @@ import { TaskCard } from '@/components/task-card';
 import { ThemedText } from '@/components/themed-text';
 import { WeekStrip } from '@/components/week-strip';
 import { BottomTabInset, CardGap, ScreenPadding, Spacing, Type } from '@/constants/theme';
+import { isPremiumOnlyModule } from '@/features/premium/access';
 import { generateDailyProtocol } from '@/features/protocol/protocol';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
 import { dateKey, lastNDays, startOfWeek } from '@/lib/dates';
 import { localeForLanguage } from '@/lib/locale';
@@ -42,6 +45,8 @@ export default function TodayScreen() {
   const scrollY = useSharedValue(0);
 
   const profile = useProfile((s) => s.profile);
+  const onboardingCompletedAt = useProfile((s) => s.onboardingCompletedAt);
+  const { isPremium, loading } = usePremium();
   const cold30Day = useProgress((s) => s.cold30Day);
   const streak = useProgress((s) => s.streak);
   const completeTask = useProgress((s) => s.completeTask);
@@ -50,7 +55,10 @@ export default function TodayScreen() {
   const [calendarCursorDate, setCalendarCursorDate] = useState(() => new Date());
   const [streakSheetOpen, setStreakSheetOpen] = useState(false);
   const [compactHeaderActive, setCompactHeaderActive] = useState(false);
+  const todayKey = dateKey();
+  const minimumDateKey = onboardingCompletedAt ?? todayKey;
   const selectedDateKey = dateKey(selectedDate);
+  const protocolLocked = !loading && !isPremium && selectedDateKey !== todayKey;
   const dayRecord = useProgress((s) => s.history[selectedDateKey]);
   const history = useProgress((s) => s.history);
 
@@ -59,16 +67,24 @@ export default function TodayScreen() {
     [profile, cold30Day, selectedDate],
   );
   const tasksDone = dayRecord?.tasksDone ?? [];
-  const protocolTaskIds = useMemo(() => tasks.map((task) => task.id), [tasks]);
+  const protocolTaskIds = useMemo(
+    () =>
+      tasks
+        .filter((task) => isPremium || !isPremiumOnlyModule(task.module))
+        .map((task) => task.id),
+    [isPremium, tasks],
+  );
   const completedTaskCount = protocolTaskIds.filter((id) => tasksDone.includes(id)).length;
-  const score = tasks.length ? Math.round((completedTaskCount / tasks.length) * 100) : 0;
+  const score = protocolTaskIds.length
+    ? Math.round((completedTaskCount / protocolTaskIds.length) * 100)
+    : 0;
   const dayLetters = t('home.dayLetters', { returnObjects: true }) as string[];
   const streakKeys = useMemo(() => lastNDays(7), []);
   const locale = localeForLanguage(i18n.resolvedLanguage ?? i18n.language);
 
   useEffect(() => {
-    reconcileDay(selectedDateKey, protocolTaskIds);
-  }, [protocolTaskIds, reconcileDay, selectedDateKey]);
+    if (!protocolLocked) reconcileDay(selectedDateKey, protocolTaskIds);
+  }, [protocolLocked, protocolTaskIds, reconcileDay, selectedDateKey]);
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
       scrollY.value = event.contentOffset.y;
@@ -137,9 +153,15 @@ export default function TodayScreen() {
               cursorDate={calendarCursorDate}
               selectedDate={selectedDate}
               dayLetters={dayLetters}
+              minimumDateKey={minimumDateKey}
               onCursorDateChange={(date) => {
                 setCalendarCursorDate(date);
-                setSelectedDate(startOfWeek(date));
+                const weekStart = startOfWeek(date);
+                setSelectedDate(
+                  dateKey(weekStart) < minimumDateKey
+                    ? new Date(`${minimumDateKey}T12:00:00`)
+                    : weekStart,
+                );
               }}
               onSelectDate={setSelectedDate}
             />
@@ -174,57 +196,71 @@ export default function TodayScreen() {
                   : '0 -18px 38px rgba(43, 52, 77, 0.08)',
             },
           ]}>
-          <View style={styles.sectionHeader}>
-            <ThemedText style={Type.h2}>{t('home.todayProtocol')}</ThemedText>
-            <ThemedText style={[Type.h2, styles.protocolCount, { color: theme.textSecondary }]}>
-              {completedTaskCount}/{tasks.length}
-            </ThemedText>
-          </View>
+          <PremiumGate
+            locked={protocolLocked}
+            label={t('common.premium')}
+            onPress={() => router.push('/paywall')}>
+            <View style={styles.protocolContent}>
+              <View style={styles.sectionHeader}>
+                <ThemedText style={Type.h2}>{t('home.todayProtocol')}</ThemedText>
+                <ThemedText style={[Type.h2, styles.protocolCount, { color: theme.textSecondary }]}>
+                  {completedTaskCount}/{protocolTaskIds.length}
+                </ThemedText>
+              </View>
 
-          <View style={styles.tasks}>
-            {tasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                task={task}
-                done={tasksDone.includes(task.id)}
-                onPress={() => {
-                  if (task.session === 'cold') {
-                    router.push({
-                      pathname: '/cold-session',
-                      params: { day: String(cold30Day), date: selectedDateKey },
-                    });
-                  } else if (task.session === 'sauna') {
-                    router.push({
-                      pathname: '/sauna',
-                      params: { date: selectedDateKey, taskIds: protocolTaskIds.join(',') },
-                    });
-                  } else if (task.session === 'breath' || task.module === 'breath') {
-                    router.push({
-                      pathname: '/breath',
-                      params: {
-                        date: selectedDateKey,
-                        taskId: task.id,
-                        taskIds: protocolTaskIds.join(','),
-                      },
-                    });
-                  } else if (task.session === 'ro') {
-                    router.push({
-                      pathname: '/ro-session',
-                      params: { date: selectedDateKey, taskIds: protocolTaskIds.join(',') },
-                    });
-                  } else if (task.session === 'music') {
-                    router.push({
-                      pathname: '/kygo-jo',
-                      params: { date: selectedDateKey, taskIds: protocolTaskIds.join(',') },
-                    });
-                  } else {
-                    completeTask(selectedDateKey, task, protocolTaskIds);
-                  }
-                }}
-              />
-            ))}
-          </View>
-
+              <View style={styles.tasks}>
+                {tasks.map((task) => {
+                  const taskLocked = !loading && !isPremium && isPremiumOnlyModule(task.module);
+                  return (
+                    <TaskCard
+                      key={task.id}
+                      task={task}
+                      done={tasksDone.includes(task.id)}
+                      locked={taskLocked}
+                      onPress={() => {
+                        if (taskLocked) {
+                          router.push('/paywall');
+                          return;
+                        }
+                        if (task.session === 'cold') {
+                          router.push({
+                            pathname: '/cold-session',
+                            params: { day: String(cold30Day), date: selectedDateKey },
+                          });
+                        } else if (task.session === 'sauna') {
+                          router.push({
+                            pathname: '/sauna',
+                            params: { date: selectedDateKey, taskIds: protocolTaskIds.join(',') },
+                          });
+                        } else if (task.session === 'breath' || task.module === 'breath') {
+                          router.push({
+                            pathname: '/breath',
+                            params: {
+                              date: selectedDateKey,
+                              taskId: task.id,
+                              taskIds: protocolTaskIds.join(','),
+                            },
+                          });
+                        } else if (task.session === 'ro') {
+                          router.push({
+                            pathname: '/ro-session',
+                            params: { date: selectedDateKey, taskIds: protocolTaskIds.join(',') },
+                          });
+                        } else if (task.session === 'music') {
+                          router.push({
+                            pathname: '/kygo-jo',
+                            params: { date: selectedDateKey, taskIds: protocolTaskIds.join(',') },
+                          });
+                        } else {
+                          completeTask(selectedDateKey, task, protocolTaskIds);
+                        }
+                      }}
+                    />
+                  );
+                })}
+              </View>
+            </View>
+          </PremiumGate>
         </View>
       </Animated.ScrollView>
       <CompactTodayHeader
@@ -232,6 +268,7 @@ export default function TodayScreen() {
         cursorDate={calendarCursorDate}
         selectedDate={selectedDate}
         dayLetters={dayLetters}
+        minimumDateKey={minimumDateKey}
         score={score}
         streak={streak}
         scrollY={scrollY}
@@ -300,9 +337,11 @@ const styles = StyleSheet.create({
     marginHorizontal: -ScreenPadding,
     paddingHorizontal: ScreenPadding,
     paddingTop: Spacing.four,
-    gap: Spacing.three,
     borderTopLeftRadius: 34,
     borderTopRightRadius: 34,
+  },
+  protocolContent: {
+    gap: Spacing.three,
   },
   sectionHeader: {
     flexDirection: 'row',

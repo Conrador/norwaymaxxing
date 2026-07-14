@@ -12,6 +12,7 @@ import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
 import { BottomTabInset, CardGap, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { COLD_PLAN_DAYS } from '@/features/cold/plan';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
 import { useProgress } from '@/stores/progress';
 
@@ -20,9 +21,11 @@ export default function PracticesScreen() {
   const theme = useTheme();
   const themeName = useThemeName();
   const router = useRouter();
+  const { isPremium, loading } = usePremium();
   const cold30Day = useProgress((s) => s.cold30Day);
   const roSessionsCompleted = useProgress((s) => s.roSessionsCompleted);
   const musicSessionsCompleted = useProgress((s) => s.musicSessionsCompleted ?? 0);
+  const roLocked = !loading && !isPremium;
 
   const heroGradient =
     themeName === 'dark'
@@ -104,7 +107,9 @@ export default function PracticesScreen() {
               title={t('ro.taskTitle')}
               subtitle={t('practices.roSubtitle')}
               meta={roSessionsCompleted > 0 ? String(roSessionsCompleted) : t('practices.roNew')}
-              onPress={() => router.push('/ro-session')}
+              locked={roLocked}
+              lockedLabel={t('common.premium')}
+              onPress={() => router.push(roLocked ? '/paywall' : '/ro-session')}
             />
             <ModuleCard
               compact

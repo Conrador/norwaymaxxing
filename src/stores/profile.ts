@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+import { dateKey } from '@/lib/dates';
+
 /** Local profile answers. Remote onboarding is deferred until monetization returns. */
 
 export type Goal = 'energy' | 'resilience' | 'calm' | 'sleep' | 'physique';
@@ -23,6 +25,8 @@ type ProfileState = {
   /** Raw answers captured from local or future remote onboarding, keyed by step id. */
   rawAnswers: Record<string, unknown>;
   onboardingCompleted: boolean;
+  /** Local yyyy-mm-dd used as the first available dashboard calendar day. */
+  onboardingCompletedAt: string | null;
   setProfile: (profile: Profile) => void;
   recordAnswer: (stepId: string, answer: unknown) => void;
   completeOnboarding: () => void;
@@ -35,11 +39,19 @@ export const useProfile = create<ProfileState>()(
       profile: null,
       rawAnswers: {},
       onboardingCompleted: false,
+      onboardingCompletedAt: null,
       setProfile: (profile) => set({ profile }),
       recordAnswer: (stepId, answer) =>
         set((s) => ({ rawAnswers: { ...s.rawAnswers, [stepId]: answer } })),
-      completeOnboarding: () => set({ onboardingCompleted: true }),
-      reset: () => set({ profile: null, rawAnswers: {}, onboardingCompleted: false }),
+      completeOnboarding: () =>
+        set({ onboardingCompleted: true, onboardingCompletedAt: dateKey() }),
+      reset: () =>
+        set({
+          profile: null,
+          rawAnswers: {},
+          onboardingCompleted: false,
+          onboardingCompletedAt: null,
+        }),
     }),
     {
       name: 'profile',

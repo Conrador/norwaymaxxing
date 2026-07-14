@@ -25,7 +25,7 @@ export default function ColdPlanScreen() {
   const theme = useTheme();
   const themeName = useThemeName();
   const router = useRouter();
-  const { isPremium } = usePremium();
+  const { isPremium, loading } = usePremium();
 
   const cold30Day = useProgress((s) => s.cold30Day);
   const completed = useProgress((s) => s.cold30Completed);
@@ -34,16 +34,19 @@ export default function ColdPlanScreen() {
   const days = Array.from({ length: COLD_PLAN_DAYS }, (_, i) => i + 1);
   const completedCount = completed.length;
   const currentDone = completed.includes(cold30Day);
-  const currentLocked = !isPremium && isColdDayPremium(cold30Day) && !currentDone;
+  const currentLocked = !loading && !isPremium && isColdDayPremium(cold30Day) && !currentDone;
   const currentSeconds = coldDurationSeconds(cold30Day);
   const completedToday = coldLastCompletedDate === dateKey();
   const planProgress = Math.max(completedCount, cold30Day - 1) / COLD_PLAN_DAYS;
-  const heroDisabled = currentLocked || completedToday;
+  const heroDisabled = completedToday;
 
   const startCurrentDay = () => {
-    if (!heroDisabled) {
-      router.push({ pathname: '/cold-session', params: { day: String(cold30Day) } });
+    if (currentLocked) {
+      router.push('/paywall');
+      return;
     }
+    if (heroDisabled) return;
+    router.push({ pathname: '/cold-session', params: { day: String(cold30Day) } });
   };
 
   // Wycentruj aktualny dzień w journey na starcie
@@ -142,13 +145,17 @@ export default function ColdPlanScreen() {
             {days.map((day, index) => {
               const done = completed.includes(day);
               const isCurrent = day === cold30Day && !done;
-              const locked = !isPremium && isColdDayPremium(day) && !done;
+              const locked = !loading && !isPremium && isColdDayPremium(day) && !done;
               const isLast = index === days.length - 1;
 
               return (
                 <View key={day} style={styles.journeyItem}>
                   <View style={styles.journeyColumn}>
-                    <View
+                    <Pressable
+                      disabled={!locked}
+                      accessibilityRole={locked ? 'button' : undefined}
+                      accessibilityLabel={locked ? t('common.premium') : undefined}
+                      onPress={() => router.push('/paywall')}
                       style={[
                         styles.dayChip,
                         {
@@ -186,7 +193,7 @@ export default function ColdPlanScreen() {
                           {day}
                         </ThemedText>
                       )}
-                    </View>
+                    </Pressable>
                     <ThemedText style={[styles.chipMeta, { color: theme.textSecondary }]}>
                       {t('meta.seconds', { count: coldDurationSeconds(day) })}
                     </ThemedText>

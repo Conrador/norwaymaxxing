@@ -13,6 +13,8 @@ import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
 import { BottomTabInset, CardGap, Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { dailyNatureChallenges, NATURE_CHALLENGES, type ChallengeCategory } from '@/features/content/challenges';
+import { isNatureChallengePremium } from '@/features/premium/access';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
 import { dateKey } from '@/lib/dates';
 import { useProgress } from '@/stores/progress';
@@ -26,6 +28,7 @@ export default function NatureScreen() {
   const router = useRouter();
   const theme = useTheme();
   const themeName = useThemeName();
+  const { isPremium, loading } = usePremium();
   const [filter, setFilter] = useState<Filter>('all');
   const todayKey = dateKey();
   const dailySet = dailyNatureChallenges();
@@ -133,6 +136,8 @@ export default function NatureScreen() {
               const inTodaySet = dailyIds.includes(challenge.id);
               const isDoneToday = dailyDone.includes(challenge.id);
               const isSeen = seen.includes(challenge.id);
+              const locked =
+                !loading && !isPremium && isNatureChallengePremium(challenge.id) && !inTodaySet;
               return (
                 <ModuleCard
                   key={challenge.id}
@@ -150,9 +155,15 @@ export default function NatureScreen() {
                           : t('nature.libraryOnly')
                   }
                   progress={isDoneToday ? 1 : 0}
-                  onPress={() =>
-                    router.push(`/challenge/${challenge.id}` as never)
-                  }
+                  locked={locked}
+                  lockedLabel={t('common.premium')}
+                  onPress={() => {
+                    if (locked) {
+                      router.push('/paywall');
+                      return;
+                    }
+                    router.push(`/challenge/${challenge.id}` as never);
+                  }}
                 />
               );
             })}

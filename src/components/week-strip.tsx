@@ -16,6 +16,7 @@ type Props = {
   cursorDate: Date;
   selectedDate: Date;
   dayLetters: string[];
+  minimumDateKey?: string;
   onCursorDateChange: (date: Date) => void;
   onSelectDate: (date: Date) => void;
 };
@@ -29,22 +30,29 @@ function CalendarButton({
   fallback,
   label,
   onPress,
+  disabled = false,
 }: {
   icon: SFSymbol;
   fallback: string;
   label: string;
   onPress: () => void;
+  disabled?: boolean;
 }) {
   const theme = useTheme();
 
   return (
     <Pressable
       accessibilityLabel={label}
+      accessibilityState={{ disabled }}
+      disabled={disabled}
       hitSlop={10}
       onPress={onPress}
       style={({ pressed }) => [
         styles.navButton,
-        { backgroundColor: `${theme.surface}CC`, opacity: pressed ? 0.65 : 1 },
+        {
+          backgroundColor: `${theme.surface}CC`,
+          opacity: disabled ? 0.3 : pressed ? 0.65 : 1,
+        },
       ]}>
       {Platform.OS === 'ios' ? (
         <SymbolView name={icon} size={14} tintColor={theme.textPrimary} />
@@ -61,6 +69,7 @@ export function WeekStrip({
   cursorDate,
   selectedDate,
   dayLetters,
+  minimumDateKey,
   onCursorDateChange,
   onSelectDate,
 }: Props) {
@@ -75,6 +84,7 @@ export function WeekStrip({
   const weekStartKey = weekKeys[0];
 
   function navigate(date: Date, nextDirection: number) {
+    if (minimumDateKey && currentWeekKeys(date).every((key) => key < minimumDateKey)) return;
     setDirection(nextDirection);
     onCursorDateChange(date);
   }
@@ -86,12 +96,18 @@ export function WeekStrip({
           icon="chevron.backward.2"
           fallback="«"
           label={t('common.previousMonth')}
+          disabled={Boolean(
+            minimumDateKey && currentWeekKeys(addMonths(cursorDate, -1)).every((key) => key < minimumDateKey),
+          )}
           onPress={() => navigate(addMonths(cursorDate, -1), -1)}
         />
         <CalendarButton
           icon="chevron.left"
           fallback="‹"
           label={t('common.previousWeek')}
+          disabled={Boolean(
+            minimumDateKey && currentWeekKeys(addWeeks(cursorDate, -1)).every((key) => key < minimumDateKey),
+          )}
           onPress={() => navigate(addWeeks(cursorDate, -1), -1)}
         />
         <Pressable
@@ -126,9 +142,10 @@ export function WeekStrip({
         exiting={(direction < 0 ? FadeOutRight : FadeOutLeft).duration(120)}
         style={styles.daysRow}>
         {weekKeys.map((key, i) => {
-          const done = (history[key]?.score ?? 0) >= STREAK_SCORE_THRESHOLD;
+          const disabled = Boolean(minimumDateKey && key < minimumDateKey);
+          const done = !disabled && (history[key]?.score ?? 0) >= STREAK_SCORE_THRESHOLD;
           const isToday = key === todayKey;
-          const isSelected = key === selectedKey;
+          const isSelected = !disabled && key === selectedKey;
           const isPast = key < todayKey;
           const dayNumber = Number(key.slice(-2));
           const date = new Date(`${key}T12:00:00`);
@@ -136,10 +153,13 @@ export function WeekStrip({
           return (
             <Pressable
               key={key}
+              accessibilityState={{ disabled }}
+              disabled={disabled}
               onPress={() => onSelectDate(date)}
               style={[
                 styles.day,
                 isSelected && { backgroundColor: theme.surface },
+                disabled && styles.disabledDay,
               ]}>
               <ThemedText
                 style={[
@@ -252,5 +272,8 @@ const styles = StyleSheet.create({
     width: 4,
     height: 4,
     borderRadius: 2,
+  },
+  disabledDay: {
+    opacity: 0.24,
   },
 });

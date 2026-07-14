@@ -26,6 +26,7 @@ type Props = {
   cursorDate: Date;
   selectedDate: Date;
   dayLetters: string[];
+  minimumDateKey?: string;
   score: number;
   streak: number;
   scrollY: SharedValue<number>;
@@ -41,6 +42,7 @@ export function CompactTodayHeader({
   cursorDate,
   selectedDate,
   dayLetters,
+  minimumDateKey,
   score,
   streak,
   scrollY,
@@ -100,9 +102,10 @@ export function CompactTodayHeader({
         <View style={styles.topRow}>
           <View style={styles.daysRow}>
             {weekKeys.map((key, index) => {
-              const done = (history[key]?.score ?? 0) >= STREAK_SCORE_THRESHOLD;
+              const disabled = Boolean(minimumDateKey && key < minimumDateKey);
+              const done = !disabled && (history[key]?.score ?? 0) >= STREAK_SCORE_THRESHOLD;
               const isToday = key === todayKey;
-              const isSelected = key === selectedKey;
+              const isSelected = !disabled && key === selectedKey;
               const dayNumber = Number(key.slice(-2));
               const date = new Date(`${key}T12:00:00`);
 
@@ -111,6 +114,8 @@ export function CompactTodayHeader({
                   key={key}
                   accessibilityRole="button"
                   accessibilityLabel={key}
+                  accessibilityState={{ disabled }}
+                  disabled={disabled}
                   onPress={() => onSelectDate(date)}
                   style={({ pressed }) => [
                     styles.day,
@@ -120,7 +125,7 @@ export function CompactTodayHeader({
                         : done
                           ? `${theme.aurora}24`
                           : 'transparent',
-                      opacity: pressed ? 0.72 : 1,
+                      opacity: disabled ? 0.24 : pressed ? 0.72 : 1,
                     },
                   ]}>
                   <ThemedText

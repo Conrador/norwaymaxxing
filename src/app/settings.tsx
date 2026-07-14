@@ -22,7 +22,9 @@ import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
 import { Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
+import { usePremium } from '@/hooks/use-premium';
 import { LANGUAGES, type Language, type ThemeMode, useSettings } from '@/stores/settings';
+import { useProfile } from '@/stores/profile';
 
 const THEME_MODES: ThemeMode[] = ['system', 'light', 'dark'];
 const THEME_SYMBOLS: Record<ThemeMode, SFSymbol> = {
@@ -56,6 +58,8 @@ export default function SettingsScreen() {
   const setThemeMode = useSettings((s) => s.setThemeMode);
   const setLanguage = useSettings((s) => s.setLanguage);
   const setReminderEnabled = useSettings((s) => s.setReminderEnabled);
+  const resetProfile = useProfile((s) => s.reset);
+  const { resetPremium } = usePremium();
   const [languageOpen, setLanguageOpen] = useState(false);
   const languageLabel = language ? LANGUAGE_LABELS[language] : t('settings.device');
 
@@ -159,6 +163,31 @@ export default function SettingsScreen() {
             </View>
             <NativeSwitch value={reminderEnabled} onValueChange={setReminderEnabled} />
           </View>
+
+          {__DEV__ && (
+            <>
+              <SectionHeader title={t('settings.developer')} />
+              <Pressable
+                onPress={() => {
+                  resetPremium();
+                  resetProfile();
+                }}
+                style={({ pressed }) => [
+                  styles.card,
+                  styles.switchCard,
+                  { backgroundColor: theme.surface, opacity: pressed ? 0.7 : 1 },
+                ]}>
+                <View style={styles.switchText}>
+                  <ThemedText style={[Type.body, { color: theme.blood }]}>
+                    {t('settings.resetOnboarding')}
+                  </ThemedText>
+                  <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
+                    {t('settings.resetOnboardingMeta')}
+                  </ThemedText>
+                </View>
+              </Pressable>
+            </>
+          )}
         </ScrollView>
       </SafeAreaView>
     </ScreenBackground>

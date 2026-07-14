@@ -62,6 +62,8 @@ type Props = {
   progress?: number;
   meta?: string;
   compact?: boolean;
+  locked?: boolean;
+  lockedLabel?: string;
   onPress?: () => void;
 };
 
@@ -73,6 +75,8 @@ export function ModuleCard({
   progress,
   meta,
   compact = false,
+  locked = false,
+  lockedLabel = 'Premium',
   onPress,
 }: Props) {
   const router = useRouter();
@@ -86,6 +90,8 @@ export function ModuleCard({
         if (onPress) onPress();
         else if (href) router.push(href as never);
       }}
+      accessibilityRole="button"
+      accessibilityLabel={locked ? `${title}. ${lockedLabel}` : title}
       style={({ pressed }) => [
         styles.card,
         compact && styles.compact,
@@ -103,7 +109,20 @@ export function ModuleCard({
         )}
       </View>
 
-      {meta ? (
+      {locked ? (
+        <View
+          style={[
+            styles.metaBadge,
+            styles.lockMetaBadge,
+            { backgroundColor: themeName === 'dark' ? `${accent}24` : '#FFFFFFB8' },
+          ]}>
+          {Platform.OS === 'ios' ? (
+            <SymbolView name="lock.fill" size={13} tintColor={accent} />
+          ) : (
+            <Text style={styles.lockFallback}>🔒</Text>
+          )}
+        </View>
+      ) : meta ? (
         <View style={[styles.metaBadge, { backgroundColor: themeName === 'dark' ? `${accent}24` : '#FFFFFFB8' }]}>
           <ThemedText style={[Type.caption, styles.metaText, { color: accent }]} numberOfLines={1}>
             {meta}
@@ -111,7 +130,7 @@ export function ModuleCard({
         </View>
       ) : null}
 
-      <View style={styles.body}>
+      <View style={[styles.body, locked && styles.lockedBody]}>
         <ThemedText style={compact ? Type.body : Type.h2} numberOfLines={compact ? 2 : 1}>
           {title}
         </ThemedText>
@@ -168,13 +187,30 @@ const styles = StyleSheet.create({
     borderRadius: Radius.pill,
     paddingHorizontal: Spacing.two,
     paddingVertical: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.one,
   },
   metaText: {
     fontSize: 11,
     lineHeight: 14,
   },
+  lockMetaBadge: {
+    width: 30,
+    height: 30,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  lockFallback: {
+    fontSize: 12,
+  },
   progress: {
     width: '78%',
     marginTop: Spacing.one,
+  },
+  lockedBody: {
+    opacity: 0.5,
   },
 });

@@ -6,11 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { HabitMatrix, type HabitMatrixRow } from '@/components/habit-matrix';
 import { LinearProgress } from '@/components/linear-progress';
+import { PremiumGate } from '@/components/premium-gate';
 import { ScreenBackground } from '@/components/screen-background';
 import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
 import { BottomTabInset, Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { moduleColor } from '@/features/protocol/protocol';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
 import { lastNDays } from '@/lib/dates';
 import { localeForLanguage } from '@/lib/locale';
@@ -56,6 +58,8 @@ export default function YouScreen() {
   const router = useRouter();
   const theme = useTheme();
   const themeName = useThemeName();
+  const { isPremium, loading } = usePremium();
+  const premiumLocked = !loading && !isPremium;
   const xp = useProgress((s) => s.xp);
   const streak = useProgress((s) => s.streak);
   const history = useProgress((s) => s.history);
@@ -151,63 +155,78 @@ export default function YouScreen() {
           </View>
 
           {/* Grid statystyk — patern Open: liczby i labelki, hairline między rzędami */}
-          <View
-            style={[
-              styles.statsCard,
-              { backgroundColor: cardBg },
-              themeName === 'light' && styles.lightShadow,
-            ]}>
-            <View style={styles.statRow}>
-              <StatCell value={`${streak}`} label={t('you.statStreak')} />
-              <StatCell value={`${weekHits}`} label={t('you.weekHits')} />
-              <StatCell
-                value={`${totals.cold + totals.nature + totals.sauna}`}
-                label={t('you.activeMinutes')}
-              />
+          <PremiumGate
+            locked={premiumLocked}
+            label={t('common.premium')}
+            onPress={() => router.push('/paywall')}>
+            <View
+              style={[
+                styles.statsCard,
+                { backgroundColor: cardBg },
+                themeName === 'light' && styles.lightShadow,
+              ]}>
+              <View style={styles.statRow}>
+                <StatCell value={`${streak}`} label={t('you.statStreak')} />
+                <StatCell value={`${weekHits}`} label={t('you.weekHits')} />
+                <StatCell
+                  value={`${totals.cold + totals.nature + totals.sauna}`}
+                  label={t('you.activeMinutes')}
+                />
+              </View>
+              <View style={[styles.statDivider, { backgroundColor: hairline }]} />
+              <View style={styles.statRow}>
+                <StatCell value={`${totals.cold}`} label={t('you.coldMinutes')} color={theme.frost} />
+                <StatCell
+                  value={`${totals.nature}`}
+                  label={t('you.natureMinutes')}
+                  color={theme.aurora}
+                />
+                <StatCell value={`${totals.sauna}`} label={t('you.saunaMinutes')} color={theme.ember} />
+              </View>
             </View>
-            <View style={[styles.statDivider, { backgroundColor: hairline }]} />
-            <View style={styles.statRow}>
-              <StatCell value={`${totals.cold}`} label={t('you.coldMinutes')} color={theme.frost} />
-              <StatCell
-                value={`${totals.nature}`}
-                label={t('you.natureMinutes')}
-                color={theme.aurora}
-              />
-              <StatCell value={`${totals.sauna}`} label={t('you.saunaMinutes')} color={theme.ember} />
-            </View>
-          </View>
+          </PremiumGate>
 
-          <HabitMatrix rows={matrixRows} dateKeys={days} />
+          <PremiumGate
+            locked={premiumLocked}
+            label={t('common.premium')}
+            onPress={() => router.push('/paywall')}>
+            <HabitMatrix rows={matrixRows} dateKeys={days} />
+          </PremiumGate>
 
           <SectionHeader title={t('you.recentActivity')} />
-          <View
-            style={[
-              styles.activityCard,
-              { backgroundColor: cardBg },
-              themeName === 'light' && styles.lightShadow,
-            ]}>
-            {xpLog.slice(0, 6).map((event, index) => (
-              <View key={`${event.at}-${event.sourceKey}`}>
-                {index > 0 && <View style={[styles.activityDivider, { backgroundColor: hairline }]} />}
-                <View style={styles.activityRow}>
-                  <View style={styles.activityText}>
-                    <ThemedText style={Type.body}>{t(event.sourceKey)}</ThemedText>
-                    <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
-                      {new Date(event.at).toLocaleDateString(locale)}
+          <PremiumGate
+            locked={premiumLocked}
+            label={t('common.premium')}
+            onPress={() => router.push('/paywall')}>
+            <View
+              style={[
+                styles.activityCard,
+                { backgroundColor: cardBg },
+                themeName === 'light' && styles.lightShadow,
+              ]}>
+              {xpLog.slice(0, 6).map((event, index) => (
+                <View key={`${event.at}-${event.sourceKey}`}>
+                  {index > 0 && <View style={[styles.activityDivider, { backgroundColor: hairline }]} />}
+                  <View style={styles.activityRow}>
+                    <View style={styles.activityText}>
+                      <ThemedText style={Type.body}>{t(event.sourceKey)}</ThemedText>
+                      <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
+                        {new Date(event.at).toLocaleDateString(locale)}
+                      </ThemedText>
+                    </View>
+                    <ThemedText style={[Type.body, styles.activityXp, { color: theme.aurora }]}>
+                      {t('common.xp', { count: event.amount })}
                     </ThemedText>
                   </View>
-                  <ThemedText style={[Type.body, styles.activityXp, { color: theme.aurora }]}>
-                    {t('common.xp', { count: event.amount })}
-                  </ThemedText>
                 </View>
-              </View>
-            ))}
-            {xpLog.length === 0 ? (
-              <ThemedText style={[Type.body, { color: theme.textSecondary }]}>
-                {t('you.noActivity')}
-              </ThemedText>
-            ) : null}
-          </View>
+              ))}
+              {xpLog.length === 0 ? (
+                <ThemedText style={[Type.body, { color: theme.textSecondary }]}>
+                  {t('you.noActivity')}
+                </ThemedText>
+              ) : null}
+            </View>
+          </PremiumGate>
         </ScrollView>
       </SafeAreaView>
     </ScreenBackground>

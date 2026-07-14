@@ -11,10 +11,11 @@ type Props = {
   variant?: 'prominent' | 'glass' | 'destructive';
   tintColor?: string;
   disabled?: boolean;
+  fullWidth?: boolean;
 };
 
 /** RN/web fallback. iOS uses ui-button.ios.tsx with SwiftUI Button. */
-export function UiButton({ label, onPress, variant = 'glass', tintColor, disabled = false }: Props) {
+export function UiButton({ label, onPress, variant = 'glass', tintColor, disabled = false, fullWidth = false }: Props) {
   const theme = useTheme();
   const resolvedTint =
     tintColor ?? (variant === 'destructive' ? theme.blood : theme.frost);
@@ -34,6 +35,7 @@ export function UiButton({ label, onPress, variant = 'glass', tintColor, disable
       onPress={onPress}
       style={({ pressed }) => [
         styles.pill,
+        fullWidth && styles.fullWidth,
         { backgroundColor: background, opacity: disabled ? 0.45 : pressed ? 0.85 : 1 },
       ]}>
       <ThemedText style={[Type.body, { color, fontFamily: Type.h2.fontFamily }]}>{label}</ThemedText>
@@ -47,5 +49,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: Radius.pill,
     alignItems: 'center',
+  },
+  fullWidth: {
+    alignSelf: 'stretch',
+    width: '100%',
   },
 });

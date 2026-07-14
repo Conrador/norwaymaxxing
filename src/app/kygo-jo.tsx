@@ -1,5 +1,4 @@
 import * as Haptics from 'expo-haptics';
-import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
@@ -31,90 +30,20 @@ import { useProfile } from '@/stores/profile';
 import { useProgress } from '@/stores/progress';
 
 const TRACK_DURATION_SECONDS = 153;
-const APPLE_MUSIC_TRACK_ID = '6788515090';
+const TRACK_TITLE = 'Kygo Jo (Kygo Remix)';
 const SPOTIFY_NATIVE_URL = 'spotify:album:6AQiRXJ2i48Lu7CFUrKUER';
 const SPOTIFY_URL =
   'https://spotify.link/content_linking?~campaign=com.norwaymaxxing.app&$canonical_url=https%3A%2F%2Fopen.spotify.com%2Falbum%2F6AQiRXJ2i48Lu7CFUrKUER';
-const SPOTIFY_OEMBED_URL = `https://open.spotify.com/oembed?url=${encodeURIComponent('https://open.spotify.com/album/6AQiRXJ2i48Lu7CFUrKUER')}`;
 const APPLE_MUSIC_NATIVE_URL =
   'music://music.apple.com/ca/album/kygo-jo-feat-lyng-kygo-remix/6788515089?i=6788515090';
 const APPLE_MUSIC_URL =
   'https://music.apple.com/ca/album/kygo-jo-feat-lyng-kygo-remix/6788515089?i=6788515090';
-const APPLE_LOOKUP_URL = `https://itunes.apple.com/lookup?id=${APPLE_MUSIC_TRACK_ID}&entity=song&country=ca`;
 
 type MusicService = 'spotify' | 'appleMusic';
-type TrackMetadata = {
-  title: string;
-  subtitle: string;
-  duration: string;
-  artworkUrl: string | null;
-  providerName: string;
-  providerUrl: string;
-  releaseYear?: string;
-  genre?: string;
-};
-
-type SpotifyOembedResponse = {
-  title?: string;
-  thumbnail_url?: string;
-  provider_name?: string;
-  provider_url?: string;
-};
-
-type AppleLookupTrack = {
-  artistName?: string;
-  trackName?: string;
-  artworkUrl100?: string;
-  trackTimeMillis?: number;
-  releaseDate?: string;
-  primaryGenreName?: string;
-  trackViewUrl?: string;
-};
-
-type AppleLookupResponse = {
-  results?: AppleLookupTrack[];
-};
 
 function formatTime(seconds: number) {
   const minutes = Math.floor(seconds / 60);
   return `${minutes}:${String(seconds % 60).padStart(2, '0')}`;
-}
-
-function formatDurationMs(milliseconds?: number) {
-  if (!milliseconds) return null;
-  return formatTime(Math.round(milliseconds / 1000));
-}
-
-function highResAppleArtwork(url?: string) {
-  return url?.replace(/\/100x100bb\.jpg$/, '/600x600bb.jpg') ?? null;
-}
-
-async function fetchJson<T>(url: string) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`metadata fetch failed: ${response.status}`);
-  return response.json() as Promise<T>;
-}
-
-async function fetchTrackMetadata(): Promise<TrackMetadata> {
-  const [spotifyResult, appleResult] = await Promise.allSettled([
-    fetchJson<SpotifyOembedResponse>(SPOTIFY_OEMBED_URL),
-    fetchJson<AppleLookupResponse>(APPLE_LOOKUP_URL),
-  ]);
-  const spotify = spotifyResult.status === 'fulfilled' ? spotifyResult.value : null;
-  const apple = appleResult.status === 'fulfilled' ? appleResult.value.results?.[0] : null;
-  const artworkUrl = spotify?.thumbnail_url ?? highResAppleArtwork(apple?.artworkUrl100);
-  const providerName = spotify?.thumbnail_url ? (spotify.provider_name ?? 'Spotify') : 'Apple Music';
-
-  return {
-    title: apple?.trackName ?? spotify?.title ?? 'Kygo Jo (Kygo Remix)',
-    subtitle: apple?.artistName ?? 'Kygo, Flow Kingz & JMK feat. Lyng',
-    duration: formatDurationMs(apple?.trackTimeMillis) ?? '2:33',
-    artworkUrl,
-    providerName,
-    providerUrl: spotify?.thumbnail_url ? SPOTIFY_URL : (apple?.trackViewUrl ?? APPLE_MUSIC_URL),
-    releaseYear: apple?.releaseDate ? new Date(apple.releaseDate).getFullYear().toString() : undefined,
-    genre: apple?.primaryGenreName,
-  };
 }
 
 async function openMusicUrl(urls: string[]) {
@@ -128,6 +57,34 @@ async function openMusicUrl(urls: string[]) {
     }
   }
   throw lastError;
+}
+
+function MusicArtwork({ kicker, subtitle }: { kicker: string; subtitle: string }) {
+  return (
+    <LinearGradient
+      colors={['#172647', '#3D285D', '#B93E62']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.cover}>
+      <View style={styles.artworkBandOne} />
+      <View style={styles.artworkBandTwo} />
+      <SymbolView name="waveform" size={172} tintColor="rgba(255,255,255,0.12)" style={styles.artworkWave} />
+      <View style={styles.artworkHeader}>
+        <ThemedText style={styles.artworkKicker}>{kicker.toUpperCase()}</ThemedText>
+        <View style={styles.artworkIcon}>
+          <SymbolView name="music.note" size={18} tintColor="#FFFFFF" />
+        </View>
+      </View>
+      <View style={styles.artworkCopy}>
+        <ThemedText style={styles.artworkTitle}>{TRACK_TITLE}</ThemedText>
+        <ThemedText style={styles.artworkArtist}>{subtitle}</ThemedText>
+      </View>
+      <View style={styles.artworkFooter}>
+        <View style={styles.artworkRule} />
+        <ThemedText style={styles.artworkDuration}>2:33</ThemedText>
+      </View>
+    </LinearGradient>
+  );
 }
 
 function WaveBar({ active, color, index }: { active: boolean; color: string; index: number }) {
@@ -229,7 +186,6 @@ export default function KygoJoScreen() {
   const [hasLeftApp, setHasLeftApp] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [openingService, setOpeningService] = useState(false);
-  const [metadata, setMetadata] = useState<TrackMetadata | null>(null);
   const openedAtRef = useRef<number | null>(null);
 
   const tasks = useMemo(
@@ -246,28 +202,6 @@ export default function KygoJoScreen() {
   const remainingSeconds = Math.max(0, TRACK_DURATION_SECONDS - elapsedSeconds);
   const canComplete = hasLeftApp && remainingSeconds === 0 && !completedToday;
   const listening = openedAt !== null && remainingSeconds > 0;
-
-  useEffect(() => {
-    let mounted = true;
-    fetchTrackMetadata()
-      .then((nextMetadata) => {
-        if (mounted) setMetadata(nextMetadata);
-      })
-      .catch(() => {
-        if (!mounted) return;
-        setMetadata({
-          title: 'Kygo Jo (Kygo Remix)',
-          subtitle: 'Kygo, Flow Kingz & JMK feat. Lyng',
-          duration: '2:33',
-          artworkUrl: null,
-          providerName: 'Spotify',
-          providerUrl: SPOTIFY_URL,
-        });
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (nextState) => {
@@ -365,47 +299,14 @@ export default function KygoJoScreen() {
           </View>
 
           <View style={[styles.playerCard, themeName === 'light' && styles.playerLight]}>
-            {metadata?.artworkUrl ? (
-              <Image
-                source={{ uri: metadata.artworkUrl }}
-                contentFit="cover"
-                transition={180}
-                style={styles.cover}
-              />
-            ) : (
-              <LinearGradient
-                colors={['#292047', '#5C315D', '#C8506A']}
-                start={{ x: 0.15, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={[styles.cover, styles.coverFallback]}>
-                <SymbolView name="music.note" size={64} tintColor="#FFFFFF" />
-              </LinearGradient>
-            )}
+            <MusicArtwork kicker={t('music.kicker')} subtitle={t('music.subtitle')} />
             <View style={styles.trackInfo}>
               <View style={styles.trackTitleRow}>
                 <View style={styles.trackCopy}>
-                  <ThemedText style={styles.trackTitle}>{metadata?.title ?? t('music.taskTitle')}</ThemedText>
-                  <ThemedText style={styles.trackSubtitle}>{metadata?.subtitle ?? t('music.subtitle')}</ThemedText>
+                  <ThemedText style={styles.trackTitle}>{TRACK_TITLE}</ThemedText>
+                  <ThemedText style={styles.trackSubtitle}>{t('music.subtitle')}</ThemedText>
                 </View>
-                <ThemedText style={styles.duration}>{metadata?.duration ?? t('music.duration')}</ThemedText>
-              </View>
-
-              <View style={styles.metaRow}>
-                {metadata?.releaseYear ? (
-                  <ThemedText style={styles.metaPill}>{metadata.releaseYear}</ThemedText>
-                ) : null}
-                {metadata?.genre ? <ThemedText style={styles.metaPill}>{metadata.genre}</ThemedText> : null}
-                {metadata?.providerName ? (
-                  <Pressable
-                    accessibilityRole="link"
-                    onPress={() => Linking.openURL(metadata.providerUrl)}
-                    style={({ pressed }) => [styles.providerLink, { opacity: pressed ? 0.7 : 1 }]}>
-                    <ThemedText style={styles.providerText}>
-                      {t('music.metadataSource', { provider: metadata.providerName })}
-                    </ThemedText>
-                    <SymbolView name="arrow.up.right" size={11} tintColor="#AEBBD0" />
-                  </Pressable>
-                ) : null}
+                <ThemedText style={styles.duration}>{t('music.duration')}</ThemedText>
               </View>
 
               <View style={styles.waveform}>
@@ -514,10 +415,85 @@ const styles = StyleSheet.create({
     boxShadow: '0 18px 36px rgba(5, 10, 25, 0.24)',
   },
   playerLight: { boxShadow: '0 16px 34px rgba(31, 22, 53, 0.16)' },
-  cover: { width: '100%', aspectRatio: 1 },
-  coverFallback: {
+  cover: {
+    width: '100%',
+    aspectRatio: 1,
+    padding: Spacing.four,
+    overflow: 'hidden',
+    justifyContent: 'space-between',
+  },
+  artworkBandOne: {
+    position: 'absolute',
+    width: '120%',
+    height: 76,
+    right: -90,
+    top: 62,
+    backgroundColor: 'rgba(255,255,255,0.08)',
+    transform: [{ rotate: '-14deg' }],
+  },
+  artworkBandTwo: {
+    position: 'absolute',
+    width: '118%',
+    height: 38,
+    left: -80,
+    bottom: 74,
+    backgroundColor: 'rgba(54,217,176,0.18)',
+    transform: [{ rotate: '-14deg' }],
+  },
+  artworkWave: {
+    position: 'absolute',
+    right: -18,
+    bottom: 58,
+  },
+  artworkHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  artworkKicker: {
+    ...Type.caption,
+    color: '#FFFFFF',
+    letterSpacing: 0,
+  },
+  artworkIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.14)',
+  },
+  artworkCopy: {
+    gap: Spacing.two,
+    maxWidth: '88%',
+  },
+  artworkTitle: {
+    ...Type.display,
+    color: '#FFFFFF',
+    fontSize: 38,
+    lineHeight: 43,
+    letterSpacing: 0,
+  },
+  artworkArtist: {
+    ...Type.body,
+    color: 'rgba(255,255,255,0.76)',
+    letterSpacing: 0,
+  },
+  artworkFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.three,
+  },
+  artworkRule: {
+    flex: 1,
+    height: 2,
+    borderRadius: 1,
+    backgroundColor: 'rgba(255,255,255,0.34)',
+  },
+  artworkDuration: {
+    ...Type.caption,
+    color: '#FFFFFF',
+    fontVariant: ['tabular-nums'],
   },
   trackInfo: { padding: Spacing.three, gap: Spacing.three },
   trackTitleRow: { flexDirection: 'row', alignItems: 'flex-start', gap: Spacing.three },
@@ -525,28 +501,6 @@ const styles = StyleSheet.create({
   trackTitle: { ...Type.h1, color: '#FFFFFF' },
   trackSubtitle: { ...Type.caption, color: '#AEBBD0' },
   duration: { ...Type.caption, color: '#D6DEEB', fontVariant: ['tabular-nums'] },
-  metaRow: {
-    minHeight: 24,
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    gap: Spacing.two,
-  },
-  metaPill: {
-    ...Type.caption,
-    color: '#D6DEEB',
-    paddingHorizontal: Spacing.two,
-    paddingVertical: 4,
-    borderRadius: Radius.pill,
-    backgroundColor: 'rgba(255,255,255,0.10)',
-    overflow: 'hidden',
-  },
-  providerLink: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  providerText: { ...Type.caption, color: '#AEBBD0' },
   waveform: {
     height: 32,
     flexDirection: 'row',

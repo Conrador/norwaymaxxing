@@ -37,6 +37,7 @@ import {
   type RoBeatJudgement,
 } from '@/features/ro/session';
 import { generateDailyProtocol } from '@/features/protocol/protocol';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme } from '@/hooks/use-theme';
 import { dateKey } from '@/lib/dates';
 import { useProfile } from '@/stores/profile';
@@ -102,9 +103,12 @@ export default function RoSessionScreen() {
   const sessionDate = params.date ?? dateKey();
 
   const profile = useProfile((s) => s.profile);
+  const { isPremium, loading } = usePremium();
   const cold30Day = useProgress((s) => s.cold30Day);
   const completeTask = useProgress((s) => s.completeTask);
   const completeRoSession = useProgress((s) => s.completeRoSession);
+  // RO! jest wyłącznie premium — w każdym kontekście (protokół i biblioteka).
+  const premiumLocked = !loading && !isPremium;
 
   const tier = useMemo(() => roTier(cold30Day), [cold30Day]);
   const intervals = useMemo(() => repIntervalsMs(tier), [tier]);
@@ -145,6 +149,10 @@ export default function RoSessionScreen() {
   const pulseStyle = useAnimatedStyle(() => ({ transform: [{ scale: pulse.value }] }));
 
   useEffect(() => {
+    if (premiumLocked) router.replace('/paywall');
+  }, [premiumLocked, router]);
+
+  useEffect(() => {
     cancelAnimation(pulse);
     if (phase !== 'row' || armed || reducedMotion) {
       pulse.set(1);
@@ -176,6 +184,7 @@ export default function RoSessionScreen() {
   }, [armed, phase, rep]);
 
   useEffect(() => {
+    if (premiumLocked) return;
     const audio = new RoAudio();
     audioRef.current = audio;
     audio
@@ -187,7 +196,9 @@ export default function RoSessionScreen() {
       })
       .catch(() => setAudioReady(true)); // sesja działa też bez audio — haptyka niesie rytm
     return () => audio.dispose();
-  }, []);
+  }, [premiumLocked]);
+
+  if (premiumLocked) return null;
 
   const onHit = () => {
     if (phase !== 'row' || rep >= tier.reps) return;

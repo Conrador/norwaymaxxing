@@ -22,7 +22,8 @@
     "previousWeek": "Previous week",
     "nextWeek": "Next week",
     "nextMonth": "Next month",
-    "openStreakDetails": "Open streak details"
+    "openStreakDetails": "Open streak details",
+    "continue": "Continue"
   },
   "meta": {
     "seconds": "{{count}} s",
@@ -460,7 +461,10 @@
       "dark": "Low-light night surface."
     },
     "morningProtocol": "Morning protocol",
-    "morningProtocolMeta": "A local reminder to open today's protocol."
+    "morningProtocolMeta": "A local reminder to open today's protocol.",
+    "developer": "Developer",
+    "resetOnboarding": "Reset onboarding",
+    "resetOnboardingMeta": "Clears profile & shows welcome again"
   },
   "ranks": {
     "thrall": "Thrall",
@@ -535,12 +539,11 @@
     "story": "A Norwegian single in today's protocol, opened through the user's own music service.",
     "subtitle": "Kygo, Flow Kingz & JMK feat. Lyng",
     "duration": "2:33",
-    "metadataSource": "Metadata from {{provider}}",
     "instructions": "Open the single in your music app, press play if needed, then come back here.",
     "spotify": "Open in Spotify",
     "appleMusic": "Open in Apple Music",
     "listening": "Track in progress",
-    "ready": "Full track complete",
+    "ready": "Ready to mark complete",
     "remaining": "{{time}} remaining",
     "returnHint": "Music can keep playing while you are here.",
     "leaveFirst": "Open a music app to begin",
@@ -549,5 +552,84 @@
     "openErrorTitle": "Could not open the music app",
     "openErrorMessage": "Check your connection and try the other service.",
     "manualNote": "Open the track in your music app, let it play, then return here when you are done."
+  },
+  "onboarding": {
+    "welcome1": "The World Cup ends,",
+    "welcome2": "but your Norwegian lifestyle…",
+    "welcome3a": "…",
+    "welcome3b": "never",
+    "welcome3c": " does.",
+    "begin": "Begin",
+    "stepOf": "Step {{current}} of {{total}}",
+    "multiHint": "Pick up to {{count}}",
+    "q": {
+      "goals": "What are you chasing?",
+      "cold": "How well do you know the cold?",
+      "sauna": "Do you have sauna access?",
+      "nature": "What's your nature access?",
+      "diet": "How do you eat right now?"
+    },
+    "goal": {
+      "energy": "Energy",
+      "resilience": "Resilience",
+      "calm": "Calm",
+      "sleep": "Sleep",
+      "physique": "Physique"
+    },
+    "cold": {
+      "never": "Never tried it",
+      "sometimes": "Cold shower sometimes",
+      "regular": "I plunge regularly"
+    },
+    "sauna": {
+      "yes": "I have access",
+      "occasional": "Once in a while",
+      "no": "I don't"
+    },
+    "nature": {
+      "forest": "Forest around the corner",
+      "park": "City park",
+      "city": "Concrete everywhere"
+    },
+    "diet": {
+      "processed": "Lots of processed",
+      "mixed": "Half and half",
+      "clean": "Already clean"
+    },
+    "roTitle": "Feel it. You are the drummer.",
+    "roHint": "Two quick taps. The crowd roars back.",
+    "roDone": "That's the feeling. Now the rest.",
+    "buildingTitle": "Forging your protocol…",
+    "build": {
+      "cold": "Reading your cold access",
+      "nature": "Picking nature challenges",
+      "sauna": "Setting your sauna rhythm",
+      "breath": "Choosing breath alternatives",
+      "score": "Calibrating your Norway Score"
+    }
+  },
+  "paywall": {
+    "social": "4.9 · 2,000+ Vikings",
+    "titleA": "Live like a ",
+    "titleB": "Norwegian",
+    "titleC": ". Every day.",
+    "benefit": {
+      "cold": "Full 30-day cold plan",
+      "sauna": "All sauna protocols",
+      "nature": "All nature challenges and the full RO! activity",
+      "diet": "14-day Nordic meal plans",
+      "stats": "Weekly stats & habit history"
+    },
+    "yearly": "Yearly",
+    "monthly": "Monthly",
+    "bestValue": "BEST VALUE",
+    "perWeek": "{{price}} / week",
+    "perYear": "per year",
+    "perMonth": "per month",
+    "cta": "Unlock the protocol",
+    "cancelAnytime": "Cancel anytime in the App Store",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy"
   }
 }

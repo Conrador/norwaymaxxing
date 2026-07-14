@@ -11,6 +11,8 @@ import { ThemedText } from '@/components/themed-text';
 import { UiButton } from '@/components/ui-button';
 import { CardGap, Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { challengeById, dailyNatureChallenges } from '@/features/content/challenges';
+import { isNatureChallengePremium } from '@/features/premium/access';
+import { usePremium } from '@/hooks/use-premium';
 import { useTheme } from '@/hooks/use-theme';
 import { dateKey } from '@/lib/dates';
 import { useProgress } from '@/stores/progress';
@@ -26,6 +28,8 @@ export default function ChallengeScreen() {
   const todayKey = dateKey();
   const todayIds = dailyNatureChallenges().map((item) => item.id);
   const availableToday = todayIds.includes(id ?? '');
+  const { isPremium, loading } = usePremium();
+  const locked = !loading && !isPremium && isNatureChallengePremium(id) && !availableToday;
   const done = useProgress((s) => (s.natureDailyDone?.[todayKey] ?? EMPTY_IDS).includes(id ?? ''));
   const completeNatureChallenge = useProgress((s) => s.completeNatureChallenge);
 
@@ -48,8 +52,18 @@ export default function ChallengeScreen() {
             module={challenge.module}
             title={t(challenge.titleKey)}
             subtitle={t(challenge.subtitleKey)}
-            meta={done ? t('common.done') : availableToday ? t('common.xp', { count: challenge.xp }) : t('nature.libraryOnly')}
+            meta={
+              locked
+                ? t('common.premium')
+                : done
+                  ? t('common.done')
+                  : availableToday
+                    ? t('common.xp', { count: challenge.xp })
+                    : t('nature.libraryOnly')
+            }
             progress={done ? 1 : 0}
+            locked={locked}
+            lockedLabel={t('common.premium')}
           />
           <View style={styles.statsRow}>
             <StatsCard label={t('challenge.minutes')} value={`${challenge.minutes}`} accent={theme.frost} />
@@ -69,7 +83,14 @@ export default function ChallengeScreen() {
               </ThemedText>
             </View>
           ) : null}
-          {availableToday ? (
+          {locked ? (
+            <UiButton
+              label={t('common.premium')}
+              variant="prominent"
+              tintColor={theme.gold}
+              onPress={() => router.push('/paywall')}
+            />
+          ) : availableToday ? (
             <UiButton
               label={done ? t('common.done') : t('challenge.complete')}
               variant="prominent"
