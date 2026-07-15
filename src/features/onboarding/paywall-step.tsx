@@ -46,6 +46,8 @@ const BENEFIT_KEYS = [
   'paywall.benefit.stats',
 ];
 
+const STORE_CONNECTION_TIMEOUT_MS = 10_000;
+
 type RuntimePlan = {
   id: PlanId;
   packageId: string;
@@ -142,6 +144,8 @@ export function PaywallStep({
   const [selected, setSelected] = useState<PlanId>(DEFAULT_PLAN_ID);
   const [showClose, setShowClose] = useState(false);
   const [billingMessage, setBillingMessage] = useState<string | null>(null);
+  const [connectionAttempt, setConnectionAttempt] = useState(0);
+  const [storeConnectionTimedOut, setStoreConnectionTimedOut] = useState(false);
   const [locale] = useState(() => getLocales()[0]?.languageTag ?? 'en-US');
   const [fallbackAnalyticsContext] = useState(() => createStandalonePaywallAnalyticsContext());
   const [paywallViewedAt] = useState(() => Date.now());
@@ -193,13 +197,16 @@ export function PaywallStep({
     () => SUBSCRIPTION_PLANS.filter((plan) => Boolean(plans[plan.id])),
     [plans],
   );
+  const activePlanId = plans[selected] ? selected : availablePlans[0]?.id ?? selected;
+  const waitingForStore = !connected && !storeConnectionTimedOut;
+  const storeUnavailable = !connected && storeConnectionTimedOut;
   const pricingLoading =
-    !connected ||
-    !billingAdapter ||
-    billing.loading ||
-    (roRewardUnlocked && roRewardOffer.loading);
+    waitingForStore ||
+    (connected &&
+      (!billingAdapter || billing.loading || (roRewardUnlocked && roRewardOffer.loading)));
   const pricingUnavailable =
-    !pricingLoading && (Boolean(billing.error) || availablePlans.length === 0);
+    storeUnavailable ||
+    (!pricingLoading && (Boolean(billing.error) || availablePlans.length === 0));
 
   useEffect(() => {
     const id = setTimeout(() => setShowClose(true), 1500);
@@ -207,10 +214,16 @@ export function PaywallStep({
   }, []);
 
   useEffect(() => {
-    if (pricingLoading || plans[selected]) return;
-    const nextPlan = availablePlans[0];
-    if (nextPlan) setSelected(nextPlan.id);
-  }, [availablePlans, plans, pricingLoading, selected]);
+    if (connected) return;
+    const id = setTimeout(() => setStoreConnectionTimedOut(true), STORE_CONNECTION_TIMEOUT_MS);
+    return () => clearTimeout(id);
+  }, [connected, connectionAttempt]);
+
+  useEffect(() => {
+    if (__DEV__ && billing.error) {
+      console.warn('Unable to load Onborn offering or App Store prices.', billing.error);
+    }
+  }, [billing.error]);
 
   useEffect(() => {
     trackPaywallViewed(analyticsContext);
@@ -223,7 +236,7 @@ export function PaywallStep({
   }, [analyticsContext, paywallViewedAt]);
 
   const subscribe = async () => {
-    const plan = plans[selected];
+    const plan = plans[activePlanId];
     if (!plan) {
       setBillingMessage(t('paywall.unavailable'));
       return;
@@ -248,7 +261,7 @@ export function PaywallStep({
         if (__DEV__) console.warn('Unable to finish validated StoreKit transaction.', error);
       });
 
-      if (!syncEntitlements(result.entitlements, selected)) {
+      if (!syncEntitlements(result.entitlements, activePlanId)) {
         trackPaywallPurchaseFailed(
           analyticsContext,
           plan.packageId,
@@ -261,7 +274,7 @@ export function PaywallStep({
 
       exitTracked.current = true;
       trackPaywallConverted(analyticsContext, plan.productId);
-      onSubscribe(selected);
+      onSubscribe(activePlanId);
     } catch (error) {
       const cancelled = isCancelled(error);
       trackPaywallPurchaseFailed(
@@ -286,16 +299,18 @@ export function PaywallStep({
 
       Alert.alert(t('paywall.restoreTitle'), t('paywall.restoreSuccess'));
       exitTracked.current = true;
-      onSubscribe(selected);
+      onSubscribe(activePlanId);
     } catch {
       setBillingMessage(t('paywall.restoreFailed'));
     }
   };
 
   const busy = billing.purchasing || billing.restoring;
-  const canPurchase = connected && Boolean(plans[selected]) && !pricingLoading && !busy;
+  const canPurchase = connected && Boolean(plans[activePlanId]) && !pricingLoading && !busy;
   const retryPricing = () => {
     setBillingMessage(null);
+    setStoreConnectionTimedOut(false);
+    setConnectionAttempt((attempt) => attempt + 1);
     void Promise.all([billing.reload(), reloadRoRewardOffer()]);
   };
   const heroGradient =
@@ -335,13 +350,13 @@ export function PaywallStep({
           {pricingLoading ? (
             <View style={styles.pricingLoading} accessibilityLiveRegion="polite">
               <ActivityIndicator color={theme.frost} />
-              <ThemedText style={[Type.caption, { color: theme.textSecondary }]}> 
+              <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
                 {t('paywall.loadingPrices')}
               </ThemedText>
             </View>
           ) : pricingUnavailable ? (
             <View style={styles.billingStatus}>
-              <ThemedText style={[Type.caption, { color: theme.blood, textAlign: 'center' }]}> 
+              <ThemedText style={[Type.caption, { color: theme.blood, textAlign: 'center' }]}>
                 {t('paywall.unavailable')}
               </ThemedText>
               <Pressable onPress={retryPricing} hitSlop={10}>
@@ -350,80 +365,78 @@ export function PaywallStep({
             </View>
           ) : (
             <View style={styles.plans}>
-            {availablePlans.map((plan) => {
-              const active = selected === plan.id;
-              const runtimePlan = plans[plan.id]!;
-              return (
-                <Pressable
-                  key={plan.id}
-                  onPress={() => {
-                    void Haptics.selectionAsync();
-                    setSelected(plan.id);
-                    if (runtimePlan.packageId) {
+              {availablePlans.map((plan) => {
+                const active = activePlanId === plan.id;
+                const runtimePlan = plans[plan.id]!;
+                return (
+                  <Pressable
+                    key={plan.id}
+                    onPress={() => {
+                      void Haptics.selectionAsync();
+                      setSelected(plan.id);
                       billing.selectPackage(runtimePlan.packageId);
                       trackPaywallPackageSelected(
                         analyticsContext,
                         runtimePlan.packageId,
                         runtimePlan.productId,
                       );
-                    }
-                  }}
-                  style={[
-                    styles.planCard,
-                    {
-                      backgroundColor: themeName === 'dark' ? `${theme.surface}E6` : theme.surface,
-                      borderColor: active ? theme.frost : theme.border,
-                      borderWidth: active ? 2 : 1,
-                    },
-                  ]}>
-                  {(plan.highlighted || runtimePlan.reward) && (
-                    <View style={[styles.badge, { backgroundColor: theme.gold }]}>
-                      <Text style={styles.badgeText}>
-                        {t(runtimePlan.reward ? 'paywall.rewardBadge' : 'paywall.bestValue')}
-                      </Text>
+                    }}
+                    style={[
+                      styles.planCard,
+                      {
+                        backgroundColor: themeName === 'dark' ? `${theme.surface}E6` : theme.surface,
+                        borderColor: active ? theme.frost : theme.border,
+                        borderWidth: active ? 2 : 1,
+                      },
+                    ]}>
+                    {(plan.highlighted || runtimePlan.reward) && (
+                      <View style={[styles.badge, { backgroundColor: theme.gold }]}>
+                        <Text style={styles.badgeText}>
+                          {t(runtimePlan.reward ? 'paywall.rewardBadge' : 'paywall.bestValue')}
+                        </Text>
+                      </View>
+                    )}
+                    <View style={styles.planLeft}>
+                      <ThemedText style={Type.h2}>{t(plan.titleKey)}</ThemedText>
+                      {runtimePlan.reward ? (
+                        <ThemedText style={[Type.caption, { color: theme.gold }]}>
+                          {t('paywall.rewardFirstYear')}
+                        </ThemedText>
+                      ) : runtimePlan.perWeek ? (
+                        <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
+                          {t('paywall.perWeek', { price: runtimePlan.perWeek })}
+                        </ThemedText>
+                      ) : null}
                     </View>
-                  )}
-                  <View style={styles.planLeft}>
-                    <ThemedText style={Type.h2}>{t(plan.titleKey)}</ThemedText>
-                    {runtimePlan.reward ? (
-                      <ThemedText style={[Type.caption, { color: theme.gold }]}>
-                        {t('paywall.rewardFirstYear')}
-                      </ThemedText>
-                    ) : runtimePlan.perWeek ? (
+                    <View style={styles.planRight}>
+                      <View style={styles.priceLine}>
+                        {runtimePlan.reward && runtimePlan.originalPrice && (
+                          <ThemedText style={[Type.caption, styles.originalPrice, { color: theme.textSecondary }]}>
+                            {runtimePlan.originalPrice}
+                          </ThemedText>
+                        )}
+                        <ThemedText style={[Type.h2, { color: active ? theme.frost : theme.textPrimary }]}>
+                          {runtimePlan.price}
+                        </ThemedText>
+                      </View>
                       <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
-                        {t('paywall.perWeek', { price: runtimePlan.perWeek })}
+                        {t(plan.id === 'yearly' ? 'paywall.perYear' : 'paywall.perMonth')}
                       </ThemedText>
-                    ) : null}
-                  </View>
-                  <View style={styles.planRight}>
-                    <View style={styles.priceLine}>
                       {runtimePlan.reward && runtimePlan.originalPrice && (
-                        <ThemedText style={[Type.caption, styles.originalPrice, { color: theme.textSecondary }]}>
-                          {runtimePlan.originalPrice}
+                        <ThemedText style={[styles.renewalText, { color: theme.textSecondary }]}>
+                          {t('paywall.rewardRenews', { price: runtimePlan.originalPrice })}
                         </ThemedText>
                       )}
-                      <ThemedText style={[Type.h2, { color: active ? theme.frost : theme.textPrimary }]}>
-                        {runtimePlan.price}
-                      </ThemedText>
                     </View>
-                    <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
-                      {t(plan.id === 'yearly' ? 'paywall.perYear' : 'paywall.perMonth')}
-                    </ThemedText>
-                    {runtimePlan.reward && runtimePlan.originalPrice && (
-                      <ThemedText style={[styles.renewalText, { color: theme.textSecondary }]}>
-                        {t('paywall.rewardRenews', { price: runtimePlan.originalPrice })}
-                      </ThemedText>
-                    )}
-                  </View>
-                </Pressable>
-              );
-            })}
+                  </Pressable>
+                );
+              })}
             </View>
           )}
 
           {billingMessage ? (
             <View style={styles.billingStatus}>
-              <ThemedText style={[Type.caption, { color: theme.blood, textAlign: 'center' }]}> 
+              <ThemedText style={[Type.caption, { color: theme.blood, textAlign: 'center' }]}>
                 {billingMessage}
               </ThemedText>
             </View>
@@ -439,7 +452,7 @@ export function PaywallStep({
                 disabled={!canPurchase}
                 onPress={() => void subscribe()}
               />
-              <ThemedText style={[Type.caption, styles.cancel, { color: theme.textSecondary }]}> 
+              <ThemedText style={[Type.caption, styles.cancel, { color: theme.textSecondary }]}>
                 {t('paywall.cancelAnytime')}
               </ThemedText>
             </>

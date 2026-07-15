@@ -585,6 +585,7 @@
     "terms": "Villkor",
     "privacy": "Integritet",
     "processing": "Ansluter till App Store…",
+    "loadingPrices": "Hämtar priser från App Store…",
     "restoring": "Återställer…",
     "unavailable": "Abonnemang är tillfälligt otillgängliga. Försök igen om en stund.",
     "pending": "Ditt köp behandlas fortfarande av App Store.",

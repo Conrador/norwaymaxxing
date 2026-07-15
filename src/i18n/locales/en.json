@@ -760,6 +760,7 @@
     "terms": "Terms",
     "privacy": "Privacy",
     "processing": "Connecting to App Store…",
+    "loadingPrices": "Loading prices from the App Store…",
     "restoring": "Restoring…",
     "unavailable": "Subscriptions are temporarily unavailable. Try again in a moment.",
     "pending": "Your purchase is still being processed by the App Store.",
