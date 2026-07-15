@@ -11,7 +11,11 @@
       "icon": "./assets/norwaymaxxing.icon",
       "bundleIdentifier": "com.norwaymaxxing.norwaymaxxing",
       "supportsTablet": false,
-      "appleTeamId": "9N8NPNT7Q4"
+      "appleTeamId": "9N8NPNT7Q4",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSMicrophoneUsageDescription": "Norwaymaxxing's audio engine may access the microphone during interactive RO! rhythm sessions. Microphone audio is not recorded, stored, or shared."
+      }
     },
     "android": {
       "adaptiveIcon": {
