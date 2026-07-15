@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Onborn } from '@onborn/analytics';
+import { Onborn } from '@onborn/billing';
 import Constants from 'expo-constants';
 import { getLocales } from 'expo-localization';
 

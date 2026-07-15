@@ -18,7 +18,6 @@ import {
   type PlanId,
 } from '@/config/app';
 import { PRIVACY_POLICY_URL, TERMS_URL } from '@/config/legal';
-import { ONBORN_OFFERING_ID } from '@/config/onborn';
 import { Fonts, Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import {
   type NativeStoreBilling,
@@ -151,10 +150,7 @@ export function PaywallStep({
   const [paywallViewedAt] = useState(() => Date.now());
   const exitTracked = useRef(false);
   const analyticsContext = providedAnalyticsContext ?? fallbackAnalyticsContext;
-  const billing = useOnbornOffering({
-    offeringId: ONBORN_OFFERING_ID ?? 'missing-onborn-offering',
-    billingAdapter,
-  });
+  const billing = useOnbornOffering({ billingAdapter });
 
   const packagesByKind = useMemo<Partial<Record<PackageKind, RuntimePlan>>>(() => {
     const result: Partial<Record<PackageKind, RuntimePlan>> = {};
