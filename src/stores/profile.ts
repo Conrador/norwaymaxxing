@@ -27,8 +27,12 @@ type ProfileState = {
   onboardingCompleted: boolean;
   /** Local yyyy-mm-dd used as the first available dashboard calendar day. */
   onboardingCompletedAt: string | null;
+  /** RO! onboarding reward. StoreKit still decides whether the offer can be redeemed. */
+  roRewardUnlocked: boolean;
+  roRewardUnlockedAt: string | null;
   setProfile: (profile: Profile) => void;
   recordAnswer: (stepId: string, answer: unknown) => void;
+  unlockRoReward: () => void;
   completeOnboarding: () => void;
   reset: () => void;
 };
@@ -40,9 +44,13 @@ export const useProfile = create<ProfileState>()(
       rawAnswers: {},
       onboardingCompleted: false,
       onboardingCompletedAt: null,
+      roRewardUnlocked: false,
+      roRewardUnlockedAt: null,
       setProfile: (profile) => set({ profile }),
       recordAnswer: (stepId, answer) =>
         set((s) => ({ rawAnswers: { ...s.rawAnswers, [stepId]: answer } })),
+      unlockRoReward: () =>
+        set({ roRewardUnlocked: true, roRewardUnlockedAt: new Date().toISOString() }),
       completeOnboarding: () =>
         set({ onboardingCompleted: true, onboardingCompletedAt: dateKey() }),
       reset: () =>
@@ -51,6 +59,8 @@ export const useProfile = create<ProfileState>()(
           rawAnswers: {},
           onboardingCompleted: false,
           onboardingCompletedAt: null,
+          roRewardUnlocked: false,
+          roRewardUnlockedAt: null,
         }),
     }),
     {

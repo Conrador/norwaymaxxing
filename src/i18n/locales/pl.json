@@ -192,7 +192,6 @@
     "themeSystem": "Systemowy",
     "themeLight": "Dzień polarny",
     "themeDark": "Noc polarna",
-    "reminder": "Codzienne przypomnienie",
     "restorePurchases": "Przywróć zakupy",
     "statStreak": "Dni z rzędu"
   },
@@ -460,8 +459,6 @@
       "light": "Jasna powierzchnia na dzień.",
       "dark": "Ciemna powierzchnia na wieczór."
     },
-    "morningProtocol": "Poranny protokół",
-    "morningProtocolMeta": "Lokalne przypomnienie o dzisiejszym protokole.",
     "developer": "Deweloper",
     "resetOnboarding": "Zresetuj onboarding",
     "resetOnboardingMeta": "Czyści profil i pokazuje welcome ponownie"
@@ -592,13 +589,32 @@
       "city": "Beton wszędzie"
     },
     "diet": {
-      "processed": "Dużo przetworzonego",
-      "mixed": "Pół na pół",
-      "clean": "Już jem czysto"
+      "processed": "Głównie gotowe jedzenie",
+      "mixed": "Prawdziwy miks",
+      "clean": "Głównie produkty podstawowe"
     },
     "roTitle": "Poczuj to. Ty jesteś bębniarzem.",
     "roHint": "Dwa szybkie uderzenia. Tłum odpowiada.",
     "roDone": "O to chodzi. Teraz reszta.",
+    "reward": {
+      "kicker": "NAGRODA RO!",
+      "title": "Utrzymaj rytm. Zgarnij 20%.",
+      "body": "Traf co najmniej 5 z 7 ocenianych rytmów i odblokuj 20% zniżki na pierwszy rok Premium.",
+      "ruleWarmup": "1 runda rozgrzewkowa",
+      "ruleHits": "5 trafień w rytmie odblokowuje nagrodę",
+      "ruleRetry": "1 druga próba, jeśli jej potrzebujesz",
+      "cta": "Gram o 20%",
+      "terms": "{{introductoryPrice}} za pierwszy rok, potem {{standardPrice}}/rok. Subskrypcja odnawia się automatycznie.",
+      "progress": "{{current}}/{{total}} trafień w rytmie",
+      "successTitle": "Rytm utrzymany. Nagroda odblokowana.",
+      "successBody": "{{percentage}}% w rytmie. Zniżka na pierwszy rok czeka na paywallu.",
+      "missTitle": "Prawie. Złap drugą falę.",
+      "retryBody": "{{percentage}}% w rytmie. Masz jeszcze jedną próbę, aby zdobyć nagrodę.",
+      "finalMissBody": "{{percentage}}% w rytmie. Twój protokół jest gotowy także bez nagrody.",
+      "claim": "Odbieram 20% zniżki",
+      "retry": "Spróbuj jeszcze raz",
+      "ready": "Nagroda RO!: 20% zniżki na pierwszy rok"
+    },
     "buildingTitle": "Kuję twój protokół…",
     "build": {
       "cold": "Analizuję dostęp do zimna",
@@ -606,10 +622,111 @@
       "sauna": "Ustawiam rytm sauny",
       "breath": "Dobieram alternatywy oddechowe",
       "score": "Kalibruję Norway Score"
+    },
+    "qHint": {
+      "goals": "Wybierz maksymalnie trzy. Protokół położy na nie większy nacisk.",
+      "cold": "To ustala ostrożny start, a nie sprawdza twoją twardość.",
+      "sauna": "Dopasujemy dni ciepła do dostępu, który naprawdę masz.",
+      "nature": "Park w mieście też się liczy. Bazujemy na tym, co masz blisko.",
+      "diet": "Bez poczucia winy i bez detoksu. Powiedz, jak zwykle jesz."
+    },
+    "insight": {
+      "benefits": {
+        "title": "Cztery filary. Jeden dzienny protokół.",
+        "body": "Krótkie działania związane z zimnem, ciepłem, naturą i jedzeniem tworzą rytm, który da się powtarzać.",
+        "items": {
+          "cold": "Zimno",
+          "heat": "Ciepło",
+          "outside": "Natura",
+          "food": "Nordyckie jedzenie"
+        }
+      },
+      "sauna": {
+        "title": "Ciepło to tylko połowa rytuału.",
+        "body": "Norwaymaxxing stawia na kontrolę, nie bicie rekordów. Sauna jest opcjonalna, a więcej nie zawsze znaczy lepiej.",
+        "items": {
+          "heat": "Grzej się komfortowo, bez bicia rekordów",
+          "cool": "Schładzaj się stopniowo i przerwij przy złym samopoczuciu",
+          "rest": "Odpoczywaj co najmniej tyle, ile trwało grzanie"
+        }
+      },
+      "evidence": {
+        "title": "Najpierw dowody, potem hype.",
+        "body": "To system nawyków, nie leczenie. Tam, gdzie dowody są ograniczone, dawki pozostają ostrożne.",
+        "items": {
+          "guidance": "Norweskie zalecenia zdrowia publicznego",
+          "research": "Nordyckie Zalecenia Żywieniowe 2023",
+          "safety": "Ostrożne zasady bezpieczeństwa dla ciepła i zimna"
+        }
+      },
+      "nature": {
+        "title": "Friluftsliv zaczyna się za drzwiami.",
+        "body": "Nie potrzebujesz fiordu. Regularny, zwyczajny czas na zewnątrz jest ważniejszy niż idealne miejsce.",
+        "items": {
+          "nearby": "Korzystaj z natury, do której łatwo wracać",
+          "weather": "Wychodź przy zwykłej pogodzie i ubieraj się odpowiednio",
+          "care": "Szanuj lokalne zasady i nie zostawiaj po sobie śladów"
+        }
+      },
+      "diet": {
+        "title": "Nordyckie jedzenie to wzorzec, nie detoks.",
+        "body": "Buduj większość posiłków na roślinach, pełnych ziarnach i elastycznych źródłach białka. Jedzenie nie potrzebuje ocen moralnych.",
+        "items": {
+          "plants": "Warzywa, owoce i jagody",
+          "grains": "Pełne ziarna, ziemniaki, orzechy i nasiona",
+          "protein": "Ryby, strączki i elastyczne wybory"
+        }
+      },
+      "community": {
+        "title": "Dołączasz do pierwszej fali.",
+        "body": "Nowa społeczność buduje nordyckie nawyki dzień po dniu. Zacznij tam, gdzie jesteś, a seria pokaże wykonaną pracę.",
+        "days": [
+          "P",
+          "W",
+          "Ś",
+          "C",
+          "P",
+          "S",
+          "N"
+        ],
+        "items": {
+          "different": "Różne punkty startu są czymś normalnym",
+          "daily": "Jeden jasny protokół na każdy dzień",
+          "visible": "Postęp jest widoczny i trzeba na niego zapracować"
+        }
+      },
+      "ro": {
+        "title": "Teraz zróbmy hałas.",
+        "body": "RO! zmienia norweski rytm wioślarski w krótką grę. Dwa uderzenia uruchamiają falę, potem trzymasz tempo.",
+        "sound": "Włącz dźwięk dla odpowiedzi tłumu",
+        "cta": "Zagraj w RO!"
+      }
+    },
+    "result": {
+      "title": "Dlatego ten plan ma szansę zostać z tobą.",
+      "body": "Nie musisz sam układać pięciu nawyków. Norwaymaxxing zmienia twój punkt startu w krótki protokół na dziś, a kolejne kroki dopasowuje do regularności.",
+      "focus": "Plan oparty na twoich celach",
+      "items": {
+        "clear": "Jeden jasny protokół zamiast pięciu osobnych rutyn",
+        "adaptive": "Zimno, sauna i natura dopasowane do twojego doświadczenia i dostępu",
+        "feedback": "Norway Score pokazuje to, co naprawdę udało ci się zrobić"
+      },
+      "cta": "Pokaż mój protokół"
+    },
+    "ready": {
+      "days": "dni protokołu",
+      "title": "Twój 14-dniowy nordycki protokół jest gotowy.",
+      "body": "Pierwszy dzień jest krótki celowo. Zacznij dziś, zdobądź pierwszy wynik i pozwól planowi rozwijać się razem z twoją regularnością.",
+      "items": {
+        "start": "Zacznij",
+        "build": "Buduj",
+        "repeat": "Powtarzaj"
+      },
+      "cta": "Dalej"
     }
   },
   "paywall": {
-    "social": "4,9 · 2000+ Wikingów",
+    "social": "Oparte na dowodach · Stworzone na co dzień",
     "titleA": "Żyj jak ",
     "titleB": "Norweg",
     "titleC": ". Codziennie.",
@@ -623,6 +740,9 @@
     "yearly": "Rocznie",
     "monthly": "Miesięcznie",
     "bestValue": "NAJLEPSZA CENA",
+    "rewardBadge": "NAGRODA RO! -20%",
+    "rewardFirstYear": "Nagroda na pierwszy rok",
+    "rewardRenews": "potem {{price}} / rok",
     "perWeek": "{{price}} / tydz.",
     "perYear": "rocznie",
     "perMonth": "miesięcznie",
@@ -630,6 +750,17 @@
     "cancelAnytime": "Anuluj kiedy chcesz w App Store",
     "restore": "Przywróć",
     "terms": "Regulamin",
-    "privacy": "Prywatność"
+    "privacy": "Prywatność",
+    "processing": "Łączenie z App Store…",
+    "restoring": "Przywracanie…",
+    "unavailable": "Subskrypcje są chwilowo niedostępne. Spróbuj ponownie za moment.",
+    "pending": "App Store nadal przetwarza zakup.",
+    "entitlementMissing": "Zakup został odebrany, ale dostęp premium nie jest jeszcze aktywny. Użyj opcji Przywróć.",
+    "purchaseFailed": "Nie udało się dokończyć zakupu. Spróbuj ponownie.",
+    "retry": "Spróbuj ponownie",
+    "restoreTitle": "Przywróć zakupy",
+    "nothingToRestore": "Nie znaleziono aktywnej subskrypcji Norwaymaxxing dla tego Apple ID.",
+    "restoreSuccess": "Dostęp premium został przywrócony.",
+    "restoreFailed": "Nie udało się przywrócić zakupów. Spróbuj ponownie."
   }
 }

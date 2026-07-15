@@ -35,6 +35,10 @@ export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
   { id: 'monthly', productId: 'norwaymaxx_monthly', titleKey: 'paywall.monthly', highlighted: false },
 ];
 
+/** Annual product with a paid, one-year introductory offer unlocked by RO!. */
+export const RO_REWARD_PRODUCT_ID =
+  process.env.EXPO_PUBLIC_RO_REWARD_PRODUCT_ID?.trim() || 'norwaymaxx_yearly_ro20';
+
 export const DEFAULT_PLAN_ID: PlanId = 'yearly';
 
 /**

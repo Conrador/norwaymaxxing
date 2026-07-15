@@ -16,7 +16,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedAccordion } from '@/components/animated-accordion';
 import { BackButton } from '@/components/back-button';
-import { NativeSwitch } from '@/components/native-switch';
 import { ScreenBackground } from '@/components/screen-background';
 import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
@@ -54,10 +53,8 @@ export default function SettingsScreen() {
   const themeName = useThemeName();
   const themeMode = useSettings((s) => s.themeMode);
   const language = useSettings((s) => s.language);
-  const reminderEnabled = useSettings((s) => s.reminderEnabled);
   const setThemeMode = useSettings((s) => s.setThemeMode);
   const setLanguage = useSettings((s) => s.setLanguage);
-  const setReminderEnabled = useSettings((s) => s.setReminderEnabled);
   const resetProfile = useProfile((s) => s.reset);
   const { resetPremium } = usePremium();
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -151,17 +148,6 @@ export default function SettingsScreen() {
                 })}
               </View>
             </AnimatedAccordion>
-          </View>
-
-          <SectionHeader title={t('you.reminder')} />
-          <View style={[styles.card, styles.switchCard, { backgroundColor: theme.surface }]}>
-            <View style={styles.switchText}>
-              <ThemedText style={Type.body}>{t('settings.morningProtocol')}</ThemedText>
-              <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
-                {t('settings.morningProtocolMeta')}
-              </ThemedText>
-            </View>
-            <NativeSwitch value={reminderEnabled} onValueChange={setReminderEnabled} />
           </View>
 
           {__DEV__ && (

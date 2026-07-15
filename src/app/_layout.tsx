@@ -9,15 +9,16 @@ import {
 import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AppState } from 'react-native';
 
 import { ONBOARDING_ENABLED } from '@/config/app';
 import { Colors, Fonts } from '@/constants/theme';
 import { OnboardingFlow } from '@/features/onboarding/onboarding-flow';
-import { usePremium } from '@/hooks/use-premium';
+import { PremiumProvider, usePremium } from '@/hooks/use-premium';
 import { useThemeName } from '@/hooks/use-theme';
 import { flushOnbornAnalytics, stopOnbornAnalytics } from '@/lib/onborn-analytics';
+import { initializeOnborn } from '@/lib/onborn-runtime';
 import { useProfile } from '@/stores/profile';
 
 SplashScreen.preventAutoHideAsync();
@@ -26,7 +27,7 @@ export default function RootLayout() {
   const themeName = useThemeName();
   const onboardingCompleted = useProfile((s) => s.onboardingCompleted);
   const showOnboarding = ONBOARDING_ENABLED && !onboardingCompleted;
-  const { loading: premiumLoading } = usePremium();
+  const [onbornEnabled, setOnbornEnabled] = useState<boolean | null>(null);
   const [fontsLoaded] = useFonts({
     SchibstedGrotesk_400Regular,
     SchibstedGrotesk_500Medium,
@@ -35,8 +36,20 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (fontsLoaded && !premiumLoading) SplashScreen.hideAsync();
-  }, [fontsLoaded, premiumLoading]);
+    let active = true;
+    void initializeOnborn(showOnboarding ? 'new' : 'returning')
+      .then((enabled) => {
+        if (active) setOnbornEnabled(enabled);
+      })
+      .catch((error) => {
+        if (__DEV__) console.warn('Unable to initialize Onborn.', error);
+        if (active) setOnbornEnabled(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [showOnboarding]);
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (state) => {
@@ -49,7 +62,29 @@ export default function RootLayout() {
     };
   }, []);
 
-  if (!fontsLoaded || premiumLoading) return null;
+  if (!fontsLoaded || onbornEnabled === null) return null;
+
+  return (
+    <PremiumProvider onbornEnabled={onbornEnabled}>
+      <AppContent themeName={themeName} showOnboarding={showOnboarding} />
+    </PremiumProvider>
+  );
+}
+
+function AppContent({
+  themeName,
+  showOnboarding,
+}: {
+  themeName: 'light' | 'dark';
+  showOnboarding: boolean;
+}) {
+  const { loading: premiumLoading } = usePremium();
+
+  useEffect(() => {
+    if (!premiumLoading) void SplashScreen.hideAsync();
+  }, [premiumLoading]);
+
+  if (premiumLoading) return null;
 
   const palette = Colors[themeName];
   const base = themeName === 'dark' ? DarkTheme : DefaultTheme;

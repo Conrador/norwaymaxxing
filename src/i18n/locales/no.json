@@ -192,7 +192,6 @@
     "themeSystem": "System",
     "themeLight": "Polar dag",
     "themeDark": "Polar natt",
-    "reminder": "Daglig påminnelse",
     "restorePurchases": "Gjenopprett kjøp",
     "statStreak": "Dager på rad"
   },
@@ -460,8 +459,6 @@
       "light": "Lys polar flate for dagtid.",
       "dark": "Mørk flate for kveld."
     },
-    "morningProtocol": "Morgenprotokoll",
-    "morningProtocolMeta": "Lokal påminnelse om dagens protokoll.",
     "developer": "Utvikler",
     "resetOnboarding": "Nullstill onboarding",
     "resetOnboardingMeta": "Tømmer profil og viser velkomst igjen"
@@ -592,13 +589,32 @@
       "city": "Betong overalt"
     },
     "diet": {
-      "processed": "Mye bearbeidet",
-      "mixed": "Halvt om halvt",
-      "clean": "Spiser allerede rent"
+      "processed": "Mest ferdigmat",
+      "mixed": "En ekte blanding",
+      "clean": "Mest råvarer"
     },
     "roTitle": "Føl det. Du er trommeslageren.",
     "roHint": "To raske slag. Folkemengden svarer.",
     "roDone": "Det er følelsen. Nå resten.",
+    "reward": {
+      "kicker": "RO!-BELØNNING",
+      "title": "Hold takten. Få 20 % rabatt.",
+      "body": "Treff minst 5 av 7 vurderte rytmer og lås opp 20 % rabatt på ditt første år med Premium.",
+      "ruleWarmup": "1 oppvarmingsrunde",
+      "ruleHits": "5 treff i takt låser opp belønningen",
+      "ruleRetry": "1 nytt forsøk hvis du trenger det",
+      "cta": "Spill for 20 % rabatt",
+      "terms": "{{introductoryPrice}} det første året, deretter {{standardPrice}}/år. Fornyes automatisk.",
+      "progress": "{{current}}/{{total}} treff i takt",
+      "successTitle": "Takten holdt. Belønningen er låst opp.",
+      "successBody": "{{percentage}} % i takt. Rabatten for første år venter på betalingsskjermen.",
+      "missTitle": "Nesten. Ta den neste bølgen.",
+      "retryBody": "{{percentage}} % i takt. Du har ett forsøk til på å nå belønningen.",
+      "finalMissBody": "{{percentage}} % i takt. Protokollen din er fortsatt klar uten belønningen.",
+      "claim": "Hent 20 % rabatt",
+      "retry": "Prøv igjen",
+      "ready": "RO!-belønning: 20 % rabatt på første år"
+    },
     "buildingTitle": "Smir protokollen din…",
     "build": {
       "cold": "Leser kuldetilgangen din",
@@ -606,10 +622,111 @@
       "sauna": "Setter badstue-rytmen",
       "breath": "Velger pustealternativer",
       "score": "Kalibrerer Norway Score"
+    },
+    "qHint": {
+      "goals": "Velg opptil tre. Protokollen legger ekstra vekt på dem.",
+      "cold": "Dette setter et forsiktig startpunkt, ikke en prøve på hvor tøff du er.",
+      "sauna": "Vi tilpasser varmedagene til tilgangen du faktisk har.",
+      "nature": "En bypark teller også. Vi bygger rundt det du kan nå.",
+      "diet": "Ingen skyld og ingen rens. Fortell bare hva som er vanlig for deg."
+    },
+    "insight": {
+      "benefits": {
+        "title": "Fire grep. Én daglig protokoll.",
+        "body": "Korte handlinger med kulde, varme, natur og mat skaper en rytme du faktisk kan gjenta.",
+        "items": {
+          "cold": "Kulde",
+          "heat": "Varme",
+          "outside": "Uteliv",
+          "food": "Nordisk mat"
+        }
+      },
+      "sauna": {
+        "title": "Varme er bare halve ritualet.",
+        "body": "Norwaymaxxing prioriterer kontroll fremfor utholdenhet. Badstue er valgfritt, og mer er ikke automatisk bedre.",
+        "items": {
+          "heat": "Varm deg komfortabelt uten å jage rekorder",
+          "cool": "Kjøl deg gradvis ned og stopp hvis du føler deg dårlig",
+          "rest": "Hvil minst like lenge som du varmet deg"
+        }
+      },
+      "evidence": {
+        "title": "Kunnskap før hype.",
+        "body": "Appen er et system for livsstilsvaner, ikke medisinsk behandling. Dosene er forsiktige der kunnskapen er begrenset.",
+        "items": {
+          "guidance": "Norske råd for folkehelse",
+          "research": "Nordic Nutrition Recommendations 2023",
+          "safety": "Forsiktige sikkerhetsregler for varme og kulde"
+        }
+      },
+      "nature": {
+        "title": "Friluftsliv starter utenfor døren.",
+        "body": "Du trenger ingen fjord. Vanlig tid ute ofte betyr mer enn det perfekte stedet.",
+        "items": {
+          "nearby": "Bruk naturen du enkelt kan komme tilbake til",
+          "weather": "Gå ut i vanlig vær med passende klær",
+          "care": "Følg lokale regler og ikke etterlat spor"
+        }
+      },
+      "diet": {
+        "title": "Nordisk mat er et mønster, ikke en kur.",
+        "body": "Bygg de fleste måltider på planter, fullkorn og fleksible proteinkilder. Mat trenger ingen moralske merkelapper.",
+        "items": {
+          "plants": "Grønnsaker, frukt og bær",
+          "grains": "Fullkorn, poteter, nøtter og frø",
+          "protein": "Fisk, belgfrukter og fleksible valg"
+        }
+      },
+      "community": {
+        "title": "Du blir med i den første bølgen.",
+        "body": "Et nytt fellesskap bygger nordiske vaner én dag av gangen. Start der du er, og la streaken vise arbeidet.",
+        "days": [
+          "M",
+          "T",
+          "O",
+          "T",
+          "F",
+          "L",
+          "S"
+        ],
+        "items": {
+          "different": "Ulike startpunkter er helt normalt",
+          "daily": "Én tydelig protokoll hver dag",
+          "visible": "Fremgangen er synlig og fortjent"
+        }
+      },
+      "ro": {
+        "title": "Nå lager vi lyd.",
+        "body": "RO! gjør den norske rorytmen til et kort rytmespill. To slag starter bølgen, så holder du takten.",
+        "sound": "Lyd på for å høre folkemengden",
+        "cta": "Prøv RO!"
+      }
+    },
+    "result": {
+      "title": "Derfor kan denne planen bli en vane.",
+      "body": "Du trenger ikke planlegge fem vaner selv. Norwaymaxxing gjør utgangspunktet ditt om til én kort protokoll for i dag, og tilpasser neste steg etter hvert som du blir mer jevn.",
+      "focus": "Bygget rundt målene dine",
+      "items": {
+        "clear": "Én tydelig protokoll i stedet for fem separate rutiner",
+        "adaptive": "Kulde, badstue og natur tilpasses tilgangen og erfaringen din",
+        "feedback": "Norway Score viser hva du faktisk fullførte"
+      },
+      "cta": "Vis protokollen min"
+    },
+    "ready": {
+      "days": "dagers protokoll",
+      "title": "Din 14-dagers nordiske protokoll er klar.",
+      "body": "Dag én er kort med vilje. Start i dag, få ditt første signal og la planen vokse med vanene dine.",
+      "items": {
+        "start": "Start",
+        "build": "Bygg",
+        "repeat": "Gjenta"
+      },
+      "cta": "Fortsett"
     }
   },
   "paywall": {
-    "social": "4,9 · 2000+ vikinger",
+    "social": "Kunnskapsbasert · Bygget for hverdagen",
     "titleA": "Lev som en ",
     "titleB": "nordmann",
     "titleC": ". Hver dag.",
@@ -623,6 +740,9 @@
     "yearly": "Årlig",
     "monthly": "Månedlig",
     "bestValue": "BESTE VERDI",
+    "rewardBadge": "RO!-BELØNNING -20 %",
+    "rewardFirstYear": "Belønning første år",
+    "rewardRenews": "deretter {{price}} / år",
     "perWeek": "{{price}} / uke",
     "perYear": "per år",
     "perMonth": "per måned",
@@ -630,6 +750,17 @@
     "cancelAnytime": "Avbryt når som helst i App Store",
     "restore": "Gjenopprett",
     "terms": "Vilkår",
-    "privacy": "Personvern"
+    "privacy": "Personvern",
+    "processing": "Kobler til App Store…",
+    "restoring": "Gjenoppretter…",
+    "unavailable": "Abonnementer er midlertidig utilgjengelige. Prøv igjen om litt.",
+    "pending": "Kjøpet behandles fortsatt av App Store.",
+    "entitlementMissing": "Kjøpet er mottatt, men premiumtilgangen er ikke aktiv ennå. Prøv Gjenopprett.",
+    "purchaseFailed": "Kjøpet kunne ikke fullføres. Prøv igjen.",
+    "retry": "Prøv igjen",
+    "restoreTitle": "Gjenopprett kjøp",
+    "nothingToRestore": "Fant ikke noe aktivt Norwaymaxxing-abonnement for denne Apple-ID-en.",
+    "restoreSuccess": "Premiumtilgangen din er gjenopprettet.",
+    "restoreFailed": "Kjøpene kunne ikke gjenopprettes. Prøv igjen."
   }
 }

@@ -1,6 +1,7 @@
+import { SymbolView, type SFSymbol } from 'expo-symbols';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   Easing,
@@ -19,7 +20,7 @@ import { useTheme } from '@/hooks/use-theme';
 
 type BuildingItem = {
   key: string;
-  emoji: string;
+  symbol: SFSymbol;
 };
 
 function ProtocolItem({
@@ -69,9 +70,11 @@ function ProtocolItem({
       importantForAccessibility={visible ? 'auto' : 'no-hide-descendants'}
       pointerEvents="none"
       style={[styles.row, revealStyle]}>
-      <Text style={styles.emoji}>{item.emoji}</Text>
+      <View style={[styles.itemIcon, { backgroundColor: `${accentColor}18` }]}>
+        <SymbolView name={item.symbol} size={19} tintColor={accentColor} />
+      </View>
       <ThemedText style={[Type.body, styles.rowLabel]}>{t(item.key)}</ThemedText>
-      <ThemedText style={[Type.h2, { color: accentColor }]}>✓</ThemedText>
+      <SymbolView name="checkmark.circle.fill" size={23} tintColor={accentColor} />
     </Animated.View>
   );
 }
@@ -93,13 +96,13 @@ export function BuildingStep({
   const reducedMotion = useReducedMotion();
 
   const items = [
-    { key: 'onboarding.build.cold', emoji: '❄️' },
-    { key: 'onboarding.build.nature', emoji: '🌲' },
+    { key: 'onboarding.build.cold', symbol: 'snowflake' as SFSymbol },
+    { key: 'onboarding.build.nature', symbol: 'tree.fill' as SFSymbol },
     {
       key: saunaAccess === 'no' ? 'onboarding.build.breath' : 'onboarding.build.sauna',
-      emoji: saunaAccess === 'no' ? '🌬️' : '🔥',
+      symbol: (saunaAccess === 'no' ? 'wind' : 'flame.fill') as SFSymbol,
     },
-    { key: 'onboarding.build.score', emoji: '🎯' },
+    { key: 'onboarding.build.score', symbol: 'gauge.with.dots.needle.50percent' as SFSymbol },
   ];
 
   const [done, setDone] = useState(0);
@@ -194,8 +197,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: Spacing.three,
   },
-  emoji: {
-    fontSize: 22,
+  itemIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   rowLabel: {
     flex: 1,

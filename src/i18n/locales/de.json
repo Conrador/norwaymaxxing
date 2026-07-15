@@ -22,7 +22,8 @@
     "previousWeek": "Vorherige Woche",
     "nextWeek": "Nächste Woche",
     "nextMonth": "Nächsten Monat",
-    "openStreakDetails": "Offene Streak-Details"
+    "openStreakDetails": "Offene Streak-Details",
+    "continue": "Weiter"
   },
   "meta": {
     "seconds": "{{count}} s",
@@ -191,7 +192,6 @@
     "themeSystem": "System",
     "themeLight": "Polartag",
     "themeDark": "Polarnacht",
-    "reminder": "Tägliche Erinnerung",
     "restorePurchases": "Einkäufe wiederherstellen",
     "statStreak": "Tagessträhne"
   },
@@ -459,8 +459,9 @@
       "light": "Helle Polaroberfläche für den Tagesgebrauch.",
       "dark": "Nachtoberfläche bei schwachem Licht."
     },
-    "morningProtocol": "Morgenprotokoll",
-    "morningProtocolMeta": "Eine lokale Erinnerung, das heutige Protokoll zu öffnen."
+    "developer": "Entwickler",
+    "resetOnboarding": "Onboarding zurücksetzen",
+    "resetOnboardingMeta": "Onboarding erneut anzeigen"
   },
   "ranks": {
     "thrall": "Thrall",
@@ -548,5 +549,218 @@
     "openErrorTitle": "Die Musik-App konnte nicht geöffnet werden",
     "openErrorMessage": "Prüfe deine Verbindung und versuche den anderen Dienst.",
     "manualNote": "Öffne den Song in deiner Musik-App, hör ihn dir an und komm danach hierher zurück."
+  },
+  "paywall": {
+    "social": "Evidenzbasiert · Für den Alltag gebaut",
+    "titleA": "Lebe wie ein ",
+    "titleB": "Norweger",
+    "titleC": ". Jeden Tag.",
+    "benefit": {
+      "cold": "Vollständiger 30-Tage-Kälteplan",
+      "sauna": "Alle Saunaprotokolle",
+      "nature": "Alle Natur-Challenges und die vollständige RO!-Aktivität",
+      "diet": "14-tägige nordische Ernährungspläne",
+      "stats": "Wöchentliche Statistiken und Gewohnheitsverlauf"
+    },
+    "yearly": "Jährlich",
+    "monthly": "Monatlich",
+    "bestValue": "BESTES ANGEBOT",
+    "rewardBadge": "RO!-BELOHNUNG -20 %",
+    "rewardFirstYear": "Belohnung im ersten Jahr",
+    "rewardRenews": "danach {{price}} / Jahr",
+    "perWeek": "{{price}} / Woche",
+    "perYear": "pro Jahr",
+    "perMonth": "pro Monat",
+    "cta": "Protokoll freischalten",
+    "cancelAnytime": "Jederzeit im App Store kündbar",
+    "restore": "Wiederherstellen",
+    "terms": "Bedingungen",
+    "privacy": "Datenschutz",
+    "processing": "Verbindung zum App Store…",
+    "restoring": "Wiederherstellung…",
+    "unavailable": "Abonnements sind vorübergehend nicht verfügbar. Versuche es gleich noch einmal.",
+    "pending": "Dein Kauf wird noch vom App Store verarbeitet.",
+    "entitlementMissing": "Der Kauf wurde empfangen, aber Premium ist noch nicht aktiv. Nutze Wiederherstellen.",
+    "purchaseFailed": "Der Kauf konnte nicht abgeschlossen werden. Versuche es erneut.",
+    "retry": "Erneut versuchen",
+    "restoreTitle": "Käufe wiederherstellen",
+    "nothingToRestore": "Für diese Apple-ID wurde kein aktives Norwaymaxxing-Abonnement gefunden.",
+    "restoreSuccess": "Dein Premium-Zugang wurde wiederhergestellt.",
+    "restoreFailed": "Käufe konnten nicht wiederhergestellt werden. Versuche es erneut."
+  },
+  "onboarding": {
+    "welcome1": "Die Weltmeisterschaft endet,",
+    "welcome2": "aber dein norwegischer Lebensstil…",
+    "welcome3a": "…",
+    "welcome3b": "nie",
+    "welcome3c": " endet.",
+    "begin": "Los geht’s",
+    "stepOf": "Schritt {{current}} von {{total}}",
+    "multiHint": "Wähle bis zu {{count}}",
+    "q": {
+      "goals": "Was willst du erreichen?",
+      "cold": "Wie vertraut bist du mit Kälte?",
+      "sauna": "Hast du Zugang zu einer Sauna?",
+      "nature": "Welche Natur erreichst du?",
+      "diet": "Wie isst du im Moment?"
+    },
+    "goal": {
+      "energy": "Energie",
+      "resilience": "Widerstandskraft",
+      "calm": "Ruhe",
+      "sleep": "Schlaf",
+      "physique": "Fitness"
+    },
+    "cold": {
+      "never": "Noch nie probiert",
+      "sometimes": "Manchmal kalt duschen",
+      "regular": "Regelmäßig Kälteexposition"
+    },
+    "sauna": {
+      "yes": "Ich habe Zugang",
+      "occasional": "Ab und zu",
+      "no": "Keinen Zugang"
+    },
+    "nature": {
+      "forest": "Wald in der Nähe",
+      "park": "Stadtpark",
+      "city": "Vor allem Stadt"
+    },
+    "diet": {
+      "processed": "Meist Fertiggerichte",
+      "mixed": "Eine echte Mischung",
+      "clean": "Meist unverarbeitete Lebensmittel"
+    },
+    "roTitle": "Spür es. Du gibst den Takt an.",
+    "roHint": "Zwei schnelle Schläge. Die Menge antwortet.",
+    "roDone": "Genau dieses Gefühl. Jetzt der Rest.",
+    "reward": {
+      "kicker": "RO!-BELOHNUNG",
+      "title": "Halte den Takt. Spare 20 %.",
+      "body": "Triff mindestens 5 von 7 gewerteten Rhythmen und sichere dir 20 % Rabatt auf dein erstes Premium-Jahr.",
+      "ruleWarmup": "1 Aufwärmrunde",
+      "ruleHits": "5 Treffer im Takt schalten die Belohnung frei",
+      "ruleRetry": "1 zweiter Versuch, falls du ihn brauchst",
+      "cta": "Um 20 % Rabatt spielen",
+      "terms": "{{introductoryPrice}} im ersten Jahr, danach {{standardPrice}}/Jahr. Verlängert sich automatisch.",
+      "progress": "{{current}}/{{total}} Treffer im Takt",
+      "successTitle": "Takt gehalten. Belohnung freigeschaltet.",
+      "successBody": "{{percentage}} % im Takt. Dein Rabatt für das erste Jahr wartet auf der Bezahlschranke.",
+      "missTitle": "Fast. Nimm die zweite Welle.",
+      "retryBody": "{{percentage}} % im Takt. Du hast noch einen Versuch für die Belohnung.",
+      "finalMissBody": "{{percentage}} % im Takt. Dein Protokoll ist auch ohne Belohnung bereit.",
+      "claim": "20 % Rabatt sichern",
+      "retry": "Erneut versuchen",
+      "ready": "RO!-Belohnung: 20 % Rabatt im ersten Jahr"
+    },
+    "buildingTitle": "Dein Protokoll wird geschmiedet…",
+    "build": {
+      "cold": "Kältestart wird angepasst",
+      "nature": "Naturaufgaben werden gewählt",
+      "sauna": "Saunarhythmus wird gesetzt",
+      "breath": "Atemalternativen werden gewählt",
+      "score": "Norway Score wird kalibriert"
+    },
+    "qHint": {
+      "goals": "Wähle bis zu drei. Dein Protokoll setzt dort den Schwerpunkt.",
+      "cold": "Das legt einen vorsichtigen Einstieg fest, keinen Härtetest.",
+      "sauna": "Wir passen die Wärmetage an deinen tatsächlichen Zugang an.",
+      "nature": "Auch ein Stadtpark zählt. Wir nutzen, was erreichbar ist.",
+      "diet": "Ohne Schuld und ohne Detox. Sag uns einfach, was typisch ist."
+    },
+    "insight": {
+      "benefits": {
+        "title": "Vier Hebel. Ein tägliches Protokoll.",
+        "body": "Kurze Aktionen mit Kälte, Wärme, Natur und Essen ergeben eine Routine, die du wirklich wiederholen kannst.",
+        "items": {
+          "cold": "Kälte",
+          "heat": "Wärme",
+          "outside": "Draußen",
+          "food": "Nordisches Essen"
+        }
+      },
+      "sauna": {
+        "title": "Wärme ist nur die Hälfte des Rituals.",
+        "body": "Norwaymaxxing setzt auf Kontrolle statt Ausdauer. Sauna ist optional und mehr ist nicht automatisch besser.",
+        "items": {
+          "heat": "Angenehm wärmen, ohne Rekorde zu jagen",
+          "cool": "Langsam abkühlen und bei Unwohlsein aufhören",
+          "rest": "Mindestens so lange ruhen wie wärmen"
+        }
+      },
+      "evidence": {
+        "title": "Evidenz vor Hype.",
+        "body": "Die App ist ein System für Lebensgewohnheiten, keine medizinische Behandlung. Bei begrenzter Evidenz bleiben die Dosen vorsichtig.",
+        "items": {
+          "guidance": "Norwegische Empfehlungen für die öffentliche Gesundheit",
+          "research": "Nordic Nutrition Recommendations 2023",
+          "safety": "Vorsichtige Sicherheitsregeln für Wärme und Kälte"
+        }
+      },
+      "nature": {
+        "title": "Friluftsliv beginnt vor deiner Tür.",
+        "body": "Du brauchst keinen Fjord. Regelmäßige, ganz normale Zeit draußen zählt mehr als der perfekte Ort.",
+        "items": {
+          "nearby": "Nutze Natur, die du oft erreichen kannst",
+          "weather": "Geh bei normalem Wetter mit passender Kleidung raus",
+          "care": "Respektiere lokale Regeln und hinterlasse keine Spuren"
+        }
+      },
+      "diet": {
+        "title": "Nordisches Essen ist ein Muster, kein Detox.",
+        "body": "Baue die meisten Mahlzeiten auf Pflanzen, Vollkorn und flexiblen Proteinquellen auf. Essen braucht keine moralischen Etiketten.",
+        "items": {
+          "plants": "Gemüse, Obst und Beeren",
+          "grains": "Vollkorn, Kartoffeln, Nüsse und Samen",
+          "protein": "Fisch, Hülsenfrüchte und flexible Optionen"
+        }
+      },
+      "community": {
+        "title": "Du bist Teil der ersten Welle.",
+        "body": "Eine neue Community baut Tag für Tag nordische Gewohnheiten auf. Starte dort, wo du bist, und lass deine Serie die Arbeit zeigen.",
+        "days": [
+          "M",
+          "D",
+          "M",
+          "D",
+          "F",
+          "S",
+          "S"
+        ],
+        "items": {
+          "different": "Unterschiedliche Startpunkte sind normal",
+          "daily": "Jeden Tag ein klares Protokoll",
+          "visible": "Fortschritt bleibt sichtbar und verdient"
+        }
+      },
+      "ro": {
+        "title": "Jetzt wird es laut.",
+        "body": "RO! macht aus dem norwegischen Ruderruf ein kurzes Rhythmusspiel. Zwei Schläge starten die Welle, dann hältst du den Takt.",
+        "sound": "Ton an für die Menge",
+        "cta": "RO! ausprobieren"
+      }
+    },
+    "result": {
+      "title": "Darum kann dieser Plan zur Gewohnheit werden.",
+      "body": "Du musst nicht fünf Gewohnheiten selbst planen. Norwaymaxxing macht aus deinem Ausgangspunkt ein kurzes Tagesprotokoll und passt die nächsten Schritte an deine Beständigkeit an.",
+      "focus": "Auf deine Ziele zugeschnitten",
+      "items": {
+        "clear": "Ein klarer Tagesplan statt fünf einzelner Routinen",
+        "adaptive": "Kälte, Sauna und Natur passen zu deinem Zugang und deiner Erfahrung",
+        "feedback": "Der Norway Score zeigt, was du wirklich abgeschlossen hast"
+      },
+      "cta": "Meinen Plan anzeigen"
+    },
+    "ready": {
+      "days": "Tage Protokoll",
+      "title": "Dein 14-tägiges nordisches Protokoll ist fertig.",
+      "body": "Tag eins ist bewusst kurz. Starte heute, sammle dein erstes Signal und lass den Plan mit deiner Beständigkeit wachsen.",
+      "items": {
+        "start": "Starten",
+        "build": "Aufbauen",
+        "repeat": "Wiederholen"
+      },
+      "cta": "Weiter"
+    }
   }
 }

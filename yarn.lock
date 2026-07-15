@@ -1182,13 +1182,21 @@
   resolved "https://registry.yarnpkg.com/@nolyfill/is-core-module/-/is-core-module-1.0.39.tgz#3dc35ba0f1e66b403c00b39344f870298ebb1c8e"
   integrity sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==
 
-"@onborn/analytics@0.1.0-beta.1":
-  version "0.1.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@onborn/analytics/-/analytics-0.1.0-beta.1.tgz#c3949def09265bb12495eb97bd6bc659b99e0788"
-  integrity sha512-ztflZGKXVm3tVbVavXAUV4/qvVkcIuxYvZ4BCUbwPW5SQIMLaLdPoSqjyzeCZzUcawYNVWi8TMwPdVYYMhIR1Q==
+"@onborn/analytics@0.1.0-beta.2":
+  version "0.1.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@onborn/analytics/-/analytics-0.1.0-beta.2.tgz#1907a110f16278bf3fce7ea51be0bcd33ea0b079"
+  integrity sha512-LW+CyD6NWTL55VL+EwjTJNlmtHzAu6OZsS36VIKh4CFRGPXHb41YOEKlFTrcHdmnG+aZoPx7F3cVgoH4trcWiA==
   dependencies:
     "@onborn/sdk-contracts" "0.1.0-beta.1"
     zod "^3.25.76"
+
+"@onborn/billing@0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@onborn/billing/-/billing-0.1.0-beta.1.tgz#e241a1f6d60cca30c377571696ba8f9c510ceef2"
+  integrity sha512-EsOjCz/Nd5UtHkBgS7kjzXY0yBZhPJlfyslKeEL0UxXR7H1zbsND9gECo0x06Z/fRXt/Cm7/ACIGpJYVDOZzGw==
+  dependencies:
+    "@onborn/analytics" "0.1.0-beta.2"
+    "@onborn/sdk-contracts" "0.1.0-beta.1"
 
 "@onborn/sdk-contracts@0.1.0-beta.1":
   version "0.1.0-beta.1"
@@ -3169,6 +3177,11 @@ expo-haptics@~57.0.0:
   version "57.0.0"
   resolved "https://registry.yarnpkg.com/expo-haptics/-/expo-haptics-57.0.0.tgz#8dfda842d5a7a0c0fc1af8a8063bf402d77a7eeb"
   integrity sha512-va+uB/DoMlT9f0OJ8v24iNqs+YH6Q6wip+LLjVvalbJzGK8LvZQ+gIiauogFxAAFLQIJzrQVJGf+0BmV3q13bQ==
+
+expo-iap@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/expo-iap/-/expo-iap-4.5.0.tgz#5ef770b5bec4c8e90bfbe801f190bb5aeef986a2"
+  integrity sha512-Be2IUg189Y+Qz3z+QQjKCBTdznk0uCsiI3y2KdQC5FvUTUE1FupLZdkSoLV7NlxKGNpN/mH8oAfmxAQMtF5sJw==
 
 expo-image@~57.0.0:
   version "57.0.0"

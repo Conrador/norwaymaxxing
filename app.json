@@ -8,8 +8,8 @@
     "scheme": "norwaymaxxing",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.norwaymaxxing.app",
+      "icon": "./assets/norwaymaxxing.icon",
+      "bundleIdentifier": "com.norwaymaxxing.norwaymaxxing",
       "supportsTablet": false,
       "appleTeamId": "9N8NPNT7Q4"
     },
@@ -36,18 +36,31 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#0B1220",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "backgroundColor": "#DCE8ED",
+          "image": "./assets/images/splash-transparent.png",
+          "dark": {
+            "backgroundColor": "#0D1A2B",
+            "image": "./assets/images/splash-transparent.png"
+          },
+          "imageWidth": 300,
+          "resizeMode": "contain"
         }
       ],
       "expo-localization",
+      "expo-iap",
       "expo-video",
       "react-native-audio-api"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a4c5fe43-6655-4d7a-bb19-6167727ff104"
+      }
+    },
+    "owner": "conradorr"
   }
 }

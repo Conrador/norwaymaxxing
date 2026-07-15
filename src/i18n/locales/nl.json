@@ -22,7 +22,8 @@
     "previousWeek": "Vorige week",
     "nextWeek": "Volgende week",
     "nextMonth": "Volgende maand",
-    "openStreakDetails": "Open streak-details"
+    "openStreakDetails": "Open streak-details",
+    "continue": "Doorgaan"
   },
   "meta": {
     "seconds": "{{count}}-s",
@@ -191,7 +192,6 @@
     "themeSystem": "Systeem",
     "themeLight": "Polaire dag",
     "themeDark": "Poolnacht",
-    "reminder": "Dagelijkse herinnering",
     "restorePurchases": "Aankopen herstellen",
     "statStreak": "Dagreeks"
   },
@@ -459,8 +459,9 @@
       "light": "Helder polair oppervlak voor gebruik overdag.",
       "dark": "Nachtoppervlak met weinig licht."
     },
-    "morningProtocol": "Ochtendprotocol",
-    "morningProtocolMeta": "Een lokale herinnering om het protocol van vandaag te openen."
+    "developer": "Ontwikkelaar",
+    "resetOnboarding": "Onboarding resetten",
+    "resetOnboardingMeta": "Onboarding opnieuw tonen"
   },
   "ranks": {
     "thrall": "Thrall",
@@ -548,5 +549,218 @@
     "openErrorTitle": "Kan de muziek-app niet openen",
     "openErrorMessage": "Controleer je verbinding en probeer de andere dienst.",
     "manualNote": "Open het nummer in je muziekapp, luister het af en kom daarna hier terug."
+  },
+  "paywall": {
+    "social": "Onderbouwd met bewijs · Gemaakt voor elke dag",
+    "titleA": "Leef als een ",
+    "titleB": "Noor",
+    "titleC": ". Elke dag.",
+    "benefit": {
+      "cold": "Volledig kouplan van 30 dagen",
+      "sauna": "Alle saunaprotocollen",
+      "nature": "Alle natuuruitdagingen en de volledige RO!-activiteit",
+      "diet": "Noordse maaltijdplannen voor 14 dagen",
+      "stats": "Wekelijkse statistieken en gewoontegeschiedenis"
+    },
+    "yearly": "Jaarlijks",
+    "monthly": "Maandelijks",
+    "bestValue": "BESTE WAARDE",
+    "rewardBadge": "RO!-BELONING -20%",
+    "rewardFirstYear": "Beloning voor het eerste jaar",
+    "rewardRenews": "daarna {{price}} / jaar",
+    "perWeek": "{{price}} / week",
+    "perYear": "per jaar",
+    "perMonth": "per maand",
+    "cta": "Ontgrendel het protocol",
+    "cancelAnytime": "Op elk moment opzegbaar in de App Store",
+    "restore": "Herstellen",
+    "terms": "Voorwaarden",
+    "privacy": "Privacy",
+    "processing": "Verbinden met de App Store…",
+    "restoring": "Herstellen…",
+    "unavailable": "Abonnementen zijn tijdelijk niet beschikbaar. Probeer het zo opnieuw.",
+    "pending": "Je aankoop wordt nog verwerkt door de App Store.",
+    "entitlementMissing": "De aankoop is ontvangen, maar premium is nog niet actief. Gebruik Herstellen.",
+    "purchaseFailed": "De aankoop kon niet worden voltooid. Probeer het opnieuw.",
+    "retry": "Opnieuw proberen",
+    "restoreTitle": "Aankopen herstellen",
+    "nothingToRestore": "Er is geen actief Norwaymaxxing-abonnement gevonden voor deze Apple ID.",
+    "restoreSuccess": "Je premiumtoegang is hersteld.",
+    "restoreFailed": "Aankopen konden niet worden hersteld. Probeer het opnieuw."
+  },
+  "onboarding": {
+    "welcome1": "Het WK eindigt,",
+    "welcome2": "maar je Noorse leefstijl…",
+    "welcome3a": "…",
+    "welcome3b": "nooit",
+    "welcome3c": ".",
+    "begin": "Beginnen",
+    "stepOf": "Stap {{current}} van {{total}}",
+    "multiHint": "Kies er maximaal {{count}}",
+    "q": {
+      "goals": "Wat wil je bereiken?",
+      "cold": "Hoeveel ervaring heb je met kou?",
+      "sauna": "Heb je toegang tot een sauna?",
+      "nature": "Welke natuur heb je in de buurt?",
+      "diet": "Hoe eet je op dit moment?"
+    },
+    "goal": {
+      "energy": "Energie",
+      "resilience": "Veerkracht",
+      "calm": "Rust",
+      "sleep": "Slaap",
+      "physique": "Conditie"
+    },
+    "cold": {
+      "never": "Nooit geprobeerd",
+      "sometimes": "Soms koud douchen",
+      "regular": "Regelmatige blootstelling aan kou"
+    },
+    "sauna": {
+      "yes": "Ik heb toegang",
+      "occasional": "Af en toe",
+      "no": "Geen toegang"
+    },
+    "nature": {
+      "forest": "Bos dichtbij",
+      "park": "Stadspark",
+      "city": "Vooral stad"
+    },
+    "diet": {
+      "processed": "Meestal kant-en-klaar",
+      "mixed": "Een echte mix",
+      "clean": "Meestal onbewerkte producten"
+    },
+    "roTitle": "Voel het. Jij bepaalt het ritme.",
+    "roHint": "Twee snelle slagen. Het publiek antwoordt.",
+    "roDone": "Dat is het gevoel. Nu de rest.",
+    "reward": {
+      "kicker": "RO!-BELONING",
+      "title": "Houd het ritme. Pak 20% korting.",
+      "body": "Raak minstens 5 van de 7 beoordeelde ritmes en ontgrendel 20% korting op je eerste Premium-jaar.",
+      "ruleWarmup": "1 opwarmronde",
+      "ruleHits": "5 slagen in het ritme ontgrendelen de beloning",
+      "ruleRetry": "1 tweede poging als je die nodig hebt",
+      "cta": "Speel voor 20% korting",
+      "terms": "{{introductoryPrice}} voor het eerste jaar, daarna {{standardPrice}}/jaar. Wordt automatisch verlengd.",
+      "progress": "{{current}}/{{total}} slagen in het ritme",
+      "successTitle": "Ritme vastgehouden. Beloning ontgrendeld.",
+      "successBody": "{{percentage}}% in het ritme. Je korting voor het eerste jaar wacht op de paywall.",
+      "missTitle": "Bijna. Pak de tweede golf.",
+      "retryBody": "{{percentage}}% in het ritme. Je hebt nog één poging om de beloning te halen.",
+      "finalMissBody": "{{percentage}}% in het ritme. Je protocol staat ook zonder beloning klaar.",
+      "claim": "Pak 20% korting",
+      "retry": "Probeer opnieuw",
+      "ready": "RO!-beloning: 20% korting op het eerste jaar"
+    },
+    "buildingTitle": "Je protocol wordt gesmeed…",
+    "build": {
+      "cold": "Je koude start wordt afgestemd",
+      "nature": "Natuuruitdagingen worden gekozen",
+      "sauna": "Je saunaritme wordt ingesteld",
+      "breath": "Ademalternatieven worden gekozen",
+      "score": "Norway Score wordt gekalibreerd"
+    },
+    "qHint": {
+      "goals": "Kies er maximaal drie. Je protocol legt daar extra nadruk op.",
+      "cold": "Dit bepaalt een voorzichtige start, geen test van je hardheid.",
+      "sauna": "We passen warmtedagen aan op de toegang die je echt hebt.",
+      "nature": "Een stadspark telt ook. We bouwen rond wat bereikbaar is.",
+      "diet": "Geen schuldgevoel en geen detox. Vertel gewoon wat normaal is."
+    },
+    "insight": {
+      "benefits": {
+        "title": "Vier hefbomen. Eén dagelijks protocol.",
+        "body": "Korte acties rond kou, warmte, natuur en eten vormen een routine die je echt kunt herhalen.",
+        "items": {
+          "cold": "Kou",
+          "heat": "Warmte",
+          "outside": "Buiten",
+          "food": "Noords eten"
+        }
+      },
+      "sauna": {
+        "title": "Warmte is maar de helft van het ritueel.",
+        "body": "Norwaymaxxing kiest controle boven uithouding. Sauna is optioneel en meer is niet automatisch beter.",
+        "items": {
+          "heat": "Warm comfortabel op zonder records na te jagen",
+          "cool": "Koel geleidelijk af en stop als je je niet goed voelt",
+          "rest": "Rust minstens zo lang als je hebt opgewarmd"
+        }
+      },
+      "evidence": {
+        "title": "Bewijs vóór hype.",
+        "body": "De app is een systeem voor leefgewoonten, geen medische behandeling. Doseringen blijven voorzichtig waar bewijs beperkt is.",
+        "items": {
+          "guidance": "Noorse richtlijnen voor volksgezondheid",
+          "research": "Nordic Nutrition Recommendations 2023",
+          "safety": "Voorzichtige veiligheidsregels voor warmte en kou"
+        }
+      },
+      "nature": {
+        "title": "Friluftsliv begint bij je voordeur.",
+        "body": "Je hebt geen fjord nodig. Regelmatig gewoon buiten zijn telt meer dan de perfecte plek.",
+        "items": {
+          "nearby": "Gebruik natuur waar je vaak naartoe kunt",
+          "weather": "Ga naar buiten bij normaal weer met passende kleding",
+          "care": "Respecteer lokale regels en laat geen sporen achter"
+        }
+      },
+      "diet": {
+        "title": "Noords eten is een patroon, geen detox.",
+        "body": "Bouw de meeste maaltijden rond planten, volkoren granen en flexibele eiwitbronnen. Eten heeft geen moreel label nodig.",
+        "items": {
+          "plants": "Groenten, fruit en bessen",
+          "grains": "Volkoren granen, aardappelen, noten en zaden",
+          "protein": "Vis, peulvruchten en flexibele keuzes"
+        }
+      },
+      "community": {
+        "title": "Je sluit aan bij de eerste golf.",
+        "body": "Een nieuwe community bouwt dag voor dag aan Noordse gewoonten. Begin waar je bent en laat je reeks het werk tonen.",
+        "days": [
+          "M",
+          "D",
+          "W",
+          "D",
+          "V",
+          "Z",
+          "Z"
+        ],
+        "items": {
+          "different": "Verschillende startpunten zijn normaal",
+          "daily": "Elke dag één duidelijk protocol",
+          "visible": "Vooruitgang blijft zichtbaar en verdiend"
+        }
+      },
+      "ro": {
+        "title": "Maak nu lawaai.",
+        "body": "RO! maakt van de Noorse roeikreet een kort ritmespel. Twee slagen starten de golf, daarna houd je het tempo vast.",
+        "sound": "Geluid aan voor het publiek",
+        "cta": "Probeer RO!"
+      }
+    },
+    "result": {
+      "title": "Daarom kan dit plan blijven werken.",
+      "body": "Je hoeft niet zelf vijf gewoonten te plannen. Norwaymaxxing zet je startpunt om in één kort protocol voor vandaag en past de volgende stap aan terwijl je regelmaat opbouwt.",
+      "focus": "Gebouwd rond jouw doelen",
+      "items": {
+        "clear": "Eén duidelijk protocol in plaats van vijf losse routines",
+        "adaptive": "Koude, sauna en natuur passen bij jouw toegang en ervaring",
+        "feedback": "De Norway Score laat zien wat je echt hebt voltooid"
+      },
+      "cta": "Toon mijn protocol"
+    },
+    "ready": {
+      "days": "dagen protocol",
+      "title": "Je 14-daagse Noordse protocol staat klaar.",
+      "body": "Dag één is bewust kort. Begin vandaag, verdien je eerste signaal en laat het plan meegroeien met je regelmaat.",
+      "items": {
+        "start": "Start",
+        "build": "Bouw op",
+        "repeat": "Herhaal"
+      },
+      "cta": "Doorgaan"
+    }
   }
 }

@@ -23,13 +23,8 @@ type SettingsState = {
   themeMode: ThemeMode;
   /** null = follow device locale */
   language: Language | null;
-  reminderEnabled: boolean;
-  /** minutes from midnight, local time */
-  reminderTime: number;
   setThemeMode: (mode: ThemeMode) => void;
   setLanguage: (language: Language | null) => void;
-  setReminderEnabled: (enabled: boolean) => void;
-  setReminderTime: (minutes: number) => void;
 };
 
 export const useSettings = create<SettingsState>()(
@@ -37,12 +32,8 @@ export const useSettings = create<SettingsState>()(
     (set) => ({
       themeMode: 'system',
       language: null,
-      reminderEnabled: false,
-      reminderTime: 7 * 60,
       setThemeMode: (themeMode) => set({ themeMode }),
       setLanguage: (language) => set({ language }),
-      setReminderEnabled: (reminderEnabled) => set({ reminderEnabled }),
-      setReminderTime: (reminderTime) => set({ reminderTime }),
     }),
     {
       name: 'settings',

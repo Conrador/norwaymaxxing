@@ -192,7 +192,6 @@
     "themeSystem": "System",
     "themeLight": "Polar Day",
     "themeDark": "Polar Night",
-    "reminder": "Daily reminder",
     "restorePurchases": "Restore purchases",
     "statStreak": "Day streak"
   },
@@ -460,8 +459,6 @@
       "light": "Bright polar surface for daytime use.",
       "dark": "Low-light night surface."
     },
-    "morningProtocol": "Morning protocol",
-    "morningProtocolMeta": "A local reminder to open today's protocol.",
     "developer": "Developer",
     "resetOnboarding": "Reset onboarding",
     "resetOnboardingMeta": "Clears profile & shows welcome again"
@@ -592,13 +589,32 @@
       "city": "Concrete everywhere"
     },
     "diet": {
-      "processed": "Lots of processed",
-      "mixed": "Half and half",
-      "clean": "Already clean"
+      "processed": "Mostly convenience foods",
+      "mixed": "A real mix",
+      "clean": "Mostly whole foods"
     },
     "roTitle": "Feel it. You are the drummer.",
     "roHint": "Two quick taps. The crowd roars back.",
     "roDone": "That's the feeling. Now the rest.",
+    "reward": {
+      "kicker": "RO! REWARD",
+      "title": "Keep the rhythm. Take 20% off.",
+      "body": "Land at least 5 of 7 scored rhythms to unlock 20% off your first year of Premium.",
+      "ruleWarmup": "1 warm-up row",
+      "ruleHits": "5 on-beat rows unlock the reward",
+      "ruleRetry": "1 second attempt if you need it",
+      "cta": "Play for 20% off",
+      "terms": "{{introductoryPrice}} for the first year, then {{standardPrice}}/year. Auto-renews.",
+      "progress": "{{current}}/{{total}} on-beat rows",
+      "successTitle": "Rhythm held. Reward unlocked.",
+      "successBody": "{{percentage}}% on beat. Your first-year discount is waiting on the paywall.",
+      "missTitle": "Almost. Catch the second wave.",
+      "retryBody": "{{percentage}}% on beat. You have one more attempt to reach the reward.",
+      "finalMissBody": "{{percentage}}% on beat. Your protocol is still ready without the reward.",
+      "claim": "Claim 20% off",
+      "retry": "Try again",
+      "ready": "RO! reward: 20% off your first year"
+    },
     "buildingTitle": "Forging your protocol…",
     "build": {
       "cold": "Reading your cold access",
@@ -606,10 +622,111 @@
       "sauna": "Setting your sauna rhythm",
       "breath": "Choosing breath alternatives",
       "score": "Calibrating your Norway Score"
+    },
+    "qHint": {
+      "goals": "Choose up to three. Your protocol will lean toward them.",
+      "cold": "This sets a conservative starting point, not a test of toughness.",
+      "sauna": "We adapt heat days to the access you actually have.",
+      "nature": "A city park counts. We build around what is reachable.",
+      "diet": "No guilt and no cleanse. Just tell us what is typical."
+    },
+    "insight": {
+      "benefits": {
+        "title": "Four levers. One daily protocol.",
+        "body": "Short actions across cold, heat, nature and food create a routine you can actually repeat.",
+        "items": {
+          "cold": "Cold",
+          "heat": "Heat",
+          "outside": "Outside",
+          "food": "Nordic food"
+        }
+      },
+      "sauna": {
+        "title": "Heat is only half the ritual.",
+        "body": "Norwaymaxxing favors control over endurance. Sauna is optional, and more is not automatically better.",
+        "items": {
+          "heat": "Heat comfortably, without chasing records",
+          "cool": "Cool gradually and stop if you feel unwell",
+          "rest": "Rest at least as long as you heated"
+        }
+      },
+      "evidence": {
+        "title": "Evidence before hype.",
+        "body": "The app is a lifestyle habit system, not medical treatment. Exact doses stay conservative where evidence is limited.",
+        "items": {
+          "guidance": "Norwegian public-health guidance",
+          "research": "Nordic Nutrition Recommendations 2023",
+          "safety": "Conservative safety rules for heat and cold"
+        }
+      },
+      "nature": {
+        "title": "Friluftsliv starts at your door.",
+        "body": "You do not need a fjord. Frequent, ordinary time outside matters more than a perfect location.",
+        "items": {
+          "nearby": "Use the nature you can reach often",
+          "weather": "Go out in ordinary weather, with suitable clothing",
+          "care": "Respect local rules and leave nature as you found it"
+        }
+      },
+      "diet": {
+        "title": "Nordic food is a pattern, not a cleanse.",
+        "body": "Build most meals from plants, whole grains and flexible protein choices. No food needs a moral label.",
+        "items": {
+          "plants": "Vegetables, fruit and berries",
+          "grains": "Whole grains, potatoes, nuts and seeds",
+          "protein": "Fish, legumes and flexible choices"
+        }
+      },
+      "community": {
+        "title": "You are joining the first wave.",
+        "body": "A new community is building Nordic habits one day at a time. Start where you are and let your streak show the work.",
+        "days": [
+          "M",
+          "T",
+          "W",
+          "T",
+          "F",
+          "S",
+          "S"
+        ],
+        "items": {
+          "different": "Different starting points are expected",
+          "daily": "One clear protocol each day",
+          "visible": "Progress stays visible and earned"
+        }
+      },
+      "ro": {
+        "title": "Now make it loud.",
+        "body": "RO! turns Norway's rowing chant into a quick rhythm game. Two taps start the wave, then you hold the beat.",
+        "sound": "Sound on for the crowd",
+        "cta": "Try RO!"
+      }
+    },
+    "result": {
+      "title": "This is why your plan can stick.",
+      "body": "You do not need to plan five habits yourself. Norwaymaxxing turns your starting point into one short protocol for today, then adapts the next step as you build consistency.",
+      "focus": "Built around your goals",
+      "items": {
+        "clear": "One clear protocol instead of five separate routines",
+        "adaptive": "Cold, sauna and nature tasks match your access and experience",
+        "feedback": "Norway Score shows what you completed, not what you intended"
+      },
+      "cta": "Show my protocol"
+    },
+    "ready": {
+      "days": "day protocol",
+      "title": "Your 14-day Nordic protocol is ready.",
+      "body": "Day one is short on purpose. Start today, earn your first signal and let the plan build with your consistency.",
+      "items": {
+        "start": "Start",
+        "build": "Build",
+        "repeat": "Repeat"
+      },
+      "cta": "Continue"
     }
   },
   "paywall": {
-    "social": "4.9 · 2,000+ Vikings",
+    "social": "Evidence-informed · Built for daily use",
     "titleA": "Live like a ",
     "titleB": "Norwegian",
     "titleC": ". Every day.",
@@ -623,6 +740,9 @@
     "yearly": "Yearly",
     "monthly": "Monthly",
     "bestValue": "BEST VALUE",
+    "rewardBadge": "RO! REWARD -20%",
+    "rewardFirstYear": "First year reward",
+    "rewardRenews": "then {{price}} / year",
     "perWeek": "{{price}} / week",
     "perYear": "per year",
     "perMonth": "per month",
@@ -630,6 +750,17 @@
     "cancelAnytime": "Cancel anytime in the App Store",
     "restore": "Restore",
     "terms": "Terms",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "processing": "Connecting to App Store…",
+    "restoring": "Restoring…",
+    "unavailable": "Subscriptions are temporarily unavailable. Try again in a moment.",
+    "pending": "Your purchase is still being processed by the App Store.",
+    "entitlementMissing": "The purchase was received, but premium access is not active yet. Try Restore.",
+    "purchaseFailed": "The purchase could not be completed. Please try again.",
+    "retry": "Try again",
+    "restoreTitle": "Restore purchases",
+    "nothingToRestore": "No active Norwaymaxxing subscription was found for this Apple ID.",
+    "restoreSuccess": "Your premium access has been restored.",
+    "restoreFailed": "Purchases could not be restored. Please try again."
   }
 }

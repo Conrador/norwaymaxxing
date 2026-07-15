@@ -22,7 +22,8 @@
     "previousWeek": "Forrige uge",
     "nextWeek": "Næste uge",
     "nextMonth": "Næste måned",
-    "openStreakDetails": "Åbn streak detaljer"
+    "openStreakDetails": "Åbn streak detaljer",
+    "continue": "Fortsæt"
   },
   "meta": {
     "seconds": "{{count}} s",
@@ -191,7 +192,6 @@
     "themeSystem": "System",
     "themeLight": "Polardagen",
     "themeDark": "Polar Nat",
-    "reminder": "Daglig påmindelse",
     "restorePurchases": "Gendan køb",
     "statStreak": "Dagsrække"
   },
@@ -459,8 +459,9 @@
       "light": "Lys polar overflade til brug i dagtimerne.",
       "dark": "Natoverflade med lav belysning."
     },
-    "morningProtocol": "Morgenprotokol",
-    "morningProtocolMeta": "En lokal påmindelse om at åbne dagens protokol."
+    "developer": "Udvikler",
+    "resetOnboarding": "Nulstil onboarding",
+    "resetOnboardingMeta": "Vis onboardingflowet igen"
   },
   "ranks": {
     "thrall": "Træl",
@@ -548,5 +549,218 @@
     "openErrorTitle": "Musikappen kunne ikke åbnes",
     "openErrorMessage": "Tjek din forbindelse, og prøv den anden tjeneste.",
     "manualNote": "Åbn nummeret i din musikapp, lyt det færdigt, og kom tilbage hertil bagefter."
+  },
+  "paywall": {
+    "social": "Evidensbaseret · Skabt til hverdagen",
+    "titleA": "Lev som en ",
+    "titleB": "nordmand",
+    "titleC": ". Hver dag.",
+    "benefit": {
+      "cold": "Komplet 30-dages kuldeplan",
+      "sauna": "Alle saunaprotokoller",
+      "nature": "Alle naturudfordringer og hele RO!-aktiviteten",
+      "diet": "Nordiske madplaner til 14 dage",
+      "stats": "Ugentlig statistik og historik over vaner"
+    },
+    "yearly": "Årligt",
+    "monthly": "Månedligt",
+    "bestValue": "BEDSTE VÆRDI",
+    "rewardBadge": "RO!-BELØNNING -20 %",
+    "rewardFirstYear": "Belønning første år",
+    "rewardRenews": "derefter {{price}} / år",
+    "perWeek": "{{price}} / uge",
+    "perYear": "om året",
+    "perMonth": "om måneden",
+    "cta": "Lås protokollen op",
+    "cancelAnytime": "Opsig når som helst i App Store",
+    "restore": "Gendan",
+    "terms": "Vilkår",
+    "privacy": "Privatliv",
+    "processing": "Opretter forbindelse til App Store…",
+    "restoring": "Gendanner…",
+    "unavailable": "Abonnementer er midlertidigt utilgængelige. Prøv igen om lidt.",
+    "pending": "Dit køb behandles stadig af App Store.",
+    "entitlementMissing": "Købet er modtaget, men premiumadgangen er ikke aktiv endnu. Brug Gendan.",
+    "purchaseFailed": "Købet kunne ikke gennemføres. Prøv igen.",
+    "retry": "Prøv igen",
+    "restoreTitle": "Gendan køb",
+    "nothingToRestore": "Der blev ikke fundet et aktivt Norwaymaxxing-abonnement til dette Apple-id.",
+    "restoreSuccess": "Din premiumadgang er blevet gendannet.",
+    "restoreFailed": "Købene kunne ikke gendannes. Prøv igen."
+  },
+  "onboarding": {
+    "welcome1": "VM slutter,",
+    "welcome2": "men din norske livsstil…",
+    "welcome3a": "…",
+    "welcome3b": "aldrig",
+    "welcome3c": " gør.",
+    "begin": "Begynd",
+    "stepOf": "Trin {{current}} af {{total}}",
+    "multiHint": "Vælg op til {{count}}",
+    "q": {
+      "goals": "Hvad vil du opnå?",
+      "cold": "Hvor vant er du til kulde?",
+      "sauna": "Har du adgang til sauna?",
+      "nature": "Hvilken natur har du adgang til?",
+      "diet": "Hvordan spiser du lige nu?"
+    },
+    "goal": {
+      "energy": "Energi",
+      "resilience": "Modstandskraft",
+      "calm": "Ro",
+      "sleep": "Søvn",
+      "physique": "Form"
+    },
+    "cold": {
+      "never": "Aldrig prøvet",
+      "sometimes": "Koldt bad af og til",
+      "regular": "Regelmæssig kuldeeksponering"
+    },
+    "sauna": {
+      "yes": "Jeg har adgang",
+      "occasional": "Af og til",
+      "no": "Ingen adgang"
+    },
+    "nature": {
+      "forest": "Skov i nærheden",
+      "park": "Bypark",
+      "city": "Mest by"
+    },
+    "diet": {
+      "processed": "Mest færdigmad",
+      "mixed": "En reel blanding",
+      "clean": "Mest råvarer"
+    },
+    "roTitle": "Mærk det. Du holder takten.",
+    "roHint": "To hurtige slag. Publikum svarer.",
+    "roDone": "Det er følelsen. Nu resten.",
+    "reward": {
+      "kicker": "RO!-BELØNNING",
+      "title": "Hold takten. Få 20 % rabat.",
+      "body": "Ram mindst 5 af 7 vurderede rytmer og lås op for 20 % rabat på dit første år med Premium.",
+      "ruleWarmup": "1 opvarmningsrunde",
+      "ruleHits": "5 træffere i takt låser belønningen op",
+      "ruleRetry": "1 ekstra forsøg, hvis du har brug for det",
+      "cta": "Spil om 20 % rabat",
+      "terms": "{{introductoryPrice}} det første år, derefter {{standardPrice}}/år. Fornyes automatisk.",
+      "progress": "{{current}}/{{total}} træffere i takt",
+      "successTitle": "Takten holdt. Belønningen er låst op.",
+      "successBody": "{{percentage}} % i takt. Din rabat for det første år venter på betalingsskærmen.",
+      "missTitle": "Næsten. Fang den næste bølge.",
+      "retryBody": "{{percentage}} % i takt. Du har ét forsøg mere til at nå belønningen.",
+      "finalMissBody": "{{percentage}} % i takt. Din protokol er stadig klar uden belønningen.",
+      "claim": "Hent 20 % rabat",
+      "retry": "Prøv igen",
+      "ready": "RO!-belønning: 20 % rabat på det første år"
+    },
+    "buildingTitle": "Din protokol smedes…",
+    "build": {
+      "cold": "Tilpasser din start med kulde",
+      "nature": "Vælger naturudfordringer",
+      "sauna": "Indstiller saunaens rytme",
+      "breath": "Vælger åndedrætsalternativer",
+      "score": "Kalibrerer Norway Score"
+    },
+    "qHint": {
+      "goals": "Vælg op til tre. Protokollen lægger ekstra vægt på dem.",
+      "cold": "Det fastlægger en forsigtig start, ikke en prøve på hvor hård du er.",
+      "sauna": "Vi tilpasser varmedagene til den adgang, du faktisk har.",
+      "nature": "En bypark tæller også. Vi bygger ud fra det, du kan nå.",
+      "diet": "Ingen skyld og ingen detox. Fortæl bare, hvad der er normalt."
+    },
+    "insight": {
+      "benefits": {
+        "title": "Fire greb. Én daglig protokol.",
+        "body": "Korte handlinger med kulde, varme, natur og mad skaber en rytme, du faktisk kan gentage.",
+        "items": {
+          "cold": "Kulde",
+          "heat": "Varme",
+          "outside": "Udeliv",
+          "food": "Nordisk mad"
+        }
+      },
+      "sauna": {
+        "title": "Varme er kun halvdelen af ritualet.",
+        "body": "Norwaymaxxing prioriterer kontrol frem for udholdenhed. Sauna er valgfrit, og mere er ikke automatisk bedre.",
+        "items": {
+          "heat": "Bliv varm i komfort uden at jagte rekorder",
+          "cool": "Køl gradvist ned og stop ved ubehag",
+          "rest": "Hvil mindst lige så længe, som du varmede dig"
+        }
+      },
+      "evidence": {
+        "title": "Evidens før hype.",
+        "body": "Appen er et system til livsstilsvaner, ikke medicinsk behandling. Doserne er forsigtige, hvor evidensen er begrænset.",
+        "items": {
+          "guidance": "Norske råd om folkesundhed",
+          "research": "Nordic Nutrition Recommendations 2023",
+          "safety": "Forsigtige sikkerhedsregler for varme og kulde"
+        }
+      },
+      "nature": {
+        "title": "Friluftsliv starter uden for døren.",
+        "body": "Du behøver ingen fjord. Almindelig tid ude ofte betyder mere end det perfekte sted.",
+        "items": {
+          "nearby": "Brug den natur, du nemt kan vende tilbage til",
+          "weather": "Gå ud i almindeligt vejr med passende tøj",
+          "care": "Respektér lokale regler og efterlad ingen spor"
+        }
+      },
+      "diet": {
+        "title": "Nordisk mad er et mønster, ikke en detox.",
+        "body": "Byg de fleste måltider på planter, fuldkorn og fleksible proteinkilder. Mad behøver ingen moralske etiketter.",
+        "items": {
+          "plants": "Grøntsager, frugt og bær",
+          "grains": "Fuldkorn, kartofler, nødder og frø",
+          "protein": "Fisk, bælgfrugter og fleksible valg"
+        }
+      },
+      "community": {
+        "title": "Du er med i den første bølge.",
+        "body": "Et nyt fællesskab bygger nordiske vaner én dag ad gangen. Start dér, hvor du er, og lad serien vise arbejdet.",
+        "days": [
+          "M",
+          "T",
+          "O",
+          "T",
+          "F",
+          "L",
+          "S"
+        ],
+        "items": {
+          "different": "Forskellige startpunkter er helt normale",
+          "daily": "Én tydelig protokol hver dag",
+          "visible": "Fremskridt er synlige og fortjente"
+        }
+      },
+      "ro": {
+        "title": "Nu laver vi larm.",
+        "body": "RO! gør den norske rorytme til et kort rytmespil. To slag starter bølgen, så holder du takten.",
+        "sound": "Lyd på for at høre publikum",
+        "cta": "Prøv RO!"
+      }
+    },
+    "result": {
+      "title": "Derfor kan planen blive en vane.",
+      "body": "Du behøver ikke selv planlægge fem vaner. Norwaymaxxing omsætter dit udgangspunkt til én kort protokol for i dag og tilpasser næste skridt, når din rytme bliver mere stabil.",
+      "focus": "Bygget omkring dine mål",
+      "items": {
+        "clear": "Én tydelig protokol i stedet for fem separate rutiner",
+        "adaptive": "Kulde, sauna og natur passer til din adgang og erfaring",
+        "feedback": "Norway Score viser, hvad du faktisk har gennemført"
+      },
+      "cta": "Vis min protokol"
+    },
+    "ready": {
+      "days": "dages protokol",
+      "title": "Din 14-dages nordiske protokol er klar.",
+      "body": "Dag ét er kort med vilje. Start i dag, få dit første signal, og lad planen vokse med din kontinuitet.",
+      "items": {
+        "start": "Start",
+        "build": "Byg",
+        "repeat": "Gentag"
+      },
+      "cta": "Fortsæt"
+    }
   }
 }
