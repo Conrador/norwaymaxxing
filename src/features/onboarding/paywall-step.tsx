@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { SymbolView } from 'expo-symbols';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -13,11 +13,11 @@ import { ThemedText } from '@/components/themed-text';
 import { UiButton } from '@/components/ui-button';
 import {
   DEFAULT_PLAN_ID,
-  planPricesForRegion,
   RO_REWARD_PRODUCT_ID,
   SUBSCRIPTION_PLANS,
   type PlanId,
 } from '@/config/app';
+import { PRIVACY_POLICY_URL, TERMS_URL } from '@/config/legal';
 import { ONBORN_OFFERING_ID } from '@/config/onborn';
 import { Fonts, Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import {
@@ -48,7 +48,7 @@ const BENEFIT_KEYS = [
 
 type RuntimePlan = {
   id: PlanId;
-  packageId: string | null;
+  packageId: string;
   productId: string;
   price: string;
   perWeek?: string;
@@ -132,92 +132,85 @@ export function PaywallStep({
   const themeName = useThemeName();
   const insets = useSafeAreaInsets();
   const { syncEntitlements } = usePremium();
-  const { billingAdapter, connected, finishValidatedPurchase, roRewardOffer } = storeBilling;
+  const {
+    billingAdapter,
+    connected,
+    finishValidatedPurchase,
+    reloadRoRewardOffer,
+    roRewardOffer,
+  } = storeBilling;
   const [selected, setSelected] = useState<PlanId>(DEFAULT_PLAN_ID);
   const [showClose, setShowClose] = useState(false);
   const [billingMessage, setBillingMessage] = useState<string | null>(null);
-  const [country] = useState(() => getLocales()[0]?.regionCode ?? null);
   const [locale] = useState(() => getLocales()[0]?.languageTag ?? 'en-US');
   const [fallbackAnalyticsContext] = useState(() => createStandalonePaywallAnalyticsContext());
   const [paywallViewedAt] = useState(() => Date.now());
   const exitTracked = useRef(false);
   const analyticsContext = providedAnalyticsContext ?? fallbackAnalyticsContext;
-  const fallbackPrices = useMemo(() => planPricesForRegion(country), [country]);
-
   const billing = useOnbornOffering({
     offeringId: ONBORN_OFFERING_ID ?? 'missing-onborn-offering',
     billingAdapter,
   });
 
-  const packagesByKind = useMemo<Record<PackageKind, RuntimePlan>>(() => {
-    const result: Record<PackageKind, RuntimePlan> = {
-      yearly: {
-        id: 'yearly',
-        packageId: null,
-        productId: SUBSCRIPTION_PLANS.find((plan) => plan.id === 'yearly')?.productId ?? '',
-        price: fallbackPrices.yearly.price,
-        perWeek: fallbackPrices.yearly.perWeek,
-        reward: false,
-      },
-      monthly: {
-        id: 'monthly',
-        packageId: null,
-        productId: SUBSCRIPTION_PLANS.find((plan) => plan.id === 'monthly')?.productId ?? '',
-        price: fallbackPrices.monthly.price,
-        reward: false,
-      },
-      yearlyReward: {
-        id: 'yearly',
-        packageId: null,
-        productId: RO_REWARD_PRODUCT_ID,
-        price: roRewardOffer.introductoryPrice ?? fallbackPrices.yearly.price,
-        originalPrice: roRewardOffer.standardPrice ?? fallbackPrices.yearly.price,
-        reward: true,
-      },
-    };
-
+  const packagesByKind = useMemo<Partial<Record<PackageKind, RuntimePlan>>>(() => {
+    const result: Partial<Record<PackageKind, RuntimePlan>> = {};
     for (const item of billing.packages) {
       const kind = resolvePackageKind(item);
-      if (!kind) continue;
+      const productId = item.product?.storeProductId;
+      const storePrice = item.product?.price?.trim();
+      if (!kind || !productId || !storePrice) continue;
+
       const reward = kind === 'yearlyReward';
       result[kind] = {
         id: kind === 'monthly' ? 'monthly' : 'yearly',
         packageId: item.package.id,
-        productId: item.product?.storeProductId ?? result[kind].productId,
-        price: reward
-          ? roRewardOffer.introductoryPrice ?? result[kind].price
-          : item.product?.price ?? result[kind].price,
-        perWeek:
-          kind === 'yearly'
-            ? nativeWeeklyPrice(item, locale) ?? result.yearly.perWeek
-            : undefined,
+        productId,
+        price: reward ? roRewardOffer.introductoryPrice ?? storePrice : storePrice,
+        perWeek: kind === 'yearly' ? nativeWeeklyPrice(item, locale) : undefined,
         originalPrice: reward
-          ? roRewardOffer.standardPrice ?? item.product?.price ?? result[kind].originalPrice
+          ? roRewardOffer.standardPrice ?? storePrice
           : undefined,
         reward,
       };
     }
 
     return result;
-  }, [billing.packages, fallbackPrices, locale, roRewardOffer.introductoryPrice, roRewardOffer.standardPrice]);
+  }, [billing.packages, locale, roRewardOffer.introductoryPrice, roRewardOffer.standardPrice]);
 
   const rewardApplied =
     roRewardUnlocked &&
     roRewardOffer.available &&
     roRewardOffer.eligible &&
-    Boolean(packagesByKind.yearlyReward.packageId);
-  const plans = useMemo<Record<PlanId, RuntimePlan>>(
+    Boolean(packagesByKind.yearlyReward);
+  const plans = useMemo<Partial<Record<PlanId, RuntimePlan>>>(
     () => ({
       yearly: rewardApplied ? packagesByKind.yearlyReward : packagesByKind.yearly,
       monthly: packagesByKind.monthly,
     }),
     [packagesByKind, rewardApplied],
   );
+  const availablePlans = useMemo(
+    () => SUBSCRIPTION_PLANS.filter((plan) => Boolean(plans[plan.id])),
+    [plans],
+  );
+  const pricingLoading =
+    !connected ||
+    !billingAdapter ||
+    billing.loading ||
+    (roRewardUnlocked && roRewardOffer.loading);
+  const pricingUnavailable =
+    !pricingLoading && (Boolean(billing.error) || availablePlans.length === 0);
 
   useEffect(() => {
     const id = setTimeout(() => setShowClose(true), 1500);
     return () => clearTimeout(id);
   }, []);
+
+  useEffect(() => {
+    if (pricingLoading || plans[selected]) return;
+    const nextPlan = availablePlans[0];
+    if (nextPlan) setSelected(nextPlan.id);
+  }, [availablePlans, plans, pricingLoading, selected]);
 
   useEffect(() => {
     trackPaywallViewed(analyticsContext);
@@ -231,7 +224,7 @@ export function PaywallStep({
 
   const subscribe = async () => {
     const plan = plans[selected];
-    if (!plan.packageId) {
+    if (!plan) {
       setBillingMessage(t('paywall.unavailable'));
       return;
     }
@@ -299,8 +292,12 @@ export function PaywallStep({
     }
   };
 
-  const busy = billing.loading || billing.purchasing || billing.restoring;
-  const canPurchase = connected && Boolean(plans[selected].packageId) && !busy;
+  const busy = billing.purchasing || billing.restoring;
+  const canPurchase = connected && Boolean(plans[selected]) && !pricingLoading && !busy;
+  const retryPricing = () => {
+    setBillingMessage(null);
+    void Promise.all([billing.reload(), reloadRoRewardOffer()]);
+  };
   const heroGradient =
     themeName === 'dark'
       ? (['#16283F', '#12233A', theme.bg] as const)
@@ -335,10 +332,27 @@ export function PaywallStep({
             ))}
           </View>
 
-          <View style={styles.plans}>
-            {SUBSCRIPTION_PLANS.map((plan) => {
+          {pricingLoading ? (
+            <View style={styles.pricingLoading} accessibilityLiveRegion="polite">
+              <ActivityIndicator color={theme.frost} />
+              <ThemedText style={[Type.caption, { color: theme.textSecondary }]}> 
+                {t('paywall.loadingPrices')}
+              </ThemedText>
+            </View>
+          ) : pricingUnavailable ? (
+            <View style={styles.billingStatus}>
+              <ThemedText style={[Type.caption, { color: theme.blood, textAlign: 'center' }]}> 
+                {t('paywall.unavailable')}
+              </ThemedText>
+              <Pressable onPress={retryPricing} hitSlop={10}>
+                <ThemedText style={[Type.caption, { color: theme.frost }]}>{t('paywall.retry')}</ThemedText>
+              </Pressable>
+            </View>
+          ) : (
+            <View style={styles.plans}>
+            {availablePlans.map((plan) => {
               const active = selected === plan.id;
-              const runtimePlan = plans[plan.id];
+              const runtimePlan = plans[plan.id]!;
               return (
                 <Pressable
                   key={plan.id}
@@ -404,32 +418,32 @@ export function PaywallStep({
                 </Pressable>
               );
             })}
-          </View>
+            </View>
+          )}
 
-          {billing.error || billingMessage ? (
+          {billingMessage ? (
             <View style={styles.billingStatus}>
-              <ThemedText style={[Type.caption, { color: theme.blood, textAlign: 'center' }]}>
-                {billingMessage ?? t('paywall.unavailable')}
+              <ThemedText style={[Type.caption, { color: theme.blood, textAlign: 'center' }]}> 
+                {billingMessage}
               </ThemedText>
-              {billing.error ? (
-                <Pressable onPress={() => void billing.reload()} hitSlop={10}>
-                  <ThemedText style={[Type.caption, { color: theme.frost }]}>{t('paywall.retry')}</ThemedText>
-                </Pressable>
-              ) : null}
             </View>
           ) : null}
 
-          <UiButton
-            label={billing.purchasing ? t('paywall.processing') : t('paywall.cta')}
-            variant="prominent"
-            tintColor={theme.frost}
-            fullWidth
-            disabled={!canPurchase}
-            onPress={() => void subscribe()}
-          />
-          <ThemedText style={[Type.caption, styles.cancel, { color: theme.textSecondary }]}>
-            {t('paywall.cancelAnytime')}
-          </ThemedText>
+          {!pricingLoading && !pricingUnavailable ? (
+            <>
+              <UiButton
+                label={billing.purchasing ? t('paywall.processing') : t('paywall.cta')}
+                variant="prominent"
+                tintColor={theme.frost}
+                fullWidth
+                disabled={!canPurchase}
+                onPress={() => void subscribe()}
+              />
+              <ThemedText style={[Type.caption, styles.cancel, { color: theme.textSecondary }]}> 
+                {t('paywall.cancelAnytime')}
+              </ThemedText>
+            </>
+          ) : null}
 
           <View style={styles.footer}>
             <Pressable disabled={busy || !connected} onPress={() => void restore()} hitSlop={8}>
@@ -437,8 +451,24 @@ export function PaywallStep({
                 {billing.restoring ? t('paywall.restoring') : t('paywall.restore')}
               </ThemedText>
             </Pressable>
-            <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>·  {t('paywall.terms')}</ThemedText>
-            <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>·  {t('paywall.privacy')}</ThemedText>
+            <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>·</ThemedText>
+            <Pressable
+              accessibilityRole="link"
+              onPress={() => void Linking.openURL(TERMS_URL)}
+              hitSlop={8}>
+              <ThemedText style={[Type.caption, styles.legalLink, { color: theme.textSecondary }]}>
+                {t('paywall.terms')}
+              </ThemedText>
+            </Pressable>
+            <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>·</ThemedText>
+            <Pressable
+              accessibilityRole="link"
+              onPress={() => void Linking.openURL(PRIVACY_POLICY_URL)}
+              hitSlop={8}>
+              <ThemedText style={[Type.caption, styles.legalLink, { color: theme.textSecondary }]}>
+                {t('paywall.privacy')}
+              </ThemedText>
+            </Pressable>
           </View>
         </View>
       </ScrollView>
@@ -494,6 +524,12 @@ const styles = StyleSheet.create({
   check: { fontSize: 18, fontWeight: '700' },
   benefitText: { flex: 1 },
   plans: { gap: Spacing.two + Spacing.one },
+  pricingLoading: {
+    minHeight: 116,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: Spacing.two,
+  },
   planCard: {
     minHeight: 88,
     flexDirection: 'row',
@@ -518,7 +554,8 @@ const styles = StyleSheet.create({
   renewalText: { ...Type.caption, fontSize: 11, lineHeight: 14, textAlign: 'right' },
   billingStatus: { alignItems: 'center', gap: Spacing.one },
   cancel: { textAlign: 'center' },
-  footer: { flexDirection: 'row', justifyContent: 'center', gap: Spacing.one },
+  footer: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: Spacing.one },
+  legalLink: { textDecorationLine: 'underline' },
   closeWrap: { position: 'absolute', top: 0, right: ScreenPadding },
   close: { width: 34, height: 34, alignItems: 'center', justifyContent: 'center', opacity: 0.6 },
 });

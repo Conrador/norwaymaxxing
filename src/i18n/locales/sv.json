@@ -459,6 +459,14 @@
       "light": "Ljus polär yta för dagtid.",
       "dark": "Nattyta med svagt ljus."
     },
+    "legal": "Juridik",
+    "legalMeta": "Villkor, integritet och säkerhet",
+    "privacyPolicy": "Integritetspolicy",
+    "privacyPolicyMeta": "Så behandlar vi dina uppgifter",
+    "termsConditions": "Villkor",
+    "termsConditionsMeta": "Regler för användning av Norwaymaxxing",
+    "healthSafety": "Hälsa och säkerhet",
+    "healthSafetyMeta": "Livsstilsinnehåll, inte medicinska råd",
     "developer": "Utvecklare",
     "resetOnboarding": "Återställ onboarding",
     "resetOnboardingMeta": "Visa onboardingflödet igen"

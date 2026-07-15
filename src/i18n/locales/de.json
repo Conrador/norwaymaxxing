@@ -459,6 +459,14 @@
       "light": "Helle Polaroberfläche für den Tagesgebrauch.",
       "dark": "Nachtoberfläche bei schwachem Licht."
     },
+    "legal": "Rechtliches",
+    "legalMeta": "Bedingungen, Datenschutz und Sicherheit",
+    "privacyPolicy": "Datenschutzerklärung",
+    "privacyPolicyMeta": "Wie wir deine Daten verarbeiten",
+    "termsConditions": "Nutzungsbedingungen",
+    "termsConditionsMeta": "Regeln für die Nutzung von Norwaymaxxing",
+    "healthSafety": "Gesundheit und Sicherheit",
+    "healthSafetyMeta": "Lifestyle-Inhalte, keine medizinische Beratung",
     "developer": "Entwickler",
     "resetOnboarding": "Onboarding zurücksetzen",
     "resetOnboardingMeta": "Onboarding erneut anzeigen"

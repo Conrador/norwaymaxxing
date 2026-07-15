@@ -459,6 +459,14 @@
       "light": "Surface polaire brillante pour une utilisation de jour.",
       "dark": "Surface nocturne peu éclairée."
     },
+    "legal": "Mentions légales",
+    "legalMeta": "Conditions, confidentialité et sécurité",
+    "privacyPolicy": "Politique de confidentialité",
+    "privacyPolicyMeta": "Comment nous traitons vos données",
+    "termsConditions": "Conditions d'utilisation",
+    "termsConditionsMeta": "Règles d'utilisation de Norwaymaxxing",
+    "healthSafety": "Santé et sécurité",
+    "healthSafetyMeta": "Contenu bien-être, pas un avis médical",
     "developer": "Développeur",
     "resetOnboarding": "Réinitialiser l’onboarding",
     "resetOnboardingMeta": "Afficher à nouveau l’onboarding"

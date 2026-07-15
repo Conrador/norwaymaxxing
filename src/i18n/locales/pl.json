@@ -459,6 +459,14 @@
       "light": "Jasna powierzchnia na dzień.",
       "dark": "Ciemna powierzchnia na wieczór."
     },
+    "legal": "Prawne",
+    "legalMeta": "Dokumenty i bezpieczeństwo",
+    "privacyPolicy": "Polityka prywatności",
+    "privacyPolicyMeta": "Jak przetwarzamy Twoje dane",
+    "termsConditions": "Regulamin",
+    "termsConditionsMeta": "Zasady korzystania z Norwaymaxxing",
+    "healthSafety": "Zdrowie i bezpieczeństwo",
+    "healthSafetyMeta": "Treści wellness, nie porady medyczne",
     "developer": "Deweloper",
     "resetOnboarding": "Zresetuj onboarding",
     "resetOnboardingMeta": "Czyści profil i pokazuje welcome ponownie"

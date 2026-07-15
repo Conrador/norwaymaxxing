@@ -459,6 +459,14 @@
       "light": "Bright polar surface for daytime use.",
       "dark": "Low-light night surface."
     },
+    "legal": "Legal",
+    "legalMeta": "Policies and safety",
+    "privacyPolicy": "Privacy Policy",
+    "privacyPolicyMeta": "How we handle your data",
+    "termsConditions": "Terms & Conditions",
+    "termsConditionsMeta": "Rules for using Norwaymaxxing",
+    "healthSafety": "Health & safety",
+    "healthSafetyMeta": "Wellness content, not medical advice",
     "developer": "Developer",
     "resetOnboarding": "Reset onboarding",
     "resetOnboardingMeta": "Clears profile & shows welcome again"

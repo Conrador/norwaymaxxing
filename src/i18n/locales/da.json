@@ -459,6 +459,14 @@
       "light": "Lys polar overflade til brug i dagtimerne.",
       "dark": "Natoverflade med lav belysning."
     },
+    "legal": "Juridisk",
+    "legalMeta": "Vilkår, privatliv og sikkerhed",
+    "privacyPolicy": "Privatlivspolitik",
+    "privacyPolicyMeta": "Sådan behandler vi dine oplysninger",
+    "termsConditions": "Vilkår og betingelser",
+    "termsConditionsMeta": "Regler for brug af Norwaymaxxing",
+    "healthSafety": "Sundhed og sikkerhed",
+    "healthSafetyMeta": "Livsstilsindhold, ikke lægelig rådgivning",
     "developer": "Udvikler",
     "resetOnboarding": "Nulstil onboarding",
     "resetOnboardingMeta": "Vis onboardingflowet igen"

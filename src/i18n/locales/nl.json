@@ -459,6 +459,14 @@
       "light": "Helder polair oppervlak voor gebruik overdag.",
       "dark": "Nachtoppervlak met weinig licht."
     },
+    "legal": "Juridisch",
+    "legalMeta": "Voorwaarden, privacy en veiligheid",
+    "privacyPolicy": "Privacybeleid",
+    "privacyPolicyMeta": "Hoe we je gegevens verwerken",
+    "termsConditions": "Algemene voorwaarden",
+    "termsConditionsMeta": "Regels voor het gebruik van Norwaymaxxing",
+    "healthSafety": "Gezondheid en veiligheid",
+    "healthSafetyMeta": "Welzijnsinhoud, geen medisch advies",
     "developer": "Ontwikkelaar",
     "resetOnboarding": "Onboarding resetten",
     "resetOnboardingMeta": "Onboarding opnieuw tonen"

@@ -459,6 +459,14 @@
       "light": "Lys polar flate for dagtid.",
       "dark": "Mørk flate for kveld."
     },
+    "legal": "Juridisk",
+    "legalMeta": "Vilkår, personvern og sikkerhet",
+    "privacyPolicy": "Personvernerklæring",
+    "privacyPolicyMeta": "Slik behandler vi opplysningene dine",
+    "termsConditions": "Vilkår og betingelser",
+    "termsConditionsMeta": "Regler for bruk av Norwaymaxxing",
+    "healthSafety": "Helse og sikkerhet",
+    "healthSafetyMeta": "Livsstilsinnhold, ikke medisinske råd",
     "developer": "Utvikler",
     "resetOnboarding": "Nullstill onboarding",
     "resetOnboardingMeta": "Tømmer profil og viser velkomst igjen"

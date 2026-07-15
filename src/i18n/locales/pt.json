@@ -459,6 +459,14 @@
       "light": "Superfície polar brilhante para uso diurno.",
       "dark": "Superfície noturna com pouca luz."
     },
+    "legal": "Informação legal",
+    "legalMeta": "Termos, privacidade e segurança",
+    "privacyPolicy": "Política de privacidade",
+    "privacyPolicyMeta": "Como tratamos os teus dados",
+    "termsConditions": "Termos e condições",
+    "termsConditionsMeta": "Regras de utilização do Norwaymaxxing",
+    "healthSafety": "Saúde e segurança",
+    "healthSafetyMeta": "Conteúdo de bem-estar, não aconselhamento médico",
     "developer": "Programador",
     "resetOnboarding": "Repor onboarding",
     "resetOnboardingMeta": "Mostrar novamente o onboarding"

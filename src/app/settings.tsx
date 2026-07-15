@@ -3,7 +3,7 @@ import { SymbolView } from 'expo-symbols';
 import type { SFSymbol } from 'sf-symbols-typescript';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Linking, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, {
   Easing,
   interpolateColor,
@@ -19,6 +19,7 @@ import { BackButton } from '@/components/back-button';
 import { ScreenBackground } from '@/components/screen-background';
 import { SectionHeader } from '@/components/section-header';
 import { ThemedText } from '@/components/themed-text';
+import { HEALTH_SAFETY_URL, PRIVACY_POLICY_URL, TERMS_URL } from '@/config/legal';
 import { Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { useTheme, useThemeName } from '@/hooks/use-theme';
 import { usePremium } from '@/hooks/use-premium';
@@ -150,6 +151,33 @@ export default function SettingsScreen() {
             </AnimatedAccordion>
           </View>
 
+          <SectionHeader title={t('settings.legal')} meta={t('settings.legalMeta')} />
+          <View
+            style={[
+              styles.selectorCard,
+              { backgroundColor: themeName === 'dark' ? `${theme.surface}E6` : theme.surface },
+            ]}>
+            <LegalRow
+              symbol="hand.raised.fill"
+              title={t('settings.privacyPolicy')}
+              description={t('settings.privacyPolicyMeta')}
+              url={PRIVACY_POLICY_URL}
+            />
+            <LegalRow
+              symbol="doc.text.fill"
+              title={t('settings.termsConditions')}
+              description={t('settings.termsConditionsMeta')}
+              url={TERMS_URL}
+            />
+            <LegalRow
+              symbol="cross.case.fill"
+              title={t('settings.healthSafety')}
+              description={t('settings.healthSafetyMeta')}
+              url={HEALTH_SAFETY_URL}
+              emphasis
+            />
+          </View>
+
           {__DEV__ && (
             <>
               <SectionHeader title={t('settings.developer')} />
@@ -177,6 +205,55 @@ export default function SettingsScreen() {
         </ScrollView>
       </SafeAreaView>
     </ScreenBackground>
+  );
+}
+
+function LegalRow({
+  symbol,
+  title,
+  description,
+  url,
+  emphasis = false,
+}: {
+  symbol: SFSymbol;
+  title: string;
+  description: string;
+  url: string;
+  emphasis?: boolean;
+}) {
+  const theme = useTheme();
+
+  return (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={`${title}. ${description}`}
+      onPress={() => void Linking.openURL(url)}
+      style={({ pressed }) => [
+        styles.legalRow,
+        {
+          backgroundColor: emphasis ? `${theme.blood}0D` : 'transparent',
+          opacity: pressed ? 0.65 : 1,
+        },
+      ]}>
+      <View
+        style={[
+          styles.optionIcon,
+          { backgroundColor: emphasis ? `${theme.blood}1A` : theme.surfaceHigh },
+        ]}>
+        <SymbolView
+          name={symbol}
+          size={18}
+          tintColor={emphasis ? theme.blood : theme.frost}
+        />
+      </View>
+      <View style={styles.optionText}>
+        <ThemedText style={Type.body}>{title}</ThemedText>
+        <ThemedText style={[Type.caption, styles.optionDescription, { color: theme.textSecondary }]}>
+          {description}
+        </ThemedText>
+      </View>
+      <SymbolView name="arrow.up.right" size={15} tintColor={theme.textSecondary} />
+    </Pressable>
   );
 }
 
@@ -308,6 +385,15 @@ const styles = StyleSheet.create({
     gap: Spacing.three,
   },
   optionRow: {
+    borderRadius: Radius.control,
+    paddingHorizontal: Spacing.three,
+    paddingVertical: Spacing.two + Spacing.one,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.three,
+  },
+  legalRow: {
+    minHeight: 72,
     borderRadius: Radius.control,
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.two + Spacing.one,
