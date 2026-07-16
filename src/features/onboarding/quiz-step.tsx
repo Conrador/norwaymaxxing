@@ -146,11 +146,16 @@ export function QuizStep({
             tintColor={active ? foreground : accent}
             style={styles.goalGlyph}
           />
-          {active && (
-            <View style={styles.goalCheck}>
-              <SymbolView name="checkmark" size={12} tintColor="#FFFFFF" />
-            </View>
-          )}
+          <View
+            style={[
+              styles.goalCheck,
+              {
+                backgroundColor: themeName === 'light' ? '#FFFFFF2E' : '#0E1A2B',
+                opacity: active ? 1 : 0,
+              },
+            ]}>
+            <SymbolView name="checkmark" size={12} tintColor="#FFFFFF" />
+          </View>
           <ThemedText style={[Type.body, styles.optionLabel, { color: foreground }]}>
             {t(option.labelKey)}
           </ThemedText>
@@ -432,7 +437,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'flex-end',
-    backgroundColor: '#0E1A2B',
   },
   glyphSlot: {
     width: 34,

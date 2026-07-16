@@ -207,7 +207,7 @@ export function PaywallStep({
   const pricingLoading =
     waitingForStore ||
     (connected &&
-      (!billingAdapter || billing.loading || (roRewardUnlocked && roRewardOffer.loading)));
+      (billing.loading || (roRewardUnlocked && roRewardOffer.loading)));
   const pricingUnavailable =
     storeUnavailable ||
     (!pricingLoading && (Boolean(billing.error) || availablePlans.length === 0));
