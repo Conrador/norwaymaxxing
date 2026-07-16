@@ -19,9 +19,13 @@ type PendingPurchase = {
   resolve: (purchase: Purchase) => void;
   reject: (error: Error) => void;
   timeout: ReturnType<typeof setTimeout>;
+  dispatching: boolean;
+  bufferedPurchase?: Purchase;
+  bufferedError?: Error;
 };
 
 const PURCHASE_TIMEOUT_MS = 2 * 60 * 1000;
+const CANCELLED_PURCHASE_RECOVERY_DELAY_MS = 750;
 
 export type RoRewardOffer = {
   loading: boolean;
@@ -74,8 +78,14 @@ function purchaseError(error: { message: string; code?: string }) {
     userCancelled?: boolean;
   };
   normalized.code = error.code;
-  normalized.userCancelled = error.code?.toLowerCase().includes('cancel') ?? false;
+  normalized.userCancelled = error.code === 'user-cancelled';
   return normalized;
+}
+
+function isUserCancelledPurchase(error: unknown) {
+  if (!error || typeof error !== 'object') return false;
+  const candidate = error as { code?: unknown; userCancelled?: unknown };
+  return candidate.userCancelled === true || candidate.code === 'user-cancelled';
 }
 
 function isPurchase(value: unknown): value is Purchase {
@@ -87,12 +97,28 @@ function isPurchase(value: unknown): value is Purchase {
   );
 }
 
-function extractPurchase(value: unknown): Purchase | null {
-  if (isPurchase(value)) return value;
-  if (value && typeof value === 'object' && 'raw' in value && isPurchase(value.raw)) {
-    return value.raw;
+function extractPurchase(value: unknown, productId?: string): Purchase | null {
+  const candidates = Array.isArray(value) ? value : [value];
+  for (const candidate of candidates) {
+    if (isPurchase(candidate) && (!productId || candidate.productId === productId)) {
+      return candidate;
+    }
+    if (candidate && typeof candidate === 'object' && 'raw' in candidate) {
+      const nested = extractPurchase(candidate.raw, productId);
+      if (nested) return nested;
+    }
   }
   return null;
+}
+
+async function recoverActivePurchase(productId: string): Promise<Purchase | null> {
+  await new Promise((resolve) => setTimeout(resolve, CANCELLED_PURCHASE_RECOVERY_DELAY_MS));
+  try {
+    const purchases = await getAvailablePurchases();
+    return extractPurchase(purchases, productId);
+  } catch {
+    return null;
+  }
 }
 
 export function useNativeStoreBilling() {
@@ -114,12 +140,25 @@ export function useNativeStoreBilling() {
     finishTransaction,
   } = useIAP({
     onPurchaseSuccess: (purchase) => {
-      if (pending.current && pending.current.productId === purchase.productId) {
-        settlePending((item) => item.resolve(purchase));
+      const item = pending.current;
+      if (!item || item.productId !== purchase.productId) return;
+      if (item.dispatching) {
+        item.bufferedPurchase = purchase;
+        return;
       }
+      settlePending((current) => current.resolve(purchase));
     },
     onPurchaseError: (error) => {
-      settlePending((item) => item.reject(purchaseError(error)));
+      const item = pending.current;
+      if (!item) return;
+      if (error.productId && error.productId !== item.productId) return;
+
+      const normalized = purchaseError(error);
+      if (item.dispatching) {
+        item.bufferedError = normalized;
+        return;
+      }
+      settlePending((current) => current.reject(normalized));
     },
   });
 
@@ -194,16 +233,62 @@ export function useNativeStoreBilling() {
             settlePending((item) => item.reject(new Error('Purchase timed out.')));
           }, PURCHASE_TIMEOUT_MS);
 
-          pending.current = { productId: storeProductId, resolve, reject, timeout };
+          pending.current = {
+            productId: storeProductId,
+            resolve,
+            reject,
+            timeout,
+            dispatching: true,
+          };
 
-          void requestPurchase({
-            request: { apple: { sku: storeProductId } },
-            type: 'subs',
-          }).catch((error) => {
-            settlePending((item) =>
-              item.reject(error instanceof Error ? error : new Error('Unable to start purchase.')),
-            );
-          });
+          void (async () => {
+            try {
+              const result = await requestPurchase({
+                request: { apple: { sku: storeProductId } },
+                type: 'subs',
+              });
+              const item = pending.current;
+              if (!item || item.productId !== storeProductId) return;
+              item.dispatching = false;
+
+              const successfulPurchase =
+                extractPurchase(result, storeProductId) ?? item.bufferedPurchase;
+              if (successfulPurchase) {
+                settlePending((current) => current.resolve(successfulPurchase));
+              } else if (item.bufferedError) {
+                const recovered = isUserCancelledPurchase(item.bufferedError)
+                  ? await recoverActivePurchase(storeProductId)
+                  : null;
+                if (recovered && pending.current === item) {
+                  settlePending((current) => current.resolve(recovered));
+                } else if (pending.current === item) {
+                  settlePending((current) => current.reject(item.bufferedError!));
+                }
+              }
+            } catch (error) {
+              const item = pending.current;
+              if (!item || item.productId !== storeProductId) return;
+              item.dispatching = false;
+
+              if (item.bufferedPurchase) {
+                settlePending((current) => current.resolve(item.bufferedPurchase!));
+                return;
+              }
+              const recovered = isUserCancelledPurchase(error)
+                ? await recoverActivePurchase(storeProductId)
+                : null;
+              if (recovered && pending.current === item) {
+                settlePending((current) => current.resolve(recovered));
+                return;
+              }
+              if (pending.current !== item) return;
+              settlePending((current) =>
+                current.reject(
+                  error instanceof Error ? error : new Error('Unable to start purchase.'),
+                ),
+              );
+            }
+          })();
         });
 
         return {

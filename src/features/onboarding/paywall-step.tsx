@@ -103,10 +103,19 @@ function nativeWeeklyPrice(item: OnbornPackageWithProduct, locale: string) {
 
 function isCancelled(error: unknown) {
   if (!error || typeof error !== 'object') return false;
-  const candidate = error as { code?: unknown; message?: unknown; userCancelled?: unknown };
+  const candidate = error as { code?: unknown; userCancelled?: unknown };
   return candidate.userCancelled === true ||
-    (typeof candidate.code === 'string' && candidate.code.toLowerCase().includes('cancel')) ||
-    (typeof candidate.message === 'string' && candidate.message.toLowerCase().includes('cancel'));
+    candidate.code === 'user-cancelled';
+}
+
+function purchaseFailureMessage(error: unknown) {
+  if (!error || typeof error !== 'object') return undefined;
+  const candidate = error as { code?: unknown; message?: unknown };
+  const parts = [
+    typeof candidate.code === 'string' ? candidate.code : undefined,
+    typeof candidate.message === 'string' ? candidate.message : undefined,
+  ].filter((value): value is string => Boolean(value));
+  return parts.length > 0 ? parts.join(': ').slice(0, 280) : undefined;
 }
 
 type PaywallStepProps = {
@@ -278,6 +287,7 @@ export function PaywallStep({
         plan.packageId,
         plan.productId,
         cancelled ? 'cancelled' : 'error',
+        purchaseFailureMessage(error),
       );
       if (!cancelled) setBillingMessage(t('paywall.purchaseFailed'));
     }

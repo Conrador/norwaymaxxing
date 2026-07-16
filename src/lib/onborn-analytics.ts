@@ -214,6 +214,7 @@ export function trackPaywallPurchaseFailed(
   packageId: string,
   productId: string,
   reason: 'cancelled' | 'error' | 'pending',
+  message?: string,
 ) {
   track(context.userType, {
     ...paywallFields(context),
@@ -221,6 +222,7 @@ export function trackPaywallPurchaseFailed(
     packageId,
     productId,
     reason,
+    message,
   });
 }
 
