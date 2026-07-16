@@ -5,6 +5,7 @@ import {
 } from '@onborn/billing';
 import {
   fetchProducts,
+  getActiveSubscriptions,
   getAvailablePurchases,
   isEligibleForIntroOfferIOS,
   type Purchase,
@@ -12,7 +13,7 @@ import {
 } from 'expo-iap';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { RO_REWARD_PRODUCT_ID } from '@/config/app';
+import { RO_REWARD_PRODUCT_ID, SUBSCRIPTION_PLANS } from '@/config/app';
 
 type PendingPurchase = {
   productId: string;
@@ -304,14 +305,62 @@ export function useNativeStoreBilling() {
       },
       async restorePurchases() {
         if (!connected) throw new Error('App Store is not connected.');
-        const purchases = await getAvailablePurchases();
-        return purchases.map((purchase) => ({
-          store: 'app_store' as const,
-          storeProductId: purchase.productId,
-          transactionId: purchase.transactionId ?? purchase.id ?? undefined,
-          purchaseToken: purchase.purchaseToken ?? undefined,
-          raw: purchase,
-        }));
+        const subscriptionIds = SUBSCRIPTION_PLANS.map((plan) => plan.productId);
+        const [availableResult, activeResult] = await Promise.allSettled([
+          getAvailablePurchases({ onlyIncludeActiveItemsIOS: true }),
+          getActiveSubscriptions(subscriptionIds),
+        ]);
+
+        if (availableResult.status === 'rejected' && activeResult.status === 'rejected') {
+          throw availableResult.reason;
+        }
+
+        const restored = [
+          ...(availableResult.status === 'fulfilled'
+            ? availableResult.value.map((purchase) => ({
+                store: 'app_store' as const,
+                storeProductId: purchase.productId,
+                transactionId:
+                  ('originalTransactionIdentifierIOS' in purchase
+                    ? purchase.originalTransactionIdentifierIOS
+                    : undefined) ??
+                  purchase.transactionId ??
+                  purchase.id ??
+                  undefined,
+                purchaseToken: purchase.purchaseToken ?? undefined,
+                raw: purchase,
+              }))
+            : []),
+          ...(activeResult.status === 'fulfilled'
+            ? activeResult.value
+                .filter((subscription) => subscription.isActive)
+                .map((subscription) => ({
+                  store: 'app_store' as const,
+                  storeProductId: subscription.productId,
+                  transactionId: subscription.transactionId,
+                  purchaseToken: subscription.purchaseToken ?? undefined,
+                  raw: subscription,
+                }))
+            : []),
+        ];
+        const purchases = Array.from(
+          new Map(
+            restored.map((purchase) => [
+              `${purchase.storeProductId}:${purchase.transactionId ?? purchase.purchaseToken ?? ''}`,
+              purchase,
+            ]),
+          ).values(),
+        );
+
+        return {
+          purchases,
+          raw: {
+            availablePurchaseCount:
+              availableResult.status === 'fulfilled' ? availableResult.value.length : 0,
+            activeSubscriptionCount:
+              activeResult.status === 'fulfilled' ? activeResult.value.length : 0,
+          },
+        };
       },
     }));
   }, [connected, requestPurchase, settlePending]);
