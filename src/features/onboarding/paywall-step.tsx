@@ -1,4 +1,11 @@
-import { useOnbornOffering, type OnbornPackageWithProduct } from '@onborn/billing';
+import {
+  getPricePerPeriod,
+  isUserCancelledError,
+  resolveBillingPeriod,
+  toOnbornPurchaseError,
+  useOnbornOffering,
+  type OnbornPackageWithProduct,
+} from '@onborn/billing';
 import { getLocales } from 'expo-localization';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -45,8 +52,6 @@ const BENEFIT_KEYS = [
   'paywall.benefit.stats',
 ];
 
-const STORE_CONNECTION_TIMEOUT_MS = 10_000;
-
 type RuntimePlan = {
   id: PlanId;
   packageId: string;
@@ -65,57 +70,22 @@ function resolvePackageKind(item: OnbornPackageWithProduct): PackageKind | null 
   const exact = SUBSCRIPTION_PLANS.find((plan) => plan.productId === storeProductId);
   if (exact) return exact.id;
 
-  const descriptor = [
-    item.package.id,
-    item.package.label,
-    item.package.description,
-    storeProductId,
-    item.product?.period,
-  ]
-    .filter(Boolean)
-    .join(' ')
-    .toLowerCase();
-
-  if (/reward|ro20|ro.reward/.test(descriptor)) return 'yearlyReward';
-  if (/year|annual|12.month|p1y/.test(descriptor)) return 'yearly';
-  if (/month|p1m/.test(descriptor)) return 'monthly';
+  // Fall back to the store's own renewal period instead of pattern-matching
+  // labels: the SDK normalizes it, so a renamed package cannot silently
+  // reclassify a plan.
+  const unit = resolveBillingPeriod(item.product)?.unit;
+  if (unit === 'year') return 'yearly';
+  if (unit === 'month') return 'monthly';
   return null;
 }
 
 function nativeWeeklyPrice(item: OnbornPackageWithProduct, locale: string) {
-  const nativeProduct = item.product?.metadata?.nativeStoreProduct;
-  if (!nativeProduct || typeof nativeProduct !== 'object') return undefined;
-
-  const price = 'price' in nativeProduct ? nativeProduct.price : undefined;
-  const currency = 'currency' in nativeProduct ? nativeProduct.currency : undefined;
-  if (typeof price !== 'number' || typeof currency !== 'string') return undefined;
-
-  try {
-    return new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency,
-      maximumFractionDigits: 2,
-    }).format(price / 52);
-  } catch {
-    return undefined;
-  }
-}
-
-function isCancelled(error: unknown) {
-  if (!error || typeof error !== 'object') return false;
-  const candidate = error as { code?: unknown; userCancelled?: unknown };
-  return candidate.userCancelled === true ||
-    candidate.code === 'user-cancelled';
+  return getPricePerPeriod(item.product, 'week', { locale })?.formatted;
 }
 
 function purchaseFailureMessage(error: unknown) {
-  if (!error || typeof error !== 'object') return undefined;
-  const candidate = error as { code?: unknown; message?: unknown };
-  const parts = [
-    typeof candidate.code === 'string' ? candidate.code : undefined,
-    typeof candidate.message === 'string' ? candidate.message : undefined,
-  ].filter((value): value is string => Boolean(value));
-  return parts.length > 0 ? parts.join(': ').slice(0, 280) : undefined;
+  const normalized = toOnbornPurchaseError(error);
+  return `${normalized.code}: ${normalized.message}`.slice(0, 280);
 }
 
 type PaywallStepProps = {
@@ -142,17 +112,11 @@ export function PaywallStep({
   const themeName = useThemeName();
   const insets = useSafeAreaInsets();
   const { syncEntitlements } = usePremium();
-  const {
-    billingAdapter,
-    connected,
-    reloadRoRewardOffer,
-    roRewardOffer,
-  } = storeBilling;
+  const { billingAdapter, connected, connectionState, retryConnection } =
+    storeBilling;
   const [selected, setSelected] = useState<PlanId>(DEFAULT_PLAN_ID);
   const [showClose, setShowClose] = useState(false);
   const [billingMessage, setBillingMessage] = useState<string | null>(null);
-  const [connectionAttempt, setConnectionAttempt] = useState(0);
-  const [storeConnectionTimedOut, setStoreConnectionTimedOut] = useState(false);
   const [locale] = useState(() => getLocales()[0]?.languageTag ?? 'en-US');
   const [fallbackAnalyticsContext] = useState(() => createStandalonePaywallAnalyticsContext());
   const [paywallViewedAt] = useState(() => Date.now());
@@ -169,27 +133,25 @@ export function PaywallStep({
       if (!kind || !productId || !storePrice) continue;
 
       const reward = kind === 'yearlyReward';
+      // The SDK only surfaces an offer this customer can actually redeem, so
+      // its presence is the eligibility check.
+      const offerPrice = reward ? item.product?.introOffer?.price : undefined;
       result[kind] = {
         id: kind === 'monthly' ? 'monthly' : 'yearly',
         packageId: item.package.id,
         productId,
-        price: reward ? roRewardOffer.introductoryPrice ?? storePrice : storePrice,
+        price: offerPrice ?? storePrice,
         perWeek: kind === 'yearly' ? nativeWeeklyPrice(item, locale) : undefined,
-        originalPrice: reward
-          ? roRewardOffer.standardPrice ?? storePrice
-          : undefined,
+        originalPrice: offerPrice ? storePrice : undefined,
         reward,
       };
     }
 
     return result;
-  }, [billing.packages, locale, roRewardOffer.introductoryPrice, roRewardOffer.standardPrice]);
+  }, [billing.packages, locale]);
 
   const rewardApplied =
-    roRewardUnlocked &&
-    roRewardOffer.available &&
-    roRewardOffer.eligible &&
-    Boolean(packagesByKind.yearlyReward);
+    roRewardUnlocked && Boolean(packagesByKind.yearlyReward?.originalPrice);
   const plans = useMemo<Partial<Record<PlanId, RuntimePlan>>>(
     () => ({
       yearly: rewardApplied ? packagesByKind.yearlyReward : packagesByKind.yearly,
@@ -202,12 +164,9 @@ export function PaywallStep({
     [plans],
   );
   const activePlanId = plans[selected] ? selected : availablePlans[0]?.id ?? selected;
-  const waitingForStore = !connected && !storeConnectionTimedOut;
-  const storeUnavailable = !connected && storeConnectionTimedOut;
-  const pricingLoading =
-    waitingForStore ||
-    (connected &&
-      (billing.loading || (roRewardUnlocked && roRewardOffer.loading)));
+  const waitingForStore = connectionState === 'connecting';
+  const storeUnavailable = connectionState === 'unavailable';
+  const pricingLoading = waitingForStore || (connected && billing.loading);
   const pricingUnavailable =
     storeUnavailable ||
     (!pricingLoading && (Boolean(billing.error) || availablePlans.length === 0));
@@ -216,12 +175,6 @@ export function PaywallStep({
     const id = setTimeout(() => setShowClose(true), 1500);
     return () => clearTimeout(id);
   }, []);
-
-  useEffect(() => {
-    if (connected) return;
-    const id = setTimeout(() => setStoreConnectionTimedOut(true), STORE_CONNECTION_TIMEOUT_MS);
-    return () => clearTimeout(id);
-  }, [connected, connectionAttempt]);
 
   useEffect(() => {
     if (__DEV__ && billing.error) {
@@ -276,7 +229,7 @@ export function PaywallStep({
       trackPaywallConverted(analyticsContext, plan.productId);
       onSubscribe(activePlanId);
     } catch (error) {
-      const cancelled = isCancelled(error);
+      const cancelled = isUserCancelledError(error);
       trackPaywallPurchaseFailed(
         analyticsContext,
         plan.packageId,
@@ -318,9 +271,7 @@ export function PaywallStep({
   const canPurchase = connected && Boolean(plans[activePlanId]) && !pricingLoading && !busy;
   const retryPricing = () => {
     setBillingMessage(null);
-    setStoreConnectionTimedOut(false);
-    setConnectionAttempt((attempt) => attempt + 1);
-    void Promise.all([billing.reload(), reloadRoRewardOffer()]);
+    void Promise.all([retryConnection(), billing.reload()]);
   };
   const heroGradient =
     themeName === 'dark'

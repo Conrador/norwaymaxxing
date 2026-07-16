@@ -1182,26 +1182,26 @@
   resolved "https://registry.yarnpkg.com/@nolyfill/is-core-module/-/is-core-module-1.0.39.tgz#3dc35ba0f1e66b403c00b39344f870298ebb1c8e"
   integrity sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==
 
-"@onborn/analytics@0.1.0-beta.2":
-  version "0.1.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@onborn/analytics/-/analytics-0.1.0-beta.2.tgz#1907a110f16278bf3fce7ea51be0bcd33ea0b079"
-  integrity sha512-LW+CyD6NWTL55VL+EwjTJNlmtHzAu6OZsS36VIKh4CFRGPXHb41YOEKlFTrcHdmnG+aZoPx7F3cVgoH4trcWiA==
+"@onborn/analytics@0.1.0-beta.3":
+  version "0.1.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@onborn/analytics/-/analytics-0.1.0-beta.3.tgz#754b19593adf70054c8de082a113890417e89f13"
+  integrity sha512-XNUEbJ8QzKqEqT7+YAcnNuH/nBIh4NuME2t/8P1TzQd0PwuvN3WwlmVYaZPRJdsTFTHmDjYykSUaz1oXdrQIhA==
   dependencies:
-    "@onborn/sdk-contracts" "0.1.0-beta.1"
+    "@onborn/sdk-contracts" "0.1.0-beta.3"
     zod "^3.25.76"
 
-"@onborn/billing@0.1.0-beta.5":
-  version "0.1.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@onborn/billing/-/billing-0.1.0-beta.5.tgz#9d1639cff8dc9a4215755de46c8e3d46df6ee1d0"
-  integrity sha512-ha8DBGgOttLCYKajmZwGleLiBFU3UZ9v3aA77+J+XfNybxKbZvg6Lb0AgglEw/Pki8LIYUlpG/9De+Jd6j2Zig==
+"@onborn/billing@0.1.0-beta.6":
+  version "0.1.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@onborn/billing/-/billing-0.1.0-beta.6.tgz#22c026dcfb89ee68392147b4347607162387d9d3"
+  integrity sha512-mUtnwuYWrgblk0mYx2uMVDHsIDOXt7tOU2naYmNwzvwjP4SKmd+2Bc5kSXjGCJ1FTso9zTTqvXWykIrCdtcPWQ==
   dependencies:
-    "@onborn/analytics" "0.1.0-beta.2"
-    "@onborn/sdk-contracts" "0.1.0-beta.1"
+    "@onborn/analytics" "0.1.0-beta.3"
+    "@onborn/sdk-contracts" "0.1.0-beta.3"
 
-"@onborn/sdk-contracts@0.1.0-beta.1":
-  version "0.1.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@onborn/sdk-contracts/-/sdk-contracts-0.1.0-beta.1.tgz#286951606e342d0e9f7b05a11c4f3c90c5448ed7"
-  integrity sha512-RkkxF899SHRUydwmOVnK7M5Nvc2so/8ie+bKa/LnHiH+RRZ9aM3K3/YOMIqoLF6SpKJpIOZpkynKr4RzD/smsQ==
+"@onborn/sdk-contracts@0.1.0-beta.3":
+  version "0.1.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@onborn/sdk-contracts/-/sdk-contracts-0.1.0-beta.3.tgz#52b57113699d7aeb14c66670b78fc18b373d45e9"
+  integrity sha512-4TShXxOfLnWSgcI3YJpY8G+bqlR+vqzTL+/MimQGCMSz7cj+ZJtAtR6YDSB/M4SI+zFz/izttKdKeLxLHXiNqQ==
   dependencies:
     zod "^3.25.76"
 

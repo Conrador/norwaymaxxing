@@ -115,7 +115,9 @@ function LocalPremiumProvider({ children }: { children: ReactNode }) {
 function RemotePremiumProvider({ children }: { children: ReactNode }) {
   const local = useLocalPremiumValue();
   const { syncEntitlements } = local;
-  const entitlements = useOnbornEntitlements({ autoLoad: true });
+  // `cache: true` replays the last known entitlements on cold start, so premium
+  // state is correct before (and without) a network round trip.
+  const entitlements = useOnbornEntitlements({ autoLoad: true, cache: true });
 
   useEffect(() => {
     if (entitlements.data) {

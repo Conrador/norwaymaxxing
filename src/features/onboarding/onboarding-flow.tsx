@@ -12,7 +12,10 @@ import { QuizStep } from '@/features/onboarding/quiz-step';
 import { RoDemoStep, type RoDemoResult } from '@/features/onboarding/ro-demo-step';
 import { RoRewardIntroStep, RoRewardResultStep } from '@/features/onboarding/ro-reward-step';
 import { WelcomeStep } from '@/features/onboarding/welcome-step';
-import { useNativeStoreBilling } from '@/features/premium/use-native-store-billing';
+import {
+  useNativeStoreBilling,
+  useRoRewardOffer,
+} from '@/features/premium/use-native-store-billing';
 import {
   createOnboardingAnalyticsSession,
   type OnboardingAnalyticsStep,
@@ -82,6 +85,7 @@ export function OnboardingFlow() {
   const unlockRoReward = useProfile((s) => s.unlockRoReward);
   const storedRoRewardUnlocked = useProfile((s) => s.roRewardUnlocked);
   const storeBilling = useNativeStoreBilling();
+  const rewardOffer = useRoRewardOffer(storeBilling.billingAdapter);
   const [analytics] = useState(() => createOnboardingAnalyticsSession());
 
   const [phase, setPhase] = useState<Phase>('welcome');
@@ -93,10 +97,8 @@ export function OnboardingFlow() {
 
   const journeyStep = JOURNEY[journeyIndex];
   const question = journeyStep.kind === 'quiz' ? QUIZ_BY_KEY[journeyStep.questionKey] : null;
-  const rewardOffer = storeBilling.roRewardOffer;
   const rewardAvailable =
     rewardOffer.available &&
-    rewardOffer.eligible &&
     Boolean(rewardOffer.introductoryPrice && rewardOffer.standardPrice);
   const activeRoStep: OnboardingAnalyticsStep = {
     id: rewardMode ? `viking_row_reward_attempt_${roAttempt}` : 'viking_row_preview',

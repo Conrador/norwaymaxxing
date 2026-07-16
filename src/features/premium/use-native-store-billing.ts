@@ -1,6 +1,9 @@
-import { isEligibleForIntroOfferIOS } from 'expo-iap';
-import { useExpoIapBillingAdapter } from '@onborn/billing/expo-iap'
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useOnbornOffering,
+  type OnbornBillingAdapter,
+} from '@onborn/billing';
+import { useExpoIapBillingAdapter } from '@onborn/billing/expo-iap';
+import { useMemo } from 'react';
 
 import { RO_REWARD_PRODUCT_ID, SUBSCRIPTION_PLANS } from '@/config/app';
 
@@ -12,98 +15,45 @@ const STORE_PRODUCT_IDS = [
 export type RoRewardOffer = {
   loading: boolean;
   available: boolean;
-  eligible: boolean;
-  productId: string;
-  standardPrice: string | null;
   introductoryPrice: string | null;
+  standardPrice: string | null;
 };
 
-const EMPTY_REWARD_OFFER: RoRewardOffer = {
-  loading: true,
-  available: false,
-  eligible: false,
-  productId: RO_REWARD_PRODUCT_ID,
-  standardPrice: null,
-  introductoryPrice: null,
-};
-
-function readRoRewardOffer(product: unknown) {
-  if (!product || typeof product !== 'object') return null;
-  const candidate = product as {
-    id?: unknown;
-    displayPrice?: unknown;
-    subscriptionGroupIdIOS?: unknown;
-    subscriptionOffers?: unknown;
-  };
-  if (candidate.id !== RO_REWARD_PRODUCT_ID) return null;
-
-  const offers = Array.isArray(candidate.subscriptionOffers) ? candidate.subscriptionOffers : [];
-  const introductory = offers.find((offer) => {
-    if (!offer || typeof offer !== 'object') return false;
-    return 'type' in offer && offer.type === 'introductory';
-  }) as { displayPrice?: unknown } | undefined;
-
-  return {
-    groupId:
-      typeof candidate.subscriptionGroupIdIOS === 'string'
-        ? candidate.subscriptionGroupIdIOS
-        : null,
-    standardPrice: typeof candidate.displayPrice === 'string' ? candidate.displayPrice : null,
-    introductoryPrice:
-      typeof introductory?.displayPrice === 'string' ? introductory.displayPrice : null,
-  };
+/**
+ * Native store billing for the paywall.
+ *
+ * Intro-offer pricing and eligibility used to be resolved here by hand (reading
+ * StoreKit's `subscriptionOffers` and calling `isEligibleForIntroOfferIOS`).
+ * The Onborn SDK now does both and exposes the result as `product.introOffer`.
+ */
+export function useNativeStoreBilling() {
+  return useExpoIapBillingAdapter({ productIds: STORE_PRODUCT_IDS });
 }
 
-export function useNativeStoreBilling() {
-  const nativeBilling = useExpoIapBillingAdapter({ productIds: STORE_PRODUCT_IDS });
-  const { connected, reloadProducts } = nativeBilling;
-  const [roRewardOffer, setRoRewardOffer] = useState<RoRewardOffer>(EMPTY_REWARD_OFFER);
+/**
+ * The Viking Row reward offer, needed before the paywall renders so the flow
+ * can decide whether to run the reward game at all.
+ *
+ * The SDK only returns an `introOffer` the customer can actually redeem, so its
+ * presence *is* the eligibility answer — no separate check.
+ */
+export function useRoRewardOffer(
+  billingAdapter: OnbornBillingAdapter | undefined,
+): RoRewardOffer {
+  const { packages, loading } = useOnbornOffering({ billingAdapter });
 
-  const reloadRoRewardOffer = useCallback(async () => {
-    if (!connected) {
-      setRoRewardOffer((current) => ({ ...current, loading: true }));
-      return;
-    }
-
-    setRoRewardOffer((current) => ({ ...current, loading: true }));
-    try {
-      const products = await reloadProducts([RO_REWARD_PRODUCT_ID]);
-      const offer = readRoRewardOffer(
-        products.find((product) => product.id === RO_REWARD_PRODUCT_ID),
-      );
-      if (!offer?.groupId || !offer.introductoryPrice) {
-        setRoRewardOffer({
-          ...EMPTY_REWARD_OFFER,
-          loading: false,
-          standardPrice: offer?.standardPrice ?? null,
-        });
-        return;
-      }
-
-      const eligible = await isEligibleForIntroOfferIOS(offer.groupId);
-      setRoRewardOffer({
-        loading: false,
-        available: true,
-        eligible,
-        productId: RO_REWARD_PRODUCT_ID,
-        standardPrice: offer.standardPrice,
-        introductoryPrice: offer.introductoryPrice,
-      });
-    } catch {
-      setRoRewardOffer({ ...EMPTY_REWARD_OFFER, loading: false });
-    }
-  }, [connected, reloadProducts]);
-
-  useEffect(() => {
-    const id = setTimeout(() => void reloadRoRewardOffer(), 0);
-    return () => clearTimeout(id);
-  }, [reloadRoRewardOffer]);
-
-  return {
-    ...nativeBilling,
-    roRewardOffer,
-    reloadRoRewardOffer,
-  };
+  return useMemo(() => {
+    const item = packages.find(
+      (entry) => entry.product?.storeProductId === RO_REWARD_PRODUCT_ID,
+    );
+    const offer = item?.product?.introOffer;
+    return {
+      loading,
+      available: Boolean(offer?.price),
+      introductoryPrice: offer?.price ?? null,
+      standardPrice: item?.product?.price ?? null,
+    };
+  }, [loading, packages]);
 }
 
 export type NativeStoreBilling = ReturnType<typeof useNativeStoreBilling>;
