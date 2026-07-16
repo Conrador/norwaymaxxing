@@ -145,7 +145,6 @@ export function PaywallStep({
   const {
     billingAdapter,
     connected,
-    finishValidatedPurchase,
     reloadRoRewardOffer,
     roRewardOffer,
   } = storeBilling;
@@ -262,10 +261,6 @@ export function PaywallStep({
         return;
       }
 
-      await finishValidatedPurchase(result).catch((error) => {
-        if (__DEV__) console.warn('Unable to finish validated StoreKit transaction.', error);
-      });
-
       if (!syncEntitlements(result.entitlements, activePlanId)) {
         trackPaywallPurchaseFailed(
           analyticsContext,
@@ -306,7 +301,15 @@ export function PaywallStep({
       Alert.alert(t('paywall.restoreTitle'), t('paywall.restoreSuccess'));
       exitTracked.current = true;
       onSubscribe(activePlanId);
-    } catch {
+    } catch (error) {
+      trackPaywallPurchaseFailed(
+        analyticsContext,
+        'restore',
+        'restore',
+        'error',
+        purchaseFailureMessage(error),
+      );
+      void flushOnbornAnalytics();
       setBillingMessage(t('paywall.restoreFailed'));
     }
   };
