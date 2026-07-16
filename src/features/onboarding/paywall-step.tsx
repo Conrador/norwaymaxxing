@@ -526,12 +526,12 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.two,
   },
   proofText: { flex: 1 },
-  heroTitle: { fontFamily: Type.display.fontFamily, fontSize: 32, lineHeight: 38 },
+  heroTitle: { fontFamily: Type.display.fontFamily, fontSize: 32, lineHeight: 54 },
   heroAccent: {
     fontFamily: Fonts.accent,
     fontStyle: 'italic',
     fontSize: 46,
-    lineHeight: 50,
+    lineHeight: 54,
   },
   content: {
     paddingHorizontal: ScreenPadding,

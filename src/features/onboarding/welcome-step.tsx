@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   },
   finalLine: {
     fontSize: 38,
-    lineHeight: 46,
+    lineHeight: 62,
     textAlign: 'center',
   },
   accent: {
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   accentLarge: {
     fontSize: 54,
-    lineHeight: 58,
+    lineHeight: 62,
   },
   fullHook: {
     alignItems: 'center',

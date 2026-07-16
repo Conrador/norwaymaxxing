@@ -293,7 +293,7 @@ export function useNativeStoreBilling() {
 
         return {
           productId: purchase.productId,
-          transactionId: purchase.transactionId ?? undefined,
+          transactionId: purchase.transactionId ?? purchase.id ?? undefined,
           purchaseToken: purchase.purchaseToken ?? undefined,
           originalTransactionIdentifierIOS:
             'originalTransactionIdentifierIOS' in purchase
@@ -308,7 +308,7 @@ export function useNativeStoreBilling() {
         return purchases.map((purchase) => ({
           store: 'app_store' as const,
           storeProductId: purchase.productId,
-          transactionId: purchase.transactionId ?? undefined,
+          transactionId: purchase.transactionId ?? purchase.id ?? undefined,
           purchaseToken: purchase.purchaseToken ?? undefined,
           raw: purchase,
         }));
