@@ -14,8 +14,6 @@ export type PlanId = 'yearly' | 'monthly';
 
 export type SubscriptionPlan = {
   id: PlanId;
-  /** store product id — do podłączenia billingu onborn */
-  productId: string;
   /** klucz i18n nagłówka planu */
   titleKey: string;
   /** yearly dostaje badge „BEST VALUE" i jest domyślnie wybrany */
@@ -23,8 +21,8 @@ export type SubscriptionPlan = {
 };
 
 export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
-  { id: 'yearly', productId: 'norwaymaxxing_yearly', titleKey: 'paywall.yearly', highlighted: true },
-  { id: 'monthly', productId: 'norwaymaxxing_monthly', titleKey: 'paywall.monthly', highlighted: false },
+  { id: 'yearly', titleKey: 'paywall.yearly', highlighted: true },
+  { id: 'monthly', titleKey: 'paywall.monthly', highlighted: false },
 ];
 
 /** Annual product with a paid, one-year introductory offer unlocked by RO!. */

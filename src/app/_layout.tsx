@@ -12,9 +12,11 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import { AppState } from 'react-native';
 
+import { ScreenBackground } from '@/components/screen-background';
 import { ONBOARDING_ENABLED } from '@/config/app';
 import { Colors, Fonts } from '@/constants/theme';
 import { OnboardingFlow } from '@/features/onboarding/onboarding-flow';
+import { ConnectedPaywallStep } from '@/features/onboarding/paywall-step';
 import { PremiumProvider, usePremium } from '@/hooks/use-premium';
 import { useThemeName } from '@/hooks/use-theme';
 import { flushOnbornAnalytics, stopOnbornAnalytics } from '@/lib/onborn-analytics';
@@ -25,15 +27,38 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const themeName = useThemeName();
-  const onboardingCompleted = useProfile((s) => s.onboardingCompleted);
-  const showOnboarding = ONBOARDING_ENABLED && !onboardingCompleted;
-  const [onbornEnabled, setOnbornEnabled] = useState<boolean | null>(null);
+  const profileHydrated = useProfile((s) => s.hasHydrated);
   const [fontsLoaded] = useFonts({
     SchibstedGrotesk_400Regular,
     SchibstedGrotesk_500Medium,
     SchibstedGrotesk_700Bold,
     Fraunces_400Regular_Italic,
   });
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (state) => {
+      if (state !== 'active') void flushOnbornAnalytics();
+    });
+
+    return () => {
+      subscription.remove();
+      void stopOnbornAnalytics();
+    };
+  }, []);
+
+  if (!fontsLoaded || !profileHydrated) return null;
+
+  return <HydratedRootLayout themeName={themeName} />;
+}
+
+function HydratedRootLayout({ themeName }: { themeName: 'light' | 'dark' }) {
+  const onboardingPaywallReached = useProfile((s) => s.onboardingPaywallReached);
+  const onboardingCompleted = useProfile((s) => s.onboardingCompleted);
+  const [startedInOnboarding] = useState(
+    () => ONBOARDING_ENABLED && !onboardingPaywallReached && !onboardingCompleted,
+  );
+  const showOnboarding = startedInOnboarding && !onboardingCompleted;
+  const [onbornEnabled, setOnbornEnabled] = useState<boolean | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -51,18 +76,7 @@ export default function RootLayout() {
     };
   }, [showOnboarding]);
 
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', (state) => {
-      if (state !== 'active') void flushOnbornAnalytics();
-    });
-
-    return () => {
-      subscription.remove();
-      void stopOnbornAnalytics();
-    };
-  }, []);
-
-  if (!fontsLoaded || onbornEnabled === null) return null;
+  if (onbornEnabled === null) return null;
 
   return (
     <PremiumProvider onbornEnabled={onbornEnabled}>
@@ -78,11 +92,32 @@ function AppContent({
   themeName: 'light' | 'dark';
   showOnboarding: boolean;
 }) {
-  const { loading: premiumLoading } = usePremium();
+  const { isPremium, loading: premiumLoading } = usePremium();
+  const roRewardUnlocked = useProfile((state) => state.roRewardUnlocked);
+  const onboardingPaywallReached = useProfile((state) => state.onboardingPaywallReached);
+  const onboardingCompleted = useProfile((state) => state.onboardingCompleted);
+  const completeOnboarding = useProfile((state) => state.completeOnboarding);
 
   useEffect(() => {
     if (!premiumLoading) void SplashScreen.hideAsync();
   }, [premiumLoading]);
+
+  useEffect(() => {
+    if (
+      !premiumLoading &&
+      isPremium &&
+      onboardingPaywallReached &&
+      !onboardingCompleted
+    ) {
+      completeOnboarding();
+    }
+  }, [
+    completeOnboarding,
+    isPremium,
+    onboardingCompleted,
+    onboardingPaywallReached,
+    premiumLoading,
+  ]);
 
   if (premiumLoading) return null;
 
@@ -116,6 +151,19 @@ function AppContent({
     );
   }
 
+  if (!isPremium) {
+    return (
+      <ThemeProvider value={navTheme}>
+        <ScreenBackground>
+          <ConnectedPaywallStep
+            roRewardUnlocked={roRewardUnlocked}
+            onSubscribe={completeOnboarding}
+          />
+        </ScreenBackground>
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider value={navTheme}>
       <Stack screenOptions={{ headerShown: false }}>
@@ -125,7 +173,7 @@ function AppContent({
         <Stack.Screen name="breath" />
         <Stack.Screen name="diet" />
         <Stack.Screen name="settings" />
-        <Stack.Screen name="paywall" options={{ presentation: 'fullScreenModal', gestureEnabled: true }} />
+        <Stack.Screen name="paywall" options={{ presentation: 'fullScreenModal', gestureEnabled: false }} />
         <Stack.Screen name="challenge/[id]" />
         <Stack.Screen name="cold-session" />
         <Stack.Screen

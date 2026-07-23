@@ -10,10 +10,9 @@ import { getLocales } from 'expo-localization';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SymbolView } from 'expo-symbols';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
@@ -36,7 +35,6 @@ import {
   createStandalonePaywallAnalyticsContext,
   flushOnbornAnalytics,
   trackPaywallConverted,
-  trackPaywallDismissed,
   trackPaywallPackageSelected,
   trackPaywallPurchaseFailed,
   trackPaywallPurchaseStarted,
@@ -67,12 +65,9 @@ type PackageKind = PlanId | 'yearlyReward';
 function resolvePackageKind(item: OnbornPackageWithProduct): PackageKind | null {
   const storeProductId = item.product?.storeProductId;
   if (storeProductId === RO_REWARD_PRODUCT_ID) return 'yearlyReward';
-  const exact = SUBSCRIPTION_PLANS.find((plan) => plan.productId === storeProductId);
-  if (exact) return exact.id;
 
-  // Fall back to the store's own renewal period instead of pattern-matching
-  // labels: the SDK normalizes it, so a renamed package cannot silently
-  // reclassify a plan.
+  // The store's normalized renewal period is the source of truth for standard
+  // plans, so renamed products and SKU changes do not require an app release.
   const unit = resolveBillingPeriod(item.product)?.unit;
   if (unit === 'year') return 'yearly';
   if (unit === 'month') return 'monthly';
@@ -90,7 +85,6 @@ function purchaseFailureMessage(error: unknown) {
 
 type PaywallStepProps = {
   onSubscribe: (plan: PlanId) => void;
-  onDismiss: () => void;
   analyticsContext?: PaywallAnalyticsContext;
   roRewardUnlocked?: boolean;
 };
@@ -102,7 +96,6 @@ export function ConnectedPaywallStep(props: PaywallStepProps) {
 
 export function PaywallStep({
   onSubscribe,
-  onDismiss,
   storeBilling,
   roRewardUnlocked = false,
   analyticsContext: providedAnalyticsContext,
@@ -115,12 +108,9 @@ export function PaywallStep({
   const { billingAdapter, connected, connectionState, retryConnection } =
     storeBilling;
   const [selected, setSelected] = useState<PlanId>(DEFAULT_PLAN_ID);
-  const [showClose, setShowClose] = useState(false);
   const [billingMessage, setBillingMessage] = useState<string | null>(null);
   const [locale] = useState(() => getLocales()[0]?.languageTag ?? 'en-US');
   const [fallbackAnalyticsContext] = useState(() => createStandalonePaywallAnalyticsContext());
-  const [paywallViewedAt] = useState(() => Date.now());
-  const exitTracked = useRef(false);
   const analyticsContext = providedAnalyticsContext ?? fallbackAnalyticsContext;
   const billing = useOnbornOffering({ billingAdapter });
 
@@ -172,11 +162,6 @@ export function PaywallStep({
     (!pricingLoading && (Boolean(billing.error) || availablePlans.length === 0));
 
   useEffect(() => {
-    const id = setTimeout(() => setShowClose(true), 1500);
-    return () => clearTimeout(id);
-  }, []);
-
-  useEffect(() => {
     if (__DEV__ && billing.error) {
       console.warn('Unable to load Onborn offering or App Store prices.', billing.error);
     }
@@ -185,12 +170,9 @@ export function PaywallStep({
   useEffect(() => {
     trackPaywallViewed(analyticsContext);
     return () => {
-      if (!exitTracked.current) {
-        trackPaywallDismissed(analyticsContext, Date.now() - paywallViewedAt);
-      }
       void flushOnbornAnalytics();
     };
-  }, [analyticsContext, paywallViewedAt]);
+  }, [analyticsContext]);
 
   const subscribe = async () => {
     const plan = plans[activePlanId];
@@ -230,7 +212,6 @@ export function PaywallStep({
       // later and re-lock the app. Optimistic state above keeps the UI instant.
       void reloadEntitlements();
 
-      exitTracked.current = true;
       trackPaywallConverted(analyticsContext, plan.productId);
       onSubscribe(activePlanId);
     } catch (error) {
@@ -259,7 +240,6 @@ export function PaywallStep({
       void reloadEntitlements();
 
       Alert.alert(t('paywall.restoreTitle'), t('paywall.restoreSuccess'));
-      exitTracked.current = true;
       onSubscribe(activePlanId);
     } catch (error) {
       trackPaywallPurchaseFailed(
@@ -452,21 +432,6 @@ export function PaywallStep({
           </View>
         </View>
       </ScrollView>
-
-      {showClose && (
-        <Animated.View entering={FadeIn.duration(400)} style={[styles.closeWrap, { top: insets.top + Spacing.one }]}>
-          <Pressable
-            onPress={() => {
-              exitTracked.current = true;
-              trackPaywallDismissed(analyticsContext, Date.now() - paywallViewedAt);
-              onDismiss();
-            }}
-            hitSlop={14}
-            style={styles.close}>
-            <ThemedText style={{ color: theme.textSecondary, fontSize: 22 }}>✕</ThemedText>
-          </Pressable>
-        </Animated.View>
-      )}
     </View>
   );
 }
@@ -536,6 +501,4 @@ const styles = StyleSheet.create({
   cancel: { textAlign: 'center' },
   footer: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: Spacing.one },
   legalLink: { textDecorationLine: 'underline' },
-  closeWrap: { position: 'absolute', top: 0, right: ScreenPadding },
-  close: { width: 34, height: 34, alignItems: 'center', justifyContent: 'center', opacity: 0.6 },
 });

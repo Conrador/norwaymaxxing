@@ -24,6 +24,9 @@ type ProfileState = {
   profile: Profile | null;
   /** Raw answers captured from local or future remote onboarding, keyed by step id. */
   rawAnswers: Record<string, unknown>;
+  hasHydrated: boolean;
+  /** The educational onboarding is done; an unpaid user should resume at the paywall. */
+  onboardingPaywallReached: boolean;
   onboardingCompleted: boolean;
   /** Local yyyy-mm-dd used as the first available dashboard calendar day. */
   onboardingCompletedAt: string | null;
@@ -33,7 +36,9 @@ type ProfileState = {
   setProfile: (profile: Profile) => void;
   recordAnswer: (stepId: string, answer: unknown) => void;
   unlockRoReward: () => void;
+  reachOnboardingPaywall: () => void;
   completeOnboarding: () => void;
+  finishHydration: () => void;
   reset: () => void;
 };
 
@@ -42,6 +47,8 @@ export const useProfile = create<ProfileState>()(
     (set) => ({
       profile: null,
       rawAnswers: {},
+      hasHydrated: false,
+      onboardingPaywallReached: false,
       onboardingCompleted: false,
       onboardingCompletedAt: null,
       roRewardUnlocked: false,
@@ -51,12 +58,19 @@ export const useProfile = create<ProfileState>()(
         set((s) => ({ rawAnswers: { ...s.rawAnswers, [stepId]: answer } })),
       unlockRoReward: () =>
         set({ roRewardUnlocked: true, roRewardUnlockedAt: new Date().toISOString() }),
+      reachOnboardingPaywall: () => set({ onboardingPaywallReached: true }),
       completeOnboarding: () =>
-        set({ onboardingCompleted: true, onboardingCompletedAt: dateKey() }),
+        set({
+          onboardingPaywallReached: true,
+          onboardingCompleted: true,
+          onboardingCompletedAt: dateKey(),
+        }),
+      finishHydration: () => set({ hasHydrated: true }),
       reset: () =>
         set({
           profile: null,
           rawAnswers: {},
+          onboardingPaywallReached: false,
           onboardingCompleted: false,
           onboardingCompletedAt: null,
           roRewardUnlocked: false,
@@ -66,6 +80,27 @@ export const useProfile = create<ProfileState>()(
     {
       name: 'profile',
       storage: createJSONStorage(() => AsyncStorage),
+      partialize: ({
+        profile,
+        rawAnswers,
+        onboardingPaywallReached,
+        onboardingCompleted,
+        onboardingCompletedAt,
+        roRewardUnlocked,
+        roRewardUnlockedAt,
+      }) => ({
+        profile,
+        rawAnswers,
+        onboardingPaywallReached,
+        onboardingCompleted,
+        onboardingCompletedAt,
+        roRewardUnlocked,
+        roRewardUnlockedAt,
+      }),
+      onRehydrateStorage: () => (state) => {
+        if (state) state.finishHydration();
+        else useProfile.setState({ hasHydrated: true });
+      },
     },
   ),
 );

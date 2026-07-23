@@ -82,6 +82,7 @@ export function OnboardingFlow() {
   const setProfile = useProfile((s) => s.setProfile);
   const recordAnswer = useProfile((s) => s.recordAnswer);
   const completeOnboarding = useProfile((s) => s.completeOnboarding);
+  const reachOnboardingPaywall = useProfile((s) => s.reachOnboardingPaywall);
   const unlockRoReward = useProfile((s) => s.unlockRoReward);
   const storedRoRewardUnlocked = useProfile((s) => s.roRewardUnlocked);
   const storeBilling = useNativeStoreBilling();
@@ -291,6 +292,7 @@ export function OnboardingFlow() {
             roRewardUnlocked={storedRoRewardUnlocked || Boolean(roResult?.unlocked)}
             onContinue={() => {
               analytics.completeStep(READY_STEP);
+              reachOnboardingPaywall();
               setPhase('paywall');
             }}
           />
@@ -302,7 +304,6 @@ export function OnboardingFlow() {
             storeBilling={storeBilling}
             roRewardUnlocked={storedRoRewardUnlocked || Boolean(roResult?.unlocked)}
             onSubscribe={finishPaywall}
-            onDismiss={() => finishPaywall()}
           />
         )}
       </Animated.View>

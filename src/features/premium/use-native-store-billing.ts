@@ -5,12 +5,7 @@ import {
 import { useExpoIapBillingAdapter } from '@onborn/billing/expo-iap';
 import { useMemo } from 'react';
 
-import { RO_REWARD_PRODUCT_ID, SUBSCRIPTION_PLANS } from '@/config/app';
-
-const STORE_PRODUCT_IDS = [
-  ...SUBSCRIPTION_PLANS.map((plan) => plan.productId),
-  RO_REWARD_PRODUCT_ID,
-];
+import { RO_REWARD_PRODUCT_ID } from '@/config/app';
 
 export type RoRewardOffer = {
   loading: boolean;
@@ -27,7 +22,10 @@ export type RoRewardOffer = {
  * The Onborn SDK now does both and exposes the result as `product.introOffer`.
  */
 export function useNativeStoreBilling() {
-  return useExpoIapBillingAdapter({ productIds: STORE_PRODUCT_IDS });
+  return useExpoIapBillingAdapter({
+    productRetryCount: 3,
+    productRetryDelayMs: 800,
+  });
 }
 
 /**
