@@ -94,6 +94,7 @@
     "title": "Frio",
     "planTitle": "Plano de banho frio de 30 dias",
     "planSubtitle": "Estágios de chuveiro curtos. Águas abertas são uma decisão de segurança separada.",
+    "safetyNotice": "O frio pode aumentar subitamente a respiração, a frequência cardíaca e a pressão arterial. Procura aconselhamento médico primeiro em caso de doença cardíaca ou circulatória, arritmia, pressão não controlada, histórico de desmaio ou convulsão, fenómeno de Raynaud, urticária ao frio, gravidez, doença aguda ou medicação relevante.",
     "startToday": "Dia de início {{count}}",
     "dayDone": "Concluído",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Calor controlado, resfriamento gradual, descanso total.",
+    "safetyNotice": "O calor afeta a circulação e a hidratação. Procura aconselhamento médico primeiro em caso de doença cardíaca ou circulatória, pressão não controlada, histórico de desmaio ou intolerância ao calor, gravidez, doença aguda ou medicação que afete pressão, hidratação ou regulação térmica.",
     "chooseProtocol": "Escolha o protocolo",
     "sessionMap": "Mapa da sessão",
     "rounds": "Rodadas {{count}}",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Respiração lenta",
     "practiceSubtitle": "Siga uma inspiração calma de 4 segundos e uma expiração de 6 segundos.",
+    "safetyNotice": "Respira de forma suave e contínua. Para se sentires tonturas, formigueiro, falta de ar, pânico ou mal-estar. Nunca pratiques ao conduzir ou dentro de água.",
     "slowSubtitle": "Respire de maneira uniforme e confortável. Não force a profundidade.",
     "resetSubtitle": "Deixe a expiração durar um pouco mais do que a inspiração. Nenhuma respiração prende.",
     "recoverySubtitle": "Expire suavemente e por mais tempo e pare se sentir tontura.",
@@ -260,6 +263,7 @@
     "subtitle": "Ideias de refeições nórdicas inovadoras",
     "planMeta": "14 dias",
     "disclaimer": "Ideias de refeições flexíveis, não uma receita pessoal. Ajuste porções, alérgenos e ingredientes às suas necessidades; usar orientação clínica para dietas médicas.",
+    "allergyDisclaimer": "As ideias de refeições podem conter alergénios comuns, incluindo amendoins, frutos de casca rija, leite, ovos, peixe, glúten, sésamo e soja. Nunca comas um ingrediente a que és alérgico. Verifica rótulos e contacto cruzado, usa substituições seguras e segue o teu plano de alergia ou aconselhamento médico.",
     "eatTitle": "Coma",
     "avoidTitle": "Evite",
     "principles": "Princípios nórdicos",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Aquece com conforto, sem procurar recordes",
           "cool": "Arrefece gradualmente e para se te sentires mal",
-          "rest": "Descansa pelo menos tanto tempo quanto aqueceste"
+          "rest": "Descansa até a respiração, o pulso e o equilíbrio estabilizarem"
         }
       },
       "evidence": {

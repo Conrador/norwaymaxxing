@@ -6,6 +6,7 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BackButton } from '@/components/back-button';
+import { HealthSafetyNotice } from '@/components/health-safety-notice';
 import { ModuleCard } from '@/components/module-card';
 import { ScreenBackground } from '@/components/screen-background';
 import { SectionHeader } from '@/components/section-header';
@@ -76,6 +77,8 @@ export default function SaunaScreen() {
             subtitle={t('sauna.subtitle')}
             meta={t('common.xp', { count: 30 })}
           />
+
+          <HealthSafetyNotice text={t('sauna.safetyNotice')} module="sauna" />
 
           <SectionHeader title={t('sauna.chooseProtocol')} />
           <View style={styles.protocols}>

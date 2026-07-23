@@ -94,6 +94,7 @@
     "title": "Kalt",
     "planTitle": "30-Tage-Kaltduschenplan",
     "planSubtitle": "Kurze Schauerphasen. Freiwasser ist eine separate Sicherheitsentscheidung.",
+    "safetyNotice": "Kälte kann Atmung, Herzfrequenz und Blutdruck abrupt erhöhen. Hole zuerst ärztlichen Rat ein bei Herz- oder Kreislauferkrankungen, Arrhythmien, unkontrolliertem Blutdruck, früheren Ohnmachten oder Krampfanfällen, Raynaud-Syndrom, Kälteurtikaria, Schwangerschaft, akuter Erkrankung oder relevanter Medikation.",
     "startToday": "Starttag {{count}}",
     "dayDone": "Fertig",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Kontrollierte Hitze, allmähliche Abkühlung, volle Ruhe.",
+    "safetyNotice": "Hitze beeinflusst Kreislauf und Flüssigkeitshaushalt. Hole zuerst ärztlichen Rat ein bei Herz- oder Kreislauferkrankungen, unkontrolliertem Blutdruck, früheren Ohnmachten oder Hitzeintoleranz, Schwangerschaft, akuter Erkrankung oder Medikamenten, die Blutdruck, Flüssigkeitshaushalt oder Temperaturregulation beeinflussen.",
     "chooseProtocol": "Wählen Sie ein Protokoll",
     "sessionMap": "Sitzungskarte",
     "rounds": "{{count}} Runden",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Langsames Atmen",
     "practiceSubtitle": "Folgen Sie einem ruhigen 4-sekündigen Einatmen und 6-sekündigen Ausatmen.",
+    "safetyNotice": "Atme sanft und ohne Pausen. Höre bei Schwindel, Kribbeln, Atemnot, Panik oder Unwohlsein auf. Übe nie beim Fahren oder im Wasser.",
     "slowSubtitle": "Atmen Sie gleichmäßig und bequem. Erzwingen Sie nicht die Tiefe.",
     "resetSubtitle": "Lassen Sie die Ausatmung etwas länger laufen als die Einatmung. Kein Atemanhalten.",
     "recoverySubtitle": "Atmen Sie sanft und länger aus und hören Sie auf, wenn Ihnen schwindelig wird.",
@@ -260,6 +263,7 @@
     "subtitle": "Ideen für nordische Mahlzeiten mit pflanzlicher Wirkung",
     "planMeta": "14 Tage",
     "disclaimer": "Flexible Essensideen, kein persönliches Rezept. Passen Sie Portionen, Allergene und Zutaten an Ihre Bedürfnisse an; Nutzen Sie klinische Leitlinien für medizinische Diäten.",
+    "allergyDisclaimer": "Die Mahlzeiten können häufige Allergene enthalten, darunter Erdnüsse, Schalenfrüchte, Milch, Eier, Fisch, Gluten, Sesam und Soja. Iss niemals eine Zutat, gegen die du allergisch bist. Prüfe Kennzeichnung und Kreuzkontakt, nutze sichere Alternativen und befolge deinen Allergie-Notfallplan oder ärztlichen Rat.",
     "eatTitle": "Essen",
     "avoidTitle": "Vermeiden",
     "principles": "Nordische Prinzipien",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Angenehm wärmen, ohne Rekorde zu jagen",
           "cool": "Langsam abkühlen und bei Unwohlsein aufhören",
-          "rest": "Mindestens so lange ruhen wie wärmen"
+          "rest": "Ruhen, bis Atmung, Puls und Gleichgewicht stabil sind"
         }
       },
       "evidence": {

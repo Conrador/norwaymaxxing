@@ -6,6 +6,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-n
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BackButton } from '@/components/back-button';
+import { HealthSafetyNotice } from '@/components/health-safety-notice';
 import { LinearProgress } from '@/components/linear-progress';
 import { ScreenBackground } from '@/components/screen-background';
 import { ThemedText } from '@/components/themed-text';
@@ -75,6 +76,8 @@ export default function ColdPlanScreen() {
               {t('cold.planSubtitle')}
             </ThemedText>
           </View>
+
+          <HealthSafetyNotice text={t('cold.safetyNotice')} module="cold" />
 
           {/* Hero dzisiejszego dnia — patern QUITTR: jedna akcja, jeden postęp */}
           <Pressable

@@ -94,6 +94,7 @@
     "title": "Koud",
     "planTitle": "30 dagen koud doucheplan",
     "planSubtitle": "Korte douchefasen. Open water is een aparte veiligheidsbeslissing.",
+    "safetyNotice": "Koude kan ademhaling, hartslag en bloeddruk plots verhogen. Vraag eerst medisch advies bij hart- of vaatziekten, hartritmestoornissen, ongecontroleerde bloeddruk, eerdere flauwtes of aanvallen, het fenomeen van Raynaud, koude-urticaria, zwangerschap, acute ziekte of relevante medicatie.",
     "startToday": "Startdag {{count}}",
     "dayDone": "Klaar",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Gecontroleerde warmte, geleidelijke afkoeling, volledige rust.",
+    "safetyNotice": "Warmte beïnvloedt bloedsomloop en vochtbalans. Vraag eerst medisch advies bij hart- of vaatziekten, ongecontroleerde bloeddruk, eerdere flauwtes of hitte-intolerantie, zwangerschap, acute ziekte of medicatie die bloeddruk, hydratatie of temperatuurregeling beïnvloedt.",
     "chooseProtocol": "Kies protocol",
     "sessionMap": "Sessiekaart",
     "rounds": "{{count}}-rondes",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Langzaam ademen",
     "practiceSubtitle": "Volg een rustige inademing van 4 seconden en een uitademing van 6 seconden.",
+    "safetyNotice": "Adem rustig en zonder pauzes. Stop bij duizeligheid, tintelingen, kortademigheid, paniek of onwel voelen. Oefen nooit tijdens het rijden of in het water.",
     "slowSubtitle": "Adem gelijkmatig en comfortabel. Forceer de diepte niet.",
     "resetSubtitle": "Laat de uitademing iets langer duren dan de inademing. Geen adem inhouden.",
     "recoverySubtitle": "Gebruik een zachte, langere uitademing en stop als u zich licht in het hoofd voelt.",
@@ -260,6 +263,7 @@
     "subtitle": "Plant-forward Scandinavische maaltijdideeën",
     "planMeta": "14 dagen",
     "disclaimer": "Flexibele maaltijdideeën, geen persoonlijk recept. Pas porties, allergenen en ingrediënten aan uw wensen aan; gebruik klinische richtlijnen voor medische diëten.",
+    "allergyDisclaimer": "Maaltijdideeën kunnen veelvoorkomende allergenen bevatten, waaronder pinda's, noten, melk, eieren, vis, gluten, sesam en soja. Eet nooit een ingrediënt waarvoor je allergisch bent. Controleer etiketten en kruiscontact, gebruik veilige vervangingen en volg je allergieplan of medisch advies.",
     "eatTitle": "Eet",
     "avoidTitle": "Vermijd",
     "principles": "Noordse principes",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Warm comfortabel op zonder records na te jagen",
           "cool": "Koel geleidelijk af en stop als je je niet goed voelt",
-          "rest": "Rust minstens zo lang als je hebt opgewarmd"
+          "rest": "Rust tot ademhaling, hartslag en evenwicht stabiel voelen"
         }
       },
       "evidence": {

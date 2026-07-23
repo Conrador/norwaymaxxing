@@ -1,7 +1,7 @@
+import { SymbolView } from 'expo-symbols';
 import { Pressable, StyleSheet } from 'react-native';
 
-import { ThemedText } from '@/components/themed-text';
-import { Spacing, Type } from '@/constants/theme';
+import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 type Props = {
@@ -14,8 +14,17 @@ export function BackButton({ label, onPress, tintColor }: Props) {
   const theme = useTheme();
 
   return (
-    <Pressable onPress={onPress} hitSlop={12} style={styles.button}>
-      <ThemedText style={[Type.body, { color: tintColor ?? theme.frost }]}>‹ {label}</ThemedText>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      onPress={onPress}
+      hitSlop={12}
+      style={styles.button}>
+      <SymbolView
+        name="chevron.left"
+        size={20}
+        tintColor={tintColor ?? theme.frost}
+      />
     </Pressable>
   );
 }
@@ -23,7 +32,9 @@ export function BackButton({ label, onPress, tintColor }: Props) {
 const styles = StyleSheet.create({
   button: {
     alignSelf: 'flex-start',
-    minHeight: 34,
+    width: 46,
+    minHeight: 46,
+    alignItems: 'center',
     justifyContent: 'center',
     marginLeft: -Spacing.one,
   },

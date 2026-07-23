@@ -94,6 +94,7 @@
     "title": "Kallt",
     "planTitle": "30-dagars kallduschplan",
     "planSubtitle": "Korta duschsteg. Öppet vatten är ett separat säkerhetsbeslut.",
+    "safetyNotice": "Kyla kan plötsligt öka andning, puls och blodtryck. Rådfråga läkare först vid hjärt- eller kärlsjukdom, rytmrubbning, okontrollerat blodtryck, tidigare svimning eller anfall, Raynauds fenomen, köldurtikaria, graviditet, akut sjukdom eller relevant medicinering.",
     "startToday": "Startdag {{count}}",
     "dayDone": "Klart",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Bastu",
     "subtitle": "Kontrollerad värme, gradvis kylning, full vila.",
+    "safetyNotice": "Värme påverkar cirkulation och vätskebalans. Rådfråga läkare först vid hjärt- eller kärlsjukdom, okontrollerat blodtryck, tidigare svimning eller värmeintolerans, graviditet, akut sjukdom eller läkemedel som påverkar blodtryck, vätska eller temperaturreglering.",
     "chooseProtocol": "Välj protokoll",
     "sessionMap": "Sessionskarta",
     "rounds": "{{count}} rundor",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Långsam andning",
     "practiceSubtitle": "Följ en lugn 4 sekunders inandning och 6 sekunders utandning.",
+    "safetyNotice": "Andas mjukt och utan pauser. Avbryt vid yrsel, stickningar, andnöd, panik eller obehag. Öva aldrig när du kör eller befinner dig i vatten.",
     "slowSubtitle": "Andas jämnt och bekvämt. Tvinga inte djupet.",
     "resetSubtitle": "Låt utandningen gå lite längre än inandningen. Inget andetag håller.",
     "recoverySubtitle": "Använd en försiktig längre utandning och sluta om du känner dig yr.",
@@ -260,6 +263,7 @@
     "subtitle": "Plant-forward nordiska måltidsidéer",
     "planMeta": "14 dagar",
     "disclaimer": "Flexibla måltidsidéer, inte ett personligt recept. Anpassa portioner, allergener och ingredienser efter dina behov; använda klinisk vägledning för medicinska dieter.",
+    "allergyDisclaimer": "Måltidsidéerna kan innehålla vanliga allergener, bland annat jordnötter, trädnötter, mjölk, ägg, fisk, gluten, sesam och soja. Ät aldrig en ingrediens du är allergisk mot. Kontrollera märkning och korskontakt, använd säkra alternativ och följ din allergiplan eller läkarens råd.",
     "eatTitle": "Ät",
     "avoidTitle": "Undvik",
     "principles": "Nordiska principer",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Värm dig bekvämt utan att jaga rekord",
           "cool": "Kyl ned gradvis och avbryt om du mår dåligt",
-          "rest": "Vila minst lika länge som du värmde dig"
+          "rest": "Vila tills andning, puls och balans känns stabila"
         }
       },
       "evidence": {

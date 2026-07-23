@@ -94,6 +94,7 @@
     "title": "frio",
     "planTitle": "Plan de ducha fría de 30 días",
     "planSubtitle": "Etapas de ducha cortas. Las aguas abiertas son una decisión de seguridad independiente.",
+    "safetyNotice": "El frío puede aumentar bruscamente la respiración, la frecuencia cardíaca y la presión arterial. Consulta primero a un profesional si tienes una enfermedad cardíaca o circulatoria, arritmia, presión no controlada, antecedentes de desmayo o convulsiones, fenómeno de Raynaud, urticaria por frío, embarazo, enfermedad aguda o medicación relevante.",
     "startToday": "Día de inicio {{count}}",
     "dayDone": "hecho",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Calor controlado, enfriamiento gradual, descanso total.",
+    "safetyNotice": "El calor afecta a la circulación y la hidratación. Consulta primero a un profesional si tienes una enfermedad cardíaca o circulatoria, presión no controlada, antecedentes de desmayo o intolerancia al calor, embarazo, enfermedad aguda o medicación que afecte a la presión, hidratación o regulación térmica.",
     "chooseProtocol": "Elige protocolo",
     "sessionMap": "Mapa de sesiones",
     "rounds": "Rondas {{count}}",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "respiración lenta",
     "practiceSubtitle": "Siga una inhalación tranquila de 4 segundos y una exhalación de 6 segundos.",
+    "safetyNotice": "Respira de forma suave y continua. Detente si notas mareo, hormigueo, falta de aire, pánico o malestar. No practiques mientras conduces ni dentro del agua.",
     "slowSubtitle": "Respire de manera uniforme y cómoda. No fuerces la profundidad.",
     "resetSubtitle": "Deje que la exhalación dure un poco más que la inhalación. No se contiene la respiración.",
     "recoverySubtitle": "Utilice una exhalación suave y prolongada y deténgase si se siente mareado.",
@@ -260,6 +263,7 @@
     "subtitle": "Ideas de comidas nórdicas basadas en plantas",
     "planMeta": "14 dias",
     "disclaimer": "Ideas de comidas flexibles, no una receta personal. Ajusta porciones, alérgenos e ingredientes a tus necesidades; utilizar orientación clínica para dietas médicas.",
+    "allergyDisclaimer": "Las ideas de comidas pueden contener alérgenos comunes, como cacahuetes, frutos de cáscara, lácteos, huevos, pescado, gluten, sésamo y soja. Nunca comas un ingrediente al que seas alérgico. Revisa etiquetas y contacto cruzado, usa sustituciones seguras y sigue tu plan de alergias o el consejo médico.",
     "eatTitle": "comer",
     "avoidTitle": "evitar",
     "principles": "Principios nórdicos",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Calienta con comodidad, sin buscar récords",
           "cool": "Enfría gradualmente y para si te encuentras mal",
-          "rest": "Descansa al menos tanto como duró el calor"
+          "rest": "Descansa hasta que la respiración, el pulso y el equilibrio se estabilicen"
         }
       },
       "evidence": {

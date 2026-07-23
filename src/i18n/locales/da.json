@@ -94,6 +94,7 @@
     "title": "Kold",
     "planTitle": "30-dages koldt brusebad",
     "planSubtitle": "Korte brusefaser. Åbent vand er en særskilt sikkerhedsbeslutning.",
+    "safetyNotice": "Kulde kan pludseligt øge vejrtrækning, puls og blodtryk. Spørg først en læge ved hjerte- eller kredsløbssygdom, rytmeforstyrrelse, ukontrolleret blodtryk, tidligere besvimelse eller anfald, Raynauds fænomen, kuldeurticaria, graviditet, akut sygdom eller relevant medicin.",
     "startToday": "Startdag {{count}}",
     "dayDone": "Færdig",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Kontrolleret varme, gradvis afkøling, fuld hvile.",
+    "safetyNotice": "Varme påvirker kredsløb og væskebalance. Spørg først en læge ved hjerte- eller kredsløbssygdom, ukontrolleret blodtryk, tidligere besvimelse eller varmeintolerans, graviditet, akut sygdom eller medicin, der påvirker blodtryk, væske eller temperaturregulering.",
     "chooseProtocol": "Vælg protokol",
     "sessionMap": "Session kort",
     "rounds": "{{count}} runder",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Langsom vejrtrækning",
     "practiceSubtitle": "Følg en rolig 4 sekunders indånding og 6 sekunders udånding.",
+    "safetyNotice": "Træk vejret roligt og uden pauser. Stop ved svimmelhed, prikken, åndenød, panik eller ubehag. Øv aldrig under kørsel eller i vand.",
     "slowSubtitle": "Træk vejret jævnt og behageligt. Tving ikke dybden.",
     "resetSubtitle": "Lad udåndingen løbe lidt længere end indåndingen. Ingen vejrtrækning holder.",
     "recoverySubtitle": "Brug en blid længere udånding og stop, hvis du føler dig svimmel.",
@@ -260,6 +263,7 @@
     "subtitle": "Plant-forward nordiske måltidsideer",
     "planMeta": "14 dage",
     "disclaimer": "Fleksible måltidsideer, ikke en personlig recept. Tilpas portioner, allergener og ingredienser til dine behov; bruge klinisk vejledning til medicinske diæter.",
+    "allergyDisclaimer": "Måltidsidéer kan indeholde almindelige allergener, herunder jordnødder, trænødder, mælk, æg, fisk, gluten, sesam og soja. Spis aldrig en ingrediens, du er allergisk overfor. Tjek mærkning og krydskontakt, brug sikre alternativer og følg din allergiplan eller lægens råd.",
     "eatTitle": "Spis",
     "avoidTitle": "Undgå",
     "principles": "Nordiske principper",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Bliv varm i komfort uden at jagte rekorder",
           "cool": "Køl gradvist ned og stop ved ubehag",
-          "rest": "Hvil mindst lige så længe, som du varmede dig"
+          "rest": "Hvil til vejrtrækning, puls og balance føles stabile"
         }
       },
       "evidence": {

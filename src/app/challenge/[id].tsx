@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { BackButton } from '@/components/back-button';
 import { ModuleCard } from '@/components/module-card';
 import { ScreenBackground } from '@/components/screen-background';
+import { SourcesLink } from '@/components/sources-link';
 import { StatsCard } from '@/components/stats-card';
 import { ThemedText } from '@/components/themed-text';
 import { UiButton } from '@/components/ui-button';
@@ -75,6 +76,7 @@ export default function ChallengeScreen() {
               {t(challenge.detailKey)}
             </ThemedText>
           </View>
+          <SourcesLink module="nature" />
           {!availableToday ? (
             <View style={[styles.detail, { backgroundColor: `${theme.frost}16` }]}>
               <ThemedText style={Type.h2}>{t('challenge.libraryTitle')}</ThemedText>

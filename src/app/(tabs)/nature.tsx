@@ -10,6 +10,7 @@ import { LinearProgress } from '@/components/linear-progress';
 import { ModuleCard } from '@/components/module-card';
 import { ScreenBackground } from '@/components/screen-background';
 import { SectionHeader } from '@/components/section-header';
+import { SourcesLink } from '@/components/sources-link';
 import { ThemedText } from '@/components/themed-text';
 import { BottomTabInset, CardGap, Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
 import { dailyNatureChallenges, NATURE_CHALLENGES, type ChallengeCategory } from '@/features/content/challenges';
@@ -89,6 +90,8 @@ export default function NatureScreen() {
               )}
             </View>
           </LinearGradient>
+
+          <SourcesLink module="nature" />
 
           <SectionHeader title={t('nature.todaySet')} meta={t('nature.todaySetMeta')} />
           <View style={styles.todayStack}>

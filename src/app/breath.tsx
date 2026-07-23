@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BackButton } from '@/components/back-button';
 import { BreathingCircle } from '@/components/breathing-circle';
+import { SourcesLink } from '@/components/sources-link';
 import { ThemedText } from '@/components/themed-text';
 import { UiButton } from '@/components/ui-button';
 import { Radius, ScreenPadding, Spacing, Type } from '@/constants/theme';
@@ -146,6 +147,8 @@ export default function BreathScreen() {
                 {protocolTask ? t(protocolTask.titleKey) : t('breath.practiceTitle')}
               </ThemedText>
               <ThemedText style={[Type.caption, styles.caption]}>{t(session.subtitleKey)}</ThemedText>
+              <ThemedText style={[Type.caption, styles.safetyText]}>{t('breath.safetyNotice')}</ThemedText>
+              <SourcesLink module="breath" align="center" />
             </View>
 
             <View style={styles.sessionSurface}>
@@ -276,6 +279,10 @@ const styles = StyleSheet.create({
   },
   caption: {
     color: '#8CA3C3',
+    textAlign: 'center',
+  },
+  safetyText: {
+    color: '#AFC0D6',
     textAlign: 'center',
   },
   remaining: {

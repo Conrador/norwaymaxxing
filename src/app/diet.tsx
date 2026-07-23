@@ -7,6 +7,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BackButton } from '@/components/back-button';
+import { HealthSafetyNotice } from '@/components/health-safety-notice';
 import { ModuleCard } from '@/components/module-card';
 import { ScreenBackground } from '@/components/screen-background';
 import { SectionHeader } from '@/components/section-header';
@@ -34,11 +35,7 @@ export default function DietScreen() {
 
           <ModuleCard module="diet" title={t('diet.title')} subtitle={t('diet.subtitle')} meta={t('diet.planMeta')} />
 
-          <View style={[styles.disclaimer, { backgroundColor: `${theme.gold}14` }]}> 
-            <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
-              {t('diet.disclaimer')}
-            </ThemedText>
-          </View>
+          <HealthSafetyNotice text={t('diet.disclaimer')} module="diet" />
 
           <SectionHeader title={t('diet.mealPlan')} meta={t('diet.mealPlanMeta')} />
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.daySelector}>
@@ -122,6 +119,8 @@ export default function DietScreen() {
             <PrincipleList title={t('diet.eatTitle')} keysList={EAT_KEYS} color={theme.aurora} mode="eat" />
             <PrincipleList title={t('diet.avoidTitle')} keysList={AVOID_KEYS} color={theme.blood} mode="avoid" />
           </View>
+
+          <HealthSafetyNotice text={t('diet.allergyDisclaimer')} />
         </ScrollView>
       </SafeAreaView>
     </ScreenBackground>
@@ -176,10 +175,6 @@ const styles = StyleSheet.create({
   },
   columns: {
     gap: Spacing.two,
-  },
-  disclaimer: {
-    borderRadius: Radius.control,
-    padding: Spacing.three,
   },
   listCard: {
     borderRadius: Radius.card,

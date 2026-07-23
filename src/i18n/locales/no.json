@@ -94,6 +94,7 @@
     "title": "Kulde",
     "planTitle": "30-dagers plan for kald dusj",
     "planSubtitle": "Korte dusjetapper. Åpent vann krever en egen sikkerhetsvurdering.",
+    "safetyNotice": "Kulde kan brått øke pust, puls og blodtrykk. Rådfør deg først med lege hvis du har hjerte- eller karsykdom, arytmi, ukontrollert blodtrykk, tidligere besvimelser eller anfall, Raynauds fenomen, kuldeurtikaria, er gravid, akutt syk eller bruker relevante legemidler.",
     "startToday": "Start dag {{count}}",
     "dayDone": "Fullført",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Badstue",
     "subtitle": "Kontrollert varme, gradvis nedkjøling og full hvile.",
+    "safetyNotice": "Varme påvirker sirkulasjon og væskebalanse. Rådfør deg først med lege hvis du har hjerte- eller karsykdom, ukontrollert blodtrykk, tidligere besvimelser eller varmeintoleranse, er gravid, akutt syk eller bruker legemidler som påvirker blodtrykk, væskebalanse eller temperaturregulering.",
     "chooseProtocol": "Velg protokoll",
     "sessionMap": "Øktkart",
     "rounds": "{{count}} runder",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Rolig pust",
     "practiceSubtitle": "Følg en rolig innpust på 4 sekunder og utpust på 6 sekunder.",
+    "safetyNotice": "Pust rolig og sammenhengende. Stopp ved svimmelhet, prikking, tungpust, panikk eller ubehag. Øv aldri mens du kjører eller er i vann.",
     "slowSubtitle": "Pust jevnt og behagelig. Ikke press pusten dypere.",
     "resetSubtitle": "La utpusten vare litt lenger enn innpusten. Ikke hold pusten.",
     "recoverySubtitle": "Bruk en rolig lengre utpust. Stopp hvis du blir svimmel.",
@@ -260,6 +263,7 @@
     "subtitle": "Nordiske måltidsideer med mer planter",
     "planMeta": "14 dager",
     "disclaimer": "Fleksible måltidsideer, ikke en personlig diett. Tilpass porsjoner, allergener og ingredienser; bruk faglige råd ved medisinske dietter.",
+    "allergyDisclaimer": "Måltidsideene kan inneholde vanlige allergener, blant annet peanøtter, trenøtter, melk, egg, fisk, gluten, sesam og soya. Spis aldri en ingrediens du er allergisk mot. Sjekk merking og krysskontakt, bruk trygge alternativer og følg allergiplanen eller rådene fra behandleren din.",
     "eatTitle": "Spis",
     "avoidTitle": "Begrens",
     "principles": "Nordiske prinsipper",
@@ -655,7 +659,7 @@
         "items": {
           "heat": "Varm deg komfortabelt uten å jage rekorder",
           "cool": "Kjøl deg gradvis ned og stopp hvis du føler deg dårlig",
-          "rest": "Hvil minst like lenge som du varmet deg"
+          "rest": "Hvil til pust, puls og balanse føles rolige"
         }
       },
       "evidence": {

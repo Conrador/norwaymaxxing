@@ -94,6 +94,7 @@
     "title": "Cold",
     "planTitle": "30-day cold shower plan",
     "planSubtitle": "Short shower stages. Open water is a separate safety decision.",
+    "safetyNotice": "Cold exposure can abruptly increase breathing, heart rate and blood pressure. Ask a clinician first if you have a heart or circulation condition, arrhythmia, uncontrolled blood pressure, a history of fainting or seizures, Raynaud's, cold urticaria, are pregnant, acutely ill or take relevant medication.",
     "startToday": "Start day {{count}}",
     "dayDone": "Done",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Controlled heat, gradual cooling, full rest.",
+    "safetyNotice": "Heat exposure affects circulation and hydration. Ask a clinician first if you have a heart or circulation condition, uncontrolled blood pressure, a history of fainting or heat intolerance, are pregnant, acutely ill or take medication affecting blood pressure, hydration or temperature control.",
     "chooseProtocol": "Choose protocol",
     "sessionMap": "Session map",
     "rounds": "{{count}} rounds",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Slow breathing",
     "practiceSubtitle": "Follow a calm 4 second inhale and 6 second exhale.",
+    "safetyNotice": "Keep breathing gentle and continuous. Stop if you feel dizzy, tingling, short of breath, panicked or unwell. Never practise while driving or in water.",
     "slowSubtitle": "Breathe evenly and comfortably. Do not force the depth.",
     "resetSubtitle": "Let the exhale run a little longer than the inhale. No breath holds.",
     "recoverySubtitle": "Use a gentle longer exhale and stop if you feel lightheaded.",
@@ -260,6 +263,7 @@
     "subtitle": "Plant-forward Nordic meal ideas",
     "planMeta": "14 days",
     "disclaimer": "Flexible meal ideas, not a personal prescription. Adjust portions, allergens and ingredients to your needs; use clinical guidance for medical diets.",
+    "allergyDisclaimer": "Meal ideas may contain common allergens, including peanuts, tree nuts, dairy, eggs, fish, gluten, sesame and soy. Never eat an ingredient you are allergic to. Check labels and cross-contact, use safe substitutions and follow your allergy action plan or clinician's advice.",
     "eatTitle": "Eat",
     "avoidTitle": "Avoid",
     "principles": "Nordic principles",
@@ -655,7 +659,7 @@
         "items": {
           "heat": "Heat comfortably, without chasing records",
           "cool": "Cool gradually and stop if you feel unwell",
-          "rest": "Rest at least as long as you heated"
+          "rest": "Rest until breathing, pulse and balance feel settled"
         }
       },
       "evidence": {
@@ -771,5 +775,19 @@
     "nothingToRestore": "No active Norwaymaxxing subscription was found for this Apple ID.",
     "restoreSuccess": "Your premium access has been restored.",
     "restoreFailed": "Purchases could not be restored. Please try again."
+  },
+  "sources": {
+    "title": "Sources & references",
+    "link": "Sources & references",
+    "settingsMeta": "Where our guidance comes from",
+    "intro": "This app offers general wellbeing guidance, not a medical prescription. The recommendations draw on the public-health bodies and peer-reviewed reviews below. Tap any item to open the source. Speak to a qualified professional before changing your diet or routine, especially with a medical condition.",
+    "footnote": "Links open in your browser. If a link does not open, search the title in the listed publisher.",
+    "groups": {
+      "diet": "Diet & nutrition",
+      "sauna": "Sauna & heat",
+      "cold": "Cold exposure",
+      "breath": "Breathing",
+      "nature": "Outdoor activity"
+    }
   }
 }

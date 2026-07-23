@@ -94,6 +94,7 @@
     "title": "Froid",
     "planTitle": "Plan de douche froide sur 30 jours",
     "planSubtitle": "Étapes de douche courtes. L'eau libre est une décision de sécurité distincte.",
+    "safetyNotice": "Le froid peut augmenter brusquement la respiration, le rythme cardiaque et la tension artérielle. Demande d'abord un avis médical en cas de maladie cardiaque ou circulatoire, arythmie, hypertension non contrôlée, antécédents de malaise ou de crise, phénomène de Raynaud, urticaire au froid, grossesse, maladie aiguë ou traitement concerné.",
     "startToday": "Jour de début {{count}}",
     "dayDone": "Terminé",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Chaleur maîtrisée, refroidissement progressif, repos complet.",
+    "safetyNotice": "La chaleur affecte la circulation et l'hydratation. Demande d'abord un avis médical en cas de maladie cardiaque ou circulatoire, hypertension non contrôlée, antécédents de malaise ou d'intolérance à la chaleur, grossesse, maladie aiguë ou traitement affectant la tension, l'hydratation ou la régulation thermique.",
     "chooseProtocol": "Choisissez le protocole",
     "sessionMap": "Plan des séances",
     "rounds": "Tours {{count}}",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Respiration lente",
     "practiceSubtitle": "Suivez une inspiration calme de 4 secondes et une expiration de 6 secondes.",
+    "safetyNotice": "Respire doucement et sans pause. Arrête en cas de vertige, fourmillements, essoufflement, panique ou malaise. Ne pratique jamais en conduisant ni dans l'eau.",
     "slowSubtitle": "Respirez uniformément et confortablement. Ne forcez pas la profondeur.",
     "resetSubtitle": "Laissez l’expiration durer un peu plus longtemps que l’inspiration. Aucun souffle ne retient.",
     "recoverySubtitle": "Expirez doucement et plus longtemps et arrêtez-vous si vous vous sentez étourdi.",
@@ -260,6 +263,7 @@
     "subtitle": "Idées de repas nordiques à base de plantes",
     "planMeta": "14 jours",
     "disclaimer": "Des idées de repas flexibles, pas une prescription personnelle. Ajustez les portions, les allergènes et les ingrédients selon vos besoins; utiliser les conseils cliniques pour les régimes médicaux.",
+    "allergyDisclaimer": "Les idées de repas peuvent contenir des allergènes courants, notamment arachides, fruits à coque, lait, œufs, poisson, gluten, sésame et soja. Ne mange jamais un ingrédient auquel tu es allergique. Vérifie les étiquettes et les contacts croisés, utilise des substitutions sûres et suis ton plan d'action ou l'avis médical.",
     "eatTitle": "Manger",
     "avoidTitle": "Éviter",
     "principles": "Principes nordiques",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Chauffe-toi confortablement, sans chercher de record",
           "cool": "Refroidis-toi progressivement et arrête en cas de malaise",
-          "rest": "Repose-toi au moins aussi longtemps que tu t’es chauffé"
+          "rest": "Repose-toi jusqu'à ce que respiration, pouls et équilibre soient stabilisés"
         }
       },
       "evidence": {

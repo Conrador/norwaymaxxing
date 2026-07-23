@@ -176,6 +176,12 @@ export default function SettingsScreen() {
               url={HEALTH_SAFETY_URL}
               emphasis
             />
+            <LegalRow
+              symbol="text.book.closed.fill"
+              title={t('sources.title')}
+              description={t('sources.settingsMeta')}
+              onPress={() => router.push('/sources')}
+            />
           </View>
 
           {__DEV__ && (
@@ -213,21 +219,32 @@ function LegalRow({
   title,
   description,
   url,
+  onPress,
   emphasis = false,
 }: {
   symbol: SFSymbol;
   title: string;
   description: string;
-  url: string;
+  /** External link opened in the browser. Omit when using `onPress`. */
+  url?: string;
+  /** In-app navigation instead of an external link. */
+  onPress?: () => void;
   emphasis?: boolean;
 }) {
   const theme = useTheme();
+  const isInternal = Boolean(onPress);
 
   return (
     <Pressable
       accessibilityRole="link"
       accessibilityLabel={`${title}. ${description}`}
-      onPress={() => void Linking.openURL(url)}
+      onPress={() => {
+        if (onPress) {
+          onPress();
+        } else if (url) {
+          void Linking.openURL(url);
+        }
+      }}
       style={({ pressed }) => [
         styles.legalRow,
         {
@@ -252,7 +269,11 @@ function LegalRow({
           {description}
         </ThemedText>
       </View>
-      <SymbolView name="arrow.up.right" size={15} tintColor={theme.textSecondary} />
+      <SymbolView
+        name={isInternal ? 'chevron.right' : 'arrow.up.right'}
+        size={15}
+        tintColor={theme.textSecondary}
+      />
     </Pressable>
   );
 }

@@ -94,6 +94,7 @@
     "title": "Zimno",
     "planTitle": "30-dniowy plan zimnego prysznica",
     "planSubtitle": "Krótkie etapy pod prysznicem. Otwarta woda wymaga osobnej decyzji o bezpieczeństwie.",
+    "safetyNotice": "Zimno może gwałtownie przyspieszyć oddech i tętno oraz podnieść ciśnienie. Najpierw skonsultuj się z lekarzem, jeśli masz chorobę serca lub krążenia, arytmię, niekontrolowane ciśnienie, omdlenia lub drgawki w wywiadzie, objaw Raynauda, pokrzywkę z zimna, jesteś w ciąży, ostro chorujesz albo przyjmujesz istotne leki.",
     "startToday": "Zacznij dzień {{count}}",
     "dayDone": "Zaliczony",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Kontrolowane ciepło, stopniowe chłodzenie, pełny odpoczynek.",
+    "safetyNotice": "Ciepło wpływa na krążenie i nawodnienie. Najpierw skonsultuj się z lekarzem, jeśli masz chorobę serca lub krążenia, niekontrolowane ciśnienie, omdlenia albo nietolerancję ciepła w wywiadzie, jesteś w ciąży, ostro chorujesz lub przyjmujesz leki wpływające na ciśnienie, nawodnienie albo termoregulację.",
     "chooseProtocol": "Wybierz protokół",
     "sessionMap": "Mapa sesji",
     "rounds": "{{count}} rundy",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Spokojny oddech",
     "practiceSubtitle": "Podążaj za spokojnym wdechem 4 sekundy i wydechem 6 sekund.",
+    "safetyNotice": "Oddychaj łagodnie i bez przerw. Przerwij przy zawrotach głowy, mrowieniu, duszności, panice lub złym samopoczuciu. Nie ćwicz podczas prowadzenia pojazdu ani w wodzie.",
     "slowSubtitle": "Oddychaj równo i komfortowo. Nie pogłębiaj oddechu na siłę.",
     "resetSubtitle": "Pozwól, by wydech był nieco dłuższy od wdechu. Bez zatrzymywania oddechu.",
     "recoverySubtitle": "Oddychaj z łagodnie wydłużonym wydechem. Przerwij przy zawrotach głowy.",
@@ -260,6 +263,7 @@
     "subtitle": "Nordyckie pomysły z przewagą roślin",
     "planMeta": "14 dni",
     "disclaimer": "Elastyczne pomysły, nie osobista dieta. Dopasuj porcje, alergeny i składniki; przy diecie medycznej korzystaj z zaleceń specjalisty.",
+    "allergyDisclaimer": "Pomysły na posiłki mogą zawierać częste alergeny, m.in. orzeszki ziemne, orzechy, nabiał, jaja, ryby, gluten, sezam i soję. Nigdy nie jedz składnika, na który masz alergię. Sprawdzaj etykiety i ryzyko kontaktu krzyżowego, stosuj bezpieczne zamienniki oraz własny plan postępowania lub zalecenia lekarza.",
     "eatTitle": "Jedz",
     "avoidTitle": "Unikaj",
     "principles": "Zasady nordyckie",
@@ -655,7 +659,7 @@
         "items": {
           "heat": "Grzej się komfortowo, bez bicia rekordów",
           "cool": "Schładzaj się stopniowo i przerwij przy złym samopoczuciu",
-          "rest": "Odpoczywaj co najmniej tyle, ile trwało grzanie"
+          "rest": "Odpoczywaj, aż oddech, puls i równowaga się uspokoją"
         }
       },
       "evidence": {

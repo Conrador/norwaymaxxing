@@ -94,6 +94,7 @@
     "title": "Freddo",
     "planTitle": "Piano di doccia fredda di 30 giorni",
     "planSubtitle": "Brevi fasi di doccia. Il mare aperto è una decisione di sicurezza separata.",
+    "safetyNotice": "Il freddo può aumentare bruscamente respirazione, frequenza cardiaca e pressione. Chiedi prima un parere medico in caso di patologie cardiache o circolatorie, aritmie, pressione non controllata, precedenti svenimenti o convulsioni, fenomeno di Raynaud, orticaria da freddo, gravidanza, malattia acuta o farmaci rilevanti.",
     "startToday": "Giorno di inizio {{count}}",
     "dayDone": "Fatto",
     "dayLocked": "Premium",
@@ -198,6 +199,7 @@
   "sauna": {
     "title": "Sauna",
     "subtitle": "Calore controllato, raffreddamento graduale, riposo totale.",
+    "safetyNotice": "Il calore influisce su circolazione e idratazione. Chiedi prima un parere medico in caso di patologie cardiache o circolatorie, pressione non controllata, precedenti svenimenti o intolleranza al calore, gravidanza, malattia acuta o farmaci che influenzano pressione, idratazione o termoregolazione.",
     "chooseProtocol": "Scegli il protocollo",
     "sessionMap": "Mappa della sessione",
     "rounds": "{{count}} giri",
@@ -243,6 +245,7 @@
   "breath": {
     "practiceTitle": "Respirazione lenta",
     "practiceSubtitle": "Segui una calma inspirazione di 4 secondi e un'espirazione di 6 secondi.",
+    "safetyNotice": "Respira in modo delicato e continuo. Fermati in caso di vertigini, formicolio, fiato corto, panico o malessere. Non praticare mentre guidi o sei in acqua.",
     "slowSubtitle": "Respira in modo uniforme e confortevole. Non forzare la profondità.",
     "resetSubtitle": "Lascia che l'espirazione sia un po' più lunga dell'inspirazione. Nessuna trattenuta del respiro.",
     "recoverySubtitle": "Usa un'espirazione delicata e prolungata e fermati se ti senti stordito.",
@@ -260,6 +263,7 @@
     "subtitle": "Idee per pasti nordici a base di piante",
     "planMeta": "14 giorni",
     "disclaimer": "Idee pasto flessibili, non una prescrizione personale. Adatta porzioni, allergeni e ingredienti alle tue esigenze; utilizzare la guida clinica per le diete mediche.",
+    "allergyDisclaimer": "Le idee per i pasti possono contenere allergeni comuni, tra cui arachidi, frutta a guscio, latte, uova, pesce, glutine, sesamo e soia. Non mangiare mai un ingrediente a cui sei allergico. Controlla etichette e contaminazione incrociata, usa sostituzioni sicure e segui il tuo piano o il parere medico.",
     "eatTitle": "Mangia",
     "avoidTitle": "Evitare",
     "principles": "Principi nordici",
@@ -694,7 +698,7 @@
         "items": {
           "heat": "Scaldati con comfort, senza inseguire record",
           "cool": "Raffreddati gradualmente e fermati se stai male",
-          "rest": "Riposa almeno quanto è durata la fase di calore"
+          "rest": "Riposa finché respirazione, polso ed equilibrio non si stabilizzano"
         }
       },
       "evidence": {

@@ -49,7 +49,11 @@ export function OnboardingProgress({
   return (
     <View style={styles.header}>
       <View style={styles.headerRow}>
-        <BackButton label={t('common.back')} onPress={onBack} />
+        {current > 1 ? (
+          <BackButton label={t('common.back')} onPress={onBack} />
+        ) : (
+          <View style={styles.backPlaceholder} />
+        )}
         <ThemedText style={[Type.caption, { color: theme.textSecondary }]}>
           {t('onboarding.stepOf', { current, total })}
         </ThemedText>
@@ -65,13 +69,17 @@ export function OnboardingProgress({
 
 const styles = StyleSheet.create({
   header: {
-    gap: Spacing.two,
+    gap: Spacing.two + Spacing.one,
   },
   headerRow: {
-    minHeight: 40,
+    minHeight: 46,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  backPlaceholder: {
+    width: 46,
+    height: 46,
   },
   track: {
     height: 4,
