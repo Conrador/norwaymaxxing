@@ -1190,10 +1190,10 @@
     "@onborn/sdk-contracts" "0.1.0-beta.3"
     zod "^3.25.76"
 
-"@onborn/billing@0.1.0-beta.6":
-  version "0.1.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@onborn/billing/-/billing-0.1.0-beta.6.tgz#22c026dcfb89ee68392147b4347607162387d9d3"
-  integrity sha512-mUtnwuYWrgblk0mYx2uMVDHsIDOXt7tOU2naYmNwzvwjP4SKmd+2Bc5kSXjGCJ1FTso9zTTqvXWykIrCdtcPWQ==
+"@onborn/billing@0.1.0-beta.7":
+  version "0.1.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@onborn/billing/-/billing-0.1.0-beta.7.tgz#06e61cb49ae3570a2ea97dac6abe464e7f3fe50a"
+  integrity sha512-qbh7M0Agqonw3qZE9rl9yvf3/MHCRNf/NIWdQ98V6/pE7fGxteCqMTX9GfYrMyAWlNpOkVsscVZNqt3h/fcF/Q==
   dependencies:
     "@onborn/analytics" "0.1.0-beta.3"
     "@onborn/sdk-contracts" "0.1.0-beta.3"

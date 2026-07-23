@@ -120,15 +120,28 @@ function RemotePremiumProvider({ children }: { children: ReactNode }) {
   const entitlements = useOnbornEntitlements({ autoLoad: true, cache: true });
 
   useEffect(() => {
-    if (entitlements.data) {
-      syncEntitlements(entitlements.data.entitlements);
+    if (!entitlements.data) {
+      return;
     }
-  }, [entitlements.data, syncEntitlements]);
+    const hasPremium = hasPremiumEntitlement(entitlements.data.entitlements);
+    // The cached snapshot may restore/keep premium instantly on cold start, but
+    // it must never REMOVE it: only a fresh server response is allowed to
+    // downgrade premium (a real expiry or refund). Without this, an empty
+    // cached read — or a pre-purchase fetch resolving after a purchase — would
+    // flip a paid user back to locked.
+    if (!hasPremium && entitlements.stale) {
+      return;
+    }
+    syncEntitlements(entitlements.data.entitlements);
+  }, [entitlements.data, entitlements.stale, syncEntitlements]);
 
+  // Authoritative refetch. The paywall calls this after a purchase so the query
+  // catches up to the just-granted entitlement; the SDK's request-sequence
+  // guard makes it supersede the pre-purchase fetch fired at mount. The data
+  // effect above mirrors the result, so we intentionally do not sync here.
   const reload = useCallback(async () => {
-    const response = await entitlements.reload();
-    syncEntitlements(response.entitlements);
-  }, [entitlements, syncEntitlements]);
+    await entitlements.reload().catch(() => undefined);
+  }, [entitlements]);
 
   const value = useMemo<PremiumContextValue>(
     () => ({

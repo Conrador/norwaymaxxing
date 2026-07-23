@@ -111,7 +111,7 @@ export function PaywallStep({
   const theme = useTheme();
   const themeName = useThemeName();
   const insets = useSafeAreaInsets();
-  const { syncEntitlements } = usePremium();
+  const { syncEntitlements, reload: reloadEntitlements } = usePremium();
   const { billingAdapter, connected, connectionState, retryConnection } =
     storeBilling;
   const [selected, setSelected] = useState<PlanId>(DEFAULT_PLAN_ID);
@@ -225,6 +225,11 @@ export function PaywallStep({
         return;
       }
 
+      // Refetch from the server so the entitlements query reflects the grant
+      // and supersedes the pre-purchase fetch that would otherwise resolve
+      // later and re-lock the app. Optimistic state above keeps the UI instant.
+      void reloadEntitlements();
+
       exitTracked.current = true;
       trackPaywallConverted(analyticsContext, plan.productId);
       onSubscribe(activePlanId);
@@ -250,6 +255,8 @@ export function PaywallStep({
         Alert.alert(t('paywall.restoreTitle'), t('paywall.nothingToRestore'));
         return;
       }
+
+      void reloadEntitlements();
 
       Alert.alert(t('paywall.restoreTitle'), t('paywall.restoreSuccess'));
       exitTracked.current = true;
